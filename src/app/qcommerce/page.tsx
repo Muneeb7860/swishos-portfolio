@@ -6,8 +6,19 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export const metadata = {
   title: "SwishOS Q-Commerce — Hyper-Local Delivery App Showcase",
-  description: "Experience SwishOS, a high-speed instant commerce mobile application configuration by Draviqo.",
+  description:
+    "Experience SwishOS live: add to cart, checkout and watch the dispatch stepper — a hyper-local instant delivery OS showcase by Draviqo.",
+  openGraph: {
+    title: "SwishOS Q-Commerce — Hyper-Local Delivery App Showcase",
+    description: "Live interactive demo of SwishOS — Draviqo's flagship quick-commerce delivery operating system.",
+    url: "https://draviqo.com/qcommerce",
+  },
+  twitter: {
+    title: "SwishOS Q-Commerce — Live Demo",
+    description: "Cart, checkout & live dispatch tracker — SwishOS by Draviqo.",
+  },
 };
+
 
 export default function QCommercePage() {
   return (

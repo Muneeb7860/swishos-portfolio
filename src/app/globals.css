@@ -1,3 +1,5 @@
+/* Sora font for headings */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -126,5 +128,46 @@
   }
   html {
     @apply font-sans;
+    /* Smooth anchor-link scrolling */
+    scroll-behavior: smooth;
+  }
+  /* Offset for sticky 68px nav when using in-page anchor links */
+  [id] {
+    scroll-margin-top: 84px;
+  }
+}
+
+@layer utilities {
+  /* ── Scrollbar ─────────────────────────────── */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Micro-lift hover ──────────────────────── */
+  .hover-lift {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.2s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+
+  /* ── Keyboard focus ring ───────────────────── */
+  .focus-ring:focus-visible {
+    outline: 2px solid rgba(91, 140, 255, 0.75);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* ── Text gradient shorthand ───────────────── */
+  .text-gradient {
+    background: linear-gradient(120deg, #a9c0ff 0%, #5b8cff 40%, #7b5bff 70%, #26e6c3 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }

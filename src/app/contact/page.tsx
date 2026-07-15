@@ -46,15 +46,23 @@ function ContactFormInner() {
     const volumeParam = searchParams.get("volume");
 
     if (companyParam || appParam || savingsParam) {
+      // Type-safe guard: only use known enum values
+      const validApps: FormData["appOfInterest"][] = ["swishos", "b2bos", "custom", "other"];
+      const resolvedApp: FormData["appOfInterest"] =
+        appParam && validApps.includes(appParam as FormData["appOfInterest"])
+          ? (appParam as FormData["appOfInterest"])
+          : "swishos";
+
       setFormData(prev => ({
         ...prev,
         company: companyParam || prev.company,
-        appOfInterest: (appParam === "b2bos" ? "b2bos" : "swishos") as any,
-        message: `Validated Deal Proposal Details:\n- Recommended OS: ${appParam === "b2bos" ? "Draviqo B2B OS" : "SwishOS"}\n- System Compatibility: ${scoreParam || 95}%\n- Projected Monthly Savings: $${savingsParam || 0}/mo\n- Target Volume: ${volumeParam || 0} orders/mo.`,
+        appOfInterest: resolvedApp,
+        message: `Validated Deal Proposal Details:\n- Recommended OS: ${resolvedApp === "b2bos" ? "Draviqo B2B OS" : "SwishOS"}\n- System Compatibility: ${scoreParam || 95}%\n- Projected Monthly Savings: $${savingsParam || 0}/mo\n- Target Volume: ${volumeParam || 0} orders/mo.`,
       }));
       toast.info("Imported pre-approved deal details from calculator");
     }
   }, [searchParams]);
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -206,7 +214,8 @@ function ContactFormInner() {
                 <label htmlFor="appOfInterest" className="text-xs font-bold text-slate-300 uppercase tracking-wider">Solution Configuration</label>
                 <select 
                   id="appOfInterest" 
-                  name="appOfInterest" 
+                  name="appOfInterest"
+                  aria-label="Select a solution configuration"
                   value={formData.appOfInterest}
                   onChange={handleChange}
                   className="w-full bg-slate-900 border border-white/10 rounded-xl h-10 px-3 text-slate-200 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"

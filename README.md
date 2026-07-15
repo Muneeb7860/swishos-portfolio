@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Draviqo Portfolio — Next.js App
 
-## Getting Started
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-org%2Fportfolio)
 
-First, run the development server:
+The official Draviqo portfolio and product showcase — built with **Next.js 16 (App Router)** and deployed to **Vercel**.
+
+---
+
+## What's inside
+
+| Route | Purpose |
+|-------|---------|
+| `/` | Brand landing page — hero, SwishOS showcase, B2B OS sections, metrics, regions, CTA |
+| `/b2b` | **Deal Validator** — live ROI calculator + OS recommendation engine |
+| `/qcommerce` | **SwishOS live demo** — mobile-framed product grid, cart, checkout, dispatch stepper |
+| `/contact` | Deal proposal form — pre-populated from Deal Validator via URL params |
+
+---
+
+## Tech stack
+
+- **Next.js 16** (Turbopack, App Router, static generation)
+- **TypeScript** (strict)
+- **Tailwind CSS v4** + **shadcn/ui** components
+- **Recharts** — ROI bar chart (with hydration guard)
+- **Sonner** — toast notifications
+- **Zod** — contact form validation
+- **Lucide React** — icons
+
+---
+
+## Getting started
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server (Turbopack)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
+
+# Production build
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── (marketing)/        # Landing page + its loading.tsx
+│   │   ├── page.tsx
+│   │   └── loading.tsx
+│   ├── b2b/                # Deal Validator route
+│   │   ├── page.tsx
+│   │   └── loading.tsx
+│   ├── qcommerce/          # SwishOS showcase route
+│   │   ├── page.tsx
+│   │   └── loading.tsx
+│   ├── contact/            # Deal proposal form
+│   │   ├── page.tsx
+│   │   └── loading.tsx
+│   ├── error.tsx           # Global error boundary
+│   ├── not-found.tsx       # Custom 404 page
+│   ├── layout.tsx          # Root layout (OG metadata, Toaster)
+│   ├── globals.css         # Sora font, Tailwind v4, utilities
+│   └── sitemap.ts          # Auto-generated /sitemap.xml
+├── components/
+│   ├── ui/                 # shadcn/ui components
+│   └── ErrorBoundary.tsx   # Client-side error boundary wrapper
+├── features/
+│   ├── b2b/Dashboard.tsx   # Deal Validator business logic + Recharts
+│   └── qcommerce/          # SwishOS product grid + cart + stepper
+│       └── ProductGrid.tsx
+└── lib/
+    ├── mock.ts             # Zod-validated mock data (orders, products)
+    └── utils.ts            # cn() utility
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Vercel (recommended)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Go to [vercel.com/new](https://vercel.com/new)
+2. Import the `portfolio` GitHub repo
+3. Vercel auto-detects Next.js — click **Deploy**
+4. Set your custom domain under **Settings → Domains**
 
-## Deploy on Vercel
+The `vercel.json` in root sets the region to `bom1` (Mumbai) for lowest latency to the primary audience.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Environment variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No server-side environment variables are required — the app is fully static. When you wire up a real contact form backend (e.g. Resend), add:
+
+```
+RESEND_API_KEY=re_...
+```
+
+---
+
+## Old static site (draviqo.org on Netlify)
+
+The legacy static site lives in `../draviqo/`. When the new domain is ready:
+
+1. Deploy this Next.js app to Vercel with the new domain
+2. Open `../draviqo/netlify.toml` and uncomment the **MIGRATION** block
+3. Replace `YOUR_NEW_DOMAIN.com` with the actual domain
+4. Push to the `draviqo` repo — Netlify will 301-redirect all old traffic automatically
+
+---
+
+## License
+
+© 2026 Draviqo. All rights reserved.

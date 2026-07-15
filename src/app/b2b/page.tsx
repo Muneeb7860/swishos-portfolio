@@ -4,9 +4,21 @@ import B2BDashboard from "@/features/b2b/Dashboard";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export const metadata = {
-  title: "Draviqo — B2B Deal Validator & ROI Calculator",
-  description: "Validate your business segment compatibility with Draviqo operating systems and SwishOS licenses.",
+  title: "Deal Validator — B2B ROI Calculator",
+  description:
+    "Validate your business segment compatibility with SwishOS or Draviqo B2B OS. Calculate ROI savings and request a pre-approved deal proposal.",
+  openGraph: {
+    title: "Draviqo Deal Validator — B2B ROI Calculator",
+    description:
+      "Estimate ROI, check OS compatibility, and lock in pre-approved pricing — for SwishOS and Draviqo B2B OS.",
+    url: "https://draviqo.com/b2b",
+  },
+  twitter: {
+    title: "Draviqo Deal Validator",
+    description: "Validate ROI & OS compatibility for SwishOS / Draviqo B2B OS in seconds.",
+  },
 };
+
 
 export default function B2BPage() {
   return (

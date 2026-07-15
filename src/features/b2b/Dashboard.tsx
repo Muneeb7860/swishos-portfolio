@@ -142,25 +142,29 @@ export default function DealValidator() {
         <CardContent className="p-6 space-y-4">
           {/* Company Name */}
           <div className="space-y-1.5">
-            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+            <label htmlFor="dv-company" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
               <Building2 className="h-3.5 w-3.5 text-emerald-400" /> Company Name
             </label>
             <Input 
+              id="dv-company"
               placeholder="e.g. FreshMart Group" 
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               className="bg-slate-950 border-white/10 text-xs h-9 text-slate-200"
+              aria-label="Company name"
             />
           </div>
 
           {/* Sector selection */}
           <div className="space-y-1.5">
-            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+            <label htmlFor="dv-sector" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
               <Briefcase className="h-3.5 w-3.5 text-emerald-400" /> Business Sector
             </label>
             <select
+              id="dv-sector"
               value={sector}
               onChange={(e) => setSector(e.target.value)}
+              aria-label="Select business sector"
               className="w-full bg-slate-950 border border-white/10 rounded-lg h-9 px-2 text-slate-200 text-xs focus:outline-none focus:border-emerald-500"
             >
               <option value="supermarket">Grocery & Supermarket (Local)</option>
@@ -172,40 +176,49 @@ export default function DealValidator() {
 
           {/* Monthly volume */}
           <div className="space-y-1.5">
-            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+            <label htmlFor="dv-volume" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
               Monthly Order Volume
             </label>
             <Input 
+              id="dv-volume"
               type="number"
+              min="1"
               value={monthlyVolume}
               onChange={(e) => setMonthlyVolume(e.target.value)}
               className="bg-slate-950 border-white/10 text-xs h-9 text-slate-200"
+              aria-label="Monthly order volume"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             {/* Avg Distance */}
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              <label htmlFor="dv-distance" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                 Avg Distance (km)
               </label>
               <Input 
+                id="dv-distance"
                 type="number"
+                min="0"
                 value={currentDistance}
                 onChange={(e) => setCurrentDistance(e.target.value)}
                 className="bg-slate-950 border-white/10 text-xs h-9 text-slate-200"
+                aria-label="Average delivery distance in km"
               />
             </div>
             {/* Avg order value */}
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-0.5">
+              <label htmlFor="dv-basket" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-0.5">
                 <DollarSign className="h-3 w-3" /> Avg Basket ($)
               </label>
               <Input 
+                id="dv-basket"
                 type="number"
+                min="1"
                 value={averageOrderValue}
                 onChange={(e) => setAverageOrderValue(e.target.value)}
                 className="bg-slate-950 border-white/10 text-xs h-9 text-slate-200"
+                aria-label="Average basket value in dollars"
               />
             </div>
           </div>
@@ -213,33 +226,40 @@ export default function DealValidator() {
           <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-4">
             {/* Current speed */}
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+              <label htmlFor="dv-current-time" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" /> Current Speed
               </label>
               <div className="relative">
                 <Input 
+                  id="dv-current-time"
                   type="number"
+                  min="1"
                   value={currentDeliveryTime}
                   onChange={(e) => setCurrentDeliveryTime(e.target.value)}
                   className="bg-slate-950 border-white/10 text-xs h-9 pr-8 text-slate-200"
+                  aria-label="Current delivery time in minutes"
                 />
-                <span className="absolute right-2.5 top-2 text-[10px] text-slate-500 font-bold">min</span>
+                <span className="absolute right-2.5 top-2 text-[10px] text-slate-500 font-bold" aria-hidden="true">min</span>
               </div>
             </div>
 
             {/* Target speed */}
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+              <label htmlFor="dv-target-time" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5 text-emerald-400" /> Target Speed
               </label>
               <div className="relative">
                 <Input 
+                  id="dv-target-time"
                   type="number"
+                  min="1"
+                  max="120"
                   value={targetDeliveryTime}
                   onChange={(e) => setTargetDeliveryTime(e.target.value)}
                   className="bg-slate-950 border-emerald-500/20 text-xs h-9 pr-8 text-slate-200 focus-visible:ring-emerald-500/20"
+                  aria-label="Target delivery time in minutes"
                 />
-                <span className="absolute right-2.5 top-2 text-[10px] text-emerald-400 font-bold">min</span>
+                <span className="absolute right-2.5 top-2 text-[10px] text-emerald-400 font-bold" aria-hidden="true">min</span>
               </div>
             </div>
           </div>
@@ -336,9 +356,9 @@ export default function DealValidator() {
             </Card>
           </>
         ) : (
-          <div className="h-[340px] border border-dashed border-white/10 rounded-3xl flex flex-col items-center justify-center text-center p-8">
+          <div className="h-[340px] border border-dashed border-white/10 rounded-3xl flex flex-col items-center justify-center text-center p-8" role="status" aria-label="Awaiting input parameters">
             <div className="h-12 w-12 rounded-xl bg-slate-900 border border-white/5 text-slate-500 flex items-center justify-center mb-4">
-              <RefreshCw className="h-5 w-5 animate-spin text-emerald-400" />
+              <RefreshCw className="h-5 w-5 text-emerald-400" aria-hidden="true" />
             </div>
             <h4 className="font-bold text-white text-sm">Awaiting Input Parameters</h4>
             <p className="text-xs text-slate-500 max-w-xs mt-2">
