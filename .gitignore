@@ -42,3 +42,9 @@ next-env.d.ts
 
 # local logs
 logs/
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.local-browsers/
