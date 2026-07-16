@@ -9,15 +9,13 @@ import {
   BarChart3,
   Bot,
   Plug,
-  Globe,
-  Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Draviqo — Commerce Operating Systems & Apps",
+  title: "SwishOS — Commerce Operating Systems & Apps",
   description:
-    "Draviqo licenses custom commerce operating systems — SwishOS for quick-commerce and Draviqo B2B OS for enterprise distribution. Validate your deal in seconds.",
+    "SwishOS licenses custom commerce operating systems — SwishOS for quick-commerce and B2B OS for enterprise distribution. Validate your deal in seconds.",
 };
 
 const features = [
@@ -81,10 +79,10 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 w-full border-b border-white/8 bg-[#06070c]/60 backdrop-blur-[14px]">
         <div className="container mx-auto flex h-[68px] max-w-[1140px] items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2.5 font-bold text-xl tracking-tight" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
-            <span className="relative flex h-[30px] w-[30px] items-center justify-center rounded-[9px] bg-gradient-to-tr from-indigo-500 to-violet-600 shadow-[0_0_24px_rgba(91,140,255,0.4)]">
+            <span className="relative flex h-[30px] w-[30px] items-center justify-center rounded-[9px] bg-gradient-to-tr from-emerald-500 to-indigo-600 shadow-[0_0_24px_rgba(16,185,129,0.4)]">
               <span className="h-[11px] w-[11px] rounded-full bg-white shadow-[0_0_0_3px_rgba(255,255,255,0.25)]" />
             </span>
-            Draviqo
+            SwishOS
           </Link>
           <nav className="hidden items-center gap-8 text-[15px] text-slate-400 md:flex">
             <Link href="#swishos" className="transition-colors hover:text-white">SwishOS</Link>
@@ -99,7 +97,7 @@ export default function LandingPage() {
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="sm" className="bg-gradient-to-r from-indigo-500 to-violet-600 font-semibold text-white shadow-[0_6px_20px_rgba(91,140,255,0.35)] hover:opacity-95">
+              <Button size="sm" className="bg-gradient-to-r from-emerald-500 to-indigo-600 font-semibold text-white shadow-[0_6px_20px_rgba(16,185,129,0.35)] hover:opacity-95">
                 Book a Demo
               </Button>
             </Link>
@@ -113,7 +111,7 @@ export default function LandingPage() {
           <div className="container mx-auto max-w-[1140px]">
             <span className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/3 px-3.5 py-1.5 text-[13px] text-slate-400">
               <span className="h-[7px] w-[7px] rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-              Commerce Operating Systems &amp; Apps · by Draviqo
+              Commerce Operating Systems &amp; Apps · by SwishOS
             </span>
             <h1 className="text-[clamp(40px,7vw,74px)] font-extrabold leading-[1.05] tracking-tight" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
               B2B distribution,{" "}
@@ -123,13 +121,13 @@ export default function LandingPage() {
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-[680px] text-[clamp(17px,2.2vw,20px)] leading-relaxed text-slate-400">
-              Draviqo licenses AI-native operating systems — <strong className="text-white">SwishOS</strong> for
-              hyper-local quick-commerce and <strong className="text-white">Draviqo B2B OS</strong> for enterprise
+              SwishOS licenses AI-native operating systems — <strong className="text-white">SwishOS</strong> for
+              hyper-local quick-commerce and <strong className="text-white">B2B OS</strong> for enterprise
               supply chains. Moving goods from supplier to shelf across the EU and the Middle East.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link href="/b2b">
-                <Button size="lg" className="h-12 bg-gradient-to-r from-indigo-500 to-violet-600 font-semibold text-white shadow-[0_10px_30px_rgba(91,140,255,0.35)] hover:scale-[1.02] hover:opacity-95 transition-all">
+                <Button size="lg" className="h-12 bg-gradient-to-r from-emerald-500 to-indigo-600 font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.35)] hover:scale-[1.02] hover:opacity-95 transition-all">
                   Validate Your Deal <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -151,7 +149,7 @@ export default function LandingPage() {
                 <span className="h-[11px] w-[11px] rounded-full bg-[#2a3145]" />
                 <span className="h-[11px] w-[11px] rounded-full bg-[#2a3145]" />
                 <span className="h-[11px] w-[11px] rounded-full bg-[#2a3145]" />
-                <span className="ml-4 text-[13px] text-slate-500">Draviqo B2B OS — Distribution control</span>
+                <span className="ml-4 text-[13px] text-slate-500">SwishOS B2B — Distribution control</span>
               </div>
               <div className="grid grid-cols-1 gap-4 p-5 sm:grid-cols-2">
                 <div className="rounded-[14px] border border-white/8 bg-[#141827] p-5">
@@ -161,7 +159,7 @@ export default function LandingPage() {
                   </div>
                   <div className="mt-4 flex h-[90px] items-end gap-2">
                     {[38,54,47,70,62,88,100].map((h, i) => (
-                      <div key={i} className="flex-1 rounded-t-[5px] bg-gradient-to-b from-indigo-500 to-violet-600/40" style={{ height: `${h}%` }} />
+                      <div key={i} className="flex-1 rounded-t-[5px] bg-gradient-to-b from-emerald-500 to-indigo-600/40" style={{ height: `${h}%` }} />
                     ))}
                   </div>
                 </div>
@@ -266,7 +264,7 @@ export default function LandingPage() {
         <section className="border-t border-white/5 px-6 py-20">
           <div className="container mx-auto max-w-[1140px]">
             <div className="mx-auto mb-14 max-w-[640px] text-center">
-              <span className="text-xs font-semibold uppercase tracking-[.1em] text-emerald-400">Why Draviqo</span>
+              <span className="text-xs font-semibold uppercase tracking-[.1em] text-emerald-400">Why SwishOS</span>
               <h2 className="mt-3 text-[clamp(30px,4.5vw,44px)] font-extrabold tracking-tight" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
                 Distribution that thinks for itself
               </h2>
@@ -274,8 +272,8 @@ export default function LandingPage() {
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {features.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="group rounded-2xl border border-white/8 bg-gradient-to-b from-[#10131f] to-[#10131f]/40 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-indigo-500/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35),0_0_20px_rgba(91,140,255,0.05)]">
-                  <div className="mb-5 flex h-[46px] w-[46px] items-center justify-center rounded-[12px] border border-indigo-500/25 bg-indigo-500/12 text-indigo-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <div key={title} className="group rounded-2xl border border-white/8 bg-gradient-to-b from-[#10131f] to-[#10131f]/40 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35),0_0_20px_rgba(16,185,129,0.05)]">
+                  <div className="mb-5 flex h-[46px] w-[46px] items-center justify-center rounded-[12px] border border-emerald-500/25 bg-emerald-500/12 text-emerald-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="mb-2.5 text-[19px] font-bold text-white">{title}</h3>
@@ -296,7 +294,7 @@ export default function LandingPage() {
                   One B2B OS for the whole supply chain
                 </h2>
                 <p className="mt-4 text-[17px] leading-relaxed text-slate-400">
-                  Draviqo B2B OS is the intelligent core connecting suppliers, distributors, and retailers on a single real-time network.
+                  SwishOS B2B OS is the intelligent core connecting suppliers, distributors, and retailers on a single real-time network.
                 </p>
                 <ul className="mt-6 grid gap-3.5">
                   {[
@@ -315,19 +313,19 @@ export default function LandingPage() {
               {/* Flow visual */}
               <div className="rounded-[18px] border border-white/14 bg-gradient-to-b from-[#10131f] to-[#0b0e17] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
                 <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/8 px-3 py-1.5 text-[13px] text-slate-400">
-                  <span className="h-[7px] w-[7px] rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.8)]" />
-                  Draviqo B2B OS
+                  <span className="h-[7px] w-[7px] rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+                  SwishOS B2B OS
                 </span>
                 <div className="flex flex-col gap-3">
                   {[
                     ["Supplier", "Lists stock, pricing & promotions"],
-                    ["Draviqo OS", "Matches demand, allocates, routes & finances"],
+                    ["SwishOS", "Matches demand, allocates, routes & finances"],
                     ["Distributor", "Picks, packs & moves with optimized loads"],
                     ["Shelf", "Retailer receives, sells & reorders in a blink"],
                   ].map(([step, desc], i) => (
                     <div key={step}>
                       <div className="flex items-center gap-3.5 rounded-[12px] border border-white/8 bg-[#141827] px-4 py-3.5">
-                        <span className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-[9px] bg-gradient-to-tr from-indigo-500 to-violet-600 text-[14px] font-bold text-white" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
+                        <span className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-[9px] bg-gradient-to-tr from-emerald-500 to-indigo-600 text-[14px] font-bold text-white" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
                           {i + 1}
                         </span>
                         <span><strong className="block text-[14px] text-white">{step}</strong><small className="text-[13px] text-slate-400">{desc}</small></span>
@@ -365,12 +363,12 @@ export default function LandingPage() {
               <h2 className="mt-3 text-[clamp(30px,4.5vw,44px)] font-extrabold tracking-tight" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
                 From supplier to shelf, in four moves
               </h2>
-              <p className="mt-4 text-[17px] text-slate-400">Draviqo replaces a tangle of calls, PDFs, and disconnected tools with one continuous flow.</p>
+              <p className="mt-4 text-[17px] text-slate-400">SwishOS replaces a tangle of calls, PDFs, and disconnected tools with one continuous flow.</p>
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {steps.map(({ n, title, desc }) => (
                 <div key={n} className="rounded-2xl border border-white/8 bg-[#10131f] p-7">
-                  <div className="mb-5 flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-white/14 text-[15px] font-bold text-indigo-400" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
+                  <div className="mb-5 flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-white/14 text-[15px] font-bold text-emerald-400" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
                     {n}
                   </div>
                   <h3 className="mb-2 text-[17px] font-bold text-white">{title}</h3>
@@ -387,7 +385,7 @@ export default function LandingPage() {
             <div className="mx-auto mb-14 max-w-[640px] text-center">
               <span className="text-xs font-semibold uppercase tracking-[.1em] text-emerald-400">Where we operate</span>
               <h2 className="mt-3 text-[clamp(30px,4.5vw,44px)] font-extrabold tracking-tight" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
-                Built for two of the world's fastest-moving markets
+                Built for two of the world&apos;s fastest-moving markets
               </h2>
               <p className="mt-4 text-[17px] text-slate-400">One platform, tuned for the regulations, currencies, and logistics of each region.</p>
             </div>
@@ -408,7 +406,7 @@ export default function LandingPage() {
               ].map(({ flag, title, desc, tags }) => (
                 <div key={title} className="rounded-2xl border border-white/8 bg-gradient-to-b from-[#10131f] to-[#0b0e17] p-8">
                   <div className="mb-4 flex items-center gap-3">
-                    <div className="flex h-[44px] w-[44px] items-center justify-center rounded-[12px] border border-violet-500/25 bg-violet-500/12 text-[22px]">{flag}</div>
+                    <div className="flex h-[44px] w-[44px] items-center justify-center rounded-[12px] border border-emerald-500/25 bg-emerald-500/12 text-[22px]">{flag}</div>
                     <h3 className="text-[20px] font-bold text-white">{title}</h3>
                   </div>
                   <p className="mb-4 text-[15px] leading-relaxed text-slate-400">{desc}</p>
@@ -427,18 +425,18 @@ export default function LandingPage() {
         <section className="border-t border-white/5 px-6 py-20">
           <div className="container mx-auto max-w-[1140px]">
             <div className="relative overflow-hidden rounded-[24px] border border-white/14 p-16 text-center" style={{
-              background: "radial-gradient(500px 300px at 50% 0%, rgba(91,140,255,0.22), transparent 65%), linear-gradient(180deg,#10131f,#0b0e17)",
+              background: "radial-gradient(500px 300px at 50% 0%, rgba(16,185,129,0.15), transparent 65%), linear-gradient(180deg,#10131f,#0b0e17)",
               boxShadow: "0 40px 120px rgba(0,0,0,0.5)"
             }}>
               <h2 className="text-[clamp(30px,4.5vw,46px)] font-extrabold tracking-tight" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
                 Move your distribution in a blink
               </h2>
               <p className="mx-auto mt-4 max-w-[520px] text-[17px] text-slate-400">
-                Validate your deal with the ROI calculator, or reach out directly to book a sandbox session with the Draviqo team.
+                Validate your deal with the ROI calculator, or reach out directly to book a sandbox session with the SwishOS team.
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <Link href="/b2b">
-                  <Button size="lg" className="h-12 bg-gradient-to-r from-indigo-500 to-violet-600 font-semibold text-white shadow-lg hover:scale-[1.02] hover:opacity-95 transition-all">
+                  <Button size="lg" className="h-12 bg-gradient-to-r from-emerald-500 to-indigo-600 font-semibold text-white shadow-lg hover:scale-[1.02] hover:opacity-95 transition-all">
                     <Calculator className="mr-2 h-4 w-4" /> Open Deal Validator
                   </Button>
                 </Link>
@@ -460,10 +458,10 @@ export default function LandingPage() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="flex items-center gap-2.5 font-bold text-lg" style={{ fontFamily: "'Sora', Inter, sans-serif" }}>
-                <span className="flex h-6 w-6 items-center justify-center rounded-[6px] bg-gradient-to-tr from-indigo-500 to-violet-600 text-white text-xs font-bold">D</span>
-                Draviqo
+                <span className="flex h-6 w-6 items-center justify-center rounded-[6px] bg-gradient-to-tr from-emerald-500 to-indigo-600 text-white text-xs font-bold">S</span>
+                SwishOS
               </Link>
-              <p className="mt-4 text-[14px] leading-relaxed text-slate-500">The AI-native OS moving FMCG from supplier to shelf across the EU and the Middle East.</p>
+              <p className="mt-4 text-[14px] leading-relaxed text-slate-500">The AI-native OS moving goods from supplier to shelf across the EU and the Middle East.</p>
             </div>
             {[
               { title: "Product", links: [["SwishOS Demo", "/qcommerce"], ["Deal Validator", "/b2b"], ["B2B OS", "#b2bos"]] },
@@ -483,7 +481,7 @@ export default function LandingPage() {
             ))}
           </div>
           <div className="mt-11 flex flex-wrap items-center justify-between gap-3 border-t border-white/5 pt-6 text-[13px] text-slate-600">
-            <span>© 2026 Draviqo. All rights reserved.</span>
+            <span>© 2026 SwishOS. All rights reserved.</span>
             <span>B2B distribution, in a blink.</span>
           </div>
         </div>

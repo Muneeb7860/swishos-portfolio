@@ -15,16 +15,16 @@ const geistMono = Geist_Mono({
 
 // ── Site-wide default metadata ────────────────────────────────────────────────
 export const metadata: Metadata = {
-  metadataBase: new URL("https://draviqo.com"),
+  metadataBase: new URL("https://swishos.io"),
   title: {
-    default: "Draviqo — Commerce Operating Systems & Apps",
-    template: "%s | Draviqo",
+    default: "SwishOS — Commerce Operating Systems & Apps",
+    template: "%s | SwishOS",
   },
   description:
-    "Draviqo licenses AI-native operating systems for commerce — SwishOS for quick-commerce delivery and B2B OS for enterprise FMCG distribution across the EU and Middle East.",
+    "SwishOS licenses AI-native operating systems for commerce — SwishOS for quick-commerce delivery and B2B OS for enterprise FMCG distribution across the EU and Middle East.",
   keywords: [
     "SwishOS",
-    "Draviqo",
+    "SwishOS.io",
     "B2B OS",
     "quick commerce",
     "FMCG distribution",
@@ -33,32 +33,32 @@ export const metadata: Metadata = {
     "delivery OS",
     "supply chain",
   ],
-  authors: [{ name: "Draviqo", url: "https://draviqo.com" }],
-  creator: "Draviqo",
+  authors: [{ name: "SwishOS", url: "https://swishos.io" }],
+  creator: "SwishOS",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://draviqo.com",
-    siteName: "Draviqo",
-    title: "Draviqo — Commerce Operating Systems & Apps",
+    url: "https://swishos.io",
+    siteName: "SwishOS",
+    title: "SwishOS — Commerce Operating Systems & Apps",
     description:
-      "Draviqo licenses AI-native OSes — SwishOS for Q-commerce and B2B OS for enterprise distribution. Validate your deal in seconds.",
+      "SwishOS licenses AI-native OSes — SwishOS for Q-commerce and B2B OS for enterprise distribution. Validate your deal in seconds.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Draviqo — Commerce Operating Systems",
+        alt: "SwishOS — Commerce Operating Systems",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Draviqo — Commerce Operating Systems & Apps",
+    title: "SwishOS — Commerce Operating Systems & Apps",
     description:
-      "Draviqo licenses AI-native OSes — SwishOS for Q-commerce and B2B OS for enterprise distribution.",
+      "SwishOS licenses AI-native OSes — SwishOS for Q-commerce and B2B OS for enterprise distribution.",
     images: ["/og-image.png"],
-    creator: "@draviqo",
+    creator: "@swishos",
   },
   robots: {
     index: true,

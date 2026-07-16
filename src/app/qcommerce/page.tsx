@@ -7,15 +7,15 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 export const metadata = {
   title: "SwishOS Q-Commerce — Hyper-Local Delivery App Showcase",
   description:
-    "Experience SwishOS live: add to cart, checkout and watch the dispatch stepper — a hyper-local instant delivery OS showcase by Draviqo.",
+    "Experience SwishOS live: add to cart, checkout and watch the dispatch stepper — a hyper-local instant delivery OS showcase by SwishOS.io.",
   openGraph: {
     title: "SwishOS Q-Commerce — Hyper-Local Delivery App Showcase",
-    description: "Live interactive demo of SwishOS — Draviqo's flagship quick-commerce delivery operating system.",
-    url: "https://draviqo.com/qcommerce",
+    description: "Live interactive demo of SwishOS — the flagship quick-commerce delivery operating system.",
+    url: "https://swishos.io/qcommerce",
   },
   twitter: {
     title: "SwishOS Q-Commerce — Live Demo",
-    description: "Cart, checkout & live dispatch tracker — SwishOS by Draviqo.",
+    description: "Cart, checkout & live dispatch tracker — SwishOS.io.",
   },
 };
 
@@ -34,14 +34,14 @@ export default function QCommercePage() {
         <div className="md:col-span-5 space-y-6 md:sticky md:top-8 mt-4 md:mt-24">
           <div>
             <Link href="/" className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-emerald-400 mb-4 transition-colors">
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to Draviqo Portfolio
+              <ArrowLeft className="h-3.5 w-3.5" /> Back to SwishOS
             </Link>
             <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-xs text-emerald-400 mb-3">
               <Sparkles className="h-3 w-3" /> SwishOS Showcase
             </span>
             <h1 className="text-4xl font-extrabold text-white tracking-tight">SwishOS Mobile</h1>
             <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-              SwishOS is the hyper-local instant delivery operating system developed under the <strong className="text-white">Draviqo</strong> umbrella. Ideal for quick-commerce startups, regional supermarkets, and delivery networks looking for sub-15 minute dispatch capabilities.
+              SwishOS is the hyper-local instant delivery operating system by <strong className="text-white">SwishOS.io</strong>. Ideal for quick-commerce startups, regional supermarkets, and delivery networks looking for sub-15 minute dispatch capabilities.
             </p>
           </div>
 

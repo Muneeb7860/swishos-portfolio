@@ -18,7 +18,7 @@ interface GlobalErrorProps {
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
   useEffect(() => {
     // Log error to console in development; swap for a real error service in prod
-    console.error("[Draviqo Error]", error);
+    console.error("[SwishOS Error]", error);
   }, [error]);
 
   return (

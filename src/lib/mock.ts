@@ -84,7 +84,7 @@ const FMCG_PRODUCTS: Omit<Product, "id">[] = [
     deliveryTime: "12 mins",
   },
   {
-    name: "Draviqo Premium Espresso Beans 500g",
+    name: "SwishOS Premium Espresso Beans 500g",
     price: 12.99,
     image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=300&q=80",
     category: "Beverages",
@@ -156,7 +156,7 @@ const FMCG_PRODUCTS: Omit<Product, "id">[] = [
     deliveryTime: "9 mins",
   },
   {
-    name: "Draviqo Selection Earl Grey Tea 50 bags",
+    name: "SwishOS Selection Earl Grey Tea 50 bags",
     price: 6.50,
     image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=300&q=80",
     category: "Beverages",

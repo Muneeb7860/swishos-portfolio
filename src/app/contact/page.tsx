@@ -57,7 +57,7 @@ function ContactFormInner() {
         ...prev,
         company: companyParam || prev.company,
         appOfInterest: resolvedApp,
-        message: `Validated Deal Proposal Details:\n- Recommended OS: ${resolvedApp === "b2bos" ? "Draviqo B2B OS" : "SwishOS"}\n- System Compatibility: ${scoreParam || 95}%\n- Projected Monthly Savings: $${savingsParam || 0}/mo\n- Target Volume: ${volumeParam || 0} orders/mo.`,
+        message: `Validated Deal Proposal Details:\n- Recommended OS: ${resolvedApp === "b2bos" ? "B2B OS" : "SwishOS"}\n- System Compatibility: ${scoreParam || 95}%\n- Projected Monthly Savings: $${savingsParam || 0}/mo\n- Target Volume: ${volumeParam || 0} orders/mo.`,
       }));
       toast.info("Imported pre-approved deal details from calculator");
     }
@@ -221,7 +221,7 @@ function ContactFormInner() {
                   className="w-full bg-slate-900 border border-white/10 rounded-xl h-10 px-3 text-slate-200 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
                 >
                   <option value="swishos">SwishOS Q-Commerce Suite</option>
-                  <option value="b2bos">Draviqo B2B Logistics OS</option>
+                  <option value="b2bos">B2B Logistics OS</option>
                   <option value="custom">Bespoke WMS / ERP Integration</option>
                   <option value="other">Other Commerce Services</option>
                 </select>
@@ -280,7 +280,7 @@ export default function ContactPage() {
       <main className="relative z-10 container mx-auto max-w-lg px-4 py-16 flex-1 flex flex-col justify-center">
         {/* Back Link */}
         <Link href="/" className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-emerald-400 mb-6 transition-colors self-start">
-          <ArrowLeft className="h-3.5 w-3.5" /> Back to Draviqo Portfolio
+          <ArrowLeft className="h-3.5 w-3.5" /> Back to SwishOS
         </Link>
 
         {/* Suspense wrapper around form reading useSearchParams */}
@@ -294,7 +294,7 @@ export default function ContactPage() {
       </main>
 
       <footer className="border-t border-white/5 py-8 text-center text-xs text-slate-600">
-        © 2026 Draviqo. All rights reserved.
+        © 2026 SwishOS. All rights reserved.
       </footer>
     </div>
   );

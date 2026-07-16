@@ -32,12 +32,12 @@ export default function NotFound() {
         <h2 className="mt-4 text-2xl font-bold text-white">Page not found</h2>
         <p className="mt-3 text-[15px] text-slate-400">
           We couldn&apos;t find what you were looking for. It may have moved or
-          never existed on Draviqo.
+          never existed on SwishOS.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link href="/">
             <Button className="bg-gradient-to-r from-indigo-500 to-violet-600 font-semibold text-white shadow-lg">
-              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Draviqo
+              <ArrowLeft className="mr-2 h-4 w-4" /> Back to SwishOS
             </Button>
           </Link>
           <Link href="/b2b">

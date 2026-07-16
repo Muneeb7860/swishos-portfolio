@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://draviqo.com";
+  const baseUrl = "https://swishos.io";
   const now = new Date().toISOString();
 
   return [

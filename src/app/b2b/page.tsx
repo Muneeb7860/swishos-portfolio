@@ -6,16 +6,16 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 export const metadata = {
   title: "Deal Validator — B2B ROI Calculator",
   description:
-    "Validate your business segment compatibility with SwishOS or Draviqo B2B OS. Calculate ROI savings and request a pre-approved deal proposal.",
+    "Validate your business segment compatibility with SwishOS or B2B OS. Calculate ROI savings and request a pre-approved deal proposal.",
   openGraph: {
-    title: "Draviqo Deal Validator — B2B ROI Calculator",
+    title: "SwishOS Deal Validator — B2B ROI Calculator",
     description:
-      "Estimate ROI, check OS compatibility, and lock in pre-approved pricing — for SwishOS and Draviqo B2B OS.",
-    url: "https://draviqo.com/b2b",
+      "Estimate ROI, check OS compatibility, and lock in pre-approved pricing — for SwishOS and B2B OS.",
+    url: "https://swishos.io/b2b",
   },
   twitter: {
-    title: "Draviqo Deal Validator",
-    description: "Validate ROI & OS compatibility for SwishOS / Draviqo B2B OS in seconds.",
+    title: "SwishOS Deal Validator",
+    description: "Validate ROI & OS compatibility for SwishOS / B2B OS in seconds.",
   },
 };
 
@@ -34,7 +34,7 @@ export default function B2BPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <Link href="/" className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-indigo-400 mb-2 transition-colors">
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to Draviqo Portfolio
+              <ArrowLeft className="h-3.5 w-3.5" /> Back to SwishOS
             </Link>
             <h1 className="text-3xl font-extrabold text-white tracking-tight">Deal Validator</h1>
             <p className="text-sm text-slate-400 mt-1">Operational Compatibility & ROI Estimation Engine</p>

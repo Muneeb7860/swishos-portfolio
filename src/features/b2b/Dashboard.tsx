@@ -48,10 +48,11 @@ export default function DealValidator() {
     if (vol <= 0 || aov <= 0) return null;
 
     // 1. Recommend app
-    let recommendedApp: "SwishOS" | "Draviqo B2B OS" = "SwishOS";
+    let recommendedApp: "SwishOS" | "B2B OS" = "SwishOS";
     let appKey: "swishos" | "b2bos" = "swishos";
+    
     if (sector === "distributor" || currentT > 90 || vol > 50000) {
-      recommendedApp = "Draviqo B2B OS";
+      recommendedApp = "B2B OS";
       appKey = "b2bos";
     }
 
