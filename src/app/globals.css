@@ -2,36 +2,36 @@
 
 :root {
   --bg: #ffffff;
-  --bg-soft: #f9f9fb;
+  --bg-soft: #f8f9fa;
   --panel: #ffffff;
-  --panel-2: #f1f3f7;
+  --panel-2: #f1f3f5;
   --line: rgba(0,0,0,0.08);
   --line-strong: rgba(0,0,0,0.14);
-  --txt: #06070c;
-  --muted: #5a6273;
-  --muted-2: #8b94a8;
-  --brand: #5b8cff;
-  --brand-2: #7b5bff;
-  --accent: #1ebd9f;
-  --glow: rgba(91,140,255,0.15);
+  --txt: #1a1a1a;
+  --muted: #555555;
+  --muted-2: #888888;
+  --brand: #E10600;
+  --brand-2: #FF332A;
+  --accent: #E10600;
+  --glow: rgba(225, 6, 0, 0.2);
   --radius: 16px;
   --maxw: 1140px;
 }
 
 [data-theme='dark'] {
-  --bg: #06070c;
-  --bg-soft: #0b0e17;
-  --panel: #10131f;
-  --panel-2: #141827;
-  --line: rgba(255,255,255,0.08);
-  --line-strong: rgba(255,255,255,0.14);
-  --txt: #eef1f9;
-  --muted: #9aa3b8;
-  --muted-2: #6b7488;
-  --brand: #5b8cff;
-  --brand-2: #7b5bff;
-  --accent: #26e6c3;
-  --glow: rgba(91,140,255,0.35);
+  --bg: #0e0e0e;
+  --bg-soft: #141414;
+  --panel: #1A1A1A;
+  --panel-2: #242424;
+  --line: rgba(255,255,255,0.1);
+  --line-strong: rgba(255,255,255,0.18);
+  --txt: #ffffff;
+  --muted: #a3a3a3;
+  --muted-2: #737373;
+  --brand: #E10600;
+  --brand-2: #FF332A;
+  --accent: #E10600;
+  --glow: rgba(225, 6, 0, 0.35);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -172,7 +172,7 @@ header {
 .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
 .hero h1 { font-size: clamp(40px, 7vw, 74px); font-weight: 800; }
 .hero h1 .grad {
-  background: linear-gradient(120deg, #a9c0ff 0%, #5b8cff 40%, #7b5bff 70%, #26e6c3 110%);
+  background: linear-gradient(120deg, var(--brand) 0%, #FF5252 50%, var(--brand-2) 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero p.sub {
@@ -196,8 +196,8 @@ section { padding: 64px 0; }
 }
 .feature:hover {
   transform: translateY(-6px);
-  border-color: rgba(91, 140, 255, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(91, 140, 255, 0.05);
+  border-color: rgba(225, 6, 0, 0.35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow);
 }
 .feature h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; font-family: 'Inter'; }
 .feature p { color: var(--muted); font-size: 15px; }
