@@ -1,7 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import en from '../../../dictionaries/en.json';
+import ar from '../../../dictionaries/ar.json';
 
-export default function ContactPage() {
+const dictionaries: Record<string, typeof en> = { en, ar };
+
+export default function ContactPage(props: { params: Promise<{ lang: string }> }) {
+  const { lang } = React.use(props.params);
+  const dict = dictionaries[lang] || en;
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -26,8 +32,8 @@ export default function ContactPage() {
     <main>
       <section className="hero" style={{ paddingBottom: '20px' }}>
         <div className="wrap">
-          <span className="pill reveal"><span className="dot"></span>Connect With Us</span>
-          <h1 className="reveal">Reach out to <br /><span className="grad">SwishOS.</span></h1>
+          <span className="pill reveal"><span className="dot"></span>{dict.contactPage.heroBadge}</span>
+          <h1 className="reveal">{dict.contactPage.heroTitle1} <br /><span className="grad">{dict.contactPage.heroTitle2}</span></h1>
         </div>
       </section>
 
@@ -36,34 +42,34 @@ export default function ContactPage() {
           <div className="auth-box reveal" style={{ marginTop: '0', maxWidth: '600px' }}>
             {submitted ? (
               <div style={{ padding: '40px 0', color: 'var(--accent)' }}>
-                <h3 style={{ fontSize: '24px', marginBottom: '16px' }}>Message Received</h3>
-                <p>Thank you for reaching out. A SwishOS representative will contact you shortly.</p>
+                <h3 style={{ fontSize: '24px', marginBottom: '16px' }}>{dict.contactPage.successTitle}</h3>
+                <p>{dict.contactPage.successMessage}</p>
               </div>
             ) : (
               <form className="auth-form" onSubmit={handleSubmit}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div>
-                    <label>First Name</label>
-                    <input type="text" required placeholder="Jane" />
+                    <label>{dict.contactPage.firstName}</label>
+                    <input type="text" required placeholder={dict.contactPage.placeholderJane} />
                   </div>
                   <div>
-                    <label>Last Name</label>
-                    <input type="text" required placeholder="Doe" />
+                    <label>{dict.contactPage.lastName}</label>
+                    <input type="text" required placeholder={dict.contactPage.placeholderDoe} />
                   </div>
                 </div>
                 <div>
-                  <label>Work Email</label>
-                  <input type="email" required placeholder="jane@company.com" />
+                  <label>{dict.contactPage.workEmail}</label>
+                  <input type="email" required placeholder={dict.contactPage.placeholderEmail} />
                 </div>
                 <div>
-                  <label>Company</label>
-                  <input type="text" placeholder="Acme Corp" />
+                  <label>{dict.contactPage.company}</label>
+                  <input type="text" placeholder={dict.contactPage.placeholderCompany} />
                 </div>
                 <div>
-                  <label>Message</label>
-                  <textarea rows={4} required placeholder="How can we help you scale?"></textarea>
+                  <label>{dict.contactPage.message}</label>
+                  <textarea rows={4} required placeholder={dict.contactPage.placeholderMessage}></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary" style={{ marginTop: '8px' }}>Send Message</button>
+                <button type="submit" className="btn btn-primary" style={{ marginTop: '8px' }}>{dict.contactPage.sendButton}</button>
               </form>
             )}
           </div>

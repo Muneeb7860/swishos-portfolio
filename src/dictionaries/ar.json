@@ -67,5 +67,66 @@
         "desc": "مواهب فنية وتشغيلية متخصصة للتوسع."
       }
     }
+  },
+  "featuresPage": {
+    "heroBadge": "ميزات المنصة",
+    "heroTitle1": "ميزة",
+    "heroTitle2": "SwishOS.",
+    "heroSubtitle": "مصممة للسرعة، مبنية للتوسع. اكتشف الإمكانات التي تدعم الجيل القادم من التجارة بين الشركات.",
+    "agenticTitle": "الحل الوكيلي",
+    "agenticDesc": "يقوم الوكلاء المستقلون بتتبع الاستثناءات، وحل مشكلات الشحنات الناقصة، والتواصل مع الموردين دون تدخل بشري.",
+    "ledgerTitle": "سجل فوري",
+    "ledgerDesc": "مصدر واحد للحقيقة للمخزون والفواتير، مدمج بسلاسة مع أنظمة تخطيط موارد المؤسسات وأدوات المحاسبة الحالية لديك."
+  },
+  "visionPage": {
+    "heroBadge": "مسارنا",
+    "heroTitle1": "مستقبل",
+    "heroTitle2": "التجارة.",
+    "heroSubtitle": "نعتقد أنه في غضون خمس سنوات، ستصبح الإدارة اليدوية لسلاسل التوريد بالية. تقوم SwishOS ببناء العمود الفقري المستقل للتجارة العالمية.",
+    "contentTitle": "سلاسل التوريد المستقلة",
+    "contentP1": "سلسلة التوريد الحديثة هي شبكة من الأنظمة المعزولة، وجداول البيانات، والقرارات التفاعلية. لقد تصورنا واقعًا مختلفًا: نظام تشغيل موحد حيث يدير وكلاء الذكاء الاصطناعي القرارات الدقيقة للمشتريات، والتوجيه، والتسوية.",
+    "contentP2": "من خلال دمج النماذج اللغوية الضخمة مباشرة في سجل تلبية الطلبات، تحول SwishOS البرامج الثابتة إلى مشارك نشط. فهي تتفاوض، وتعيد التوجيه، وتتعلم. هذه ليست مجرد أداة؛ إنها المعيار الجديد لتوزيع B2B."
+  },
+  "contactPage": {
+    "heroBadge": "تواصل معنا",
+    "heroTitle1": "تواصل مع",
+    "heroTitle2": "SwishOS.",
+    "successTitle": "تم استلام الرسالة",
+    "successMessage": "شكرًا لتواصلك معنا. سيتصل بك ممثل من SwishOS قريبًا.",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "workEmail": "البريد الإلكتروني للعمل",
+    "company": "الشركة",
+    "message": "الرسالة",
+    "sendButton": "إرسال الرسالة",
+    "placeholderJane": "جین",
+    "placeholderDoe": "دو",
+    "placeholderEmail": "jane@company.com",
+    "placeholderCompany": "شركة أكيم",
+    "placeholderMessage": "كيف يمكننا مساعدتك في التوسع؟"
+  },
+  "loginPage": {
+    "title": "مرحباً بعودتك",
+    "subtitle": "قم بتسجيل الدخول إلى وحدة تحكم SwishOS الخاصة بك",
+    "emailLabel": "البريد الإلكتروني للعمل",
+    "emailPlaceholder": "you@company.com",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "signInButton": "تسجيل الدخول",
+    "noAccount": "ليس لديك حساب؟ قم بالتسجيل"
+  },
+  "signupPage": {
+    "title": "انضم إلى SwishOS",
+    "subtitle": "ابدأ مع المنصة الموحدة B2B القائمة على الذكاء الاصطناعي",
+    "nameLabel": "الاسم الكامل",
+    "namePlaceholder": "جين دو",
+    "emailLabel": "البريد الإلكتروني للعمل",
+    "emailPlaceholder": "jane@company.com",
+    "companyLabel": "اسم الشركة",
+    "companyPlaceholder": "أكيم اللوجستية",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "createAccountButton": "إنشاء حساب",
+    "hasAccount": "لديك حساب بالفعل؟ تسجيل الدخول"
   }
 }

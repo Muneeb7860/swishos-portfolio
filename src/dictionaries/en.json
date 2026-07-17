@@ -67,5 +67,66 @@
         "desc": "Specialized technical and operational talent for scaling."
       }
     }
+  },
+  "featuresPage": {
+    "heroBadge": "Platform Features",
+    "heroTitle1": "The SwishOS",
+    "heroTitle2": "Edge.",
+    "heroSubtitle": "Engineered for speed, built for scale. Discover the capabilities powering the next generation of B2B commerce.",
+    "agenticTitle": "Agentic Resolution",
+    "agenticDesc": "Autonomous agents chase exceptions, resolve short-ships, and communicate with suppliers without human intervention.",
+    "ledgerTitle": "Real-Time Ledger",
+    "ledgerDesc": "A single source of truth for inventory and invoicing, seamlessly integrated with your existing ERPs and accounting tools."
+  },
+  "visionPage": {
+    "heroBadge": "Our Trajectory",
+    "heroTitle1": "The Future of",
+    "heroTitle2": "Commerce.",
+    "heroSubtitle": "We believe that within five years, manual supply chain management will be obsolete. SwishOS is building the autonomous backbone of global trade.",
+    "contentTitle": "Autonomous Supply Chains",
+    "contentP1": "The modern supply chain is a web of isolated systems, spreadsheets, and reactive decisions. We envisioned a different reality: a unified operating system where AI agents manage the micro-decisions of procurement, routing, and reconciliation.",
+    "contentP2": "By embedding Large Language Models directly into the fulfillment ledger, SwishOS transforms static software into an active participant. It negotiates, it reroutes, and it learns. This is not just a tool; it is the new standard for B2B distribution."
+  },
+  "contactPage": {
+    "heroBadge": "Connect With Us",
+    "heroTitle1": "Reach out to",
+    "heroTitle2": "SwishOS.",
+    "successTitle": "Message Received",
+    "successMessage": "Thank you for reaching out. A SwishOS representative will contact you shortly.",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "workEmail": "Work Email",
+    "company": "Company",
+    "message": "Message",
+    "sendButton": "Send Message",
+    "placeholderJane": "Jane",
+    "placeholderDoe": "Doe",
+    "placeholderEmail": "jane@company.com",
+    "placeholderCompany": "Acme Corp",
+    "placeholderMessage": "How can we help you scale?"
+  },
+  "loginPage": {
+    "title": "Welcome Back",
+    "subtitle": "Sign in to your SwishOS console",
+    "emailLabel": "Work Email",
+    "emailPlaceholder": "you@company.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "signInButton": "Sign In",
+    "noAccount": "Don't have an account? Sign up"
+  },
+  "signupPage": {
+    "title": "Join SwishOS",
+    "subtitle": "Get started with the unified AI-native B2B platform",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Jane Doe",
+    "emailLabel": "Work Email",
+    "emailPlaceholder": "jane@company.com",
+    "companyLabel": "Company Name",
+    "companyPlaceholder": "Acme Logistics",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "createAccountButton": "Create Account",
+    "hasAccount": "Already have an account? Sign in"
   }
 }

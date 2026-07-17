@@ -1,7 +1,14 @@
 'use client';
 import React, { useEffect } from 'react';
+import en from '../../../dictionaries/en.json';
+import ar from '../../../dictionaries/ar.json';
 
-export default function FeaturesPage() {
+const dictionaries: Record<string, typeof en> = { en, ar };
+
+export default function FeaturesPage(props: { params: Promise<{ lang: string }> }) {
+  const { lang } = React.use(props.params);
+  const dict = dictionaries[lang] || en;
+
   useEffect(() => {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { 
@@ -19,9 +26,9 @@ export default function FeaturesPage() {
     <main>
       <section className="hero">
         <div className="wrap">
-          <span className="pill reveal"><span className="dot"></span>Deep Dive</span>
-          <h1 className="reveal">Features &<br /><span className="grad">Services.</span></h1>
-          <p className="sub reveal">Explore the comprehensive capabilities of SwishOS, designed to modernize your B2B supply chain with AI-native intelligence.</p>
+          <span className="pill reveal"><span className="dot"></span>{dict.featuresPage.heroBadge}</span>
+          <h1 className="reveal">{dict.featuresPage.heroTitle1}<br /><span className="grad">{dict.featuresPage.heroTitle2}</span></h1>
+          <p className="sub reveal">{dict.featuresPage.heroSubtitle}</p>
         </div>
       </section>
 
@@ -29,24 +36,14 @@ export default function FeaturesPage() {
         <div className="wrap">
           <div className="grid-layout">
             <div className="feature reveal">
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>⚡</div>
-              <h3>Automated Replenishment</h3>
-              <p>Retailers reorder in seconds. Our predictive AI flags stockouts and builds baskets proactively based on historical velocity.</p>
-            </div>
-            <div className="feature reveal">
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>🧭</div>
-              <h3>Dynamic Routing</h3>
-              <p>Optimize fulfillment across multiple warehouses. Routes and delivery windows are calculated in real time to minimize fuel and time.</p>
-            </div>
-            <div className="feature reveal">
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>🤖</div>
-              <h3>Agentic Resolution</h3>
-              <p>Autonomous agents chase exceptions, resolve short-ships, and communicate with suppliers without human intervention.</p>
+              <div style={{ fontSize: '32px', marginBottom: '16px' }}>⚡️</div>
+              <h3>{dict.featuresPage.agenticTitle}</h3>
+              <p>{dict.featuresPage.agenticDesc}</p>
             </div>
             <div className="feature reveal">
               <div style={{ fontSize: '32px', marginBottom: '16px' }}>📊</div>
-              <h3>Real-Time Ledger</h3>
-              <p>A single source of truth for inventory and invoicing, seamlessly integrated with your existing ERPs and accounting tools.</p>
+              <h3>{dict.featuresPage.ledgerTitle}</h3>
+              <p>{dict.featuresPage.ledgerDesc}</p>
             </div>
           </div>
         </div>

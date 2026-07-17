@@ -1,7 +1,14 @@
 'use client';
 import React, { useEffect } from 'react';
+import en from '../../../dictionaries/en.json';
+import ar from '../../../dictionaries/ar.json';
 
-export default function VisionPage() {
+const dictionaries: Record<string, typeof en> = { en, ar };
+
+export default function VisionPage(props: { params: Promise<{ lang: string }> }) {
+  const { lang } = React.use(props.params);
+  const dict = dictionaries[lang] || en;
+
   useEffect(() => {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { 
@@ -19,21 +26,21 @@ export default function VisionPage() {
     <main>
       <section className="hero">
         <div className="wrap">
-          <span className="pill reveal"><span className="dot"></span>Our Trajectory</span>
-          <h1 className="reveal">The Future of<br /><span className="grad">Commerce.</span></h1>
-          <p className="sub reveal">We believe that within five years, manual supply chain management will be obsolete. SwishOS is building the autonomous backbone of global trade.</p>
+          <span className="pill reveal"><span className="dot"></span>{dict.visionPage.heroBadge}</span>
+          <h1 className="reveal">{dict.visionPage.heroTitle1}<br /><span className="grad">{dict.visionPage.heroTitle2}</span></h1>
+          <p className="sub reveal">{dict.visionPage.heroSubtitle}</p>
         </div>
       </section>
 
       <section>
         <div className="wrap" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div className="feature reveal" style={{ padding: '60px' }}>
-            <h2 style={{ fontSize: '32px', marginBottom: '24px' }}>Autonomous Supply Chains</h2>
+            <h2 style={{ fontSize: '32px', marginBottom: '24px' }}>{dict.visionPage.contentTitle}</h2>
             <p style={{ fontSize: '18px', color: 'var(--muted)', marginBottom: '24px' }}>
-              The modern supply chain is a web of isolated systems, spreadsheets, and reactive decisions. We envisioned a different reality: a unified operating system where AI agents manage the micro-decisions of procurement, routing, and reconciliation.
+              {dict.visionPage.contentP1}
             </p>
             <p style={{ fontSize: '18px', color: 'var(--muted)' }}>
-              By embedding Large Language Models directly into the fulfillment ledger, SwishOS transforms static software into an active participant. It negotiates, it reroutes, and it learns. This is not just a tool; it is the new standard for B2B distribution.
+              {dict.visionPage.contentP2}
             </p>
           </div>
         </div>
