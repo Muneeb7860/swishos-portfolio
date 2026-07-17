@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Static export removed to enable Next.js Serverless API routes on Vercel
 };
 
 export default nextConfig;
