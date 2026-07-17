@@ -307,5 +307,108 @@ section { padding: 84px 0; }
 
 @media (max-width: 900px) {
   .grid-layout { grid-template-columns: 1fr; }
-  .nav-links { display: none; /* simple responsive for now */ }
+  .nav-links { display: none; }
+  .nav-login-btn { display: none !important; }
+  .nav-cta-desktop { display: none !important; }
+  .mobile-menu-btn { display: flex !important; }
+}
+
+/* HERO CTA BUTTONS */
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 20px var(--glow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--glow);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: var(--line);
+  color: var(--txt);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid var(--line-strong);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn-secondary:hover {
+  background: var(--panel-2);
+  transform: translateY(-2px);
+}
+
+/* NAV LOGIN BUTTON */
+.nav-login-btn {
+  color: var(--txt);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 18px;
+}
+
+/* MOBILE DRAWER */
+.mobile-menu-drawer {
+  position: fixed;
+  top: 68px;
+  inset-inline-start: 0;
+  width: 100%;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  z-index: 49;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.mobile-menu-drawer nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+.mobile-menu-drawer nav a {
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--txt);
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+.mobile-menu-drawer nav a:hover {
+  background: var(--line);
+}
+.mobile-menu-cta {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.mobile-login-btn {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--txt);
+}
+.mobile-menu-cta .nav-cta {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
 }

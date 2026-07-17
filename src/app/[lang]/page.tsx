@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import en from '../../dictionaries/en.json';
 import ar from '../../dictionaries/ar.json';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
@@ -21,6 +22,10 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
             <span className="pill reveal"><span className="dot"></span>{dict.hero.badge}</span>
             <h1 className="reveal">{dict.hero.title1}<br /><span className="grad">{dict.hero.title2}</span></h1>
             <p className="sub reveal">{dict.hero.subtitle}</p>
+            <div className="hero-cta reveal">
+              <Link href={`/${lang}/contact`} className="btn-primary">{dict.hero.ctaPrimary}</Link>
+              <Link href={`/${lang}/features`} className="btn-secondary">{dict.hero.ctaSecondary}</Link>
+            </div>
           </div>
         </section>
 
