@@ -59,6 +59,7 @@ export default async function RootLayout(props: {
               <nav className="nav-links">
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
                 <Link href={`/${lang}/features`}>{dict.nav.features}</Link>
+                <Link href={`/${lang}/pricing`}>{dict.nav.pricing}</Link>
                 <Link href={`/${lang}/roi`}>{dict.nav.roi}</Link>
                 <Link href={`/${lang}/vision`}>{dict.nav.vision}</Link>
                 <Link href={`/${lang}/contact`}>{dict.nav.contact}</Link>
@@ -72,6 +73,7 @@ export default async function RootLayout(props: {
                   links={[
                     { href: `/${lang}`, label: dict.nav.home },
                     { href: `/${lang}/features`, label: dict.nav.features },
+                    { href: `/${lang}/pricing`, label: dict.nav.pricing },
                     { href: `/${lang}/roi`, label: dict.nav.roi },
                     { href: `/${lang}/vision`, label: dict.nav.vision },
                     { href: `/${lang}/contact`, label: dict.nav.contact },

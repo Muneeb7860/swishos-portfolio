@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "features": "Features",
+    "pricing": "Pricing",
     "roi": "ROI Calculator",
     "vision": "Vision",
     "contact": "Contact Us",
@@ -152,5 +153,27 @@
     "projectedSavings": "Projected Annual Savings",
     "hoursSaved": "Hours Saved by AI Agents",
     "roiPercentage": "Estimated ROI"
+  },
+  "pricingPage": {
+    "badge": "Value & Transparent Pricing",
+    "title1": "Flexible Plans,",
+    "title2": "built to scale.",
+    "subtitle": "Predictable monthly SaaS base + performance volume pricing designed for high-density B2B & quick commerce operations.",
+    "starterName": "Starter",
+    "starterDesc": "For emerging dark stores & regional distributors looking to automate inventory & picking.",
+    "starterPrice": "$499",
+    "starterUnit": "/ month",
+    "growthName": "Growth",
+    "growthDesc": "For expanding multi-node networks requiring AI agentic exception handling & express dispatch.",
+    "growthPrice": "$1,499",
+    "growthUnit": "/ month",
+    "enterpriseName": "Enterprise",
+    "enterpriseDesc": "For large-scale FMCG brands & quick commerce unicorns with custom security & dedicated SLA.",
+    "enterprisePrice": "Custom",
+    "enterpriseUnit": "contact sales",
+    "perOrderFee": "+ $0.15 - $0.35 per order processed",
+    "popularBadge": "Most Popular",
+    "ctaStart": "Get Started",
+    "ctaEnterprise": "Talk to Sales"
   }
 }
