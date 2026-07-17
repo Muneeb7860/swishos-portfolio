@@ -150,7 +150,7 @@ header {
 }
 .auth-box h2 { font-size: 28px; margin-bottom: 8px; }
 .auth-box p { color: var(--muted); margin-bottom: 24px; font-size: 15px; }
-.auth-form { display: grid; gap: 16px; text-align: left; }
+.auth-form { display: grid; gap: 16px; text-align: start; }
 .auth-form label { font-size: 13px; color: var(--muted-2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 .auth-form input, .auth-form textarea {
   width: 100%; padding: 14px 16px; border-radius: 12px;
@@ -210,7 +210,7 @@ section { padding: 84px 0; }
 .service-bot {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  inset-inline-end: 24px;
   width: 60px;
   height: 60px;
   border-radius: 30px;

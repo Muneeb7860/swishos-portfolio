@@ -1,7 +1,8 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import en from '../../dictionaries/en.json';
 import ar from '../../dictionaries/ar.json';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
@@ -9,22 +10,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
   const { lang } = React.use(props.params);
   const dict = dictionaries[lang] || en;
 
-  useEffect(() => {
-    // scroll reveal logic
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { 
-        if (e.isIntersecting) { 
-          e.target.classList.add('in'); 
-          io.unobserve(e.target); 
-        } 
-      });
-    }, { threshold: 0.12 });
-    
-    document.querySelectorAll('.reveal').forEach((el: any, i) => {
-      el.style.transitionDelay = (i % 6 * 60) + 'ms';
-      io.observe(el);
-    });
-  }, []);
+  useScrollReveal();
 
   return (
     <>

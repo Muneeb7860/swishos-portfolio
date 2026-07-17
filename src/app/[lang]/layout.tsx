@@ -21,10 +21,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "SwishOS | Service Catalog",
-  description: "Swishos delivers a unified, AI-native platform for B2B supply chain and quick commerce.",
-};
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await props.params;
+  const dict = dictionaries[lang] || en;
+  return {
+    title: dict.meta.title,
+    description: dict.meta.description,
+  };
+}
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ar' }];

@@ -7,6 +7,10 @@
     "login": "Log In",
     "signup": "Sign Up"
   },
+  "meta": {
+    "title": "SwishOS | Service Catalog",
+    "description": "Swishos delivers a unified, AI-native platform for B2B supply chain and quick commerce."
+  },
   "hero": {
     "badge": "B2B Partners & Clients",
     "title1": "Service Catalog,",

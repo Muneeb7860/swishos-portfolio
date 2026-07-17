@@ -1,7 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
+import { useScrollReveal } from '../../../hooks/useScrollReveal';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
@@ -10,18 +11,7 @@ export default function ContactPage(props: { params: Promise<{ lang: string }> }
   const dict = dictionaries[lang] || en;
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { 
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } 
-      });
-    }, { threshold: 0.12 });
-    
-    document.querySelectorAll('.reveal').forEach((el: any, i) => {
-      el.style.transitionDelay = (i % 6 * 60) + 'ms';
-      io.observe(el);
-    });
-  }, []);
+  useScrollReveal();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
