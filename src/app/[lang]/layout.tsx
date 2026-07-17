@@ -86,12 +86,11 @@ export default async function RootLayout(props: {
 
           {/* GLOBAL FOOTER */}
           <footer>
-            <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--muted)', flexWrap: 'wrap', gap: '20px' }}>
-              <p>SwishOS | Service Catalog © 2026</p>
+            <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '40px', paddingBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--muted)', flexWrap: 'wrap', gap: '20px' }}>
+              <p style={{ fontSize: '14px' }}>© 2026 SwishOS. All rights reserved.</p>
               <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                <a href="https://swishos.io" target="_blank" rel="noreferrer" style={{ color: 'var(--muted)', fontSize: '14px' }}>Twitter</a>
-                <a href="https://swishos.io" target="_blank" rel="noreferrer" style={{ color: 'var(--muted)', fontSize: '14px' }}>LinkedIn</a>
-                <a href="https://swishos.io" target="_blank" rel="noreferrer" style={{ color: 'var(--muted)', fontSize: '14px' }}>GitHub</a>
+                <Link href={`/${lang}/contact`} style={{ color: 'var(--muted)', fontSize: '14px', transition: 'color 0.2s' }}>{dict.nav.contact}</Link>
+                <a href="mailto:hello@swishos.io" style={{ color: 'var(--muted)', fontSize: '14px' }}>hello@swishos.io</a>
               </div>
             </div>
           </footer>
