@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "features": "Features",
+    "roi": "ROI Calculator",
     "vision": "Vision",
     "contact": "Contact Us",
     "login": "Log In",
@@ -68,9 +69,15 @@
       },
       "staffing": {
         "title": "Strategic Staffing",
-        "desc": "Specialized technical and operational talent for scaling."
+        "desc": "Specialized technical and operational talent to scale."
       }
     }
+  },
+  "bot": {
+    "botGreeting": "Hello! How can SwishOS help you scale today?",
+    "botStatus": "Online",
+    "botPlaceholder": "Type a message...",
+    "botReply": "I'm a demo bot! In production, I'll connect to the SwishOS AI Agent network to resolve this."
   },
   "featuresPage": {
     "heroBadge": "Platform Features",
@@ -131,6 +138,17 @@
     "passwordLabel": "Password",
     "passwordPlaceholder": "••••••••",
     "createAccountButton": "Create Account",
-    "hasAccount": "Already have an account? Sign in"
+    "hasAccount": "Already have an account? Log In"
+  },
+  "roiPage": {
+    "heroBadge": "Interactive Tool",
+    "heroTitle1": "Calculate Your",
+    "heroTitle2": "Savings.",
+    "heroSubtitle": "See exactly how much time and money you can save by switching to SwishOS's autonomous supply chain.",
+    "monthlyOrders": "Monthly Order Volume",
+    "avgCost": "Current Fulfillment Cost per Order ($)",
+    "projectedSavings": "Projected Annual Savings",
+    "hoursSaved": "Hours Saved by AI Agents",
+    "roiPercentage": "Estimated ROI"
   }
 }

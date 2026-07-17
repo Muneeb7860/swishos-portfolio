@@ -5,6 +5,7 @@ import "../globals.css";
 import { ThemeProvider } from "../../components/ThemeProvider";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { LanguageSwitcher } from "../../components/LanguageSwitcher";
+import { ServiceBot } from "../../components/ServiceBot";
 
 import en from "../../dictionaries/en.json";
 import ar from "../../dictionaries/ar.json";
@@ -57,6 +58,7 @@ export default async function RootLayout(props: {
               <nav className="nav-links">
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
                 <Link href={`/${lang}/features`}>{dict.nav.features}</Link>
+                <Link href={`/${lang}/roi`}>{dict.nav.roi}</Link>
                 <Link href={`/${lang}/vision`}>{dict.nav.vision}</Link>
                 <Link href={`/${lang}/contact`}>{dict.nav.contact}</Link>
               </nav>
@@ -76,19 +78,15 @@ export default async function RootLayout(props: {
             <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--muted)', flexWrap: 'wrap', gap: '20px' }}>
               <p>SwishOS | Service Catalog © 2026</p>
               <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                <a href="#" style={{ color: 'var(--muted)', fontSize: '14px' }}>Twitter</a>
-                <a href="#" style={{ color: 'var(--muted)', fontSize: '14px' }}>LinkedIn</a>
-                <a href="#" style={{ color: 'var(--muted)', fontSize: '14px' }}>GitHub</a>
+                <a href="https://swishos.io" target="_blank" rel="noreferrer" style={{ color: 'var(--muted)', fontSize: '14px' }}>Twitter</a>
+                <a href="https://swishos.io" target="_blank" rel="noreferrer" style={{ color: 'var(--muted)', fontSize: '14px' }}>LinkedIn</a>
+                <a href="https://swishos.io" target="_blank" rel="noreferrer" style={{ color: 'var(--muted)', fontSize: '14px' }}>GitHub</a>
               </div>
             </div>
           </footer>
 
           {/* SERVICE BOT MOCKUP */}
-          <div className="service-bot" title="Service Bot">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-          </div>
+          <ServiceBot dict={dict.bot} />
 
         </ThemeProvider>
       </body>
