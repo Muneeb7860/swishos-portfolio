@@ -79,14 +79,11 @@ header {
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand { display: flex; align-items: center; gap: 10px; font-family: 'Sora'; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
-.logo {
-  width: 30px; height: 30px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  display: grid; place-items: center;
-  box-shadow: 0 0 24px var(--glow);
-  position: relative;
-}
-.logo::after { content: ""; width: 11px; height: 11px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.25); }
+/* BRAND LOGO TOGGLE */
+.brand-logo-dark { display: none; }
+.brand-logo-light { display: block; }
+[data-theme="dark"] .brand-logo-light { display: none; }
+[data-theme="dark"] .brand-logo-dark { display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 30px; font-size: 15px; color: var(--muted); }
 .nav-links a {

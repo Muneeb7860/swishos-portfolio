@@ -51,7 +51,8 @@ export default async function RootLayout(props: {
           <header>
             <div className="wrap nav">
               <Link href={`/${lang}`} className="brand">
-                <span className="logo"></span>SwishOS
+                <img src="/logo-light.png" alt="SwishOS" className="brand-logo-light" width={160} />
+                <img src="/logo-dark.png" alt="SwishOS" className="brand-logo-dark" width={160} />
               </Link>
               <nav className="nav-links">
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
