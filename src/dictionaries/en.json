@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "vision": "Vision",
+    "contact": "Contact Us",
+    "login": "Log In",
+    "signup": "Sign Up"
+  },
+  "hero": {
+    "badge": "B2B Partners & Clients",
+    "title1": "Service Catalog,",
+    "title2": "built for scale.",
+    "subtitle": "Swishos delivers a unified, AI-native platform for B2B supply chain and quick commerce — supported by the infrastructure, security, and talent needed to run it at scale."
+  },
+  "sections": {
+    "swishapp": {
+      "eyebrow": "Flagship Product",
+      "title": "Swish App",
+      "subtitle": "B2B Supply Chain & Quick Commerce Platform, now AI-native",
+      "core": {
+        "title": "Core Platform",
+        "inventory": "Inventory & Distribution Management",
+        "inventoryDesc": "Structured distribution, inventory control, and supply chain tracking.",
+        "warehouse": "Warehouse Support",
+        "warehouseDesc": "Storage optimization and fulfillment management for physical supply chains."
+      },
+      "ai": {
+        "title": "AI-Native Layer",
+        "agentic": "Agentic Systems Integration",
+        "agenticDesc": "Autonomous agents that plan and execute multi-step workflows within the platform.",
+        "guardrails": "AI Guardrails & Evaluation",
+        "guardrailsDesc": "Safety layers, alignment protocols, and continuous evaluation to keep AI outputs accurate, secure, and compliant.",
+        "custom": "Custom AI Integration",
+        "customDesc": "LLMs embedded across the platform to automate workflows and support decision-making."
+      }
+    },
+    "infrastructure": {
+      "eyebrow": "Ecosystem",
+      "title": "Platform Infrastructure",
+      "subtitle": "Supporting services that power and secure Swish App",
+      "arch": {
+        "title": "Architecture & Security",
+        "cloud": "Cloud Architecture & Services",
+        "cloudDesc": "Migration, hybrid/multi-cloud management.",
+        "threat": "Threat Protection & Monitoring",
+        "threatDesc": "Proactive monitoring, vulnerability assessments, and incident response."
+      },
+      "ops": {
+        "title": "Operations",
+        "compliance": "Compliance & Governance",
+        "complianceDesc": "Infrastructure aligned to industry security standards and data privacy regulations.",
+        "billing": "Billing & Invoicing Automation",
+        "billingDesc": "Secure, automated invoicing and subscription billing."
+      }
+    },
+    "workforce": {
+      "eyebrow": "Growth",
+      "title": "Brand & Workforce Solutions",
+      "subtitle": "Delivered alongside Swish App to support client growth",
+      "brand": {
+        "title": "Corporate Branding",
+        "desc": "Identity design, market positioning, and messaging strategy."
+      },
+      "staffing": {
+        "title": "Strategic Staffing",
+        "desc": "Specialized technical and operational talent for scaling."
+      }
+    }
+  }
+}
