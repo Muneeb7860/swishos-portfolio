@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import "../globals.css";
 import { ThemeProvider } from "../../components/ThemeProvider";
 import { ThemeToggle } from "../../components/ThemeToggle";
@@ -53,8 +54,8 @@ export default async function RootLayout(props: {
           <header>
             <div className="wrap nav">
               <Link href={`/${lang}`} className="brand">
-                <img src="/logo-light.png" alt="SwishOS" className="brand-logo-light" width={160} />
-                <img src="/logo-dark.png" alt="SwishOS" className="brand-logo-dark" width={160} />
+                <Image src="/logo-light.png" alt="SwishOS" className="brand-logo-light" width={160} height={40} priority />
+                <Image src="/logo-dark.png" alt="SwishOS" className="brand-logo-dark" width={160} height={40} priority />
               </Link>
               <nav className="nav-links">
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>

@@ -3,13 +3,19 @@
 import * as React from 'react';
 import { useTheme } from 'next-themes';
 
+const emptySubscribe = () => () => {};
+
+function useHasHydrated() {
+  return React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
+
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useHasHydrated();
 
   if (!mounted) {
     return <button className="theme-toggle" aria-label="Toggle Theme" style={{ width: 36, height: 36 }} />;
@@ -31,7 +37,7 @@ export function ThemeToggle() {
         border: '1px solid var(--line-strong)',
         color: 'var(--txt)',
         cursor: 'pointer',
-        transition: 'all 0.2s ease'
+        transition: 'all 0.2s ease',
       }}
     >
       {theme === 'dark' ? (

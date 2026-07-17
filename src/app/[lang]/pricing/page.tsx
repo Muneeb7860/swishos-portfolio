@@ -5,7 +5,7 @@ import Link from 'next/link';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
 import { useScrollReveal } from '../../../hooks/useScrollReveal';
-import { Check, Zap, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 

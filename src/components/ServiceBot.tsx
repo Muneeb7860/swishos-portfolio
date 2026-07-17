@@ -9,7 +9,7 @@ interface Message {
   text: string;
 }
 
-export function ServiceBot({ dict }: { dict: any }) {
+export function ServiceBot({ dict }: { dict: Record<string, string> }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: 'bot', text: dict.botGreeting || 'Hello! How can SwishOS help you scale today?' }
