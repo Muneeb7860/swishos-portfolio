@@ -1,65 +1,144 @@
-import Image from "next/image";
+'use client';
+import React, { useEffect } from 'react';
 
 export default function Home() {
+
+  useEffect(() => {
+    // scroll reveal logic
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { 
+        if (e.isIntersecting) { 
+          e.target.classList.add('in'); 
+          io.unobserve(e.target); 
+        } 
+      });
+    }, { threshold: 0.12 });
+    
+    document.querySelectorAll('.reveal').forEach((el: any, i) => {
+      el.style.transitionDelay = (i % 6 * 60) + 'ms';
+      io.observe(el);
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <main>
+        {/* HERO */}
+        <section className="hero">
+          <div className="wrap">
+            <span className="pill reveal"><span className="dot"></span>B2B Partners & Clients</span>
+            <h1 className="reveal">Service Catalog,<br /><span className="grad">built for scale.</span></h1>
+            <p className="sub reveal">Swishos delivers a unified, AI-native platform for B2B supply chain and quick commerce — supported by the infrastructure, security, and talent needed to run it at scale.</p>
+          </div>
+        </section>
+
+        {/* SWISH APP */}
+        <section id="swishapp">
+          <div className="wrap">
+            <div className="sec-head reveal">
+              <span className="eyebrow">Flagship Product</span>
+              <h2>Swish App</h2>
+              <p>B2B Supply Chain & Quick Commerce Platform, now AI-native</p>
+            </div>
+            
+            <div className="grid-layout">
+              {/* Core Platform */}
+              <div className="feature reveal">
+                <h3>Core Platform</h3>
+                <ul style={{ listStyle: 'none', marginTop: '16px', display: 'grid', gap: '16px' }}>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Inventory & Distribution Management</strong>
+                    <p style={{ marginTop: '4px' }}>Structured distribution, inventory control, and supply chain tracking.</p>
+                  </li>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Warehouse Support</strong>
+                    <p style={{ marginTop: '4px' }}>Storage optimization and fulfillment management for physical supply chains.</p>
+                  </li>
+                </ul>
+              </div>
+
+              {/* AI-Native Layer */}
+              <div className="feature reveal">
+                <h3>AI-Native Layer</h3>
+                <ul style={{ listStyle: 'none', marginTop: '16px', display: 'grid', gap: '16px' }}>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Agentic Systems Integration</strong>
+                    <p style={{ marginTop: '4px' }}>Autonomous agents that plan and execute multi-step workflows within the platform.</p>
+                  </li>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>AI Guardrails & Evaluation</strong>
+                    <p style={{ marginTop: '4px' }}>Safety layers, alignment protocols, and continuous evaluation to keep AI outputs accurate, secure, and compliant.</p>
+                  </li>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Custom AI Integration</strong>
+                    <p style={{ marginTop: '4px' }}>LLMs embedded across the platform to automate workflows and support decision-making.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PLATFORM INFRASTRUCTURE */}
+        <section id="infrastructure">
+          <div className="wrap">
+            <div className="sec-head reveal">
+              <span className="eyebrow">Ecosystem</span>
+              <h2>Platform Infrastructure</h2>
+              <p>Supporting services that power and secure Swish App</p>
+            </div>
+            <div className="grid-layout">
+              <div className="feature reveal">
+                <h3>Architecture & Security</h3>
+                <ul style={{ listStyle: 'none', marginTop: '16px', display: 'grid', gap: '16px' }}>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Cloud Architecture & Services</strong>
+                    <p style={{ marginTop: '4px' }}>Migration, hybrid/multi-cloud management.</p>
+                  </li>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Threat Protection & Monitoring</strong>
+                    <p style={{ marginTop: '4px' }}>Proactive monitoring, vulnerability assessments, and incident response.</p>
+                  </li>
+                </ul>
+              </div>
+              <div className="feature reveal">
+                <h3>Operations</h3>
+                <ul style={{ listStyle: 'none', marginTop: '16px', display: 'grid', gap: '16px' }}>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Compliance & Governance</strong>
+                    <p style={{ marginTop: '4px' }}>Infrastructure aligned to industry security standards and data privacy regulations.</p>
+                  </li>
+                  <li>
+                    <strong style={{ color: 'var(--txt)' }}>Billing & Invoicing Automation</strong>
+                    <p style={{ marginTop: '4px' }}>Secure, automated invoicing and subscription billing.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* BRAND & WORKFORCE */}
+        <section id="workforce">
+          <div className="wrap">
+            <div className="sec-head reveal">
+              <span className="eyebrow">Growth</span>
+              <h2>Brand & Workforce Solutions</h2>
+              <p>Delivered alongside Swish App to support client growth</p>
+            </div>
+            <div className="grid-layout">
+              <div className="feature reveal">
+                <h3>Corporate Branding</h3>
+                <p style={{ marginTop: '16px' }}>Identity design, market positioning, and messaging strategy.</p>
+              </div>
+              <div className="feature reveal">
+                <h3>Strategic Staffing</h3>
+                <p style={{ marginTop: '16px' }}>Specialized technical and operational talent for scaling.</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+    </>
   );
 }
