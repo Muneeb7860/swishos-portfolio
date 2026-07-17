@@ -8,6 +8,10 @@ interface ContactPayload {
   message: string;
 }
 
+export async function GET() {
+  return NextResponse.json({ status: 'online', endpoint: 'SwishOS Contact Service' });
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = (await req.json()) as ContactPayload;

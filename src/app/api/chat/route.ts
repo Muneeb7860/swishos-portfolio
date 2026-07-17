@@ -30,6 +30,10 @@ function smartFallback(message: string): string {
   return "SwishOS is the AI-native operating system for B2B supply chains. I'm here to help — ask me about features, integrations, or how we handle your specific logistics challenges.";
 }
 
+export async function GET() {
+  return NextResponse.json({ status: 'online', agent: 'SwishOS AI Assistant' });
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { message } = await req.json();

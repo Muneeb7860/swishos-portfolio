@@ -1,1 +1,1 @@
-export { POST } from '../../../api/contact/route';
+export { GET, POST } from '../../../api/contact/route';
