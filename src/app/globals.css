@@ -79,11 +79,10 @@ header {
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand { display: flex; align-items: center; gap: 10px; font-family: 'Sora'; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
-/* BRAND LOGO TOGGLE */
-.brand-logo-dark { display: none; }
-.brand-logo-light { display: block; }
-[data-theme="dark"] .brand-logo-light { display: none; }
-[data-theme="dark"] .brand-logo-dark { display: block; }
+/* BRAND LOGO - header is always dark frosted glass, always use dark logo (white on dark) */
+.brand-logo-light { display: none; }
+.brand-logo-dark { display: block; }
+/* If the user switches to light theme, still keep dark logo in header since bg is always dark */
 
 .nav-links { display: flex; align-items: center; gap: 30px; font-size: 15px; color: var(--muted); }
 .nav-links a {
@@ -161,7 +160,7 @@ header {
 .auth-link:hover { text-decoration: underline; }
 
 /* HERO */
-.hero { padding: 92px 0 70px; text-align: center; }
+.hero { padding: 72px 0 56px; text-align: center; }
 .pill {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 6px 14px; border-radius: 999px;
@@ -182,8 +181,8 @@ header {
 }
 
 /* SECTION shells */
-section { padding: 84px 0; }
-.sec-head { text-align: center; max-width: 640px; margin: 0 auto 54px; }
+section { padding: 64px 0; }
+.sec-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
 .eyebrow { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; }
 .sec-head h2 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; margin-top: 12px; }
 .sec-head p { color: var(--muted); margin-top: 16px; font-size: 17px; }
@@ -320,8 +319,9 @@ section { padding: 84px 0; }
 .hero-cta {
   display: flex;
   gap: 16px;
-  margin-top: 32px;
+  margin-top: 36px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .btn-primary {
   display: inline-flex;
