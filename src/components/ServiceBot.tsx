@@ -12,7 +12,7 @@ interface Message {
 export function ServiceBot({ dict }: { dict: Record<string, string> }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', text: dict.botGreeting || 'Hello! How can SwishOS help you scale today?' }
+    { role: 'bot', text: dict.botGreeting }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -72,7 +72,7 @@ export function ServiceBot({ dict }: { dict: Record<string, string> }) {
                   <h4 style={{ margin: 0, fontSize: '15px' }}>SwishOS Agent</h4>
                   <p style={{ margin: 0, fontSize: '12px', color: 'rgba(255,255,255,0.7)', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <span style={{ width: 6, height: 6, background: '#26e6c3', borderRadius: '50%', display: 'inline-block' }} />
-                    {dict.botStatus || 'Online · Powered by AI'}
+                    {dict.botStatus}
                   </p>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export function ServiceBot({ dict }: { dict: Record<string, string> }) {
             <form className="bot-input-area" onSubmit={handleSend}>
               <input
                 type="text"
-                placeholder={dict.botPlaceholder || 'Ask about SwishOS...'}
+                placeholder={dict.botPlaceholder}
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 disabled={isLoading}

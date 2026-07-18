@@ -9,7 +9,7 @@ interface NavItem {
   label: string;
 }
 
-export function MobileMenu({ links, cta }: { links: NavItem[]; cta: { loginHref: string; loginLabel: string; signupHref: string; signupLabel: string; } }) {
+export function MobileMenu({ links, cta }: { links: NavItem[]; cta: { primaryHref: string; primaryLabel: string } }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -40,8 +40,7 @@ export function MobileMenu({ links, cta }: { links: NavItem[]; cta: { loginHref:
               ))}
             </nav>
             <div className="mobile-menu-cta">
-              <Link href={cta.loginHref} onClick={() => setOpen(false)} className="mobile-login-btn">{cta.loginLabel}</Link>
-              <Link href={cta.signupHref} onClick={() => setOpen(false)} className="nav-cta">{cta.signupLabel}</Link>
+              <Link href={cta.primaryHref} onClick={() => setOpen(false)} className="nav-cta">{cta.primaryLabel}</Link>
             </div>
           </motion.div>
         )}

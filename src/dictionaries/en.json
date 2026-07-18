@@ -1,112 +1,114 @@
 {
   "nav": {
     "home": "Home",
-    "features": "Features",
-    "pricing": "Pricing",
+    "features": "Approach",
+    "pricing": "Engagements",
     "roi": "ROI Calculator",
     "vision": "Vision",
-    "contact": "Contact Us",
+    "contact": "Book an Audit",
     "login": "Log In",
     "signup": "Sign Up"
   },
   "meta": {
-    "title": "SwishOS | Service Catalog",
-    "description": "SwishOS delivers a unified, AI-native platform for B2B supply chain and quick commerce."
+    "title": "SwishOS | AI Agent Security & Governance",
+    "description": "SwishOS secures AI agents that take real-world actions — spending money, calling tools, and touching data. Red-teaming, guardrails, and continuous evals."
   },
   "hero": {
-    "badge": "B2B Partners & Clients",
-    "title1": "Service Catalog,",
-    "title2": "built for scale.",
-    "subtitle": "SwishOS delivers a unified, AI-native platform for B2B supply chain and quick commerce — supported by the infrastructure, security, and talent needed to run it at scale.",
-    "ctaPrimary": "Book a Demo",
-    "ctaSecondary": "Explore Platform"
+    "badge": "AI AGENT SECURITY & GOVERNANCE",
+    "title1": "Ship AI agents that act —",
+    "title2": "without the blast radius.",
+    "subtitle": "SwishOS red-teams and guardrails AI agents that spend money, call tools, and touch data — so they are safe in production. Built by an architect who has shipped LLM guardrails on a 5.6M-user national program.",
+    "ctaPrimary": "Book an Agent Security Audit",
+    "ctaSecondary": "Explore Governance Engine"
   },
   "sections": {
     "swishapp": {
-      "eyebrow": "Flagship Product",
-      "title": "Swish App",
-      "subtitle": "B2B Supply Chain & Quick Commerce Platform, now AI-native",
+      "eyebrow": "Core Capabilities",
+      "title": "The AI Agent Security Operating Layer",
+      "subtitle": "Comprehensive protection for autonomous, action-taking AI agents",
       "core": {
-        "title": "Core Platform",
-        "inventory": "Inventory & Distribution Management",
-        "inventoryDesc": "Structured distribution, inventory control, and supply chain tracking.",
-        "warehouse": "Warehouse Support",
-        "warehouseDesc": "Storage optimization and fulfillment management for physical supply chains."
+        "title": "Red-Teaming & Testing",
+        "inventory": "Adversarial Attack Simulation",
+        "inventoryDesc": "Proactive red-teaming against prompt injections, dev-mode bypasses, and unauthorized tool calls (OWASP LLM Top 10 / Agentic Top 10).",
+        "warehouse": "Open-Source Red-Team Engine",
+        "warehouseDesc": "Target-agnostic HTTP runner (agentic-redteam) executing automated payload sweeps against custom agent endpoints."
       },
       "ai": {
-        "title": "AI-Native Layer",
-        "agentic": "Agentic Systems Integration",
-        "agenticDesc": "Autonomous agents that plan and execute multi-step workflows within the platform.",
-        "guardrails": "AI Guardrails & Evaluation",
-        "guardrailsDesc": "Safety layers, alignment protocols, and continuous evaluation to keep AI outputs accurate, secure, and compliant.",
-        "custom": "Custom AI Integration",
-        "customDesc": "LLMs embedded across the platform to automate workflows and support decision-making."
+        "title": "Guardrails & Policy Engine",
+        "agentic": "Action-Authorization & Spend Caps",
+        "agenticDesc": "Hard monetary spend caps, policy enforcement, and fail-closed architecture to prevent runaway agent execution.",
+        "guardrails": "Rule of Two & HITL Escalation",
+        "guardrailsDesc": "Automated Meta's Agents Rule of Two evaluation triggering Human-in-the-Loop admin verification on high-risk actions.",
+        "custom": "Data Sovereignty & PII Scanning",
+        "customDesc": "Pre-route PII detection that forces queries to local-only execution so private data never leaves your environment."
       }
     },
     "infrastructure": {
-      "eyebrow": "Ecosystem",
-      "title": "Platform Infrastructure",
-      "subtitle": "Supporting services that power and secure Swish App",
+      "eyebrow": "Enterprise Provenance",
+      "title": "Security Architecture & Evals",
+      "subtitle": "Grounded in 10+ years of enterprise architecture and national government program experience",
       "arch": {
-        "title": "Architecture & Security",
-        "cloud": "Cloud Architecture & Services",
-        "cloudDesc": "Migration, hybrid/multi-cloud management.",
-        "threat": "Threat Protection & Monitoring",
-        "threatDesc": "Proactive monitoring, vulnerability assessments, and incident response."
+        "title": "Evals & Governance",
+        "cloud": "Continuous Regression Evals",
+        "cloudDesc": "Golden dataset evaluations scoring format integrity, completeness, and context retention with automated self-correction.",
+        "threat": "OWASP & Regulatory Alignment",
+        "threatDesc": "Mapped strictly to OWASP LLM Top 10 (2025/2026), GDPR, and PDPL data residency requirements."
       },
       "ops": {
-        "title": "Operations",
-        "compliance": "Compliance & Governance",
-        "complianceDesc": "Infrastructure aligned to industry security standards and data privacy regulations.",
-        "billing": "Billing & Invoicing Automation",
-        "billingDesc": "Secure, automated invoicing and subscription billing."
+        "title": "Consulting & Engagement",
+        "compliance": "AI Agent Security Audit",
+        "complianceDesc": "Fixed 1–2 week deep-dive threat modeling, red-team execution, and prioritized remediation blueprint.",
+        "billing": "Guardrail & Red-Team Retainer",
+        "billingDesc": "Continuous adversarial sweeps, rule updates, and eval telemetry for production agent deployments."
       }
     },
     "workforce": {
-      "eyebrow": "Growth",
-      "title": "Brand & Workforce Solutions",
-      "subtitle": "Delivered alongside Swish App to support client growth",
+      "eyebrow": "Reference Architecture",
+      "title": "Live Proof-of-Concept Target",
+      "subtitle": "Swish App — Autonomous B2B Procurement Agent under active guardrail defense",
       "brand": {
-        "title": "Corporate Branding",
-        "desc": "Identity design, market positioning, and messaging strategy."
+        "title": "Real-Money Action Protection",
+        "desc": "Demonstrating automated procurement under Java ProcurementGuardrailsEngine with real-time spend limits and admin approvals."
       },
       "staffing": {
-        "title": "Strategic Staffing",
-        "desc": "Specialized technical and operational talent to scale."
+        "title": "Practitioner-Led Advisory",
+        "desc": "Direct architectural engagement led by senior enterprise architects with 5.6M-user national scale experience."
       }
     }
   },
   "bot": {
-    "botGreeting": "Hello! How can SwishOS help you scale today?",
+    "botGreeting": "Hi — ask me anything about agent security, the audit, or what SwishOS does.",
     "botStatus": "Online",
-    "botPlaceholder": "Type a message...",
-    "botReply": "I'm a demo bot! In production, I'll connect to the SwishOS AI Agent network to resolve this."
+    "botPlaceholder": "Ask about agent security...",
+    "botReply": "I'm a lightweight assistant on this site. For anything specific to your agent, book an audit and you'll speak to me directly."
   },
   "featuresPage": {
-    "heroBadge": "Platform Features",
-    "heroTitle1": "The SwishOS",
-    "heroTitle2": "Edge.",
-    "heroSubtitle": "Engineered for speed, built for scale. Discover the capabilities powering the next generation of B2B commerce.",
-    "agenticTitle": "Agentic Resolution",
-    "agenticDesc": "Autonomous agents chase exceptions, resolve short-ships, and communicate with suppliers without human intervention.",
-    "ledgerTitle": "Real-Time Ledger",
-    "ledgerDesc": "A single source of truth for inventory and invoicing, seamlessly integrated with your existing ERPs and accounting tools."
+    "heroBadge": "The Approach",
+    "heroTitle1": "How I make agents",
+    "heroTitle2": "production-safe.",
+    "heroSubtitle": "Three disciplines, applied in order: find out how your agent breaks, stop it breaking, then prove it stays fixed as your models and prompts change.",
+    "agenticTitle": "Red-Teaming",
+    "agenticDesc": "Adversarial testing against your own endpoint — jailbreaks, indirect prompt injection through retrieved content, PII exfiltration, and unauthorized tool or action calls. You get reproducible payload logs, not a scanner score.",
+    "ledgerTitle": "Guardrails",
+    "ledgerDesc": "Input gates, output harmful-compliance detection that catches jailbreak acceptance the input filter misses, action-authorization with human-in-the-loop on high-blast-radius calls, and fail-closed defaults.",
+    "evalsTitle": "Evals",
+    "evalsDesc": "Regression eval suites and telemetry wired into your release process, so a prompt tweak or model upgrade can't silently undo a fix. Safety becomes provable release over release."
   },
   "visionPage": {
-    "heroBadge": "Our Trajectory",
-    "heroTitle1": "The Future of",
-    "heroTitle2": "Commerce.",
-    "heroSubtitle": "We believe that within five years, manual supply chain management will be obsolete. SwishOS is building the autonomous backbone of global trade.",
-    "contentTitle": "Autonomous Supply Chains",
-    "contentP1": "The modern supply chain is a web of isolated systems, spreadsheets, and reactive decisions. We envisioned a different reality: a unified operating system where AI agents manage the micro-decisions of procurement, routing, and reconciliation.",
-    "contentP2": "By embedding Large Language Models directly into the fulfillment ledger, SwishOS transforms static software into an active participant. It negotiates, it reroutes, and it learns. This is not just a tool; it is the new standard for B2B distribution."
+    "heroBadge": "Vision",
+    "heroTitle1": "Agency is arriving faster",
+    "heroTitle2": "than the controls.",
+    "heroSubtitle": "Every quarter, more AI systems move from answering questions to taking actions. The security model underneath them has not kept pace.",
+    "contentTitle": "Chatbot security was a content problem. Agent security is a systems problem.",
+    "contentP1": "For three years the industry has treated AI safety as text filtering — does the model say something it shouldn't. That framing was adequate while models only produced words. It stops being adequate the moment a model can call a tool, write to a database, or authorize a payment. At that point a prompt injection is no longer a bad answer; it is an unauthorized transaction, a deleted table, or data leaving your perimeter. OWASP named this LLM06, Excessive Agency, and it is the gap most AI security tooling still doesn't cover, because inspecting prompts tells you nothing about what the agent is permitted to do.",
+    "contentP2": "The controls that actually work here are not new — least privilege, authorization boundaries, blast-radius limits, audit trails, human approval on irreversible actions. They are the same controls that took decades to mature in banking and government systems, now applied to a non-deterministic caller. That is the work: bringing hard-won systems-security discipline to software that improvises. SwishOS exists to do that, and to prove it on a real agent that spends real money before asking anyone else to trust the approach."
   },
   "contactPage": {
-    "heroBadge": "Connect With Us",
-    "heroTitle1": "Reach out to",
-    "heroTitle2": "SwishOS.",
-    "successTitle": "Message Received",
-    "successMessage": "Thank you for reaching out. A SwishOS representative will contact you shortly.",
+    "heroBadge": "Book an Audit",
+    "heroTitle1": "Tell me what your",
+    "heroTitle2": "agent can touch.",
+    "successTitle": "Message received",
+    "successMessage": "Thanks — I read every enquiry myself and will reply within two working days.",
     "firstName": "First Name",
     "lastName": "Last Name",
     "workEmail": "Work Email",
@@ -117,7 +119,7 @@
     "placeholderDoe": "Doe",
     "placeholderEmail": "jane@company.com",
     "placeholderCompany": "Acme Corp",
-    "placeholderMessage": "How can we help you scale?"
+    "placeholderMessage": "What does your agent do, what tools can it call, and what are you worried about?"
   },
   "loginPage": {
     "title": "Welcome Back",
@@ -155,25 +157,50 @@
     "roiPercentage": "Estimated ROI"
   },
   "pricingPage": {
-    "badge": "Value & Transparent Pricing",
-    "title1": "Flexible Plans,",
-    "title2": "built to scale.",
-    "subtitle": "Predictable monthly SaaS base + performance volume pricing designed for high-density B2B & quick commerce operations.",
-    "starterName": "Starter",
-    "starterDesc": "For emerging dark stores & regional distributors looking to automate inventory & picking.",
-    "starterPrice": "$499",
-    "starterUnit": "/ month",
-    "growthName": "Growth",
-    "growthDesc": "For expanding multi-node networks requiring AI agentic exception handling & express dispatch.",
-    "growthPrice": "$1,499",
-    "growthUnit": "/ month",
-    "enterpriseName": "Enterprise",
-    "enterpriseDesc": "For large-scale FMCG brands & quick commerce unicorns with custom security & dedicated SLA.",
-    "enterprisePrice": "Custom",
-    "enterpriseUnit": "contact sales",
-    "perOrderFee": "+ $0.15 - $0.35 per order processed",
-    "popularBadge": "Most Popular",
-    "ctaStart": "Get Started",
-    "ctaEnterprise": "Talk to Sales"
+    "badge": "Engagements",
+    "title1": "Three ways to",
+    "title2": "work together.",
+    "subtitle": "Start free with the open-source harness. Bring me in for a fixed-scope audit when your agent is about to touch money, customer data, or production systems. Keep me on retainer when it never stops changing.",
+    "ossName": "agentic-redteam",
+    "ossDesc": "Open-source red-team harness you can run against your own agent — jailbreaks, injection, PII exfiltration. Publishing shortly.",
+    "ossPrice": "Free",
+    "ossUnit": "Apache 2.0",
+    "ossNote": "Self-serve — clone and run",
+    "ossNotePending": "Publishing soon — early access on request",
+    "ossFeatures": [
+      "Target-agnostic HTTP runner",
+      "Jailbreak signature suite",
+      "Output harmful-compliance detection",
+      "PII & code-safety assertions"
+    ],
+    "ossCta": "View on GitHub",
+    "ossCtaPending": "Request early access",
+    "auditName": "AI Agent Security Audit",
+    "auditDesc": "A fixed 1–2 week engagement that tells you exactly where your agent breaks and what to do about it.",
+    "auditPrice": "$7,500 – $12,500",
+    "auditUnit": "fixed scope",
+    "auditNote": "1–2 weeks · delivered by me, not a junior",
+    "auditFeatures": [
+      "Threat model mapped to OWASP LLM Top 10",
+      "Red-team run against your endpoint",
+      "Guardrail gap analysis + sample config PR",
+      "Severity-ranked findings & remediation blueprint",
+      "60-minute executive debrief"
+    ],
+    "auditCta": "Book an audit",
+    "retainerName": "Guardrail & Red-Team Retainer",
+    "retainerDesc": "Continuous assurance for teams shipping agent changes every week. Usually starts after an audit.",
+    "retainerPrice": "$4,500",
+    "retainerUnit": "/ month",
+    "retainerNote": "Rolling — 30 days' notice, no lock-in",
+    "retainerFeatures": [
+      "Red-team sweeps on every release",
+      "Guardrail & eval maintenance as threats evolve",
+      "Regression telemetry so safety can't drift",
+      "Direct access for architecture review"
+    ],
+    "retainerCta": "Talk about a retainer",
+    "popularBadge": "Most teams start here",
+    "footnote": "Prices are USD for global engagements. Regional rates apply for India and the GCC. One or two design-partner discounts are available in exchange for a public case study — ask."
   }
 }

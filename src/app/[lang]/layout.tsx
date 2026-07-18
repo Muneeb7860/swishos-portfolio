@@ -61,25 +61,20 @@ export default async function RootLayout(props: {
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
                 <Link href={`/${lang}/features`}>{dict.nav.features}</Link>
                 <Link href={`/${lang}/pricing`}>{dict.nav.pricing}</Link>
-                <Link href={`/${lang}/roi`}>{dict.nav.roi}</Link>
                 <Link href={`/${lang}/vision`}>{dict.nav.vision}</Link>
-                <Link href={`/${lang}/contact`}>{dict.nav.contact}</Link>
               </nav>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <LanguageSwitcher currentLang={lang} />
                 <ThemeToggle />
-                <Link href={`/${lang}/login`} className="nav-login-btn">{dict.nav.login}</Link>
-                <Link href={`/${lang}/signup`} className="nav-cta nav-cta-desktop">{dict.nav.signup}</Link>
+                <Link href={`/${lang}/contact`} className="nav-cta nav-cta-desktop">{dict.nav.contact}</Link>
                 <MobileMenu
                   links={[
                     { href: `/${lang}`, label: dict.nav.home },
                     { href: `/${lang}/features`, label: dict.nav.features },
                     { href: `/${lang}/pricing`, label: dict.nav.pricing },
-                    { href: `/${lang}/roi`, label: dict.nav.roi },
                     { href: `/${lang}/vision`, label: dict.nav.vision },
-                    { href: `/${lang}/contact`, label: dict.nav.contact },
                   ]}
-                  cta={{ loginHref: `/${lang}/login`, loginLabel: dict.nav.login, signupHref: `/${lang}/signup`, signupLabel: dict.nav.signup }}
+                  cta={{ primaryHref: `/${lang}/contact`, primaryLabel: dict.nav.contact }}
                 />
               </div>
             </div>

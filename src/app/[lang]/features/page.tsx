@@ -31,9 +31,14 @@ export default function FeaturesPage(props: { params: Promise<{ lang: string }> 
               <p>{dict.featuresPage.agenticDesc}</p>
             </div>
             <div className="feature reveal">
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>📊</div>
+              <div style={{ fontSize: '32px', marginBottom: '16px' }}>🛡️</div>
               <h3>{dict.featuresPage.ledgerTitle}</h3>
               <p>{dict.featuresPage.ledgerDesc}</p>
+            </div>
+            <div className="feature reveal">
+              <div style={{ fontSize: '32px', marginBottom: '16px' }}>📊</div>
+              <h3>{dict.featuresPage.evalsTitle}</h3>
+              <p>{dict.featuresPage.evalsDesc}</p>
             </div>
           </div>
         </div>
