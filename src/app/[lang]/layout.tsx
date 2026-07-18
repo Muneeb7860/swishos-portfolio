@@ -27,9 +27,30 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await props.params;
   const dict = dictionaries[lang] || en;
+  const url = `https://swishos.io/${lang}`;
   return {
+    metadataBase: new URL('https://swishos.io'),
     title: dict.meta.title,
     description: dict.meta.description,
+    alternates: {
+      canonical: url,
+      languages: { en: 'https://swishos.io/en', ar: 'https://swishos.io/ar' },
+    },
+    openGraph: {
+      title: dict.meta.title,
+      description: dict.meta.description,
+      url,
+      siteName: 'SwishOS',
+      locale: lang === 'ar' ? 'ar_SA' : 'en_US',
+      type: 'website',
+      images: [{ url: '/logo-light.png', width: 1200, height: 630, alt: 'SwishOS' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: ['/logo-light.png'],
+    },
   };
 }
 
