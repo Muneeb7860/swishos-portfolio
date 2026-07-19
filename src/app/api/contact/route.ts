@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'SwishOS Contact <noreply@swishos.io>',
+        from: process.env.CONTACT_FROM_EMAIL || 'SwishOS Contact <hello@swishos.io>',
         to: [toEmail],
         reply_to: email,
         subject: `New Enquiry: ${firstName} ${lastName}${company ? ` (${company})` : ''}`,
