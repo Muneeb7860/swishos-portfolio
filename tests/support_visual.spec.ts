@@ -32,8 +32,8 @@ test.describe('SwishOS Support Hub & Incident Triage E2E Tests', () => {
     // Fill form
     await page.fill('input[name="name"]', 'Security Lead');
     await page.fill('input[name="email"]', 'sec-ops@company.com');
-    await page.fill('input[name="subject"]', 'Adversarial bypass evaluation trace');
-    await page.fill('textarea[name="message"]', 'Adversarial bypass trace detected on endpoint.');
+    await page.fill('input[name="subject"]', 'System security audit telemetry trace');
+    await page.fill('textarea[name="message"]', 'Security incident report for system audit and telemetry log trace.');
 
     // Submit form
     await page.getByRole('button', { name: 'Submit Ticket & Get Instant Triage' }).click();
