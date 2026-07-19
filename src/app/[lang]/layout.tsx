@@ -119,9 +119,6 @@ export default async function RootLayout(props: {
             </div>
           </footer>
 
-          {/* SERVICE BOT MOCKUP */}
-          <ServiceBot dict={dict.bot} />
-
           {/* OPEN-SOURCE CHATWOOT & LIVE SUPPORT DRAWER */}
           <ChatwootWidget lang={lang} />
           <SupportChatDrawer lang={lang} />

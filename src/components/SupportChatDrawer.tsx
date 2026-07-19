@@ -97,13 +97,10 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
       <button
         onClick={() => setIsOpen(prev => !prev)}
         aria-label="Toggle Live Support Chat"
-        className={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-50 flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white font-semibold text-xs shadow-2xl shadow-emerald-500/30 hover:scale-105 transition-all active:scale-95 border border-emerald-400/40`}
+        className={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-2xl border border-emerald-400/40 transition-all cursor-pointer`}
       >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
-        </span>
-        <span>{isOpen ? (lang === 'ar' ? 'إغلاق المحادثة' : 'Close Chat') : (lang === 'ar' ? 'الدعم المباشر AI' : 'Live Support AI')}</span>
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-pulse" />
+        <span className="whitespace-nowrap">{isOpen ? (lang === 'ar' ? 'إغلاق المحادثة' : 'Close Chat') : (lang === 'ar' ? '💬 مساعد SwishOS الأمني' : '💬 SwishOS AI Assistant')}</span>
       </button>
 
       {/* Slide-Out Chat Drawer */}

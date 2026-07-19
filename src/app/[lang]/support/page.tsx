@@ -99,10 +99,10 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
   -d '{
     "channel": "api",
     "category": "security_incident",
-    "name": "DevOps Engineer",
-    "email": "security@company.com",
-    "subject": "Red-team telemetry report",
-    "message": "Elevated vulnerability trace detected on LLM endpoint."
+    "name": "Security Lead",
+    "email": "sec-ops@company.com",
+    "subject": "Guardrail evaluation log trace",
+    "message": "Adversarial bypass trace detected on endpoint."
   }'`;
 
   const copyWebhookSnippet = () => {
@@ -113,7 +113,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
 
   return (
     <div className={`min-h-screen bg-[#0A0D14] text-white pt-24 pb-20 ${isRtl ? 'rtl' : 'ltr'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
         
         {/* Hero Banner */}
         <div className="text-center space-y-4 max-w-3xl mx-auto scroll-reveal">
@@ -124,98 +124,104 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
           <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-emerald-400 leading-tight">
             {t.title}
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
             {t.subtitle}
           </p>
         </div>
 
         {/* Deep Insights Telemetry Panel */}
         <div className="scroll-reveal space-y-6">
-          <div className="border-b border-slate-800 pb-4">
-            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <div className="border-b border-slate-800/80 pb-3">
+            <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
               <span className="text-emerald-400">⚡</span> {t.insightsTitle}
             </h2>
-            <p className="text-slate-400 text-sm">{t.insightsSubtitle}</p>
+            <p className="text-slate-400 text-xs sm:text-sm">{t.insightsSubtitle}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-emerald-500/40 transition-all shadow-xl">
-              <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">
-                Response SLA
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+            
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-emerald-500/40 transition-all shadow-xl flex flex-col justify-between">
+              <div>
+                <div className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider mb-2">
+                  {t.slaLabel}
+                </div>
+                <div className="text-3xl font-extrabold text-white">{t.slaMetric}</div>
               </div>
-              <div className="text-3xl font-extrabold text-white mb-1">{t.slaMetric}</div>
-              <div className="text-xs text-slate-400">{t.slaLabel}</div>
-              <div className="mt-4 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div className="mt-4 w-full bg-slate-800/80 h-1.5 rounded-full overflow-hidden">
                 <div className="bg-emerald-400 h-full w-[95%]" />
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-blue-500/40 transition-all shadow-xl">
-              <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2">
-                First-Touch Resolution
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-blue-500/40 transition-all shadow-xl flex flex-col justify-between">
+              <div>
+                <div className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider mb-2">
+                  {t.resolutionLabel}
+                </div>
+                <div className="text-3xl font-extrabold text-white">{t.resolutionMetric}</div>
               </div>
-              <div className="text-3xl font-extrabold text-white mb-1">{t.resolutionMetric}</div>
-              <div className="text-xs text-slate-400">{t.resolutionLabel}</div>
-              <div className="mt-4 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                <div className="bg-blue-400 h-full w-[99%]" />
+              <div className="mt-4 w-full bg-slate-800/80 h-1.5 rounded-full overflow-hidden">
+                <div className="bg-blue-400 h-full w-[98%]" />
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-purple-500/40 transition-all shadow-xl">
-              <div className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2">
-                CSAT Rating
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-purple-500/40 transition-all shadow-xl flex flex-col justify-between">
+              <div>
+                <div className="text-[11px] font-semibold text-purple-400 uppercase tracking-wider mb-2">
+                  {t.satisfactionLabel}
+                </div>
+                <div className="text-3xl font-extrabold text-white">{t.satisfactionMetric}</div>
               </div>
-              <div className="text-3xl font-extrabold text-white mb-1">{t.satisfactionMetric}</div>
-              <div className="text-xs text-slate-400">{t.satisfactionLabel}</div>
-              <div className="mt-4 w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div className="mt-4 w-full bg-slate-800/80 h-1.5 rounded-full overflow-hidden">
                 <div className="bg-purple-400 h-full w-[98%]" />
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-amber-500/40 transition-all shadow-xl">
-              <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">
-                Active Channels
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/80 border border-slate-800/80 hover:border-amber-500/40 transition-all shadow-xl flex flex-col justify-between">
+              <div>
+                <div className="text-[11px] font-semibold text-amber-400 uppercase tracking-wider mb-2">
+                  {t.activeChannelsLabel}
+                </div>
+                <div className="text-3xl font-extrabold text-white">{t.activeChannelsMetric}</div>
               </div>
-              <div className="text-3xl font-extrabold text-white mb-1">{t.activeChannelsMetric}</div>
-              <div className="text-xs text-slate-400">{t.activeChannelsLabel}</div>
               <div className="mt-4 flex gap-1">
-                {['web', 'api', 'audit', 'slack', 'mail'].map((ch, idx) => (
-                  <span key={idx} className="flex-1 bg-amber-400/20 border border-amber-400/30 h-1.5 rounded-full" />
+                {['web', 'api', 'audit', 'slack', 'mail'].map((_, idx) => (
+                  <span key={idx} className="flex-1 bg-amber-400/20 border border-amber-400/40 h-1.5 rounded-full" />
                 ))}
               </div>
             </div>
+
           </div>
         </div>
 
-        {/* GitHub Open-Source Support Stack Showcase */}
-        <div className="scroll-reveal space-y-6 pt-4">
-          <div className="border-b border-slate-800 pb-4 flex items-center justify-between flex-wrap gap-4">
+        {/* Supported Open-Source Integration Connectors */}
+        <div className="scroll-reveal space-y-6 pt-2">
+          <div className="border-b border-slate-800/80 pb-3 flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <span className="text-purple-400">🐙</span> {t.openSourceStack.title}
+              <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                <span className="text-purple-400">🔗</span> {t.openSourceStack.title}
               </h2>
-              <p className="text-slate-400 text-sm">{t.openSourceStack.subtitle}</p>
+              <p className="text-slate-400 text-xs sm:text-sm">{t.openSourceStack.subtitle}</p>
             </div>
             <a
               href="https://github.com/chatwoot/chatwoot"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-semibold hover:bg-purple-500/20 transition-all flex items-center gap-2"
+              className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-semibold hover:bg-purple-500/20 transition-all flex items-center gap-1.5"
             >
-              <span>Explore GitHub Repos</span>
+              <span>View Open-Source Connectors</span>
               <span>→</span>
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
             <a
               href="https://github.com/chatwoot/chatwoot"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 transition-all group block shadow-lg"
+              className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-bold text-white group-hover:text-purple-400 transition-colors">Chatwoot</span>
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-bold text-sm text-white group-hover:text-purple-400 transition-colors">Chatwoot</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
                   {t.openSourceStack.chatwootBadge}
                 </span>
@@ -229,10 +235,10 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               href="https://github.com/freescout-helpdesk/freescout"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all group block shadow-lg"
+              className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-bold text-white group-hover:text-emerald-400 transition-colors">FreeScout</span>
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-bold text-sm text-white group-hover:text-emerald-400 transition-colors">FreeScout</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   {t.openSourceStack.freescoutBadge}
                 </span>
@@ -246,10 +252,10 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               href="https://github.com/zammad/zammad"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-blue-500/40 transition-all group block shadow-lg"
+              className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-blue-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-bold text-white group-hover:text-blue-400 transition-colors">Zammad</span>
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">Zammad</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
                   {t.openSourceStack.zammadBadge}
                 </span>
@@ -263,10 +269,10 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               href="https://github.com/papercups-io/papercups"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-all group block shadow-lg"
+              className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-bold text-white group-hover:text-amber-400 transition-colors">Papercups</span>
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-bold text-sm text-white group-hover:text-amber-400 transition-colors">Papercups</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
                   {t.openSourceStack.papercupsBadge}
                 </span>
@@ -278,32 +284,35 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
           </div>
 
           {/* Webhook Payload Generator */}
-          <div className="p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-2">
-                <span>💻</span> {t.openSourceStack.webhookTitle}
-              </span>
+          <div className="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800/90 space-y-3 shadow-2xl">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <span className="text-xs font-semibold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                  <span>💻</span> {t.openSourceStack.webhookTitle}
+                </span>
+                <p className="text-[11px] text-slate-400 mt-0.5">{t.openSourceStack.webhookDesc}</p>
+              </div>
               <button
                 onClick={copyWebhookSnippet}
-                className="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 transition-all"
+                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 transition-all border border-slate-700"
               >
                 {copied ? 'Copied!' : t.openSourceStack.copyBtn}
               </button>
             </div>
-            <pre className="p-4 rounded-xl bg-black/80 border border-slate-800 text-emerald-400 text-xs font-mono overflow-x-auto">
+            <pre className="p-4 rounded-xl bg-black/90 border border-slate-800 text-emerald-400 text-xs font-mono overflow-x-auto leading-relaxed">
               {webhookCurlSnippet}
             </pre>
           </div>
         </div>
 
-        {/* Omni-Channel Feedback Form Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 scroll-reveal">
+        {/* Omni-Channel Feedback Form & Ticket Tracker Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 scroll-reveal">
           
           {/* Main Form */}
-          <div className="lg:col-span-7 bg-slate-900/60 border border-slate-800 rounded-3xl p-8 backdrop-blur-xl shadow-2xl space-y-6">
+          <div className="lg:col-span-7 bg-slate-900/60 border border-slate-800/90 rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl space-y-6">
             <div>
-              <h3 className="text-2xl font-bold text-white">{t.form.title}</h3>
-              <p className="text-slate-400 text-sm mt-1">{t.form.subtitle}</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-white">{t.form.title}</h3>
+              <p className="text-slate-400 text-xs sm:text-sm mt-1">{t.form.subtitle}</p>
             </div>
 
             {/* Channel Selection Buttons */}
@@ -450,7 +459,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
 
           {/* Ticket Tracker Console */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 backdrop-blur-xl shadow-2xl space-y-4">
+            <div className="bg-slate-900/60 border border-slate-800/90 rounded-3xl p-6 backdrop-blur-xl shadow-2xl space-y-4">
               <div>
                 <h3 className="text-xl font-bold text-white flex items-center gap-2">
                   <span>🔎</span> {t.tracker.title}
@@ -475,15 +484,16 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                 </button>
               </form>
 
-              {/* Sample Ticket Shortcuts */}
+              {/* Sample Ticket Shortcut */}
               <div className="flex items-center gap-2 text-xs text-slate-400">
-                <span>Try example:</span>
                 <button
                   type="button"
-                  onClick={() => setLookupId('TK-2026-8812')}
-                  className="text-blue-400 hover:underline font-mono"
+                  onClick={() => {
+                    setLookupId('TK-2026-8812');
+                  }}
+                  className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-blue-400 hover:text-blue-300 transition-all font-mono text-[11px]"
                 >
-                  TK-2026-8812
+                  ⚡ {t.tracker.sampleBtn || 'Load Test Sample'} (TK-2026-8812)
                 </button>
               </div>
 
@@ -508,8 +518,8 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
             </div>
 
             {/* Omni-Channel Direct Contacts */}
-            <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 backdrop-blur-xl shadow-2xl space-y-4">
-              <h4 className="text-sm font-bold text-white uppercase tracking-wider">
+            <div className="bg-slate-900/60 border border-slate-800/90 rounded-3xl p-6 backdrop-blur-xl shadow-2xl space-y-4">
+              <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider">
                 Direct Omni-Channel Contacts
               </h4>
 
@@ -537,8 +547,8 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                   <div className="flex items-center gap-2.5">
                     <span className="text-base">🐙</span>
                     <div>
-                      <div className="font-semibold text-white group-hover:text-purple-400">GitHub Open Source Repo</div>
-                      <div className="text-slate-400 text-[11px]">Muneeb7860/agentic-redteam</div>
+                      <div className="font-semibold text-white group-hover:text-purple-400">SwishOS Open Source Harness</div>
+                      <div className="text-slate-400 text-[11px]">github.com/Muneeb7860/agentic-redteam</div>
                     </div>
                   </div>
                   <span className="text-slate-500 group-hover:text-purple-400">→</span>
