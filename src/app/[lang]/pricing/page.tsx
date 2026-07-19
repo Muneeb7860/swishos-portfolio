@@ -13,7 +13,7 @@ const dictionaries: Record<string, typeof en> = { en, ar };
 // been published as a standalone public repo yet. Until it is, the OSS card must not
 // link out — a 404 on the free tier is the worst first impression for a
 // credibility-led offer. When the repo is public: flip this to true and confirm the URL.
-const OSS_REPO_PUBLISHED = false;
+const OSS_REPO_PUBLISHED = true;
 const OSS_REPO_URL = 'https://github.com/Muneeb7860/agentic-redteam';
 
 type Tier = {
