@@ -17,6 +17,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [ticketResult, setTicketResult] = useState<{
     ticketId: string;
     priority: string;
@@ -93,6 +94,23 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
     }
   };
 
+  const webhookCurlSnippet = `curl -X POST https://swishos.io/api/support \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "channel": "api",
+    "category": "security_incident",
+    "name": "DevOps Engineer",
+    "email": "security@company.com",
+    "subject": "Red-team telemetry report",
+    "message": "Elevated vulnerability trace detected on LLM endpoint."
+  }'`;
+
+  const copyWebhookSnippet = () => {
+    navigator.clipboard.writeText(webhookCurlSnippet);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className={`min-h-screen bg-[#0A0D14] text-white pt-24 pb-20 ${isRtl ? 'rtl' : 'ltr'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -166,6 +184,115 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* GitHub Open-Source Support Stack Showcase */}
+        <div className="scroll-reveal space-y-6 pt-4">
+          <div className="border-b border-slate-800 pb-4 flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                <span className="text-purple-400">🐙</span> {t.openSourceStack.title}
+              </h2>
+              <p className="text-slate-400 text-sm">{t.openSourceStack.subtitle}</p>
+            </div>
+            <a
+              href="https://github.com/chatwoot/chatwoot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-semibold hover:bg-purple-500/20 transition-all flex items-center gap-2"
+            >
+              <span>Explore GitHub Repos</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a
+              href="https://github.com/chatwoot/chatwoot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 transition-all group block shadow-lg"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-bold text-white group-hover:text-purple-400 transition-colors">Chatwoot</span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                  {t.openSourceStack.chatwootBadge}
+                </span>
+              </div>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                {t.openSourceStack.chatwootDesc}
+              </p>
+            </a>
+
+            <a
+              href="https://github.com/freescout-helpdesk/freescout"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all group block shadow-lg"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-bold text-white group-hover:text-emerald-400 transition-colors">FreeScout</span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  {t.openSourceStack.freescoutBadge}
+                </span>
+              </div>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                {t.openSourceStack.freescoutDesc}
+              </p>
+            </a>
+
+            <a
+              href="https://github.com/zammad/zammad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-blue-500/40 transition-all group block shadow-lg"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-bold text-white group-hover:text-blue-400 transition-colors">Zammad</span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                  {t.openSourceStack.zammadBadge}
+                </span>
+              </div>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                {t.openSourceStack.zammadDesc}
+              </p>
+            </a>
+
+            <a
+              href="https://github.com/papercups-io/papercups"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-all group block shadow-lg"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-bold text-white group-hover:text-amber-400 transition-colors">Papercups</span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  {t.openSourceStack.papercupsBadge}
+                </span>
+              </div>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                {t.openSourceStack.papercupsDesc}
+              </p>
+            </a>
+          </div>
+
+          {/* Webhook Payload Generator */}
+          <div className="p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+                <span>💻</span> {t.openSourceStack.webhookTitle}
+              </span>
+              <button
+                onClick={copyWebhookSnippet}
+                className="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 transition-all"
+              >
+                {copied ? 'Copied!' : t.openSourceStack.copyBtn}
+              </button>
+            </div>
+            <pre className="p-4 rounded-xl bg-black/80 border border-slate-800 text-emerald-400 text-xs font-mono overflow-x-auto">
+              {webhookCurlSnippet}
+            </pre>
           </div>
         </div>
 
@@ -380,7 +507,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               )}
             </div>
 
-            {/* Omni-Channel Direct Channels */}
+            {/* Omni-Channel Direct Contacts */}
             <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 backdrop-blur-xl shadow-2xl space-y-4">
               <h4 className="text-sm font-bold text-white uppercase tracking-wider">
                 Direct Omni-Channel Contacts

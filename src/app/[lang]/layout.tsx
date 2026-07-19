@@ -8,6 +8,8 @@ import { ThemeToggle } from "../../components/ThemeToggle";
 import { LanguageSwitcher } from "../../components/LanguageSwitcher";
 import { ServiceBot } from "../../components/ServiceBot";
 import { MobileMenu } from "../../components/MobileMenu";
+import { ChatwootWidget } from "../../components/ChatwootWidget";
+import { SupportChatDrawer } from "../../components/SupportChatDrawer";
 
 import en from "../../dictionaries/en.json";
 import ar from "../../dictionaries/ar.json";
@@ -119,6 +121,10 @@ export default async function RootLayout(props: {
 
           {/* SERVICE BOT MOCKUP */}
           <ServiceBot dict={dict.bot} />
+
+          {/* OPEN-SOURCE CHATWOOT & LIVE SUPPORT DRAWER */}
+          <ChatwootWidget lang={lang} />
+          <SupportChatDrawer lang={lang} />
 
         </ThemeProvider>
       </body>

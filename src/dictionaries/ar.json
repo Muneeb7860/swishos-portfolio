@@ -258,6 +258,20 @@
       "priorityLabel": "أولوية SLA",
       "sentimentLabel": "المشاعر المكتشفة",
       "aiReplyLabel": "التصنيف الآلي والرد الذكي"
+    },
+    "openSourceStack": {
+      "title": "حزمة الدعم مفتوحة المصدر من GitHub",
+      "subtitle": "استضف بنفسك برمجيات دعم العملاء مفتوحة المصدر واكتب الربط المباشر عبر Webhooks وSDKs.",
+      "chatwootBadge": "⭐ أكثر من 19.5k نجمة",
+      "chatwootDesc": "بديل Intercom للمحادثة المباشرة والبريد المشترك وتوجيه الوكلاء الآلي.",
+      "freescoutBadge": "⭐ أكثر من 4.5k نجمة",
+      "freescoutDesc": "بديل Help Scout الخفيف بلغة PHP لإدارة التذاكر عبر البريد أولاً.",
+      "zammadBadge": "⭐ أكثر من 4.2k نجمة",
+      "zammadDesc": "منظومة إسناد وتذاكر للمؤسسات مع تتبع دقيق لاتفاقيات مستوى الخدمة (SLA).",
+      "papercupsBadge": "⭐ أكثر من 3.8k نجمة",
+      "papercupsDesc": "أداة محادثة عملاء مفتوحة المصدر لتطبيقات الويب والجوال مع ربط سلاك.",
+      "webhookTitle": "حمولة Webhook الفورية للربط",
+      "copyBtn": "نسخ الحمولة"
     }
   }
 }
