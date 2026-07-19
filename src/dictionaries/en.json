@@ -123,7 +123,7 @@
   },
   "loginPage": {
     "title": "Welcome Back",
-    "subtitle": "Sign in to your SwishOS console",
+    "subtitle": "Sign in to your SwishOS Security Console",
     "emailLabel": "Work Email",
     "emailPlaceholder": "you@company.com",
     "passwordLabel": "Password",
@@ -133,7 +133,7 @@
   },
   "signupPage": {
     "title": "Join SwishOS",
-    "subtitle": "Get started with the unified AI-native B2B platform",
+    "subtitle": "Get started with SwishOS AI Agent Security & Governance",
     "nameLabel": "Full Name",
     "namePlaceholder": "Jane Doe",
     "emailLabel": "Work Email",
