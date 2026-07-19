@@ -6,6 +6,7 @@
     "roi": "ROI Calculator",
     "vision": "Vision",
     "contact": "Book an Audit",
+    "support": "Support",
     "login": "Log In",
     "signup": "Sign Up"
   },
@@ -202,5 +203,61 @@
     "retainerCta": "Talk about a retainer",
     "popularBadge": "Most teams start here",
     "footnote": "Prices are USD for global engagements. Regional rates apply for India and the GCC. One or two design-partner discounts are available in exchange for a public case study — ask."
+  },
+  "supportPage": {
+    "badge": "OMNI-CHANNEL SUPPORT & DEEP INSIGHTS",
+    "title": "Customer Support & Real-Time Feedback Hub",
+    "subtitle": "Accept feedback, triage security incidents, and track resolution metrics across Web, API, Email, Slack, and Enterprise Desk channels.",
+    "insightsTitle": "Omni-Channel SLA & Performance Telemetry",
+    "insightsSubtitle": "Live response metrics, sentiment distribution, and resolution performance across active support channels.",
+    "slaMetric": "< 15 min",
+    "slaLabel": "Average Response SLA",
+    "resolutionMetric": "99.4%",
+    "resolutionLabel": "First-Touch Resolution",
+    "satisfactionMetric": "4.95 / 5",
+    "satisfactionLabel": "Customer Satisfaction (CSAT)",
+    "activeChannelsMetric": "5 Channels",
+    "activeChannelsLabel": "Web, API, Slack, Email, Security Desk",
+    "channels": {
+      "web": "Web Portal",
+      "api": "API Webhook",
+      "audit_desk": "Security Audit Desk",
+      "slack": "Slack Connect",
+      "email": "Direct Email"
+    },
+    "categories": {
+      "bug": "Technical Issue / Bug Report",
+      "feature_request": "Feature & Guardrail Request",
+      "security_incident": "Critical Security & Threat Incident",
+      "general": "General Inquiry & Feedback"
+    },
+    "form": {
+      "title": "Submit Omni-Channel Feedback or Ticket",
+      "subtitle": "Select your submission channel and details below for instant AI triage and SLA assignment.",
+      "channelLabel": "Select Channel",
+      "categoryLabel": "Feedback Category",
+      "nameLabel": "Your Name",
+      "namePlaceholder": "Jane Doe",
+      "emailLabel": "Work Email",
+      "emailPlaceholder": "jane@company.com",
+      "subjectLabel": "Subject",
+      "subjectPlaceholder": "e.g., Red-team eval pipeline inquiry",
+      "messageLabel": "Message / Issue Details",
+      "messagePlaceholder": "Provide details regarding your issue or feedback...",
+      "submitButton": "Submit Ticket & Get Instant Triage",
+      "submitting": "Triaging & Dispatching...",
+      "successTitle": "Ticket Submitted Successfully!",
+      "successMsg": "Your enquiry has been triaged and dispatched. Ticket ID:"
+    },
+    "tracker": {
+      "title": "Lookup Ticket Status & Reply",
+      "subtitle": "Enter your Ticket ID (e.g., TK-2026-8812) to inspect real-time AI triage status and engineering response.",
+      "inputPlaceholder": "Enter Ticket ID (e.g., TK-2026-8812)...",
+      "lookupBtn": "Lookup Ticket",
+      "statusLabel": "Status",
+      "priorityLabel": "Priority SLA",
+      "sentimentLabel": "Detected Sentiment",
+      "aiReplyLabel": "Automated AI Triage & Reply"
+    }
   }
 }

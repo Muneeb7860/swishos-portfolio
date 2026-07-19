@@ -83,6 +83,7 @@ export default async function RootLayout(props: {
                 <Link href={`/${lang}/features`}>{dict.nav.features}</Link>
                 <Link href={`/${lang}/pricing`}>{dict.nav.pricing}</Link>
                 <Link href={`/${lang}/vision`}>{dict.nav.vision}</Link>
+                <Link href={`/${lang}/support`}>{dict.nav.support}</Link>
               </nav>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <LanguageSwitcher currentLang={lang} />
@@ -94,6 +95,7 @@ export default async function RootLayout(props: {
                     { href: `/${lang}/features`, label: dict.nav.features },
                     { href: `/${lang}/pricing`, label: dict.nav.pricing },
                     { href: `/${lang}/vision`, label: dict.nav.vision },
+                    { href: `/${lang}/support`, label: dict.nav.support },
                   ]}
                   cta={{ primaryHref: `/${lang}/contact`, primaryLabel: dict.nav.contact }}
                 />
@@ -108,6 +110,7 @@ export default async function RootLayout(props: {
             <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '40px', paddingBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--muted)', flexWrap: 'wrap', gap: '20px' }}>
               <p style={{ fontSize: '14px' }}>© 2026 SwishOS. All rights reserved.</p>
               <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                <Link href={`/${lang}/support`} style={{ color: 'var(--muted)', fontSize: '14px', transition: 'color 0.2s' }}>{dict.nav.support}</Link>
                 <Link href={`/${lang}/contact`} style={{ color: 'var(--muted)', fontSize: '14px', transition: 'color 0.2s' }}>{dict.nav.contact}</Link>
                 <a href="mailto:hello@swishos.io" style={{ color: 'var(--muted)', fontSize: '14px' }}>hello@swishos.io</a>
               </div>
