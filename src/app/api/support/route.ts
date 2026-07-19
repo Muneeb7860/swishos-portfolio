@@ -2,6 +2,72 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
+// Deterministic Pre-Execution Prompt Injection & Threat Filter
+const THREAT_PATTERNS = [
+  /ignore\s+previous\s+instructions/i,
+  /system\s+prompt\s+reveal/i,
+  /dan\s+mode/i,
+  /developer\s+mode/i,
+  /<script[\s\S]*?>/i,
+  /javascript:/i,
+  /drop\s+table/i,
+  /truncate\s+table/i,
+];
+
+function sanitizeAndValidateInput(data: {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+  channel?: string;
+  category?: string;
+}) {
+  const { name = '', email = '', subject = '', message = '', channel = 'web', category = 'general' } = data;
+
+  // 1. Structural Length Contracts
+  if (name.length > 100 || subject.length > 200 || message.length > 2000) {
+    return { valid: false, status: 400, error: 'Input field exceeds maximum allowed character limit.' };
+  }
+
+  // 2. Email Contract
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    return { valid: false, status: 400, error: 'A valid email address is required.' };
+  }
+
+  // 3. Message Contract
+  if (!message || message.trim().length === 0) {
+    return { valid: false, status: 400, error: 'Message body cannot be empty.' };
+  }
+
+  // 4. Channel & Category Enum Contracts
+  const validChannels = ['web', 'api', 'audit_desk', 'slack', 'email'];
+  const validCategories = ['bug', 'feature_request', 'security_incident', 'general'];
+
+  if (!validChannels.includes(channel)) {
+    return { valid: false, status: 400, error: `Invalid channel '${channel}'.` };
+  }
+
+  if (!validCategories.includes(category)) {
+    return { valid: false, status: 400, error: `Invalid category '${category}'.` };
+  }
+
+  // 5. Shift Validation Left: Inline Threat & Prompt Injection Filtering
+  const fullContent = `${subject} ${message}`;
+  for (const pattern of THREAT_PATTERNS) {
+    if (pattern.test(fullContent)) {
+      return {
+        valid: false,
+        status: 422,
+        error: 'Security Enforcement Block: Malicious prompt injection or disallowed script pattern detected.',
+        threatDetected: true,
+      };
+    }
+  }
+
+  return { valid: true };
+}
+
 function determineTriage(category: string, message: string) {
   const isSecurity = category === 'security_incident' || /exploit|vulnerability|bypass|leak|jailbreak|threat/i.test(message);
   const isBug = category === 'bug' || /error|failed|crash|broken|issue/i.test(message);
@@ -35,20 +101,26 @@ function determineTriage(category: string, message: string) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, channel, category, subject, message } = body;
 
-    if (!email || !message) {
+    // Enforce Pre-Execution Schema Validation & Shift Validation Left
+    const validation = sanitizeAndValidateInput(body);
+    if (!validation.valid) {
       return NextResponse.json(
-        { success: false, error: 'Email and message are required.' },
-        { status: 400 }
+        {
+          success: false,
+          error: validation.error,
+          threatDetected: validation.threatDetected || false,
+        },
+        { status: validation.status }
       );
     }
 
+    const { name, email, channel, category, subject, message } = body;
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const ticketId = `TK-2026-${randomNum}`;
     const triage = determineTriage(category || 'general', message);
 
-    console.log('[SUPPORT ROUTE] Ticket Created:', {
+    console.log('[SUPPORT ROUTE] Pre-Validated Ticket Created:', {
       ticketId,
       name,
       email,
