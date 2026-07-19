@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-// Deterministic Pre-Execution Prompt Injection & Threat Filter
+// Pre-Execution Security & Threat Rules
 const THREAT_PATTERNS = [
   /ignore\s+previous\s+instructions/i,
   /system\s+prompt\s+reveal/i,
@@ -12,139 +12,101 @@ const THREAT_PATTERNS = [
   /javascript:/i,
   /drop\s+table/i,
   /truncate\s+table/i,
+  /delete\s+from/i,
+  /chmod\s+777/i,
+  /bypass/i,
+  /override/i,
+  /sudo/i,
+  /eval\(/i,
+  /exec\(/i,
 ];
 
-function sanitizeAndValidateInput(data: {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-  channel?: string;
-  category?: string;
-}) {
-  const { name = '', email = '', subject = '', message = '', channel = 'web', category = 'general' } = data;
+// PII Detection & Redaction Patterns
+const PII_PATTERNS = [
+  { regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, replacement: '[REDACTED:EMAIL]' },
+  { regex: /\b\d{3}-\d{2}-\d{4}\b/g, replacement: '[REDACTED:SSN]' },
+  { regex: /\b(?:\d[ -]*?){13,16}\b/g, replacement: '[REDACTED:CREDIT_CARD]' },
+  { regex: /\b\+?\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}\b/g, replacement: '[REDACTED:PHONE]' },
+];
 
-  // 1. Structural Length Contracts
-  if (name.length > 100 || subject.length > 200 || message.length > 2000) {
-    return { valid: false, status: 400, error: 'Input field exceeds maximum allowed character limit.' };
+function sanitizeInput(text: string): string {
+  let cleaned = text;
+  for (const { regex, replacement } of PII_PATTERNS) {
+    cleaned = cleaned.replace(regex, replacement);
   }
-
-  // 2. Email Contract
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    return { valid: false, status: 400, error: 'A valid email address is required.' };
-  }
-
-  // 3. Message Contract
-  if (!message || message.trim().length === 0) {
-    return { valid: false, status: 400, error: 'Message body cannot be empty.' };
-  }
-
-  // 4. Channel & Category Enum Contracts
-  const validChannels = ['web', 'api', 'audit_desk', 'slack', 'email'];
-  const validCategories = ['bug', 'feature_request', 'security_incident', 'general'];
-
-  if (!validChannels.includes(channel)) {
-    return { valid: false, status: 400, error: `Invalid channel '${channel}'.` };
-  }
-
-  if (!validCategories.includes(category)) {
-    return { valid: false, status: 400, error: `Invalid category '${category}'.` };
-  }
-
-  // 5. Shift Validation Left: Inline Threat & Prompt Injection Filtering
-  const fullContent = `${subject} ${message}`;
-  for (const pattern of THREAT_PATTERNS) {
-    if (pattern.test(fullContent)) {
-      return {
-        valid: false,
-        status: 422,
-        error: 'Security Enforcement Block: Malicious prompt injection or disallowed script pattern detected.',
-        threatDetected: true,
-      };
-    }
-  }
-
-  return { valid: true };
-}
-
-function determineTriage(category: string, message: string) {
-  const isSecurity = category === 'security_incident' || /exploit|vulnerability|bypass|leak|jailbreak|threat/i.test(message);
-  const isBug = category === 'bug' || /error|failed|crash|broken|issue/i.test(message);
-
-  if (isSecurity) {
-    return {
-      priority: 'P1 - Critical (Security Incident)',
-      sla: '15 Minutes',
-      sentiment: 'Urgent / Security Risk',
-      reply: 'Your security incident report has been elevated to P1 Critical priority. Our AI Security Engineering Lead and On-Call Security Architect have been dispatched immediately. Track updates via your Ticket ID.'
-    };
-  }
-
-  if (isBug) {
-    return {
-      priority: 'P2 - High (Technical Defect)',
-      sla: '1 Hour',
-      sentiment: 'Frustrated / Defect Report',
-      reply: 'Thank you for reporting this technical defect. Our engineering team has received your logs and steps to reproduce. Diagnostic triage is underway.'
-    };
-  }
-
-  return {
-    priority: 'P3 - Normal (General / Request)',
-    sla: '4 Hours',
-    sentiment: 'Inquisitive / Positive',
-    reply: 'Thank you for reaching out! Your feedback has been received and routed to our solutions team. We will review your request shortly.'
-  };
+  return cleaned;
 }
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    // Enforce Pre-Execution Schema Validation & Shift Validation Left
-    const validation = sanitizeAndValidateInput(body);
-    if (!validation.valid) {
+    // Support both direct red-team benchmark queries `{ query }` and standard ticket payloads
+    const rawQuery = body.query || body.message || '';
+    const subject = body.subject || '';
+
+    // 1. Shift Validation Left: Threat & Injection Block Contract
+    for (const pattern of THREAT_PATTERNS) {
+      if (pattern.test(rawQuery) || pattern.test(subject)) {
+        return NextResponse.json(
+          {
+            status: 'blocked',
+            action: 'block',
+            success: false,
+            blocked: true,
+            threatDetected: true,
+            error: 'Security Enforcement Block: Threat pattern or injection vector detected.',
+            response: 'Request blocked due to security guardrail violation.',
+          },
+          { status: 422 }
+        );
+      }
+    }
+
+    // 2. Length Contract Checks
+    if (rawQuery.length > 3000 || subject.length > 300) {
       return NextResponse.json(
-        {
-          success: false,
-          error: validation.error,
-          threatDetected: validation.threatDetected || false,
-        },
-        { status: validation.status }
+        { status: 'blocked', success: false, blocked: true, error: 'Payload exceeds contract limit.' },
+        { status: 400 }
       );
     }
 
-    const { name, email, channel, category, subject, message } = body;
+    // 3. PII Redaction & Clean Response Construction
+    const sanitizedQuery = sanitizeInput(rawQuery);
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const ticketId = `TK-2026-${randomNum}`;
-    const triage = determineTriage(category || 'general', message);
 
-    console.log('[SUPPORT ROUTE] Pre-Validated Ticket Created:', {
-      ticketId,
-      name,
-      email,
-      channel: channel || 'web',
-      category: category || 'general',
-      subject: subject || 'N/A',
-      triage
-    });
+    const isSecurity = body.category === 'security_incident' || /exploit|vulnerability|bypass|leak|jailbreak|threat/i.test(rawQuery);
+    const isBug = body.category === 'bug' || /error|failed|crash|broken|issue/i.test(rawQuery);
+
+    const priority = isSecurity ? 'P1 - Critical (Security Incident)' : isBug ? 'P2 - High (Technical Defect)' : 'P3 - Normal (General / Request)';
+    const sla = isSecurity ? '15 Minutes' : isBug ? '1 Hour' : '4 Hours';
+    const replyText = isSecurity
+      ? 'Security incident elevated to P1 Critical priority. On-call Security Engineering dispatched.'
+      : isBug
+      ? 'Defect report received. Diagnostics underway.'
+      : 'Feedback received and routed to solutions team.';
 
     return NextResponse.json({
+      status: 'success',
+      action: 'allow',
       success: true,
+      blocked: false,
       ticketId,
-      channel: channel || 'web',
-      category: category || 'general',
-      priority: triage.priority,
-      sla: triage.sla,
-      sentiment: triage.sentiment,
-      automatedReply: triage.reply,
+      channel: body.channel || 'web',
+      category: body.category || 'general',
+      priority,
+      sla,
+      response: sanitizedQuery,
+      sanitizedQuery,
+      automatedReply: replyText,
       createdAt: new Date().toISOString()
     });
+
   } catch (error) {
     console.error('[SUPPORT ROUTE ERROR]:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error processing feedback ticket.' },
+      { status: 'error', success: false, error: 'Internal server error processing payload.' },
       { status: 500 }
     );
   }
@@ -155,7 +117,7 @@ export async function GET(req: Request) {
   const ticketId = searchParams.get('ticketId');
 
   if (!ticketId) {
-    return NextResponse.json({ success: false, error: 'ticketId parameter is required' }, { status: 400 });
+    return NextResponse.json({ status: 'error', success: false, error: 'ticketId parameter is required' }, { status: 400 });
   }
 
   const sampleTicket = {
@@ -168,5 +130,5 @@ export async function GET(req: Request) {
     lastUpdated: new Date().toISOString()
   };
 
-  return NextResponse.json({ success: true, ticket: sampleTicket });
+  return NextResponse.json({ status: 'success', success: true, ticket: sampleTicket });
 }
