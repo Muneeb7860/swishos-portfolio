@@ -143,17 +143,30 @@ export async function POST(req: Request) {
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const ticketId = `TK-2026-${randomNum}`;
 
-    const isSecurity = body.category === 'security_incident' || /exploit|vulnerability|leak|threat/i.test(rawQuery);
-    const isBug = body.category === 'bug' || /error|failed|crash|broken|issue/i.test(rawQuery);
+    const isBooking = /audit|book|engagement|retainer|pricing/i.test(rawQuery);
+    const isSecurity = !isBooking && (body.category === 'security_incident' || /exploit|vulnerability|leak|threat/i.test(rawQuery));
+    const isBug = !isBooking && !isSecurity && (body.category === 'bug' || /error|failed|crash|broken|issue/i.test(rawQuery));
 
-    const intent = isSecurity ? 'security_incident' : isBug ? 'technical_support' : 'general_query';
-    const priority = isSecurity ? 'P1 - Critical (Security Incident)' : isBug ? 'P2 - High (Technical Defect)' : 'P3 - Normal (General / Request)';
-    const sla = isSecurity ? '15 Minutes' : isBug ? '1 Hour' : '4 Hours';
-    const replyText = isSecurity
-      ? 'Security incident elevated to P1 Critical priority. On-call Security Engineering dispatched.'
-      : isBug
-      ? 'Defect report received. Diagnostics underway.'
-      : 'Feedback received and routed to solutions team.';
+    const lang = body.lang || 'en';
+    const intent = isBooking ? 'audit_booking' : isSecurity ? 'security_incident' : isBug ? 'technical_support' : 'general_query';
+    const priority = isBooking ? 'P1 - High (Audit Inquiry)' : isSecurity ? 'P1 - Critical (Security Incident)' : isBug ? 'P2 - High (Technical Defect)' : 'P3 - Normal (General / Request)';
+    const sla = isBooking ? '30 Minutes' : isSecurity ? '15 Minutes' : isBug ? '1 Hour' : '4 Hours';
+    
+    let replyText = 'Feedback received and routed to solutions team.';
+    let actionUrl: string | undefined = undefined;
+    let actionLabel: string | undefined = undefined;
+
+    if (isBooking) {
+      replyText = lang === 'ar'
+        ? 'يسعدنا مساعدتك في حجز تدقيق أمن وكيل الذكاء الاصطناعي (نطاق ثابت 1-2 أسبوع بقيمة $7,500 - $12,500). تم تسجيل طلبك ورَفعه للفريق، ويمكنك أيضاً إكمال تفاصيل الحجز مباشرة عبر الرابط أدناه:'
+        : 'I can assist you with booking an AI Agent Security Audit ($7,500 – $12,500 fixed scope, 1–2 weeks). Your request has been logged, and you can also finalize your booking directly via the link below:';
+      actionUrl = `/${lang}/contact?plan=audit`;
+      actionLabel = lang === 'ar' ? '🎯 إكمال حجز التدقيق المباشر' : '🎯 Complete Direct Audit Booking';
+    } else if (isSecurity) {
+      replyText = 'Security incident elevated to P1 Critical priority. On-call Security Engineering dispatched.';
+    } else if (isBug) {
+      replyText = 'Defect report received. Diagnostics underway.';
+    }
 
     return NextResponse.json({
       status: 'success',
@@ -176,6 +189,8 @@ export async function POST(req: Request) {
       response: sanitizedQuery,
       sanitizedQuery,
       automatedReply: replyText,
+      actionUrl,
+      actionLabel,
       createdAt: new Date().toISOString()
     });
 

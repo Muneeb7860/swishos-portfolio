@@ -7,6 +7,8 @@ interface Message {
   text: string;
   timestamp: string;
   actionTag?: string;
+  actionUrl?: string;
+  actionLabel?: string;
 }
 
 export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
@@ -58,6 +60,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
           category: /audit|book|pricing/i.test(query) ? 'general' : /vulnerability|jailbreak|threat|exploit/i.test(query) ? 'security_incident' : 'bug',
           subject: 'Live Chat Support Query',
           message: query,
+          lang,
         }),
       });
 
@@ -69,6 +72,8 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
         text: data.automatedReply || (lang === 'ar' ? 'تم استلام طلبك وتصنيفه بنجاح.' : 'Your request has been triaged and dispatched.'),
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         actionTag: data.ticketId ? `Ticket: ${data.ticketId} (${data.sla})` : undefined,
+        actionUrl: data.actionUrl,
+        actionLabel: data.actionLabel,
       };
 
       setMessages(prev => [...prev, botMsg]);
@@ -246,6 +251,30 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
                   }}
                 >
                   {msg.text}
+                  
+                  {msg.actionUrl && (
+                    <div style={{ marginTop: '10px' }}>
+                      <a
+                        href={msg.actionUrl}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          padding: '8px 14px',
+                          borderRadius: '8px',
+                          background: 'var(--brand, #E10600)',
+                          color: '#ffffff',
+                          fontSize: '12px',
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                          boxShadow: '0 4px 12px var(--glow, rgba(225,6,0,0.4))',
+                        }}
+                      >
+                        {msg.actionLabel || (lang === 'ar' ? 'الانتقال للحجز المباشر' : 'Book Audit Now')}
+                      </a>
+                    </div>
+                  )}
+
                   {msg.actionTag && (
                     <div style={{
                       marginTop: '8px',
@@ -311,7 +340,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
                   color: 'var(--txt, #ffffff)',
                   cursor: 'pointer',
                   flexShrink: 0,
-                  transition: 'all 0.2s ease',
+                  transition: 'all 0.25s ease',
                 }}
               >
                 {pill.label}
@@ -363,7 +392,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
                 border: 'none',
                 cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
                 opacity: loading || !input.trim() ? 0.5 : 1,
-                transition: 'all 0.2s ease',
+                transition: 'all 0.25s ease',
               }}
             >
               {lang === 'ar' ? 'إرسال' : 'Send'}
