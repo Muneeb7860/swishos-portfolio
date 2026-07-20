@@ -131,11 +131,16 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
 
         {/* Deep Insights Telemetry Panel */}
         <div className="scroll-reveal space-y-6">
-          <div className="border-b border-slate-800/80 pb-3">
-            <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-              <span className="text-emerald-400">⚡</span> {t.insightsTitle}
-            </h2>
-            <p className="text-slate-400 text-xs sm:text-sm">{t.insightsSubtitle}</p>
+          <div className="border-b border-slate-800/80 pb-3 flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                <span className="text-emerald-400">⚡</span> {t.insightsTitle}
+              </h2>
+              <p className="text-slate-400 text-xs sm:text-sm">{t.insightsSubtitle}</p>
+            </div>
+            <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
+              LIVE STREAM
+            </span>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
@@ -220,7 +225,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               rel="noopener noreferrer"
               className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-2 flex-wrap gap-1">
                 <span className="font-bold text-sm text-white group-hover:text-purple-400 transition-colors">Chatwoot</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
                   {t.openSourceStack.chatwootBadge}
@@ -237,7 +242,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               rel="noopener noreferrer"
               className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-2 flex-wrap gap-1">
                 <span className="font-bold text-sm text-white group-hover:text-emerald-400 transition-colors">FreeScout</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   {t.openSourceStack.freescoutBadge}
@@ -254,7 +259,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               rel="noopener noreferrer"
               className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-blue-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-2 flex-wrap gap-1">
                 <span className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">Zammad</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
                   {t.openSourceStack.zammadBadge}
@@ -271,7 +276,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               rel="noopener noreferrer"
               className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-all group block shadow-lg"
             >
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-2 flex-wrap gap-1">
                 <span className="font-bold text-sm text-white group-hover:text-amber-400 transition-colors">Papercups</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
                   {t.openSourceStack.papercupsBadge}
@@ -326,10 +331,10 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                     key={ch}
                     type="button"
                     onClick={() => setActiveChannel(ch)}
-                    className={`px-3 py-2.5 rounded-xl text-xs font-medium border transition-all text-left flex items-center justify-between ${
+                    className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border transition-all text-left flex items-center justify-between shadow-sm ${
                       activeChannel === ch
-                        ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 shadow-lg shadow-emerald-500/10'
-                        : 'bg-slate-950/50 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+                        ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 shadow-md shadow-emerald-500/10'
+                        : 'bg-slate-950/80 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
                     }`}
                   >
                     <span>{t.channels[ch]}</span>
@@ -350,12 +355,12 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                     key={cat}
                     type="button"
                     onClick={() => setCategory(cat)}
-                    className={`px-3 py-2 rounded-xl text-xs font-medium border transition-all text-left ${
+                    className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium border transition-all text-left ${
                       category === cat
                         ? cat === 'security_incident'
                           ? 'bg-rose-500/20 border-rose-500 text-rose-300'
                           : 'bg-blue-500/20 border-blue-500 text-blue-300'
-                        : 'bg-slate-950/50 border-slate-800 text-slate-400 hover:border-slate-700'
+                        : 'bg-slate-950/80 border-slate-800 text-slate-400 hover:border-slate-700'
                     }`}
                   >
                     {t.categories[cat]}
@@ -375,7 +380,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                     value={form.name}
                     onChange={handleInputChange}
                     placeholder={t.form.namePlaceholder}
-                    className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full max-w-full min-w-0 bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                   />
                 </div>
 
@@ -388,7 +393,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                     value={form.email}
                     onChange={handleInputChange}
                     placeholder={t.form.emailPlaceholder}
-                    className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full max-w-full min-w-0 bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                   />
                 </div>
               </div>
@@ -402,7 +407,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                   value={form.subject}
                   onChange={handleInputChange}
                   placeholder={t.form.subjectPlaceholder}
-                  className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                  className="w-full max-w-full min-w-0 bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 />
               </div>
 
@@ -415,14 +420,14 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                   value={form.message}
                   onChange={handleInputChange}
                   placeholder={t.form.messagePlaceholder}
-                  className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
+                  className="w-full max-w-full min-w-0 bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg shadow-emerald-500/20 transition-all disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-semibold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-500/20 transition-all disabled:opacity-50 text-sm"
               >
                 {loading ? t.form.submitting : t.form.submitButton}
               </button>
@@ -473,12 +478,12 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                   value={lookupId}
                   onChange={e => setLookupId(e.target.value)}
                   placeholder={t.tracker.inputPlaceholder}
-                  className="flex-1 bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                  className="flex-1 bg-slate-950/90 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500/50"
                 />
                 <button
                   type="submit"
                   disabled={lookupLoading}
-                  className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all disabled:opacity-50"
+                  className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition-all disabled:opacity-50"
                 >
                   {t.tracker.lookupBtn}
                 </button>
@@ -491,9 +496,9 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                   onClick={() => {
                     setLookupId('TK-2026-8812');
                   }}
-                  className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-blue-400 hover:text-blue-300 transition-all font-mono text-[11px]"
+                  className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-blue-400 hover:text-blue-300 hover:border-blue-500/40 transition-all font-mono text-[11px]"
                 >
-                  ⚡ {t.tracker.sampleBtn || 'Load Test Sample'} (TK-2026-8812)
+                  ⚡ {t.tracker.sampleBtn}
                 </button>
               </div>
 
@@ -547,7 +552,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                   <div className="flex items-center gap-2.5">
                     <span className="text-base">🐙</span>
                     <div>
-                      <div className="font-semibold text-white group-hover:text-purple-400">SwishOS Open Source Harness</div>
+                      <div className="font-semibold text-white group-hover:text-purple-400">SwishOS Open Source Harness (Public GitHub)</div>
                       <div className="text-slate-400 text-[11px]">github.com/Muneeb7860/agentic-redteam</div>
                     </div>
                   </div>

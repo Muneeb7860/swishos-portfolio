@@ -20,7 +20,7 @@ test.describe('SwishOS Support Hub & Incident Triage E2E Tests', () => {
     await expect(page.getByText('FreeScout')).toBeVisible();
 
     // 4. Verify Floating AI Assistant Button
-    await expect(page.getByText('💬 SwishOS AI Assistant')).toBeVisible();
+    await expect(page.getByText('💬 Live AI Assistant • Online')).toBeVisible();
   });
 
   test('Submitting Critical Security Incident triggers P1 15-min SLA triage', async ({ page }) => {

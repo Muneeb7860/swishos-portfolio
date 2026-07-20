@@ -100,7 +100,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
         className={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-2xl border border-emerald-400/40 transition-all cursor-pointer`}
       >
         <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-pulse" />
-        <span className="whitespace-nowrap">{isOpen ? (lang === 'ar' ? 'إغلاق المحادثة' : 'Close Chat') : (lang === 'ar' ? '💬 مساعد SwishOS الأمني' : '💬 SwishOS AI Assistant')}</span>
+        <span className="whitespace-nowrap">{isOpen ? (lang === 'ar' ? 'إغلاق المحادثة' : 'Close Chat') : (lang === 'ar' ? '💬 مساعد SwishOS الأمني • متصل' : '💬 Live AI Assistant • Online')}</span>
       </button>
 
       {/* Slide-Out Chat Drawer */}
