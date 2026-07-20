@@ -209,7 +209,27 @@
     ],
     "retainerCta": "Talk about a retainer",
     "popularBadge": "Most teams start here",
-    "footnote": "Prices are USD for global engagements. Regional rates apply for India and the GCC. One or two design-partner discounts are available in exchange for a public case study — ask."
+    "footnote": "Prices are USD for global engagements. Regional rates apply for India and the GCC. One or two design-partner discounts are available in exchange for a public case study — ask.",
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Everything you need to know about AI Security Engagements.",
+    "faqItems": [
+      {
+        "q": "What AI agent frameworks and stacks do you support?",
+        "a": "Any agent that exposes an HTTP endpoint or SDK interface. This includes custom Python/Node frameworks, LangChain, AutoGen, CrewAI, LLaMA-Index, or proprietary internal orchestration layers."
+      },
+      {
+        "q": "Do we need to grant full source code access?",
+        "a": "No. We support black-box, gray-box, and white-box testing. While repository access yields deeper guardrail PR recommendations, red-teaming can be executed purely against your staging API endpoints under a signed NDA."
+      },
+      {
+        "q": "What exact deliverables do we receive from an audit?",
+        "a": "You receive a severity-ranked OWASP LLM Threat Report, an executable red-team test suite, ready-to-merge guardrail PR configs (e.g. NeMo, Llama-Guard, or custom semantic rules), and a 60-minute executive debrief."
+      },
+      {
+        "q": "How does the monthly retainer work?",
+        "a": "The retainer offers continuous threat sweeps on every release, guardrail maintenance as new jailbreaks emerge, and direct architecture reviews. It is rolling month-to-month with 30 days' notice and no long-term lock-in."
+      }
+    ]
   },
   "supportPage": {
     "badge": "OMNI-CHANNEL SUPPORT & DEEP INSIGHTS",

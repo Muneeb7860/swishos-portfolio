@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
 import { useScrollReveal } from '../../../hooks/useScrollReveal';
@@ -8,11 +9,31 @@ const dictionaries: Record<string, typeof en> = { en, ar };
 
 export default function ContactClient({ lang }: { lang: string }) {
   const dict = dictionaries[lang] || en;
+  const searchParams = useSearchParams();
+  const plan = searchParams.get('plan');
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', company: '', message: '' });
+
+  useEffect(() => {
+    if (plan === 'audit' && !form.message) {
+      setForm(prev => ({
+        ...prev,
+        message: lang === 'ar'
+          ? 'مرحباً، أود حجز تدقيق أمني لوكيل الذكاء الاصطناعي الخاص بنا.'
+          : 'Hi, I would like to book an AI Agent Security Audit for our team.'
+      }));
+    } else if (plan === 'retainer' && !form.message) {
+      setForm(prev => ({
+        ...prev,
+        message: lang === 'ar'
+          ? 'مرحباً، أود الاستفسار عن الاشتراك الشهري لحواجز الحماية واختبار الاختراق.'
+          : 'Hi, I would like to discuss a Guardrail & Red-Team Retainer for our AI agents.'
+      }));
+    }
+  }, [plan, lang]);
 
   useScrollReveal();
 
@@ -55,6 +76,30 @@ export default function ContactClient({ lang }: { lang: string }) {
       <section style={{ paddingTop: '20px' }}>
         <div className="wrap">
           <div className="auth-box reveal" style={{ marginTop: '0', maxWidth: '600px' }}>
+            {plan && (
+              <div style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid var(--brand)',
+                borderRadius: '12px',
+                padding: '12px 16px',
+                marginBottom: '24px',
+                fontSize: '14px',
+                color: 'var(--txt)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span style={{ fontSize: '18px' }}>🎯</span>
+                <span>
+                  {lang === 'ar' ? 'الخدمة المطلوبة: ' : 'Interested In: '}
+                  <strong>
+                    {plan === 'audit'
+                      ? (lang === 'ar' ? 'تدقيق أمن وكيل الذكاء الاصطناعي ($7,500 – $12,500)' : 'AI Agent Security Audit ($7,500 – $12,500)')
+                      : (lang === 'ar' ? 'اشتراك حواجز الحماية واختبار الاختراق ($4,500 / شهرياً)' : 'Guardrail & Red-Team Retainer ($4,500 / month)')}
+                  </strong>
+                </span>
+              </div>
+            )}
             {submitted ? (
               <div style={{ padding: '40px 0', textAlign: 'center' }}>
                 <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>

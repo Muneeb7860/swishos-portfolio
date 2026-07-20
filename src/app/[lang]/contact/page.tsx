@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import ContactClient from './ContactClient';
 
@@ -21,5 +22,9 @@ export default async function ContactPage(props: {
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await props.params;
-  return <ContactClient lang={lang} />;
+  return (
+    <Suspense>
+      <ContactClient lang={lang} />
+    </Suspense>
+  );
 }

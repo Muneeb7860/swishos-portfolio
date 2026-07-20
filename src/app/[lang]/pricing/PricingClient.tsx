@@ -55,7 +55,7 @@ export default function PricingClient({ lang }: { lang: string }) {
       note: p.auditNote,
       features: p.auditFeatures,
       cta: p.auditCta,
-      href: `/${lang}/contact`,
+      href: `/${lang}/contact?plan=audit`,
       featured: true,
     },
     {
@@ -66,7 +66,7 @@ export default function PricingClient({ lang }: { lang: string }) {
       note: p.retainerNote,
       features: p.retainerFeatures,
       cta: p.retainerCta,
-      href: `/${lang}/contact`,
+      href: `/${lang}/contact?plan=retainer`,
     },
   ];
 
@@ -186,6 +186,43 @@ export default function PricingClient({ lang }: { lang: string }) {
           </p>
         </div>
       </section>
+
+      {/* FAQ SECTION */}
+      {p.faqItems && (
+        <section style={{ padding: '80px 0 40px' }}>
+          <div className="wrap">
+            <div style={{ textAlign: 'center', marginBottom: '48px' }} className="reveal">
+              <span className="pill" style={{ marginBottom: '12px', display: 'inline-flex' }}>
+                <span className="dot"></span> FAQ
+              </span>
+              <h2 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '12px' }}>{p.faqTitle}</h2>
+              <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '640px', margin: '0 auto' }}>{p.faqSubtitle}</p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', maxWidth: '1000px', margin: '0 auto' }}>
+              {p.faqItems.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="feature reveal"
+                  style={{
+                    padding: '24px',
+                    borderRadius: '16px',
+                    border: '1px solid var(--line)',
+                    background: 'var(--card-bg, rgba(255,255,255,0.02))'
+                  }}
+                >
+                  <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '10px', color: 'var(--txt)' }}>
+                    {item.q}
+                  </h4>
+                  <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: '1.6', margin: 0 }}>
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
