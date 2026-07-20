@@ -91,76 +91,195 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
         { label: '🔍 Check Response SLA', query: 'What are the response SLA parameters for security tickets?' },
       ];
 
+  const posStyle: React.CSSProperties = isRtl
+    ? { left: '24px', right: 'auto' }
+    : { right: '24px', left: 'auto' };
+
   return (
     <>
       {/* Floating Toggle Button */}
       <button
         onClick={() => setIsOpen(prev => !prev)}
         aria-label="Toggle Live Support Chat"
-        className={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-2xl border border-emerald-400/40 transition-all cursor-pointer`}
+        style={{
+          position: 'fixed',
+          bottom: '24px',
+          ...posStyle,
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          padding: '12px 20px',
+          borderRadius: '999px',
+          background: 'var(--brand, #E10600)',
+          color: '#ffffff',
+          fontWeight: 700,
+          fontSize: '13px',
+          border: '1px solid var(--brand-2, #FF332A)',
+          boxShadow: '0 8px 30px rgba(225, 6, 0, 0.4), 0 4px 12px rgba(0,0,0,0.3)',
+          cursor: 'pointer',
+          transition: 'all 0.25s ease',
+        }}
       >
-        <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-pulse" />
-        <span className="whitespace-nowrap">{isOpen ? (lang === 'ar' ? 'إغلاق المحادثة' : 'Close Chat') : (lang === 'ar' ? '💬 مساعد SwishOS الأمني • متصل' : '💬 Live AI Assistant • Online')}</span>
+        <span style={{
+          width: '8px',
+          height: '8px',
+          borderRadius: '50%',
+          background: '#4ade80',
+          boxShadow: '0 0 8px #4ade80',
+          display: 'inline-block'
+        }} />
+        <span style={{ whiteSpace: 'nowrap' }}>
+          {isOpen
+            ? (lang === 'ar' ? 'إغلاق المحادثة' : 'Close Chat')
+            : (lang === 'ar' ? '💬 مساعد SwishOS الأمني • متصل' : '💬 Live AI Assistant • Online')}
+        </span>
       </button>
 
       {/* Slide-Out Chat Drawer */}
       {isOpen && (
         <div
-          className={`fixed bottom-20 ${isRtl ? 'left-6' : 'right-6'} z-50 w-[92vw] sm:w-[380px] h-[520px] max-h-[80vh] bg-[#0A0D14]/95 border border-slate-800/90 rounded-3xl shadow-2xl backdrop-blur-2xl flex flex-col overflow-hidden animate-fade-in ${isRtl ? 'rtl' : 'ltr'}`}
+          style={{
+            position: 'fixed',
+            bottom: '84px',
+            ...posStyle,
+            zIndex: 9999,
+            width: 'min(380px, calc(100vw - 32px))',
+            height: '520px',
+            maxHeight: 'calc(85vh - 84px)',
+            background: 'var(--panel, #1a1a1a)',
+            border: '1px solid var(--line-strong, rgba(255,255,255,0.18))',
+            borderRadius: '20px',
+            boxShadow: '0 20px 50px rgba(0,0,0,0.6), 0 0 30px var(--glow, rgba(225,6,0,0.25))',
+            backdropFilter: 'blur(20px)',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            direction: isRtl ? 'rtl' : 'ltr',
+          }}
         >
           {/* Drawer Header */}
-          <div className="p-4 bg-gradient-to-r from-slate-900 via-slate-900/90 to-emerald-950/40 border-b border-slate-800 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-sm font-bold">
+          <div style={{
+            padding: '14px 16px',
+            background: 'var(--bg-soft, #141414)',
+            borderBottom: '1px solid var(--line, rgba(255,255,255,0.1))',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'rgba(225, 6, 0, 0.15)',
+                border: '1px solid var(--brand)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '14px',
+              }}>
                 🛡️
               </div>
               <div>
-                <h4 className="text-xs font-bold text-white leading-none">
+                <h4 style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt, #fff)', margin: 0, lineHeight: 1.2 }}>
                   {lang === 'ar' ? 'مساعد SwishOS الأمني' : 'SwishOS Security AI'}
                 </h4>
-                <span className="text-[10px] text-emerald-400 flex items-center gap-1 mt-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <div style={{ fontSize: '11px', color: '#4ade80', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} />
                   {lang === 'ar' ? 'متصل الآن · استجابة فوريّة' : 'Online · Instant Triage'}
-                </span>
+                </div>
               </div>
             </div>
 
             <button
               onClick={() => setIsOpen(false)}
-              className="text-slate-400 hover:text-white text-base px-2 py-1"
+              aria-label="Close Chat"
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--muted, #a3a3a3)',
+                fontSize: '18px',
+                cursor: 'pointer',
+                padding: '4px 8px',
+                borderRadius: '6px',
+                lineHeight: 1,
+              }}
             >
               ✕
             </button>
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3 scrollbar-thin">
+          <div style={{
+            flex: 1,
+            padding: '16px',
+            overflowY: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+          }}>
             {messages.map(msg => (
               <div
                 key={msg.id}
-                className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+                }}
               >
                 <div
-                  className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed ${
-                    msg.sender === 'user'
-                      ? 'bg-emerald-600 text-white rounded-br-none'
-                      : 'bg-slate-900 border border-slate-800 text-slate-200 rounded-bl-none shadow-md'
-                  }`}
+                  style={{
+                    maxWidth: '85%',
+                    padding: '10px 14px',
+                    borderRadius: msg.sender === 'user'
+                      ? (isRtl ? '16px 16px 16px 2px' : '16px 16px 2px 16px')
+                      : (isRtl ? '16px 16px 2px 16px' : '16px 16px 16px 2px'),
+                    fontSize: '13px',
+                    lineHeight: '1.5',
+                    background: msg.sender === 'user'
+                      ? 'var(--brand, #E10600)'
+                      : 'var(--bg-soft, #242424)',
+                    color: msg.sender === 'user' ? '#ffffff' : 'var(--txt, #ffffff)',
+                    border: msg.sender === 'user' ? 'none' : '1px solid var(--line)',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                  }}
                 >
                   {msg.text}
                   {msg.actionTag && (
-                    <div className="mt-2 pt-1.5 border-t border-emerald-400/30 text-[10px] font-mono text-emerald-300 font-semibold">
+                    <div style={{
+                      marginTop: '8px',
+                      paddingTop: '6px',
+                      borderTop: '1px solid rgba(255,255,255,0.15)',
+                      fontSize: '11px',
+                      fontFamily: 'monospace',
+                      color: '#4ade80',
+                      fontWeight: 700,
+                    }}>
                       {msg.actionTag}
                     </div>
                   )}
                 </div>
-                <span className="text-[9px] text-slate-500 mt-1 px-1">{msg.timestamp}</span>
+                <span style={{ fontSize: '10px', color: 'var(--muted-2, #888888)', marginTop: '4px', padding: '0 4px' }}>
+                  {msg.timestamp}
+                </span>
               </div>
             ))}
 
             {loading && (
-              <div className="flex items-center gap-2 text-xs text-emerald-400 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '12px',
+                color: 'var(--brand)',
+                background: 'var(--bg-soft)',
+                padding: '10px 14px',
+                borderRadius: '12px',
+                border: '1px solid var(--line)',
+                width: 'fit-content',
+              }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)' }} />
                 <span>{lang === 'ar' ? 'جاري التحليل والتصنيف...' : 'Triaging security request...'}</span>
               </div>
             )}
@@ -169,12 +288,31 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
           </div>
 
           {/* Quick Action Pills */}
-          <div className="px-3 py-2 bg-slate-950/60 border-t border-slate-800/80 flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+          <div style={{
+            padding: '10px 12px',
+            background: 'var(--bg-soft, #141414)',
+            borderTop: '1px solid var(--line, rgba(255,255,255,0.1))',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            overflowX: 'auto',
+            whiteSpace: 'nowrap',
+          }}>
             {quickPills.map((pill, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(pill.query)}
-                className="whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-[10px] text-slate-300 hover:text-white transition-all flex-shrink-0"
+                style={{
+                  padding: '6px 12px',
+                  borderRadius: '999px',
+                  background: 'var(--panel, #1A1A1A)',
+                  border: '1px solid var(--line)',
+                  fontSize: '11px',
+                  color: 'var(--txt, #ffffff)',
+                  cursor: 'pointer',
+                  flexShrink: 0,
+                  transition: 'all 0.2s ease',
+                }}
               >
                 {pill.label}
               </button>
@@ -187,19 +325,46 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2"
+            style={{
+              padding: '12px',
+              background: 'var(--bg-soft, #141414)',
+              borderTop: '1px solid var(--line)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}
           >
             <input
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder={lang === 'ar' ? 'اكتب رسالتك...' : 'Type your security query...'}
-              className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+              style={{
+                flex: 1,
+                background: 'var(--panel, #1a1a1a)',
+                border: '1px solid var(--line)',
+                borderRadius: '12px',
+                padding: '10px 14px',
+                fontSize: '13px',
+                color: 'var(--txt, #ffffff)',
+                outline: 'none',
+              }}
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-3 py-2 rounded-xl transition-all disabled:opacity-40"
+              style={{
+                background: 'var(--brand, #E10600)',
+                color: '#ffffff',
+                fontWeight: 700,
+                fontSize: '13px',
+                padding: '10px 16px',
+                borderRadius: '12px',
+                border: 'none',
+                cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
+                opacity: loading || !input.trim() ? 0.5 : 1,
+                transition: 'all 0.2s ease',
+              }}
             >
               {lang === 'ar' ? 'إرسال' : 'Send'}
             </button>
