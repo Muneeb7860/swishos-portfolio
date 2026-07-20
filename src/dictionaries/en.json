@@ -7,8 +7,15 @@
     "vision": "Vision",
     "contact": "Book an Audit",
     "support": "Support",
-    "login": "Log In",
-    "signup": "Sign Up"
+    "login": "Sign In",
+    "signup": "Request Access"
+  },
+  "footer": {
+    "tagline": "AI Agent Security & Governance. Red-teaming, guardrails, and continuous evals.",
+    "navTitle": "Navigation",
+    "supportTitle": "Support",
+    "rights": "© 2026 SwishOS. All rights reserved.",
+    "builtBy": "Built by an architect who shipped LLM guardrails at national scale."
   },
   "meta": {
     "title": "SwishOS | AI Agent Security & Governance",
@@ -277,7 +284,9 @@
       "papercupsDesc": "Open-source live customer chat widget for web and mobile apps with Slack integration.",
       "webhookTitle": "SwishOS Direct API & Webhook Contract",
       "webhookDesc": "Send structured JSON events from any self-hosted helpdesk or server script directly to SwishOS.",
-      "copyBtn": "Copy Payload"
+      "copyBtn": "Copy Payload",
+      "contactsTitle": "Direct Omni-Channel Contacts",
+      "viewConnectorsBtn": "View Open-Source Connectors →"
     }
   }
 }

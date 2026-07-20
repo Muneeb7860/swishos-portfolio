@@ -1,40 +1,26 @@
-'use client';
-import React from 'react';
-import en from '../../../dictionaries/en.json';
-import ar from '../../../dictionaries/ar.json';
-import { useScrollReveal } from '../../../hooks/useScrollReveal';
+import type { Metadata } from 'next';
+import VisionClient from './VisionClient';
 
-const dictionaries: Record<string, typeof en> = { en, ar };
-
-export default function VisionPage(props: { params: Promise<{ lang: string }> }) {
-  const { lang } = React.use(props.params);
-  const dict = dictionaries[lang] || en;
-
-  useScrollReveal();
-
-  return (
-    <main>
-      <section className="hero">
-        <div className="wrap">
-          <span className="pill reveal"><span className="dot"></span>{dict.visionPage.heroBadge}</span>
-          <h1 className="reveal">{dict.visionPage.heroTitle1}<br /><span className="grad">{dict.visionPage.heroTitle2}</span></h1>
-          <p className="sub reveal">{dict.visionPage.heroSubtitle}</p>
-        </div>
-      </section>
-
-      <section>
-        <div className="wrap" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <div className="feature reveal" style={{ padding: '60px' }}>
-            <h2 style={{ fontSize: '32px', marginBottom: '24px' }}>{dict.visionPage.contentTitle}</h2>
-            <p style={{ fontSize: '18px', color: 'var(--muted)', marginBottom: '24px' }}>
-              {dict.visionPage.contentP1}
-            </p>
-            <p style={{ fontSize: '18px', color: 'var(--muted)' }}>
-              {dict.visionPage.contentP2}
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await props.params;
+  return {
+    title:
+      lang === 'ar'
+        ? 'SwishOS | الرؤية'
+        : 'SwishOS | Vision — Agent Security is a Systems Problem',
+    description:
+      lang === 'ar'
+        ? 'وكالة الذكاء الاصطناعي تصل بشكل أسرع مما تستطيع الضوابط مواكبته. نموذج الأمان الأساسي تحتها لم يواكب الخطى.'
+        : 'Every quarter, more AI systems move from answering questions to taking actions. The security model underneath them has not kept pace.',
+  };
 }
+
+export default async function VisionPage(props: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await props.params;
+  return <VisionClient lang={lang} />;
+}
+

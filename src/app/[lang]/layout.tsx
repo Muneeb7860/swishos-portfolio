@@ -71,7 +71,7 @@ export default async function RootLayout(props: {
   return (
     <html lang={lang} suppressHydrationWarning dir={isRtl ? 'rtl' : 'ltr'}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem disableTransitionOnChange>
           
           {/* GLOBAL NAVIGATION */}
           <header>
@@ -109,15 +109,48 @@ export default async function RootLayout(props: {
 
           {/* GLOBAL FOOTER */}
           <footer>
-            <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '40px', paddingBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--muted)', flexWrap: 'wrap', gap: '20px' }}>
-              <p style={{ fontSize: '14px' }}>© 2026 SwishOS. All rights reserved.</p>
-              <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                <Link href={`/${lang}/support`} style={{ color: 'var(--muted)', fontSize: '14px', transition: 'color 0.2s' }}>{dict.nav.support}</Link>
-                <Link href={`/${lang}/contact`} style={{ color: 'var(--muted)', fontSize: '14px', transition: 'color 0.2s' }}>{dict.nav.contact}</Link>
-                <a href="mailto:hello@swishos.io" style={{ color: 'var(--muted)', fontSize: '14px' }}>hello@swishos.io</a>
+            <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '48px', paddingBottom: '48px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '40px', marginBottom: '40px' }}>
+                {/* Brand */}
+                <div>
+                  <div style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: '18px', marginBottom: '12px', color: 'var(--txt)' }}>
+                    SwishOS
+                  </div>
+                  <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, maxWidth: '220px' }}>
+                    {dict.footer?.tagline || 'AI Agent Security & Governance. Red-teaming, guardrails, and continuous evals.'}
+                  </p>
+                </div>
+                {/* Navigation */}
+                <div>
+                  <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-2)', marginBottom: '16px' }}>
+                    {dict.footer?.navTitle || 'Navigation'}
+                  </div>
+                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <Link href={`/${lang}`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.home}</Link>
+                    <Link href={`/${lang}/features`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.features}</Link>
+                    <Link href={`/${lang}/pricing`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.pricing}</Link>
+                    <Link href={`/${lang}/vision`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.vision}</Link>
+                  </nav>
+                </div>
+                {/* Support */}
+                <div>
+                  <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-2)', marginBottom: '16px' }}>
+                    {dict.footer?.supportTitle || 'Support'}
+                  </div>
+                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <Link href={`/${lang}/support`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.support}</Link>
+                    <Link href={`/${lang}/contact`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.contact}</Link>
+                    <a href="mailto:hello@swishos.io" style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>hello@swishos.io</a>
+                  </nav>
+                </div>
+              </div>
+              <div style={{ borderTop: '1px solid var(--line)', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+                <p style={{ fontSize: '13px', color: 'var(--muted-2)' }}>{dict.footer?.rights || '© 2026 SwishOS. All rights reserved.'}</p>
+                <p style={{ fontSize: '13px', color: 'var(--muted-2)' }}>{dict.footer?.builtBy || 'Built by an architect who shipped LLM guardrails at national scale.'}</p>
               </div>
             </div>
           </footer>
+
 
           {/* OPEN-SOURCE CHATWOOT & LIVE SUPPORT DRAWER */}
           <ChatwootWidget lang={lang} />
