@@ -42,8 +42,59 @@ SwishOS delivers continuous **AI Agent Security, Red-Teaming, Guardrail Assuranc
 - Complete English and Arabic localization driven by serverless dictionary engines ([`en.json`](file:///Users/muneeb/Documents/GitHub/portfolio/src/dictionaries/en.json) & [`ar.json`](file:///Users/muneeb/Documents/GitHub/portfolio/src/dictionaries/ar.json)).
 - Native CSS logical properties (`insetInlineEnd`, `marginInline`) and `dir="rtl"` layout handling.
 
-### 📊 5. Interactive ROI & Savings Calculator
+### 📊 5. OWASP LLM 2026 Framework Security Benchmark
+| Framework | Tool Execution Safety | Indirect Prompt Protection | PII Leakage Resilience | Recommended Protection |
+| :--- | :--- | :--- | :--- | :--- |
+| **LangChain Agents** | ⚠️ Moderate | ⚠️ Low (Requires custom callbacks) | ⚠️ Moderate | `agentic-redteam` + Custom AST Guardrails |
+| **AutoGen Multi-Agent** | ❌ Vulnerable | ⚠️ Low (Agent-to-agent drift) | ⚠️ Moderate | SwishOS Fixed Audit & Retainer |
+| **CrewAI Workflows** | ⚠️ Moderate | ⚠️ Low (Delegation injection) | ❌ High Vulnerability | NeMo / SwishOS Guardrail Layer |
+| **LLaMA-Index RAG** | ✅ Strong (Data) | ⚠️ Moderate (Context poisoning) | ✅ Strong | `agentic-redteam` Automated CI Suite |
+| **SwishOS Governed Agent** | 🛡️ Protected | 🛡️ Protected (Shift-Left Block) | 🛡️ Redacted | Native Guardrail Architecture |
+
+### 📈 6. Interactive ROI & Savings Calculator
 - Dynamic cost and time savings calculator (`/[lang]/roi`) demonstrating time saved by AI security automation and projected annual ROI.
+
+## 📐 Architecture & Flow Diagram
+
+```mermaid
+graph TD
+    subgraph ClientLayer["🌐 Client & Presentation Layer (Bilingual EN / AR)"]
+        UI["Web Portal (Next.js 16 App Router)"]
+        ChatWidget["SupportChatDrawer (Live AI Assistant)"]
+        PricingPage["Pricing & Engagement Ladder"]
+    end
+
+    subgraph ServerlessLayer["⚡ Edge & Serverless API Gateway"]
+        SupportRoute["/api/support (SLA Triage)"]
+        ContactRoute["/api/contact (Audit Leads)"]
+        ChatRoute["/api/chat (AI Engine)"]
+    end
+
+    subgraph SecurityEngine["🛡️ SwishOS Guardrail & Evaluation Engine"]
+        ThreatFilter["Threat & Injection Filter (OWASP LLM01)"]
+        PIISanitizer["PII Redaction Engine (LLM02)"]
+        ActionRouter["Intent & Booking Router (LLM06)"]
+    end
+
+    subgraph OutboundLayer["🚀 Triage Dispatch & Engagement Deliverables"]
+        AuditBooking["Direct Audit Booking (/contact?plan=audit)"]
+        SecurityAlert["P1 Critical Security Dispatch"]
+        RetainerTelemetry["Continuous Retainer Telemetry"]
+    end
+
+    UI --> ChatWidget
+    UI --> PricingPage
+    ChatWidget --> SupportRoute
+    PricingPage --> ContactRoute
+    
+    SupportRoute --> ThreatFilter
+    SupportRoute --> PIISanitizer
+    SupportRoute --> ActionRouter
+
+    ActionRouter -->|Audit Intent| AuditBooking
+    ThreatFilter -->|Threat Block| SecurityAlert
+    ActionRouter -->|Retainer Request| RetainerTelemetry
+```
 
 ---
 
