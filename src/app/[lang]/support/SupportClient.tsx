@@ -144,35 +144,66 @@ export default function SupportClient({ lang }: { lang: string }) {
           </div>
         </div>
 
-        {/* Open-Source Connectors */}
+        {/* Native Omni-Channel Capabilities */}
         <div className="support-sec-head reveal">
           <div>
-            <h2>🔗 {t.openSourceStack.title}</h2>
+            <h2>⚡ {t.openSourceStack.title}</h2>
             <p>{t.openSourceStack.subtitle}</p>
           </div>
-          <a href="https://github.com/chatwoot/chatwoot" target="_blank" rel="noopener noreferrer" className="copy-btn">
-            {t.openSourceStack.viewConnectorsBtn || 'View Open-Source Connectors →'}
-          </a>
+          <button
+            type="button"
+            className="copy-btn"
+            onClick={() => {
+              const element = document.querySelector('.webhook-box');
+              if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            {t.openSourceStack.viewConnectorsBtn || 'Explore Direct API Specs →'}
+          </button>
         </div>
 
         <div className="connectors-grid reveal">
           {[
-            { name: 'Chatwoot', href: 'https://github.com/chatwoot/chatwoot', badge: t.openSourceStack.chatwootBadge, tag: t.openSourceStack.chatwootTag, desc: t.openSourceStack.chatwootDesc },
-            { name: 'FreeScout', href: 'https://github.com/freescout-helpdesk/freescout', badge: t.openSourceStack.freescoutBadge, tag: t.openSourceStack.freescoutTag, desc: t.openSourceStack.freescoutDesc },
-            { name: 'Zammad', href: 'https://github.com/zammad/zammad', badge: t.openSourceStack.zammadBadge, tag: t.openSourceStack.zammadTag, desc: t.openSourceStack.zammadDesc },
-            { name: 'Papercups', href: 'https://github.com/papercups-io/papercups', badge: t.openSourceStack.papercupsBadge, tag: t.openSourceStack.papercupsTag, desc: t.openSourceStack.papercupsDesc },
-          ].map(c => (
-            <a key={c.name} href={c.href} target="_blank" rel="noopener noreferrer" className="connector-card">
+            {
+              id: 'routing',
+              title: t.openSourceStack.chatwootTitle || 'Omni-Channel Ticket Routing',
+              badge: t.openSourceStack.chatwootBadge,
+              tag: t.openSourceStack.chatwootTag,
+              desc: t.openSourceStack.chatwootDesc,
+            },
+            {
+              id: 'threat',
+              title: t.openSourceStack.freescoutTitle || 'Threat & Injection Filter',
+              badge: t.openSourceStack.freescoutBadge,
+              tag: t.openSourceStack.freescoutTag,
+              desc: t.openSourceStack.freescoutDesc,
+            },
+            {
+              id: 'sla',
+              title: t.openSourceStack.zammadTitle || 'P1 Security Escalation',
+              badge: t.openSourceStack.zammadBadge,
+              tag: t.openSourceStack.zammadTag,
+              desc: t.openSourceStack.zammadDesc,
+            },
+            {
+              id: 'pii',
+              title: t.openSourceStack.papercupsTitle || 'Real-Time PII Scrubbing',
+              badge: t.openSourceStack.papercupsBadge,
+              tag: t.openSourceStack.papercupsTag,
+              desc: t.openSourceStack.papercupsDesc,
+            },
+          ].map((c) => (
+            <div key={c.id} className="connector-card" style={{ cursor: 'default' }}>
               <div className="connector-card-top">
-                <span className="connector-name">{c.name}</span>
+                <span className="connector-name">{c.title}</span>
                 <span className="connector-badge">{c.badge}</span>
               </div>
               <p className="connector-desc">{c.desc}</p>
               <div className="connector-footer">
-                <span>{c.tag || 'External Connector'}</span>
-                <span>→</span>
+                <span>{c.tag}</span>
+                <span style={{ color: '#10b981' }}>✓ Built-In</span>
               </div>
-            </a>
+            </div>
           ))}
         </div>
 
