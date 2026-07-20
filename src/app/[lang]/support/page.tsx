@@ -26,6 +26,13 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
     automatedReply: string;
   } | null>(null);
 
+  const [blockedResult, setBlockedResult] = useState<{
+    status: string;
+    error: string;
+    response: string;
+    reason?: string;
+  } | null>(null);
+
   // Ticket Lookup state
   const [lookupId, setLookupId] = useState('');
   const [lookupLoading, setLookupLoading] = useState(false);
@@ -67,10 +74,25 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
           sentiment: data.sentiment,
           automatedReply: data.automatedReply,
         });
+        setBlockedResult(null);
         setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setTicketResult(null);
+        setBlockedResult({
+          status: data.status || 'blocked',
+          error: data.error || 'Security Enforcement Block: Threat pattern detected.',
+          response: data.response || 'Request blocked due to security guardrail violation.',
+          reason: data.risk?.reason || data.schema_validation?.reason || 'Guardrail Pre-Execution Block',
+        });
       }
     } catch (err) {
       console.error('Support submission error:', err);
+      setTicketResult(null);
+      setBlockedResult({
+        status: 'error',
+        error: 'Network connection or execution error.',
+        response: 'Unable to communicate with SwishOS security gateway.',
+      });
     } finally {
       setLoading(false);
     }
@@ -433,7 +455,7 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
               </button>
             </form>
 
-            {/* Instant Triage Output Display */}
+            {/* Instant Triage Output Display (Allowed Response) */}
             {ticketResult && (
               <div className="mt-6 p-5 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 space-y-3 animate-fade-in">
                 <div className="flex items-center justify-between">
@@ -458,6 +480,30 @@ export default function SupportPage(props: { params: Promise<{ lang: string }> }
                   <strong className="text-emerald-400 block mb-1">AI Triage Response:</strong>
                   {ticketResult.automatedReply}
                 </div>
+              </div>
+            )}
+
+            {/* Blocked / Security Enforcement Display (HTTP 422 / 400 / 500 Response) */}
+            {blockedResult && (
+              <div className="mt-6 p-5 rounded-2xl bg-rose-950/40 border border-rose-500/50 space-y-3 animate-fade-in shadow-xl">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-rose-400 flex items-center gap-2">
+                    <span>🛑</span> SECURITY ENFORCEMENT BLOCK
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 text-xs font-mono font-bold">
+                    {blockedResult.status.toUpperCase()}
+                  </span>
+                </div>
+                <p className="text-xs text-rose-200 font-semibold">{blockedResult.error}</p>
+                <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 leading-relaxed font-mono">
+                  <span className="text-slate-400 block text-[10px] uppercase font-semibold mb-1">Response Detail:</span>
+                  {blockedResult.response}
+                </div>
+                {blockedResult.reason && (
+                  <div className="text-[11px] text-rose-300/80 italic">
+                    Reason: {blockedResult.reason}
+                  </div>
+                )}
               </div>
             )}
           </div>
