@@ -71,6 +71,55 @@ const PII_PATTERNS = [
   { regex: /password\s*=\s*\S+/gi, replacement: 'password=[REDACTED:PASSWORD]' },
 ];
 
+/**
+ * Normalizes Unicode, strips zero-width spaces, and maps Cyrillic homoglyphs to ASCII
+ */
+function normalizeUnicode(text: string): string {
+  if (!text) return '';
+
+  // 1. Unicode NFKC Normalization
+  let normalized = text.normalize('NFKC');
+
+  // 2. Strip Zero-Width Spaces and Hidden Formatting Controls
+  normalized = normalized.replace(/[\u200B-\u200D\uFEFF\u00AD]/g, '');
+
+  // 3. Map Common Cyrillic / Homoglyph Characters to ASCII Equivalents
+  const homoglyphMap: Record<string, string> = {
+    'ɑ': 'a', 'а': 'a', 'а́': 'a', 'α': 'a', 'b': 'b', 'с': 'c', 'ԁ': 'd', 'е': 'e', 'е́': 'e',
+    'f': 'f', 'ɡ': 'g', 'h': 'h', 'і': 'i', 'ј': 'j', 'k': 'k', 'l': 'l',
+    'm': 'm', 'ո': 'n', 'о': 'o', 'р': 'p', 'ԛ': 'q', 'г': 'r', 'ѕ': 's',
+    't': 't', 'υ': 'u', 'ν': 'v', 'w': 'w', 'х': 'x', 'у': 'y', 'z': 'z',
+    'А': 'A', 'В': 'B', 'С': 'C', 'Е': 'E', 'Н': 'H', 'І': 'I', 'Ј': 'J',
+    'К': 'K', 'М': 'M', 'О': 'O', 'Р': 'P', 'Ѕ': 'S', 'Т': 'T', 'Х': 'X', 'Ү': 'Y'
+  };
+
+  return normalized.split('').map(ch => homoglyphMap[ch] || ch).join('');
+}
+
+/**
+ * Detects Base64 payload blocks and recursively decodes them for threat evaluation
+ */
+function inspectBase64Payloads(text: string): string {
+  let decodedText = text;
+  const base64Regex = /([A-Za-z0-9+/]{20,}={0,2})/g;
+  const matches = text.match(base64Regex);
+
+  if (matches) {
+    for (const match of matches) {
+      try {
+        const decoded = Buffer.from(match, 'base64').toString('utf-8');
+        // If decoded string contains printable ASCII text, append to text stream
+        if (/^[\x20-\x7E\s]+$/.test(decoded)) {
+          decodedText += ` ${decoded}`;
+        }
+      } catch {
+        // Ignore invalid base64 decodes
+      }
+    }
+  }
+  return decodedText;
+}
+
 function sanitizeInput(text: string): string {
   let cleaned = text;
   for (const { regex, replacement } of PII_PATTERNS) {
@@ -83,14 +132,16 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    // Support both direct red-team benchmark queries `{ query }` and standard ticket payloads
     const rawQuery = body.query || body.message || '';
     const subject = body.subject || '';
     const fullText = `${subject} ${rawQuery}`;
 
-    // 1. Shift Validation Left: Hard Threat & Injection Block Contract
+    // 1. Multi-Stage Shift-Left Validation: Normalization + Base64 Decoding + Threat Check
+    const normalizedInput = normalizeUnicode(fullText);
+    const fullyDecodedStream = inspectBase64Payloads(normalizedInput);
+
     for (const pattern of THREAT_PATTERNS) {
-      if (pattern.test(fullText)) {
+      if (pattern.test(fullText) || pattern.test(normalizedInput) || pattern.test(fullyDecodedStream)) {
         return NextResponse.json(
           {
             status: 'blocked',
@@ -102,7 +153,7 @@ export async function POST(req: Request) {
             risk: { elevated: true, reason: 'Action-level security override blocked.' },
             schema_validation: { valid: false, reason: 'Disallowed action pattern.' },
             loop_result: { iterations: 1, attempts: 1, completed: false, status: 'blocked', passed: false, fallback_used: false },
-            triggered_rules: ['PROMPT_INJECTION_BLOCK', 'THREAT_FILTER'],
+            triggered_rules: ['PROMPT_INJECTION_BLOCK', 'HOMOGLYPH_DECODE_BLOCK'],
             warnings: [],
             success: false,
             blocked: true,
