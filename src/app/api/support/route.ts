@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { checkRateLimit, checkSessionBudget, checkAgentSpendCap } from '@/lib/rate-limiter';
 import { logAuditIncident } from '@/lib/audit-logger';
+import { evaluateSemanticSafety } from '@/lib/semantic-classifier';
+import { executeToolInSandbox } from '@/lib/wasm-sandbox';
+import { validateAgentMTLS } from '@/lib/mtls-validator';
 
 export const runtime = 'nodejs';
 
@@ -134,7 +137,6 @@ function validateToolCallArguments(text: string): boolean {
     if (/ATTACKER|override|root|unrestricted/i.test(argsStr)) return true;
   }
 
-  // Also check natural language obfuscated spend commands (e.g. "buy 1000 units")
   if (/buy\s+(?:1000|\d{4,})\s+units/i.test(text)) {
     return true;
   }
@@ -152,7 +154,23 @@ function sanitizeInput(text: string): string {
 
 export async function POST(req: Request) {
   try {
-    // 0a. Client IP Rate Limiting (Task 1: 10 req/min per IP)
+    // 0a. Inter-Agent mTLS & ANS PKI Cert Validation (ASI07)
+    const mtlsCheck = validateAgentMTLS(req.headers);
+    if (!mtlsCheck.valid) {
+      logAuditIncident({
+        ip: '0.0.0.0',
+        endpoint: '/api/support',
+        rawPayload: { agentId: mtlsCheck.agentId, error: mtlsCheck.error },
+        ruleTriggered: 'ASI07_MTLS_CERT_VALIDATION_FAILED',
+      });
+
+      return NextResponse.json(
+        { status: 'blocked', action: 'block', error: mtlsCheck.error },
+        { status: 401 }
+      );
+    }
+
+    // 0b. Client IP Rate Limiting (10 req/min per IP)
     const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
     const rateCheck = checkRateLimit(clientIp, 10, 60000);
 
@@ -170,8 +188,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // 0b. Agent Spend Cap Check (Task 2: Hard $5/day Spend Cap - ASI10)
-    const agentId = req.headers.get('x-agent-id') || 'swishos-triage-v1';
+    // 0c. Agent Spend Cap Check (Hard $5/day Spend Cap - ASI10)
+    const agentId = mtlsCheck.agentId || 'swishos-triage-v1';
     const spendCheck = checkAgentSpendCap(agentId, 0.05);
 
     if (!spendCheck.allowed) {
@@ -193,7 +211,7 @@ export async function POST(req: Request) {
     const subject = body.subject || '';
     const sessionId = body.sessionId || clientIp;
 
-    // 0c. Multi-Turn Session Budget Check (Task 2: Session Budget Cap)
+    // 0d. Multi-Turn Session Budget Check
     const sessionCheck = checkSessionBudget(sessionId, `${subject} ${rawQuery}`);
     if (!sessionCheck.allowed) {
       logAuditIncident({
@@ -214,6 +232,36 @@ export async function POST(req: Request) {
     // 1. Shift-Left Validation: Normalization + Base64 Decoding + Threat Check + AST Bounds
     const normalizedInput = normalizeUnicode(fullText);
     const fullyDecodedStream = inspectBase64Payloads(normalizedInput);
+
+    // 2. High-Dimensional Inline Semantic Vector Safety Evaluation
+    const semanticEval = evaluateSemanticSafety(fullText);
+    if (semanticEval.isThreat) {
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: `SEMANTIC_VECTOR_${semanticEval.threatType}`,
+      });
+
+      return NextResponse.json(
+        {
+          status: 'blocked',
+          action: 'block',
+          agent_id: agentId,
+          message: 'Request blocked by Semantic Safety Classifier.',
+          block_reason: `Semantic Safety Evaluation Blocked (${semanticEval.threatType}, score: ${semanticEval.riskScore}).`,
+          routing_decision: { intent: 'security_threat', decision: 'block', confidence: semanticEval.confidence, complexity: 'high' },
+          risk: { elevated: true, reason: 'Semantic prompt injection or roleplay jailbreak detected.' },
+          triggered_rules: [`SEMANTIC_VECTOR_${semanticEval.threatType}`],
+          success: false,
+          blocked: true,
+          threatDetected: true,
+          error: 'Security Enforcement Block: Semantic injection or roleplay vector detected.',
+          response: 'Request blocked due to semantic safety evaluation.',
+        },
+        { status: 422 }
+      );
+    }
 
     const isExfiltrationAttempt = detectMarkdownExfiltration(fullText) || detectMarkdownExfiltration(normalizedInput);
     const isASTLimitExceeded = validateToolCallArguments(fullText) || validateToolCallArguments(normalizedInput);
@@ -282,7 +330,16 @@ export async function POST(req: Request) {
       }
     }
 
-    // 2. Length Contract Checks
+    // 3. Execute Action inside WASM Sandbox (ASI06)
+    const sandboxExec = executeToolInSandbox('support_triage', { query: rawQuery });
+    if (sandboxExec.blocked) {
+      return NextResponse.json(
+        { status: 'blocked', action: 'block', error: sandboxExec.error, logs: sandboxExec.logs },
+        { status: 422 }
+      );
+    }
+
+    // 4. Length Contract Checks
     if (rawQuery.length > 3000 || subject.length > 300) {
       return NextResponse.json(
         {
@@ -300,7 +357,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 3. PII Redaction & Clean Response Construction
+    // 5. PII Redaction & Response Construction
     const sanitizedQuery = sanitizeInput(rawQuery);
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const ticketId = `TK-2026-${randomNum}`;
@@ -334,6 +391,8 @@ export async function POST(req: Request) {
       status: 'success',
       action: 'allow',
       agent_id: agentId,
+      ansIdentity: mtlsCheck.ansIdentity,
+      isolationLevel: sandboxExec.isolationLevel,
       message: 'Request processed successfully.',
       routing_decision: { intent, decision: 'allow', confidence: 0.98, complexity: 'low' },
       risk: { elevated: false },
