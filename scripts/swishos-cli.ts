@@ -11,6 +11,7 @@ import { sendExecutiveDigest, loadDigestKPIs } from './schedule-weekly-digest';
 import { writeSQLMigrationFile } from './generate-sql-schema';
 import { auditDependencies } from './audit-deps';
 import { generatePenTestReport } from './generate-pen-test-report';
+import { runRateLimitStressTest } from './stress-test-ratelimit';
 
 const AUDIT_PROOF_SECRET = process.env.AUDIT_PROOF_SECRET || 'swishos-audit-proof-signature-key-v4';
 
@@ -29,6 +30,7 @@ Commands:
   schema [--output-dir <DIR>]            Generate Supabase PostgreSQL DDL migration file
   deps   [--root-dir <DIR>]              Run automated dependency vulnerability & lockfile audit
   report [--client <NAME>]               Generate formal executive penetration testing HTML/JSON report
+  stress [--target <URL>]                Run high-concurrency rate-limit & tarpit stress test
   help                                   Show this help message
 `);
 }
@@ -118,6 +120,15 @@ function handleReport(args: string[]) {
   generatePenTestReport(clientName, dir);
 }
 
+async function handleStress(args: string[]) {
+  const targetIdx = args.indexOf('--target');
+  const target = targetIdx !== -1 && targetIdx + 1 < args.length ? args[targetIdx + 1] : 'http://localhost:3000/api/support';
+  const result = await runRateLimitStressTest(target);
+  if (!result.passed) {
+    process.exit(1);
+  }
+}
+
 function main() {
   const args = process.argv.slice(2);
   const command = args[0] || 'help';
@@ -143,6 +154,9 @@ function main() {
       break;
     case 'report':
       handleReport(args.slice(1));
+      break;
+    case 'stress':
+      void handleStress(args.slice(1));
       break;
     case 'help':
     default:
