@@ -16,7 +16,7 @@
     "navTitle": "Navigation",
     "supportTitle": "Support",
     "rights": "© 2026 SwishOS. All rights reserved.",
-    "builtBy": "Built by an architect who shipped LLM guardrails at national scale."
+    "builtBy": "Built by an architect who shipped LLM guardrails for a 5.6M-user national healthcare & financial infrastructure platform."
   },
   "meta": {
     "title": "SwishOS | AI Agent Security & Governance",
@@ -26,7 +26,7 @@
     "badge": "AI AGENT SECURITY & GOVERNANCE",
     "title1": "Ship AI agents that act —",
     "title2": "without the blast radius.",
-    "subtitle": "SwishOS red-teams and guardrails AI agents that spend money, call tools, and touch data — so they are safe in production. Built by an architect who has shipped LLM guardrails on a 5.6M-user national program.",
+    "subtitle": "SwishOS red-teams and guardrails AI agents that spend money, call tools, and touch data — so they are safe in production. Built by an architect who shipped LLM guardrails for a 5.6M-user national healthcare & financial infrastructure platform.",
     "ctaPrimary": "Book an Agent Security Audit",
     "ctaSecondary": "Explore Governance Engine"
   },

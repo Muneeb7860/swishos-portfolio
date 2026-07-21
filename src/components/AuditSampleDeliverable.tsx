@@ -11,66 +11,117 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
       style={{
         background: 'var(--panel)',
         border: '1px solid var(--line-strong)',
-        borderRadius: '20px',
-        padding: '36px',
+        borderRadius: '24px',
+        padding: '40px',
         boxShadow: 'var(--card-shadow)',
-        margin: '48px 0',
+        margin: '56px 0',
       }}
     >
-      <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 32px auto' }}>
-        <span className="badge-pill" style={{ marginBottom: '12px' }}>
-          📄 {isAr ? 'معاينة مخرجات التدقيق الأمني' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
+      <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 36px auto' }}>
+        <span className="badge-pill" style={{ marginBottom: '14px' }}>
+          📄 {isAr ? 'معاينة مخرجات التقرير المباشر' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
         </span>
-        <h3 style={{ fontSize: '26px', fontWeight: 800, marginBottom: '12px' }}>
+        <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '14px' }}>
           {isAr ? 'ما الذي تحصل عليه في تدقيق أمن وكيل الذكاء الاصطناعي؟' : 'What You Receive in a 1-Week Security Audit'}
         </h3>
         <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.6 }}>
           {isAr
-            ? 'تقرير تنفيذي مباشر يركز على المخاطر الفعلية مع سجلات استغلال هجومية قابلة للتكرار وتعديلات برمجية جاهزة للدمج.'
-            : 'An executive CISO sign-off report featuring reproducible payload logs, OWASP LLM risk heatmaps, and PR-ready remediation diffs.'}
+            ? 'تقرير تنفيذي شامل يجمع بين الخريطة الحرارية للمخاطر، وسجلات الهجوم المباشرة، وتعديلات كود برمجية جاهزة للدمج.'
+            : 'An executive CISO sign-off report featuring a visual OWASP risk heatmap, reproducible payload logs, and PR-ready code diffs.'}
         </p>
       </div>
 
-      {/* Deliverable Grid Preview */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginBottom: '32px' }}>
-        {/* Item 1 */}
-        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '14px', padding: '20px' }}>
-          <div style={{ fontSize: '24px', marginBottom: '10px' }}>📊</div>
-          <h4 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '6px' }}>
+      {/* Deliverable Grid Preview with Visual Mockups */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '40px' }}>
+        
+        {/* Mockup 1: OWASP Risk Heatmap */}
+        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6' }}>
+              ARTIFACT 01
+            </span>
+            <span style={{ fontSize: '11px', background: 'rgba(239,68,68,0.15)', color: '#EF4444', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
+              CISO MATRIX
+            </span>
+          </div>
+          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px' }}>
             {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026' : 'OWASP Agentic Risk Heatmap'}
           </h4>
-          <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>
-            {isAr
-              ? 'تقييم شامل لجميع الفئات العشر لمخاطر الذكاء الاصطناعي مع قياس الوكالة المفرطة (LLM06) وحدود الإنفاق (ASI10).'
-              : 'Complete threat mapping across OWASP Agentic Top 10 risks with quantified Excessive Agency and spend limit scores.'}
-          </p>
+
+          {/* Visual Heatmap Card */}
+          <div style={{ background: '#0F172A', borderRadius: '10px', padding: '14px', marginTop: 'auto', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'monospace', fontSize: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ color: '#94A3B8' }}>LLM06 Excessive Agency</span>
+              <span style={{ color: '#EF4444', fontWeight: 700 }}>🛑 CRITICAL (0.94)</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ color: '#94A3B8' }}>ASI10 Spend Cap Limit</span>
+              <span style={{ color: '#F59E0B', fontWeight: 700 }}>⚠️ HIGH ($450/hr)</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ color: '#94A3B8' }}>LLM01 Prompt Injection</span>
+              <span style={{ color: '#EF4444', fontWeight: 700 }}>🛑 EXPOSED</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0' }}>
+              <span style={{ color: '#94A3B8' }}>ASI06 WASM Isolation</span>
+              <span style={{ color: '#10B981', fontWeight: 700 }}>✅ MITIGATED</span>
+            </div>
+          </div>
         </div>
 
-        {/* Item 2 */}
-        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '14px', padding: '20px' }}>
-          <div style={{ fontSize: '24px', marginBottom: '10px' }}>💻</div>
-          <h4 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '6px' }}>
+        {/* Mockup 2: Reproducible Payload Exploits */}
+        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6' }}>
+              ARTIFACT 02
+            </span>
+            <span style={{ fontSize: '11px', background: 'rgba(59,130,246,0.15)', color: '#3B82F6', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
+              EXPLOIT LOGS
+            </span>
+          </div>
+          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px' }}>
             {isAr ? 'سجلات هجوم قابلة للتكرار (curl)' : 'Reproducible Payload Exploits'}
           </h4>
-          <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>
-            {isAr
-              ? 'سجلات استغلال كاملة بأوامر curl شفافة تسمح لفريقك الهندسي بإعادة تنفيذ وفحص كل هجمات الحقن المخفية.'
-              : 'Transparent payload curl commands allowing engineering teams to reproduce every prompt injection and side-channel leak.'}
-          </p>
+
+          {/* Visual Terminal Log Card */}
+          <div style={{ background: '#0F172A', borderRadius: '10px', padding: '14px', marginTop: 'auto', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'monospace', fontSize: '11px', color: '#F8FAFC', lineHeight: 1.5 }}>
+            <div style={{ color: '#94A3B8', marginBottom: '4px' }}># Red-Team Attack Vector #812</div>
+            <div style={{ color: '#38BDF8' }}>$ curl -X POST https://api.agent/v1/tool \</div>
+            <div style={{ color: '#F8FAFC', paddingLeft: '12px' }}>-d &apos;{"{"}&quot;tool&quot;: &quot;db_drop&quot;, &quot;override&quot;: true{"}"}&apos;</div>
+            <div style={{ color: '#EF4444', marginTop: '6px', fontWeight: 700 }}>
+              HTTP/1.1 422 Unprocessable Entity
+            </div>
+            <div style={{ color: '#10B981' }}>[SwishOS Intercept]: AST_POLICY_BLOCK</div>
+          </div>
         </div>
 
-        {/* Item 3 */}
-        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '14px', padding: '20px' }}>
-          <div style={{ fontSize: '24px', marginBottom: '10px' }}>🛠️</div>
-          <h4 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '6px' }}>
+        {/* Mockup 3: PR-Ready Remediation Diffs */}
+        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6' }}>
+              ARTIFACT 03
+            </span>
+            <span style={{ fontSize: '11px', background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
+              PR DIFF PATCH
+            </span>
+          </div>
+          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px' }}>
             {isAr ? 'تعديلات برمجية جاهزة للدمج (PR-Ready)' : 'PR-Ready Remediation Diffs'}
           </h4>
-          <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>
-            {isAr
-              ? 'أكواد برمجية وتعديلات جاهزة مباشرة للدمج مع سحب الحقوق لحظر تجاوز الهوموجليف وسرقة البيانات المباشرة.'
-              : 'Drop-in TypeScript/Python code patches resolving Excessive Agency, Unicode homoglyphs, and metadata egress leaks.'}
-          </p>
+
+          {/* Visual Git Diff Card */}
+          <div style={{ background: '#0F172A', borderRadius: '10px', padding: '14px', marginTop: 'auto', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'monospace', fontSize: '11px', lineHeight: 1.6 }}>
+            <div style={{ color: '#94A3B8', marginBottom: '4px' }}>--- a/src/agent/executor.ts</div>
+            <div style={{ color: '#94A3B8', marginBottom: '4px' }}>+++ b/src/agent/executor.ts</div>
+            <div style={{ background: 'rgba(239,68,68,0.2)', color: '#F87171', padding: '2px 4px', borderRadius: '2px' }}>
+              - const res = await tool.execute(rawArgs);
+            </div>
+            <div style={{ background: 'rgba(16,185,129,0.2)', color: '#34D399', padding: '2px 4px', borderRadius: '2px', marginTop: '4px' }}>
+              + const res = await guard.wrap(tool, rawArgs);
+            </div>
+          </div>
         </div>
+
       </div>
 
       {/* CTA Line */}
