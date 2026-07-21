@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { checkRateLimit, checkSessionBudget, checkAgentSpendCap } from '@/lib/rate-limiter';
+import { checkSessionBudget, checkAgentSpendCap } from '@/lib/rate-limiter';
 import { logAuditIncident } from '@/lib/audit-logger';
 import { evaluateSemanticSafety } from '@/lib/semantic-classifier';
 import { executeToolInSandbox } from '@/lib/wasm-sandbox';
@@ -13,6 +13,7 @@ import { computeClientFingerprint, applyGlobalFingerprintTarpit } from '@/lib/gl
 import { evaluateSemanticCentroidDistance } from '@/lib/semantic-centroid';
 import { evaluateConcatenatedVariableAST } from '@/lib/variable-ast-tracker';
 import { probeToolCallInShadowSandbox } from '@/lib/shadow-probe';
+import { incrementRedisRateLimit } from '@/lib/redis-state';
 
 export const runtime = 'nodejs';
 
@@ -179,9 +180,9 @@ export async function POST(req: Request) {
       );
     }
 
-    // 0b. Client IP Rate Limiting (10 req/min per IP)
+    // 0b. Distributed Client IP Rate Limiting (10 req/min per IP via Redis / Memory Fallback)
     const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
-    const rateCheck = checkRateLimit(clientIp, 10, 60000);
+    const rateCheck = await incrementRedisRateLimit(`ratelimit:${clientIp}`, 10, 60000);
 
     if (!rateCheck.allowed) {
       logAuditIncident({
@@ -191,10 +192,7 @@ export async function POST(req: Request) {
         ruleTriggered: 'RATE_LIMIT_EXCEEDED_10_RPM',
       });
 
-      return NextResponse.json(
-        { status: 'blocked', error: 'Too many requests. Rate limit is 10 req/min per IP.', remaining: 0 },
-        { status: 429 }
-      );
+      return createZeroInfoRefusal();
     }
 
     // 0c. Agent Spend Cap Check (Hard $5/day Spend Cap - ASI10)
