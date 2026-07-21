@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
+import { checkRateLimit, appendSessionContext } from '@/lib/rate-limiter';
+import { logAuditIncident } from '@/lib/audit-logger';
 
 export const runtime = 'nodejs';
 
-// Comprehensive Threat & Injection Patterns
+// Comprehensive Threat & Injection Patterns (including Semantic Persona & Metalinguistic Ciphers)
 const THREAT_PATTERNS = [
   /ignore\s+(all\s+)?(previous|prior|above|your|restrictions)\s+instructions/i,
   /ignore\s+(all\s+)?(previous|prior|above|your|restrictions)/i,
@@ -58,6 +60,13 @@ const THREAT_PATTERNS = [
   /surgeMultiplier\s+to\s+12\.5x/i,
   /wipe_audit_logs/i,
   /root\s+privileges/i,
+  // Semantic Persona & Metalinguistic Cipher Defense
+  /write\s+a\s+fictional\s+story/i,
+  /fictional\s+character/i,
+  /narrative\s+chapter/i,
+  /metalinguistic\s+cipher/i,
+  /roleplay\s+as/i,
+  /chapter\s+\d+.*execute/i,
 ];
 
 // PII Detection & Redaction Patterns
@@ -77,13 +86,9 @@ const PII_PATTERNS = [
 function normalizeUnicode(text: string): string {
   if (!text) return '';
 
-  // 1. Unicode NFKC Normalization
   let normalized = text.normalize('NFKC');
-
-  // 2. Strip Zero-Width Spaces and Hidden Formatting Controls
   normalized = normalized.replace(/[\u200B-\u200D\uFEFF\u00AD]/g, '');
 
-  // 3. Map Common Cyrillic / Homoglyph Characters to ASCII Equivalents
   const homoglyphMap: Record<string, string> = {
     'ɑ': 'a', 'а': 'a', 'а́': 'a', 'α': 'a', 'b': 'b', 'с': 'c', 'ԁ': 'd', 'е': 'e', 'е́': 'e',
     'f': 'f', 'ɡ': 'g', 'h': 'h', 'і': 'i', 'ј': 'j', 'k': 'k', 'l': 'l',
@@ -108,13 +113,10 @@ function inspectBase64Payloads(text: string): string {
     for (const match of matches) {
       try {
         const decoded = Buffer.from(match, 'base64').toString('utf-8');
-        // If decoded string contains printable ASCII text, append to text stream
         if (/^[\x20-\x7E\s]+$/.test(decoded)) {
           decodedText += ` ${decoded}`;
         }
-      } catch {
-        // Ignore invalid base64 decodes
-      }
+      } catch {}
     }
   }
   return decodedText;
@@ -125,7 +127,6 @@ function inspectBase64Payloads(text: string): string {
  */
 function detectMarkdownExfiltration(text: string): boolean {
   if (!text) return false;
-  // Markdown image tag matching external URLs
   const mdImageRegex = /!\[.*?\]\((https?:\/\/[^\s)]+)\)/i;
   return mdImageRegex.test(text);
 }
@@ -136,21 +137,18 @@ function detectMarkdownExfiltration(text: string): boolean {
 function validateToolCallArguments(text: string): boolean {
   if (!text) return false;
 
-  // Match tool execution pattern, e.g., refund_override(to_account='...', amount=99999)
   const toolCallRegex = /(?:refund_override|transfer_funds|approve_procurement|set_multiplier)\s*\((.*?)\)/i;
   const match = text.match(toolCallRegex);
 
   if (match) {
     const argsStr = match[1];
-    // Check for excessive numeric amounts over threshold ($5,000 / 5000 units)
     const amountMatch = argsStr.match(/(?:amount|cost|units|surgeMultiplier)\s*=\s*['"]?([\d.]+)/i);
     if (amountMatch) {
       const val = parseFloat(amountMatch[1]);
       if (val > 5000) {
-        return true; // Exceeds safety threshold
+        return true;
       }
     }
-    // Check for direct IBAN / account overrides
     if (/ATTACKER|override|root|unrestricted/i.test(argsStr)) {
       return true;
     }
@@ -168,30 +166,70 @@ function sanitizeInput(text: string): string {
 
 export async function POST(req: Request) {
   try {
+    // 0. Extract Client IP & Enforce Rate Limiting
+    const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
+    const rateCheck = checkRateLimit(clientIp, 15, 60000);
+
+    if (!rateCheck.allowed) {
+      logAuditIncident({
+        ip: clientIp,
+        channel: 'web_api',
+        category: 'rate_limit',
+        threatCategory: 'DDoS / API Abuse',
+        triggeredRules: ['RATE_LIMIT_EXCEEDED'],
+        rawPayload: 'EXCEEDED_RATE_LIMIT',
+        normalizedPayload: 'EXCEEDED_RATE_LIMIT',
+        action: 'block',
+        blockReason: 'Client exceeded rate limit quota (15 req/min).'
+      });
+
+      return NextResponse.json(
+        { status: 'blocked', error: 'Too many requests. Please wait a minute before retrying.', remaining: 0 },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
 
     const rawQuery = body.query || body.message || '';
     const subject = body.subject || '';
-    const fullText = `${subject} ${rawQuery}`;
+    const sessionId = body.sessionId || clientIp;
+    
+    // Assemble Multi-Turn Session History
+    const sessionHistory = appendSessionContext(sessionId, `${subject} ${rawQuery}`);
+    const fullText = sessionHistory.join(' \n ');
 
     // 1. Multi-Stage Shift-Left Validation: Normalization + Base64 Decoding + Threat Check + AST Bounds
     const normalizedInput = normalizeUnicode(fullText);
     const fullyDecodedStream = inspectBase64Payloads(normalizedInput);
 
-    // Check Side-Channel Markdown Exfiltration & AST Tool Bounds
     const isExfiltrationAttempt = detectMarkdownExfiltration(fullText) || detectMarkdownExfiltration(normalizedInput);
     const isASTLimitExceeded = validateToolCallArguments(fullText) || validateToolCallArguments(normalizedInput);
 
     if (isExfiltrationAttempt || isASTLimitExceeded) {
+      const blockReason = isExfiltrationAttempt
+        ? 'Markdown Side-Channel PII Exfiltration Blocked.'
+        : 'AST Tool Execution Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).';
+
+      logAuditIncident({
+        ip: clientIp,
+        channel: body.channel || 'web',
+        category: body.category || 'security',
+        threatCategory: isExfiltrationAttempt ? 'Markdown Exfiltration' : 'Excessive Agency Override',
+        triggeredRules: [isExfiltrationAttempt ? 'MARKDOWN_SIDECHANNEL_EXFIL_BLOCK' : 'AST_TOOL_BOUNDS_OVERRIDE_BLOCK'],
+        rawPayload: rawQuery,
+        normalizedPayload: normalizedInput,
+        action: 'block',
+        blockReason,
+      });
+
       return NextResponse.json(
         {
           status: 'blocked',
           action: 'block',
           agent_id: 'swishos-triage-v1',
           message: 'Request blocked due to security guardrail violation.',
-          block_reason: isExfiltrationAttempt
-            ? 'Markdown Side-Channel PII Exfiltration Blocked.'
-            : 'AST Tool Execution Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).',
+          block_reason: blockReason,
           routing_decision: { intent: 'security_threat', decision: 'block', confidence: 0.99, complexity: 'high' },
           risk: { elevated: true, reason: 'Action-level security override blocked.' },
           schema_validation: { valid: false, reason: 'Disallowed action or side-channel pattern.' },
@@ -210,6 +248,18 @@ export async function POST(req: Request) {
 
     for (const pattern of THREAT_PATTERNS) {
       if (pattern.test(fullText) || pattern.test(normalizedInput) || pattern.test(fullyDecodedStream)) {
+        logAuditIncident({
+          ip: clientIp,
+          channel: body.channel || 'web',
+          category: body.category || 'security',
+          threatCategory: 'Prompt Injection / Jailbreak',
+          triggeredRules: ['PROMPT_INJECTION_BLOCK', 'HOMOGLYPH_DECODE_BLOCK'],
+          rawPayload: rawQuery,
+          normalizedPayload: normalizedInput,
+          action: 'block',
+          blockReason: 'Security Enforcement Block: Threat pattern or injection vector detected.',
+        });
+
         return NextResponse.json(
           {
             status: 'blocked',
