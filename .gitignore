@@ -35,6 +35,7 @@ audit_ledger.csv
 checksums.sha256
 pen_test_report.html
 pen_test_report.json
+cold_pitch_email.txt
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)

@@ -12,6 +12,7 @@ import { writeSQLMigrationFile } from './generate-sql-schema';
 import { auditDependencies } from './audit-deps';
 import { generatePenTestReport } from './generate-pen-test-report';
 import { runRateLimitStressTest } from './stress-test-ratelimit';
+import { runPitchWizard } from './demo-audit-wizard';
 
 const AUDIT_PROOF_SECRET = process.env.AUDIT_PROOF_SECRET || 'swishos-audit-proof-signature-key-v4';
 
@@ -31,6 +32,7 @@ Commands:
   deps   [--root-dir <DIR>]              Run automated dependency vulnerability & lockfile audit
   report [--client <NAME>]               Generate formal executive penetration testing HTML/JSON report
   stress [--target <URL>]                Run high-concurrency rate-limit & tarpit stress test
+  pitch  [--client <NAME>]               Run turnkey audit wizard & generate CISO cold pitch email
   help                                   Show this help message
 `);
 }
@@ -129,6 +131,14 @@ async function handleStress(args: string[]) {
   }
 }
 
+function handlePitch(args: string[]) {
+  const clientIdx = args.indexOf('--client');
+  const clientName = clientIdx !== -1 && clientIdx + 1 < args.length ? args[clientIdx + 1] : 'Target Client';
+  const dirIdx = args.indexOf('--output-dir');
+  const dir = dirIdx !== -1 && dirIdx + 1 < args.length ? args[dirIdx + 1] : '.';
+  runPitchWizard({ clientName, outputDir: dir });
+}
+
 function main() {
   const args = process.argv.slice(2);
   const command = args[0] || 'help';
@@ -157,6 +167,9 @@ function main() {
       break;
     case 'stress':
       void handleStress(args.slice(1));
+      break;
+    case 'pitch':
+      handlePitch(args.slice(1));
       break;
     case 'help':
     default:
