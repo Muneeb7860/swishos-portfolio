@@ -4,6 +4,8 @@ import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
 import { useScrollReveal } from '../../../hooks/useScrollReveal';
 
+import { VerificationPipelineDemo } from '../../../components/VerificationPipelineDemo';
+
 const dictionaries: Record<string, typeof en> = { en, ar };
 
 export default function FeaturesClient({ lang }: { lang: string }) {
@@ -38,6 +40,10 @@ export default function FeaturesClient({ lang }: { lang: string }) {
               <h3>{dict.featuresPage.evalsTitle}</h3>
               <p>{dict.featuresPage.evalsDesc}</p>
             </div>
+          </div>
+
+          <div className="reveal" style={{ marginTop: '40px' }}>
+            <VerificationPipelineDemo lang={lang} />
           </div>
         </div>
       </section>
