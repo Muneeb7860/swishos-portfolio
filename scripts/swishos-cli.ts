@@ -10,6 +10,7 @@ import { exportAuditLedgerFiles } from './export-audit-ledger';
 import { sendExecutiveDigest, loadDigestKPIs } from './schedule-weekly-digest';
 import { writeSQLMigrationFile } from './generate-sql-schema';
 import { auditDependencies } from './audit-deps';
+import { generatePenTestReport } from './generate-pen-test-report';
 
 const AUDIT_PROOF_SECRET = process.env.AUDIT_PROOF_SECRET || 'swishos-audit-proof-signature-key-v4';
 
@@ -27,6 +28,7 @@ Commands:
   digest [--output-dir <DIR>]            Generate dark-mode HTML executive security email report
   schema [--output-dir <DIR>]            Generate Supabase PostgreSQL DDL migration file
   deps   [--root-dir <DIR>]              Run automated dependency vulnerability & lockfile audit
+  report [--client <NAME>]               Generate formal executive penetration testing HTML/JSON report
   help                                   Show this help message
 `);
 }
@@ -108,6 +110,14 @@ function handleDeps(args: string[]) {
   }
 }
 
+function handleReport(args: string[]) {
+  const clientIdx = args.indexOf('--client');
+  const clientName = clientIdx !== -1 && clientIdx + 1 < args.length ? args[clientIdx + 1] : 'Enterprise Audit Client';
+  const dirIdx = args.indexOf('--output-dir');
+  const dir = dirIdx !== -1 && dirIdx + 1 < args.length ? args[dirIdx + 1] : '.';
+  generatePenTestReport(clientName, dir);
+}
+
 function main() {
   const args = process.argv.slice(2);
   const command = args[0] || 'help';
@@ -130,6 +140,9 @@ function main() {
       break;
     case 'deps':
       handleDeps(args.slice(1));
+      break;
+    case 'report':
+      handleReport(args.slice(1));
       break;
     case 'help':
     default:
