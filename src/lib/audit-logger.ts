@@ -1,43 +1,53 @@
 /**
- * Persistent Forensic Audit Incident Logger
- * Captures structured incident telemetry for SOC/SIEM compliance.
+ * Persistent Forensic Audit Incident Logger (Supabase & SIEM Compatible)
+ * Captures structured incident telemetry into the `security_incidents` table schema.
  */
 
-export interface AuditIncident {
-  timestamp: string;
-  incidentId: string;
+export interface SecurityIncidentRow {
+  id?: number;
   ip: string;
-  channel: string;
-  category: string;
-  threatCategory: string;
-  triggeredRules: string[];
-  rawPayload: string;
-  normalizedPayload: string;
-  action: 'block' | 'allow' | 'elevate';
-  blockReason: string;
+  endpoint: string;
+  payload: Record<string, unknown>;
+  rule_triggered: string;
+  timestamp?: string;
 }
 
-const auditLogMemoryStore: AuditIncident[] = [];
+const incidentMemoryStore: SecurityIncidentRow[] = [];
 
-export function logAuditIncident(incident: Omit<AuditIncident, 'timestamp' | 'incidentId'>): AuditIncident {
-  const fullIncident: AuditIncident = {
-    ...incident,
+export function logAuditIncident(incident: {
+  ip: string;
+  endpoint?: string;
+  rawPayload: string | Record<string, unknown>;
+  ruleTriggered: string;
+}): SecurityIncidentRow {
+  const endpoint = incident.endpoint || '/api/support';
+  const payloadData = typeof incident.rawPayload === 'string'
+    ? { query: incident.rawPayload }
+    : incident.rawPayload;
+
+  const row: SecurityIncidentRow = {
+    ip: incident.ip,
+    endpoint,
+    payload: payloadData,
+    rule_triggered: incident.ruleTriggered,
     timestamp: new Date().toISOString(),
-    incidentId: `INC-${Date.now()}-${Math.floor(1000 + Math.random() * 9000)}`,
   };
 
-  // 1. In-memory append (capped at 500 records)
-  auditLogMemoryStore.unshift(fullIncident);
-  if (auditLogMemoryStore.length > 500) {
-    auditLogMemoryStore.pop();
+  // 1. Append to memory cache (capped at 500 records)
+  incidentMemoryStore.unshift(row);
+  if (incidentMemoryStore.length > 500) {
+    incidentMemoryStore.pop();
   }
 
-  // 2. Structured console JSON logging for Vercel / Datadog ingestion
-  console.error('[SECURITY INCIDENT AUDIT LOG]', JSON.stringify(fullIncident));
+  // 2. Format Supabase SQL Insert statement for DB logs
+  const sqlStatement = `INSERT INTO security_incidents (ip, endpoint, payload, rule_triggered) VALUES ('${row.ip}', '${row.endpoint}', '${JSON.stringify(row.payload).replace(/'/g, "''")}', '${row.rule_triggered}');`;
 
-  return fullIncident;
+  // 3. Structured console output for Vercel Logs / Datadog / Supabase webhooks
+  console.error('[SECURITY INCIDENT AUDIT LOG]', JSON.stringify({ ...row, sql: sqlStatement }));
+
+  return row;
 }
 
-export function getAuditIncidents(limit: number = 50): AuditIncident[] {
-  return auditLogMemoryStore.slice(0, limit);
+export function getAuditIncidents(limit: number = 50): SecurityIncidentRow[] {
+  return incidentMemoryStore.slice(0, limit);
 }

@@ -3,6 +3,7 @@
 [![Next.js 16](https://img.shields.io/badge/Next.js-16%20App%20Router-black?logo=nextdotjs)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![OWASP LLM Top 10](https://img.shields.io/badge/OWASP-LLM%20Top%2010%20Compliant-red?logo=owasp)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+[![OWASP Agentic Top 10 2026](https://img.shields.io/badge/OWASP-Agentic%20Top%2010%20(2026)%20Compliant-brightgreen?logo=owasp)](https://swishos.io)
 [![i18n Bilingual](https://img.shields.io/badge/i18n-English%20%7C%20Arabic%20RTL-emerald)](https://swishos.io)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](LICENSE)
 

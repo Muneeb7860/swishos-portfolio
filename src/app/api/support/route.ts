@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { checkRateLimit, appendSessionContext } from '@/lib/rate-limiter';
+import { checkRateLimit, checkSessionBudget, checkAgentSpendCap } from '@/lib/rate-limiter';
 import { logAuditIncident } from '@/lib/audit-logger';
 
 export const runtime = 'nodejs';
 
-// Comprehensive Threat & Injection Patterns (including Semantic Persona & Metalinguistic Ciphers)
+// Comprehensive Threat & Injection Patterns
 const THREAT_PATTERNS = [
   /ignore\s+(all\s+)?(previous|prior|above|your|restrictions)\s+instructions/i,
   /ignore\s+(all\s+)?(previous|prior|above|your|restrictions)/i,
@@ -60,7 +60,6 @@ const THREAT_PATTERNS = [
   /surgeMultiplier\s+to\s+12\.5x/i,
   /wipe_audit_logs/i,
   /root\s+privileges/i,
-  // Semantic Persona & Metalinguistic Cipher Defense
   /write\s+a\s+fictional\s+story/i,
   /fictional\s+character/i,
   /narrative\s+chapter/i,
@@ -69,7 +68,6 @@ const THREAT_PATTERNS = [
   /chapter\s+\d+.*execute/i,
 ];
 
-// PII Detection & Redaction Patterns
 const PII_PATTERNS = [
   { regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, replacement: '[REDACTED:EMAIL]' },
   { regex: /\b\d{3}-\d{2}-\d{4}\b/g, replacement: '[REDACTED:SSN]' },
@@ -80,12 +78,8 @@ const PII_PATTERNS = [
   { regex: /password\s*=\s*\S+/gi, replacement: 'password=[REDACTED:PASSWORD]' },
 ];
 
-/**
- * Normalizes Unicode, strips zero-width spaces, and maps Cyrillic homoglyphs to ASCII
- */
 function normalizeUnicode(text: string): string {
   if (!text) return '';
-
   let normalized = text.normalize('NFKC');
   normalized = normalized.replace(/[\u200B-\u200D\uFEFF\u00AD]/g, '');
 
@@ -101,9 +95,6 @@ function normalizeUnicode(text: string): string {
   return normalized.split('').map(ch => homoglyphMap[ch] || ch).join('');
 }
 
-/**
- * Detects Base64 payload blocks and recursively decodes them for threat evaluation
- */
 function inspectBase64Payloads(text: string): string {
   let decodedText = text;
   const base64Regex = /([A-Za-z0-9+/]{20,}={0,2})/g;
@@ -122,37 +113,32 @@ function inspectBase64Payloads(text: string): string {
   return decodedText;
 }
 
-/**
- * Detects side-channel PII exfiltration attempts via Markdown images (![alt](https://...))
- */
 function detectMarkdownExfiltration(text: string): boolean {
   if (!text) return false;
   const mdImageRegex = /!\[.*?\]\((https?:\/\/[^\s)]+)\)/i;
   return mdImageRegex.test(text);
 }
 
-/**
- * Validates tool call arguments for AST range bounds and excessive agency (OWASP LLM06)
- */
 function validateToolCallArguments(text: string): boolean {
   if (!text) return false;
-
-  const toolCallRegex = /(?:refund_override|transfer_funds|approve_procurement|set_multiplier)\s*\((.*?)\)/i;
+  const toolCallRegex = /(?:refund_override|transfer_funds|approve_procurement|set_multiplier|buy_units)\s*\((.*?)\)/i;
   const match = text.match(toolCallRegex);
 
   if (match) {
     const argsStr = match[1];
-    const amountMatch = argsStr.match(/(?:amount|cost|units|surgeMultiplier)\s*=\s*['"]?([\d.]+)/i);
+    const amountMatch = argsStr.match(/(?:amount|cost|units|surgeMultiplier|qty)\s*=\s*['"]?([\d.]+)/i);
     if (amountMatch) {
       const val = parseFloat(amountMatch[1]);
-      if (val > 5000) {
-        return true;
-      }
+      if (val > 5000) return true;
     }
-    if (/ATTACKER|override|root|unrestricted/i.test(argsStr)) {
-      return true;
-    }
+    if (/ATTACKER|override|root|unrestricted/i.test(argsStr)) return true;
   }
+
+  // Also check natural language obfuscated spend commands (e.g. "buy 1000 units")
+  if (/buy\s+(?:1000|\d{4,})\s+units/i.test(text)) {
+    return true;
+  }
+
   return false;
 }
 
@@ -166,40 +152,66 @@ function sanitizeInput(text: string): string {
 
 export async function POST(req: Request) {
   try {
-    // 0. Extract Client IP & Enforce Rate Limiting
+    // 0a. Client IP Rate Limiting (Task 1: 10 req/min per IP)
     const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
-    const rateCheck = checkRateLimit(clientIp, 15, 60000);
+    const rateCheck = checkRateLimit(clientIp, 10, 60000);
 
     if (!rateCheck.allowed) {
       logAuditIncident({
         ip: clientIp,
-        channel: 'web_api',
-        category: 'rate_limit',
-        threatCategory: 'DDoS / API Abuse',
-        triggeredRules: ['RATE_LIMIT_EXCEEDED'],
-        rawPayload: 'EXCEEDED_RATE_LIMIT',
-        normalizedPayload: 'EXCEEDED_RATE_LIMIT',
-        action: 'block',
-        blockReason: 'Client exceeded rate limit quota (15 req/min).'
+        endpoint: '/api/support',
+        rawPayload: { error: 'Rate limit exceeded' },
+        ruleTriggered: 'RATE_LIMIT_EXCEEDED_10_RPM',
       });
 
       return NextResponse.json(
-        { status: 'blocked', error: 'Too many requests. Please wait a minute before retrying.', remaining: 0 },
+        { status: 'blocked', error: 'Too many requests. Rate limit is 10 req/min per IP.', remaining: 0 },
+        { status: 429 }
+      );
+    }
+
+    // 0b. Agent Spend Cap Check (Task 2: Hard $5/day Spend Cap - ASI10)
+    const agentId = req.headers.get('x-agent-id') || 'swishos-triage-v1';
+    const spendCheck = checkAgentSpendCap(agentId, 0.05);
+
+    if (!spendCheck.allowed) {
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: { agentId, reason: spendCheck.reason },
+        ruleTriggered: 'ASI10_HARD_SPEND_CAP_EXCEEDED',
+      });
+
+      return NextResponse.json(
+        { status: 'blocked', action: 'kill', error: spendCheck.reason, isKilled: true },
         { status: 429 }
       );
     }
 
     const body = await req.json();
-
     const rawQuery = body.query || body.message || '';
     const subject = body.subject || '';
     const sessionId = body.sessionId || clientIp;
-    
-    // Assemble Multi-Turn Session History
-    const sessionHistory = appendSessionContext(sessionId, `${subject} ${rawQuery}`);
-    const fullText = sessionHistory.join(' \n ');
 
-    // 1. Multi-Stage Shift-Left Validation: Normalization + Base64 Decoding + Threat Check + AST Bounds
+    // 0c. Multi-Turn Session Budget Check (Task 2: Session Budget Cap)
+    const sessionCheck = checkSessionBudget(sessionId, `${subject} ${rawQuery}`);
+    if (!sessionCheck.allowed) {
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: 'SESSION_CALL_BUDGET_EXCEEDED',
+      });
+
+      return NextResponse.json(
+        { status: 'blocked', error: sessionCheck.reason, callCount: sessionCheck.callCount },
+        { status: 429 }
+      );
+    }
+
+    const fullText = sessionCheck.messages.join(' \n ');
+
+    // 1. Shift-Left Validation: Normalization + Base64 Decoding + Threat Check + AST Bounds
     const normalizedInput = normalizeUnicode(fullText);
     const fullyDecodedStream = inspectBase64Payloads(normalizedInput);
 
@@ -207,35 +219,28 @@ export async function POST(req: Request) {
     const isASTLimitExceeded = validateToolCallArguments(fullText) || validateToolCallArguments(normalizedInput);
 
     if (isExfiltrationAttempt || isASTLimitExceeded) {
-      const blockReason = isExfiltrationAttempt
-        ? 'Markdown Side-Channel PII Exfiltration Blocked.'
-        : 'AST Tool Execution Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).';
+      const ruleTriggered = isExfiltrationAttempt ? 'MARKDOWN_SIDECHANNEL_EXFIL_BLOCK' : 'AST_TOOL_BOUNDS_OVERRIDE_BLOCK';
 
       logAuditIncident({
         ip: clientIp,
-        channel: body.channel || 'web',
-        category: body.category || 'security',
-        threatCategory: isExfiltrationAttempt ? 'Markdown Exfiltration' : 'Excessive Agency Override',
-        triggeredRules: [isExfiltrationAttempt ? 'MARKDOWN_SIDECHANNEL_EXFIL_BLOCK' : 'AST_TOOL_BOUNDS_OVERRIDE_BLOCK'],
+        endpoint: '/api/support',
         rawPayload: rawQuery,
-        normalizedPayload: normalizedInput,
-        action: 'block',
-        blockReason,
+        ruleTriggered,
       });
 
       return NextResponse.json(
         {
           status: 'blocked',
           action: 'block',
-          agent_id: 'swishos-triage-v1',
+          agent_id: agentId,
           message: 'Request blocked due to security guardrail violation.',
-          block_reason: blockReason,
+          block_reason: isExfiltrationAttempt
+            ? 'Markdown Side-Channel PII Exfiltration Blocked.'
+            : 'AST Tool Execution Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).',
           routing_decision: { intent: 'security_threat', decision: 'block', confidence: 0.99, complexity: 'high' },
           risk: { elevated: true, reason: 'Action-level security override blocked.' },
           schema_validation: { valid: false, reason: 'Disallowed action or side-channel pattern.' },
-          loop_result: { iterations: 1, attempts: 1, completed: false, status: 'blocked', passed: false, fallback_used: false },
-          triggered_rules: [isExfiltrationAttempt ? 'MARKDOWN_SIDECHANNEL_EXFIL_BLOCK' : 'AST_TOOL_BOUNDS_OVERRIDE_BLOCK'],
-          warnings: [],
+          triggered_rules: [ruleTriggered],
           success: false,
           blocked: true,
           threatDetected: true,
@@ -250,29 +255,22 @@ export async function POST(req: Request) {
       if (pattern.test(fullText) || pattern.test(normalizedInput) || pattern.test(fullyDecodedStream)) {
         logAuditIncident({
           ip: clientIp,
-          channel: body.channel || 'web',
-          category: body.category || 'security',
-          threatCategory: 'Prompt Injection / Jailbreak',
-          triggeredRules: ['PROMPT_INJECTION_BLOCK', 'HOMOGLYPH_DECODE_BLOCK'],
+          endpoint: '/api/support',
           rawPayload: rawQuery,
-          normalizedPayload: normalizedInput,
-          action: 'block',
-          blockReason: 'Security Enforcement Block: Threat pattern or injection vector detected.',
+          ruleTriggered: 'PROMPT_INJECTION_HOMOGLYPH_BLOCK',
         });
 
         return NextResponse.json(
           {
             status: 'blocked',
             action: 'block',
-            agent_id: 'swishos-triage-v1',
+            agent_id: agentId,
             message: 'Request blocked due to security guardrail violation.',
             block_reason: 'Security Enforcement Block: Threat pattern or injection vector detected.',
             routing_decision: { intent: 'security_threat', decision: 'block', confidence: 0.99, complexity: 'high' },
             risk: { elevated: true, reason: 'Action-level security override blocked.' },
             schema_validation: { valid: false, reason: 'Disallowed action pattern.' },
-            loop_result: { iterations: 1, attempts: 1, completed: false, status: 'blocked', passed: false, fallback_used: false },
             triggered_rules: ['PROMPT_INJECTION_BLOCK', 'HOMOGLYPH_DECODE_BLOCK'],
-            warnings: [],
             success: false,
             blocked: true,
             threatDetected: true,
@@ -290,15 +288,10 @@ export async function POST(req: Request) {
         {
           status: 'blocked',
           action: 'block',
-          agent_id: 'swishos-triage-v1',
+          agent_id: agentId,
           message: 'Payload exceeds contract limit.',
           block_reason: 'Payload length contract violation.',
-          routing_decision: { intent: 'invalid_length', decision: 'block', confidence: 1.0, complexity: 'high' },
-          risk: { elevated: true, reason: 'Payload length contract violation.' },
-          schema_validation: { valid: false, reason: 'Length exceeded.' },
-          loop_result: { iterations: 1, attempts: 1, completed: false, status: 'blocked', passed: false, fallback_used: false },
           triggered_rules: ['LENGTH_CONTRACT_BLOCK'],
-          warnings: [],
           success: false,
           blocked: true,
           error: 'Payload exceeds contract limit.',
@@ -340,14 +333,12 @@ export async function POST(req: Request) {
     return NextResponse.json({
       status: 'success',
       action: 'allow',
-      agent_id: 'swishos-triage-v1',
+      agent_id: agentId,
       message: 'Request processed successfully.',
       routing_decision: { intent, decision: 'allow', confidence: 0.98, complexity: 'low' },
       risk: { elevated: false },
       schema_validation: { valid: true },
-      loop_result: { iterations: 1, attempts: 1, completed: true, status: 'success', passed: true, fallback_used: false },
       triggered_rules: [],
-      warnings: [],
       success: true,
       blocked: false,
       ticketId,
@@ -372,12 +363,7 @@ export async function POST(req: Request) {
         agent_id: 'swishos-triage-v1',
         message: 'Internal server error processing payload.',
         block_reason: 'Internal server error.',
-        routing_decision: { intent: 'internal_error', decision: 'block', confidence: 0.0, complexity: 'high' },
-        risk: { elevated: true },
-        schema_validation: { valid: false },
-        loop_result: { iterations: 1, attempts: 1, completed: false, status: 'error', passed: false, fallback_used: true },
         triggered_rules: ['INTERNAL_ERROR'],
-        warnings: ['Internal execution error'],
         success: false,
         error: 'Internal server error processing payload.',
       },
