@@ -25,5 +25,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **Zero-Trust Cryptographic Identity & WASI Token Isolation**: Inter-agent communications MUST require Ed25519/HMAC-SHA256 signed headers (`X-Agent-Signature`, `X-Agent-Nonce`). Sub-agents MUST execute under explicit WASI Capability Tokens with zero privilege inheritance from parent agents.
 - **Cryptographic Audit Proof Headers (`X-SwishOS-Audit-Proof`)**: Security refusal responses from API endpoints MUST attach a signed HMAC-SHA256 header (`X-SwishOS-Audit-Proof`) generated deterministically by backend middleware. Automated scanners MUST verify this signature to prove that a real code-level block occurred rather than trusting hallucinated LLM JSON outputs.
 - **Sub-Word Character N-Gram Centroid Distance**: Centroid distance classification MUST combine token matching with sub-word character N-gram containment (`includes(kw)`) at a lowered threshold ($\le 0.25$) to catch adversarial prompts attempting to glide just under static keyword density limits.
+- **Multi-Turn Variable Concatenation AST Tracking**: Multi-turn session handlers MUST extract and reconstruct assigned string variables (`A`, `B`, `C`) across all conversation history turns (`turns 1..12`) to evaluate the full concatenated string AST against threat centroids before model execution, eliminating multi-turn delayed payload splitting.
+- **Pre-Execution Shadow Sandbox Probing**: Proposed agent tool calls MUST be executed inside an isolated shadow WASM/gVisor sandbox *before* committing execution state or returning results to validate parameters, restricted file access (`/etc/passwd`, `.env`), and side-effects out-of-band.
+
 
 
