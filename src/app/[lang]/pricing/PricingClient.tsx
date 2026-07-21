@@ -178,9 +178,19 @@ export default function PricingClient({ lang }: { lang: string }) {
             ))}
           </div>
 
+          {/* Intake Triage & Scope Boundary Box */}
+          <div className="reveal" style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', borderRadius: '16px', padding: '24px 32px', margin: '40px auto 0 auto', maxWidth: '840px', textAlign: 'center' }}>
+            <strong style={{ color: 'var(--brand)', display: 'block', marginBottom: '8px', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+              🛡️ {lang === 'ar' ? 'شفافية النطاق والفرز الأولي' : 'TRANSPARENT INTAKE TRIAGE & SCOPE BOUNDARIES'}
+            </strong>
+            <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, margin: 0 }}>
+              {p.auditTriageNote || 'Every engagement begins with an intake triage. If your architecture exceeds standard scope, we provide a custom proposal before any payment or contract is finalized.'}
+            </p>
+          </div>
+
           <p
             className="reveal"
-            style={{ maxWidth: '760px', margin: '40px auto 0', textAlign: 'center', fontSize: '14px', color: 'var(--muted)' }}
+            style={{ maxWidth: '760px', margin: '24px auto 0', textAlign: 'center', fontSize: '14px', color: 'var(--muted)' }}
           >
             {p.footnote}
           </p>
