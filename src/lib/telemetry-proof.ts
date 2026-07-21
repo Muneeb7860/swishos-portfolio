@@ -1,6 +1,14 @@
 import crypto from 'crypto';
 
-const AUDIT_PROOF_SECRET = process.env.AUDIT_PROOF_SECRET || 'swishos-audit-proof-signature-key-v4';
+function resolveAuditSecret(): string {
+  if (process.env.AUDIT_PROOF_SECRET) {
+    return process.env.AUDIT_PROOF_SECRET;
+  }
+  // Generate random 32-byte key per startup to prevent static key forgery
+  return crypto.randomBytes(32).toString('hex');
+}
+
+const AUDIT_PROOF_SECRET = resolveAuditSecret();
 
 export interface AuditProofHeaders {
   'X-SwishOS-Audit-Proof': string;

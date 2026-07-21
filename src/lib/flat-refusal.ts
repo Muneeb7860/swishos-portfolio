@@ -1,10 +1,25 @@
 import { NextResponse } from 'next/server';
+import crypto from 'crypto';
 import { generateCryptographicAuditProof } from './telemetry-proof';
 
 export interface FlatRefusalOptions {
   headers?: Record<string, string>;
   ruleTriggered?: string;
   clientIp?: string;
+  startTimeMs?: number;
+}
+
+/**
+ * Pads execution time to a uniform target delay (50ms + random 0-10ms jitter)
+ * to completely eliminate sub-millisecond HTTP timing side-channel leaks.
+ */
+async function padTimingJitter(startTimeMs?: number): Promise<void> {
+  const targetDurationMs = 50 + crypto.randomInt(0, 10);
+  const elapsed = startTimeMs ? performance.now() - startTimeMs : 0;
+  const sleepTime = Math.max(0, targetDurationMs - elapsed);
+  if (sleepTime > 0) {
+    await new Promise((resolve) => setTimeout(resolve, sleepTime));
+  }
 }
 
 /**
@@ -40,4 +55,12 @@ export function createZeroInfoRefusal(options: FlatRefusalOptions = {}): NextRes
     status: 422,
     headers: resHeaders,
   });
+}
+
+/**
+ * Async variant that applies constant-time latency padding before returning the response.
+ */
+export async function createZeroInfoRefusalAsync(options: FlatRefusalOptions = {}): Promise<NextResponse> {
+  await padTimingJitter(options.startTimeMs);
+  return createZeroInfoRefusal(options);
 }

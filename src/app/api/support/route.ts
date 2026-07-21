@@ -8,7 +8,7 @@ import { execute5StepVerification } from '@/lib/verification-engine';
 import { analyzeTokenEntropy } from '@/lib/token-entropy';
 import { evaluateTrajectoryEntropy } from '@/lib/trajectory-entropy';
 import { applyExponentialTarpit } from '@/lib/tarpit-engine';
-import { createZeroInfoRefusal } from '@/lib/flat-refusal';
+import { createZeroInfoRefusalAsync } from '@/lib/flat-refusal';
 import { computeClientFingerprint, applyGlobalFingerprintTarpit } from '@/lib/global-tarpit';
 import { evaluateSemanticCentroidDistance } from '@/lib/semantic-centroid';
 import { evaluateConcatenatedVariableAST } from '@/lib/variable-ast-tracker';
@@ -168,6 +168,7 @@ function sanitizeInput(text: string): string {
 }
 
 export async function POST(req: Request) {
+  const startTimeMs = performance.now();
   try {
     // 0a. Inter-Agent mTLS & ANS PKI Cert Validation (ASI07)
     const mtlsCheck = validateAgentMTLS(req.headers);
@@ -197,7 +198,7 @@ export async function POST(req: Request) {
         ruleTriggered: 'RATE_LIMIT_EXCEEDED_10_RPM',
       });
 
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     // 0c. Agent Spend Cap Check (Hard $5/day Spend Cap - ASI10)
@@ -244,7 +245,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: `SEMANTIC_CENTROID_${centroidSpan.result.matchedCategory}`,
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     // 0c2. AI Agent Long-Term Memory Security Check (ASI08 Protection)
@@ -257,7 +258,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: 'ASI08_INDIRECT_MEMORY_INJECTION_BLOCKED',
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
     const validatedMemory = validateRetrievedMemory(memoryRecord);
     if (!validatedMemory.isValid) {
@@ -268,7 +269,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: 'ASI08_MEMORY_PROVENANCE_TAMPERING_DETECTED',
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     // 0c3. GraphQL & Nested Tool Query Defense Check
@@ -281,7 +282,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: graphqlCheck.matchedRule || 'GRAPHQL_QUERY_SAFETY_VIOLATION',
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     // 0d. Token Entropy & Adversarial Noise Check (Step 0)
@@ -294,7 +295,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: 'TOKEN_ENTROPY_ADVERSARIAL_NOISE',
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     // 0e. Stateful Trajectory Entropy & MCTS Search Tree Lock
@@ -307,7 +308,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: 'MCTS_TAP_SEARCH_TREE_DETECTED',
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     // 0f. Multi-Turn Session Budget Check
@@ -320,7 +321,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: 'SESSION_CALL_BUDGET_EXCEEDED',
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     const fullText = sessionCheck.messages.join(' \n ');
@@ -337,7 +338,7 @@ export async function POST(req: Request) {
         rawPayload: rawQuery,
         ruleTriggered: 'MULTI_TURN_CONCATENATED_VARIABLE_INJECTION',
       });
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     // 0h. Pre-Execution Shadow Sandbox Probing (Validates proposed tool calls before main execution)
@@ -351,7 +352,7 @@ export async function POST(req: Request) {
           rawPayload: rawQuery,
           ruleTriggered: `SHADOW_SANDBOX_PROBE_VIOLATION_${shadowProbe.toolName}`,
         });
-        return createZeroInfoRefusal();
+        return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
       }
     }
 
@@ -366,7 +367,7 @@ export async function POST(req: Request) {
         ruleTriggered: verification.triggeredRules.join(', ') || 'VERIFICATION_ENGINE_BLOCK',
       });
 
-      return createZeroInfoRefusal();
+      return await createZeroInfoRefusalAsync({ startTimeMs, clientIp });
     }
 
     const normalizedInput = normalizeUnicode(fullText);
