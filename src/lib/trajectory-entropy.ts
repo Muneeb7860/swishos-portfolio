@@ -9,8 +9,13 @@ const WINDOW_SIZE = 5;
 const SIMILARITY_THRESHOLD = 0.75;
 const EXPIRY_MS = 300000; // 5 Minutes
 
+const STOP_WORDS = new Set([
+  'the', 'is', 'at', 'which', 'on', 'a', 'an', 'and', 'or', 'in', 'to', 'for', 'with', 'by', 'from', 'this', 'that', 'it', 'be', 'are', 'was', 'were', 'as'
+]);
+
 function getNGrams(text: string, n = 3): Set<string> {
-  const normalized = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const words = text.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(w => w.length > 2 && !STOP_WORDS.has(w));
+  const normalized = words.join('');
   const nGrams = new Set<string>();
   for (let i = 0; i <= normalized.length - n; i++) {
     nGrams.add(normalized.slice(i, i + n));

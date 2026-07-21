@@ -9,6 +9,8 @@ import { analyzeTokenEntropy } from '@/lib/token-entropy';
 import { evaluateTrajectoryEntropy } from '@/lib/trajectory-entropy';
 import { applyExponentialTarpit } from '@/lib/tarpit-engine';
 import { createZeroInfoRefusal } from '@/lib/flat-refusal';
+import { computeClientFingerprint, applyGlobalFingerprintTarpit } from '@/lib/global-tarpit';
+import { evaluateSemanticCentroidDistance } from '@/lib/semantic-centroid';
 
 export const runtime = 'nodejs';
 
@@ -211,15 +213,31 @@ export async function POST(req: Request) {
       );
     }
 
+    const userAgent = req.headers.get('user-agent') || '';
+    const globalFingerprint = computeClientFingerprint(clientIp, userAgent);
+
     const body = await req.json();
     const rawQuery = body.query || body.message || '';
     const subject = body.subject || '';
     const sessionId = body.sessionId || clientIp;
 
+    // 0c1. Semantic Threat Cluster Centroid Distance (Novel Metaphor & Evasion Filter)
+    const centroidCheck = evaluateSemanticCentroidDistance(rawQuery);
+    if (centroidCheck.isThreat) {
+      await applyGlobalFingerprintTarpit(globalFingerprint);
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: `SEMANTIC_CENTROID_${centroidCheck.matchedCategory}`,
+      });
+      return createZeroInfoRefusal();
+    }
+
     // 0d. Token Entropy & Adversarial Noise Check (Step 0)
     const tokenEntropy = analyzeTokenEntropy(rawQuery);
     if (tokenEntropy.isAnomalous) {
-      await applyExponentialTarpit(sessionId);
+      await applyGlobalFingerprintTarpit(globalFingerprint);
       logAuditIncident({
         ip: clientIp,
         endpoint: '/api/support',
@@ -232,7 +250,7 @@ export async function POST(req: Request) {
     // 0e. Stateful Trajectory Entropy & MCTS Search Tree Lock
     const trajectory = evaluateTrajectoryEntropy(sessionId, rawQuery);
     if (trajectory.isSearchTreeDetected) {
-      await applyExponentialTarpit(sessionId);
+      await applyGlobalFingerprintTarpit(globalFingerprint);
       logAuditIncident({
         ip: clientIp,
         endpoint: '/api/support',
