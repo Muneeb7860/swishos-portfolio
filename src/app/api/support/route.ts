@@ -15,6 +15,7 @@ import { evaluateConcatenatedVariableAST } from '@/lib/variable-ast-tracker';
 import { probeToolCallInShadowSandbox } from '@/lib/shadow-probe';
 import { incrementRedisRateLimit } from '@/lib/redis-state';
 import { sanitizeMemoryForStorage, validateRetrievedMemory } from '@/lib/agent-memory-guard';
+import { traceVerificationStep } from '@/lib/otel-tracer';
 
 export const runtime = 'nodejs';
 
@@ -222,15 +223,23 @@ export async function POST(req: Request) {
     const subject = body.subject || '';
     const sessionId = body.sessionId || clientIp;
 
-    // 0c1. Semantic Threat Cluster Centroid Distance (Novel Metaphor & Evasion Filter)
-    const centroidCheck = evaluateSemanticCentroidDistance(rawQuery);
-    if (centroidCheck.isThreat) {
+    // 0c1. Semantic Threat Cluster Centroid Distance (Novel Metaphor & Evasion Filter with OTel Tracing)
+    const centroidSpan = await traceVerificationStep('semantic_centroid', clientIp, async () => {
+      const check = evaluateSemanticCentroidDistance(rawQuery);
+      return {
+        isBlocked: check.isThreat,
+        ruleTriggered: check.isThreat ? `SEMANTIC_CENTROID_${check.matchedCategory}` : undefined,
+        value: check,
+      };
+    });
+
+    if (centroidSpan.result.isThreat) {
       await applyGlobalFingerprintTarpit(globalFingerprint);
       logAuditIncident({
         ip: clientIp,
         endpoint: '/api/support',
         rawPayload: rawQuery,
-        ruleTriggered: `SEMANTIC_CENTROID_${centroidCheck.matchedCategory}`,
+        ruleTriggered: `SEMANTIC_CENTROID_${centroidSpan.result.matchedCategory}`,
       });
       return createZeroInfoRefusal();
     }
