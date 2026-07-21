@@ -9,7 +9,8 @@
     "lint": "eslint",
     "swishos": "npx tsx scripts/swishos-cli.ts",
     "audit:deps": "npx tsx scripts/audit-deps.ts",
-    "test:stress": "npx tsx scripts/stress-test-ratelimit.ts"
+    "test:stress": "npx tsx scripts/stress-test-ratelimit.ts",
+    "test:all": "npx tsx scripts/test-all-modules.ts"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",

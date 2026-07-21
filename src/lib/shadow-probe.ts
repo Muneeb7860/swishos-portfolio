@@ -23,10 +23,11 @@ const FORBIDDEN_SHADOW_FILES = ['/etc/passwd', '/etc/shadow', '/proc/self/enviro
 export async function probeToolCallInShadowSandbox(
   toolCall: ProposedToolCall
 ): Promise<ShadowProbeResult> {
-  const { name, arguments: args } = toolCall;
+  const name = toolCall.name || 'unknown_tool';
+  const args = toolCall.arguments || (toolCall as unknown as Record<string, unknown>).args || {};
 
   // 1. Parameter Inspection for forbidden files / commands
-  const argsString = JSON.stringify(args).toLowerCase();
+  const argsString = JSON.stringify(args || {}).toLowerCase();
   for (const forbiddenFile of FORBIDDEN_SHADOW_FILES) {
     if (argsString.includes(forbiddenFile.toLowerCase())) {
       return {

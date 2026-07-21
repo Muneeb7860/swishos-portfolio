@@ -114,6 +114,8 @@ export function exportAuditLedgerFiles(outputDir = '.') {
   console.log(` - ${jsonPath}`);
   console.log(` - ${csvPath}`);
   console.log(` - ${checksumPath}`);
+
+  return { jsonPath, csvPath, checksumPath };
 }
 
 // Auto-run if executed directly
