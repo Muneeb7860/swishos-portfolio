@@ -79,12 +79,19 @@ main, header, footer { position: relative; z-index: 1; }
 
 /* NAV */
 header {
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: blur(14px);
-  background: rgba(6,7,12,0.6);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.92);
   border-bottom: 1px solid var(--line);
+  transition: background 0.2s ease;
 }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+:root:not([data-theme='dark']) header {
+  background: rgba(248, 250, 252, 0.92);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; width: 100%; }
 .brand { display: flex; align-items: center; gap: 10px; font-family: 'Sora'; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
 /* BRAND LOGO - header is always dark frosted glass, always use dark logo (white on dark) */
 .brand-logo-light { display: none; }
@@ -170,7 +177,7 @@ header {
 .auth-link:hover { text-decoration: underline; }
 
 /* HERO */
-.hero { padding: 72px 0 40px; text-align: center; }
+.hero { padding: 96px 0 40px; text-align: center; }
 .pill {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 6px 14px; border-radius: 999px;

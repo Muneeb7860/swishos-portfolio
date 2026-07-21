@@ -112,8 +112,8 @@ export default async function RootLayout(props: {
 
           {/* GLOBAL FOOTER */}
           <footer>
-            <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '48px', paddingBottom: '48px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '40px', marginBottom: '40px' }}>
+            <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '56px', paddingBottom: '56px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '48px', marginBottom: '48px' }}>
                 {/* Brand */}
                 <div>
                   <div style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: '18px', marginBottom: '12px', color: 'var(--txt)' }}>
