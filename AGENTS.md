@@ -29,6 +29,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **Pre-Execution Shadow Sandbox Probing**: Proposed agent tool calls MUST be executed inside an isolated shadow WASM/gVisor sandbox *before* committing execution state or returning results to validate parameters, restricted file access (`/etc/passwd`, `.env`), and side-effects out-of-band.
 - **Sub-1ms Edge WAF Cryptographic Audit Signatures**: Edge CDN scripts (Cloudflare Workers) MUST enforce shift-left NFKC normalization and centroid density filtering at global edge nodes, using Web Crypto API (`crypto.subtle`) to generate signed `X-SwishOS-Audit-Proof` HMAC headers directly on edge blocks to reduce origin server load to zero.
 - **Automated CI/CD 100% Pass Rate Security Gate**: CI/CD pipelines (GitHub Actions) MUST run automated red-team security sweeps (`benchmark_runner.py`) against background production server builds, verifying cryptographic audit proof signatures and failing PR builds if overall defense pass rate drops below 100.0%.
+- **RAG Memory Provenance & Structural XML Encapsulation (ASI08 Protection)**: Long-term memory storage handlers MUST sanitize RAG text entries and attach HMAC-SHA256 provenance signature headers (`X-Memory-Source-Hash`). Retrieved memory chunks MUST be re-verified out-of-band for vector DB tampering and encapsulated in structural `<trusted_context provenance="...">` XML tags before model prompt insertion.
+- **GraphQL AST Depth & Alias Amplification Bounds**: API endpoints consuming GraphQL or nested tool structures MUST parse AST depth and field aliases, enforcing a hard limit of maximum 5 nested levels and 10 field aliases to block recursive depth and batching amplification attacks.
+- **Supply Chain SHA-512 Lockfile Integrity Enforcement**: Dependency audit pipelines (`audit-deps.ts`) MUST verify that 100% of installed packages in package lockfiles contain cryptographic `sha512-` integrity hashes, flagging unpinned git/HTTP dependencies and failing CI/CD builds if supply chain integrity is compromised.
+
 
 
 
