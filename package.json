@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "swishos": "npx tsx scripts/swishos-cli.ts"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",
