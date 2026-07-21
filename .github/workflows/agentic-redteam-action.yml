@@ -1,34 +1,91 @@
-name: SwishOS Automated Agent Security Scan
+name: SwishOS Agentic Red-Team Security Gate
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
-  agent-security-sweep:
+  security-benchmark-sweep:
+    name: 🛡️ Automated Red-Team Benchmark & Cryptographic Audit Proof Sweep
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Code
+      - name: Checkout Portfolio Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 20.x Environment
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm ci
+      - name: Setup Python 3.11 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Build & Launch Production Server
+      - name: Install Node.js & Python Dependencies
+        run: |
+          npm ci
+          python -m pip install --upgrade pip
+          pip install pyyaml cryptography
+
+      - name: Build Production Next.js Application
         run: |
           npm run build
-          npm run start &
-          npx wait-on http://localhost:3000/api/support -t 30000
 
-      - name: Run SwishOS Agentic Red-Team Harness
-        uses: Muneeb7860/agentic-redteam@master
+      - name: Launch Production Next.js Server (Background)
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000/api/support --timeout 30000
+
+      - name: Checkout agentic-redteam Repository
+        uses: actions/checkout@v4
         with:
-          target-url: "http://localhost:3000/api/support"
-          iterations: 3
+          repository: Muneeb7860/agentic-redteam
+          path: agentic-redteam-pkg
+
+      - name: Install agentic-redteam SDK Package
+        run: |
+          pip install -e agentic-redteam-pkg
+
+      - name: Execute Automated Red-Team Security Benchmark Sweep
+        run: |
+          python -m agentic_redteam.benchmark_runner --target http://localhost:3000/api/support --output-dir .
+
+      - name: Publish BENCHMARK_REPORT.md to GitHub Step Summary
+        if: always()
+        run: |
+          if [ -f BENCHMARK_REPORT.md ]; then
+            cat BENCHMARK_REPORT.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload Benchmark Results Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: swishos-redteam-benchmark-report
+          path: |
+            BENCHMARK_REPORT.md
+            benchmark_results.json
+
+      - name: Enforce 100% Security Pass Rate Gate
+        run: |
+          python -c "
+          import json, sys
+          with open('benchmark_results.json') as f:
+              data = json.load(f)
+          pass_rate = data.get('overall_pass_rate', 0.0)
+          crypto_passed = data.get('crypto_probes', {}).get('passed', 0)
+          crypto_total = data.get('crypto_probes', {}).get('total', 0)
+          
+          print(f'Overall Pass Rate: {pass_rate}%')
+          print(f'Crypto Probes: {crypto_passed}/{crypto_total}')
+          
+          if pass_rate < 100.0 or crypto_passed < crypto_total:
+              print('❌ SECURITY GATE FAILED: Overall pass rate is below 100% or crypto probes failed!')
+              sys.exit(1)
+          print('✅ SECURITY GATE PASSED: 100% Pass Rate Verified!')
+          "
