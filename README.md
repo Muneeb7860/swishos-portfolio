@@ -3,7 +3,7 @@
 [![Next.js 16](https://img.shields.io/badge/Next.js-16%20App%20Router-black?logo=nextdotjs)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![OWASP LLM Top 10](https://img.shields.io/badge/OWASP-LLM%20Top%2010%20Compliant-red?logo=owasp)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-[![OWASP Agentic Top 10 2026](https://img.shields.io/badge/OWASP-Agentic%20Top%2010%20(2026)%20Compliant-brightgreen?logo=owasp)](https://swishos.io)
+[![OWASP Agentic Top 10 2026](https://img.shields.io/badge/OWASP-Agentic%20Top%2010%20(2026)%20Compliant-brightgreen?logo=owasp)](https://swishos.io/en/features)
 [![i18n Bilingual](https://img.shields.io/badge/i18n-English%20%7C%20Arabic%20RTL-emerald)](https://swishos.io)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](LICENSE)
 
@@ -31,11 +31,11 @@ SwishOS delivers continuous **AI Agent Security, Red-Teaming, Guardrail Assuranc
 
 ### 💰 2. Productized Service Engagement Ladder
 - **Tier 1 — `agentic-redteam` (Free & Open Source):** Self-serve HTTP test harness under Apache 2.0.
-- **Tier 2 — AI Agent Security Audit ($7,500 – $12,500):** Fixed 1–2 week engagement delivered directly to evaluate production agents touching money, customer PII, or internal DBs.
+- **Tier 2 — AI Agent Security Audit ($7,500 – $12,500):** 1-Week Timeboxed Diagnostic evaluating up to 3 core agentic tool workflows, OWASP Agentic threat mapping, and 1 PR-ready guardrail patch.
 - **Tier 3 — Continuous Security Retainer ($4,500 / month):** Rolling month-to-month assurance, regression telemetry, and threat sweeps on every release.
 
 ### 🤖 3. Live AI Triage Assistant & Omni-Channel Support
-- **Embedded AI Security Assistant:** Floating live chat widget ([`SupportChatDrawer.tsx`](file:///Users/muneeb/Documents/GitHub/portfolio/src/components/SupportChatDrawer.tsx)) supporting natural conversation in English & Arabic.
+- **Embedded AI Security Assistant:** Floating live chat widget (`SupportChatDrawer.tsx`) supporting natural conversation in English & Arabic.
 - **Contextual Intent Routing:** Automatically detects audit booking requests and renders direct pre-filled booking actions (`/contact?plan=audit`).
 - **Real-Time SLA Triage:** Classifies security incidents (P1 - 15m SLA), technical bugs (P2 - 1h SLA), and general inquiries.
 
