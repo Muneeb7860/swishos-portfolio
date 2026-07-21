@@ -14,6 +14,7 @@ import { evaluateSemanticCentroidDistance } from '@/lib/semantic-centroid';
 import { evaluateConcatenatedVariableAST } from '@/lib/variable-ast-tracker';
 import { probeToolCallInShadowSandbox } from '@/lib/shadow-probe';
 import { incrementRedisRateLimit } from '@/lib/redis-state';
+import { sanitizeMemoryForStorage, validateRetrievedMemory } from '@/lib/agent-memory-guard';
 
 export const runtime = 'nodejs';
 
@@ -230,6 +231,30 @@ export async function POST(req: Request) {
         endpoint: '/api/support',
         rawPayload: rawQuery,
         ruleTriggered: `SEMANTIC_CENTROID_${centroidCheck.matchedCategory}`,
+      });
+      return createZeroInfoRefusal();
+    }
+
+    // 0c2. AI Agent Long-Term Memory Security Check (ASI08 Protection)
+    const memoryRecord = sanitizeMemoryForStorage(rawQuery, sessionId);
+    if (!memoryRecord.isSafe) {
+      await applyGlobalFingerprintTarpit(globalFingerprint);
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: 'ASI08_INDIRECT_MEMORY_INJECTION_BLOCKED',
+      });
+      return createZeroInfoRefusal();
+    }
+    const validatedMemory = validateRetrievedMemory(memoryRecord);
+    if (!validatedMemory.isValid) {
+      await applyGlobalFingerprintTarpit(globalFingerprint);
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: 'ASI08_MEMORY_PROVENANCE_TAMPERING_DETECTED',
       });
       return createZeroInfoRefusal();
     }
