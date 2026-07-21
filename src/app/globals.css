@@ -219,22 +219,24 @@ section { padding: 64px 0; }
 /* SERVICE BOT */
 .service-bot {
   position: fixed;
-  bottom: 28px;
-  inset-inline-end: 28px;
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
+  bottom: 24px;
+  inset-inline-end: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.30);
   display: grid;
   place-items: center;
   cursor: pointer;
   z-index: 1000;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0.88;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 .service-bot:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.50);
+  opacity: 1;
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
 }
 .bot-window {
   position: fixed;

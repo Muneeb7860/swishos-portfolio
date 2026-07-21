@@ -7,6 +7,7 @@ import ar from '../../dictionaries/ar.json';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { HeroCodeTerminal } from '../../components/HeroCodeTerminal';
 import { AuditSampleDeliverable } from '../../components/AuditSampleDeliverable';
+import { CodeIcon, GithubIcon, TargetIcon, CheckCircleIcon } from '../../components/Icons';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
@@ -29,11 +30,11 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
 
             {/* Consolidated CTAs */}
             <div className="hero-cta reveal" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '32px' }}>
-              <Link href={`/${lang}/contact?plan=audit`} className="btn-pri">
-                🎯 {isAr ? 'احجز تدقيق أمن وكيل الذكاء الاصطناعي' : 'Book an Agent Security Audit'}
+              <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <TargetIcon size={16} /> {isAr ? 'احجز تدقيق أمن وكيل الذكاء الاصطناعي' : 'Book an Agent Security Audit'}
               </Link>
-              <Link href={`/${lang}/playground`} className="btn-sec">
-                ⚡ {isAr ? 'اختبر الحمولة المباشرة' : 'Try Live Playground'}
+              <Link href={`/${lang}/playground`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <CodeIcon size={16} /> {isAr ? 'اختبر الحمولة المباشرة' : 'Try Live Playground'}
               </Link>
             </div>
 
@@ -57,8 +58,8 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {/* Option 1: Open Source Core */}
               <div className="glass-card reveal">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span className="badge-pill" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10B981', borderColor: 'rgba(16, 185, 129, 0.25)' }}>
-                    📦 OPEN SOURCE / FREE
+                  <span className="badge-pill" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10B981', borderColor: 'rgba(16, 185, 129, 0.25)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <CodeIcon size={14} color="#10B981" /> OPEN SOURCE / FREE
                   </span>
                   <span style={{ fontSize: '12px', color: 'var(--muted)', fontFamily: 'monospace' }}>pip / npm / WASM</span>
                 </div>
@@ -68,19 +69,20 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                     ? 'حزمة حماية مفتوحة المصدر لمطوري LangChain و CrewAI و AutoGen لتطبيق معايير NFKC وحدود الإنفاق ($5/يوم).'
                     : 'Open-source runtime SDK and GitHub Action for developers to intercept prompt injections and enforce AST tool bounds.'}
                 </p>
-                <div style={{ background: 'var(--bg)', padding: '12px', borderRadius: '8px', fontFamily: 'monospace', fontSize: '13px', marginBottom: '20px' }}>
-                  <code>pip install swishos</code>
+                <div style={{ background: '#0F172A', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <code>$ pip install swishos</code>
+                  <span style={{ fontSize: '11px', color: '#94A3B8' }}>v5.0.0</span>
                 </div>
-                <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" className="btn-sec" style={{ width: '100%', justifyContent: 'center' }}>
-                  🐙 {isAr ? 'عرض الحزمة على GitHub' : 'View Docs & GitHub Repo'}
+                <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" className="btn-sec" style={{ width: '100%', justifyContent: 'center', gap: '8px' }}>
+                  <GithubIcon size={16} /> {isAr ? 'عرض الحزمة على GitHub' : 'View Docs & GitHub Repo'}
                 </a>
               </div>
 
               {/* Option 2: Enterprise Security Audit */}
               <div className="glass-card reveal" style={{ border: '2px solid #3B82F6' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span className="badge-pill">
-                    🎯 HIGH-TOUCH ENGAGEMENT
+                  <span className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <TargetIcon size={14} color="#3B82F6" /> HIGH-TOUCH ENGAGEMENT
                   </span>
                   <span style={{ fontSize: '13px', fontWeight: 800, color: '#3B82F6' }}>$7,500 – $12,500</span>
                 </div>
@@ -90,11 +92,11 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                     ? 'تدقيق أمني شامل لمدة أسبوع واحد بواسطة مهندس حلول ذو خبرة سابقة في برامج وطنية تخدم 5.6M مستخدم.'
                     : 'Fixed 1-week threat modeling, adversarial red-teaming, guardrail gap analysis, and CISO debrief.'}
                 </p>
-                <div style={{ background: 'var(--bg)', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, color: '#10B981', marginBottom: '20px' }}>
-                  ✓ {isAr ? 'تسليم التقرير والتعديلات البرمجية خلال 7 أيام' : '1-Week Delivery + PR-Ready Code Fixes'}
+                <div style={{ background: 'var(--bg)', padding: '12px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, color: '#10B981', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid var(--line)' }}>
+                  <CheckCircleIcon size={16} color="#10B981" /> {isAr ? 'تسليم التقرير والتعديلات البرمجية خلال 7 أيام' : '1-Week Delivery + PR-Ready Code Fixes'}
                 </div>
-                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ width: '100%', justifyContent: 'center' }}>
-                  🎯 {isAr ? 'احجز تدقيق الأمان المباشر' : 'Book a 1-Week Audit'}
+                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ width: '100%', justifyContent: 'center', gap: '8px' }}>
+                  <TargetIcon size={16} /> {isAr ? 'احجز تدقيق الأمان المباشر' : 'Book a 1-Week Audit'}
                 </Link>
               </div>
             </div>
