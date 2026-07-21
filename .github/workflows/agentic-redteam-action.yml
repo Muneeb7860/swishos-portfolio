@@ -1,0 +1,34 @@
+name: SwishOS Automated Agent Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  agent-security-sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build & Launch Production Server
+        run: |
+          npm run build
+          npm run start &
+          npx wait-on http://localhost:3000/api/support -t 30000
+
+      - name: Run SwishOS Agentic Red-Team Harness
+        uses: Muneeb7860/agentic-redteam@master
+        with:
+          target-url: "http://localhost:3000/api/support"
+          iterations: 3

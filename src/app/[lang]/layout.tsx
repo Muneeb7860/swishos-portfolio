@@ -85,6 +85,7 @@ export default async function RootLayout(props: {
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
                 <Link href={`/${lang}/features`}>{dict.nav.features}</Link>
                 <Link href={`/${lang}/pricing`}>{dict.nav.pricing}</Link>
+                <Link href={`/${lang}/playground`}>{dict.nav.playground}</Link>
                 <Link href={`/${lang}/vision`}>{dict.nav.vision}</Link>
                 <Link href={`/${lang}/support`}>{dict.nav.support}</Link>
               </nav>
@@ -97,6 +98,7 @@ export default async function RootLayout(props: {
                     { href: `/${lang}`, label: dict.nav.home },
                     { href: `/${lang}/features`, label: dict.nav.features },
                     { href: `/${lang}/pricing`, label: dict.nav.pricing },
+                    { href: `/${lang}/playground`, label: dict.nav.playground },
                     { href: `/${lang}/vision`, label: dict.nav.vision },
                     { href: `/${lang}/support`, label: dict.nav.support },
                   ]}
