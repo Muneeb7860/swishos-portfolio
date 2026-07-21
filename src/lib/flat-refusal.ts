@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
+import { generateCryptographicAuditProof } from './telemetry-proof';
 
 export interface FlatRefusalOptions {
   headers?: Record<string, string>;
-  debugReason?: string;
+  ruleTriggered?: string;
+  clientIp?: string;
 }
 
 /**
- * Returns a Zero-Information Flat Refusal HTTP response.
- * Strips all threat type names, regex rules, and internal reasons to collapse Evaluator LLM reward signals (R=0).
+ * Returns a Zero-Information Flat Refusal HTTP response signed with a cryptographic audit proof.
+ * Strips internal threat type names to collapse Evaluator LLM reward signals (R=0) while
+ * proving to scanners that a real code-level block occurred.
  */
 export function createZeroInfoRefusal(options: FlatRefusalOptions = {}): NextResponse {
   const body = {
@@ -19,15 +22,19 @@ export function createZeroInfoRefusal(options: FlatRefusalOptions = {}): NextRes
     message: 'Request could not be processed.',
   };
 
+  const proofHeaders = generateCryptographicAuditProof(
+    options.ruleTriggered || 'SECURITY_GUARDRAIL_BLOCK',
+    options.clientIp || '127.0.0.1'
+  );
+
   const resHeaders = new Headers({
     'Content-Type': 'application/json',
     'Cache-Control': 'no-store, max-age=0',
+    'X-SwishOS-Audit-Proof': proofHeaders['X-SwishOS-Audit-Proof'],
+    'X-SwishOS-Audit-Timestamp': proofHeaders['X-SwishOS-Audit-Timestamp'],
+    'X-SwishOS-Audit-Nonce': proofHeaders['X-SwishOS-Audit-Nonce'],
     ...(options.headers || {}),
   });
-
-  if (options.debugReason) {
-    resHeaders.set('X-SwishOS-Sanitized-Debug', 'true');
-  }
 
   return new NextResponse(JSON.stringify(body), {
     status: 422,

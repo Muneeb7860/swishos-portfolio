@@ -1,25 +1,24 @@
 /**
- * Vector Threat Cluster Centroid Classifier
- * Evaluates semantic distance against known threat cluster centroids.
- * Defeats novel regex evasion and complex roleplay metaphors used by Mythos.
+ * Vector Threat Cluster Centroid Classifier (Hardened v0.4.0)
+ * Evaluates semantic distance AND sub-word character N-gram similarity against Threat Cluster Centroids.
+ * Catches sub-threshold keyword density gliding (e.g. 0.34 density gliding).
  */
 
-// Vector representations for threat categories (dimension-reduced TF-IDF feature space)
 const THREAT_CENTROIDS = [
   {
     category: 'PROMPT_INJECTION_OVERRIDE',
-    keywords: ['ignore', 'override', 'bypass', 'system', 'instructions', 'prior', 'rules', 'developer', 'mode', 'admin', 'sudo', 'unrestricted', 'unconstrained', 'persona', 'act', 'auditor'],
-    threshold: 0.35,
+    keywords: ['ignore', 'override', 'bypass', 'system', 'instructions', 'prior', 'rules', 'developer', 'mode', 'admin', 'sudo', 'unrestricted', 'unconstrained', 'persona', 'act', 'auditor', 'validator'],
+    threshold: 0.25, // Lowered from 0.35 to eliminate gliding window
   },
   {
     category: 'DESTRUCTIVE_EXFILTRATION',
     keywords: ['drop', 'truncate', 'delete', 'exfiltrate', 'send', 'http', 'curl', 'wget', 'fetch', 'token', 'secret', 'password', 'key', 'database', 'dump'],
-    threshold: 0.35,
+    threshold: 0.25,
   },
   {
     category: 'ROLEPLAY_JAILBREAK_FRAME',
-    keywords: ['fictional', 'compliance', 'scenario', 'chapter', 'story', 'audit', 'ticket', 'hypothetical', 'simulation', 'game', 'playground'],
-    threshold: 0.40,
+    keywords: ['fictional', 'compliance', 'scenario', 'chapter', 'story', 'audit', 'ticket', 'hypothetical', 'simulation', 'game', 'playground', 'puzzle'],
+    threshold: 0.28,
   },
 ];
 
@@ -35,7 +34,8 @@ export function evaluateSemanticCentroidDistance(text: string): CentroidEvaluati
     return { isThreat: false, centroidScore: 0 };
   }
 
-  const tokens = text.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(Boolean);
+  const normalizedText = text.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+  const tokens = normalizedText.split(/\s+/).filter(Boolean);
   if (tokens.length === 0) {
     return { isThreat: false, centroidScore: 0 };
   }
@@ -44,13 +44,22 @@ export function evaluateSemanticCentroidDistance(text: string): CentroidEvaluati
 
   for (const centroid of THREAT_CENTROIDS) {
     let matchCount = 0;
+
+    // 1. Direct Token Matches
     for (const kw of centroid.keywords) {
       if (tokenSet.has(kw)) {
         matchCount++;
+      } else {
+        // 2. Sub-Word N-Gram Containment (Catches modified stems & sub-threshold gliding)
+        for (const token of tokenSet) {
+          if (token.length >= 4 && (token.includes(kw) || kw.includes(token))) {
+            matchCount += 0.5;
+            break;
+          }
+        }
       }
     }
 
-    // Jaccard density relative to centroid size
     const score = matchCount / centroid.keywords.length;
 
     if (score >= centroid.threshold) {
