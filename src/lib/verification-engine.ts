@@ -85,12 +85,15 @@ export function step2_detectThreats(text: string): { isThreat: boolean; threatTy
   const lower = text.toLowerCase();
   
   const injectionPatterns = [
-    { pattern: /ignore\s+(all\s+)?(previous\s+)?instructions/i, name: 'Direct Prompt Injection (Ignore Instructions)' },
-    { pattern: /system\s+override/i, name: 'System Prompt Override' },
+    { pattern: /ignore\s+(all\s+)?(previous|prior|above|your)\s+instructions/i, name: 'Direct Prompt Injection (Ignore Instructions)' },
+    { pattern: /system\s+override|parameter\s+override/i, name: 'System Prompt Override' },
     { pattern: /dan\s+mode|do\s+anything\s+now/i, name: 'DAN Jailbreak Framing' },
-    { pattern: /developer\s+mode\s+enabled/i, name: 'Developer Mode Bypass' },
-    { pattern: /<system_override>|<\/system_override>/i, name: 'Delimiter Hijacking' },
-    { pattern: /rm\s+-rf|drop\s+database|truncate\s+table/i, name: 'Destructive Command Execution' }
+    { pattern: /developer\s+mode|sudo\s+mode|admin\s+mode/i, name: 'Privilege Escalation Bypass' },
+    { pattern: /<system_override>|<\/system_override>|<<sys>>|<<\/sys>>/i, name: 'Delimiter Hijacking' },
+    { pattern: /rm\s+-rf|drop\s+database|truncate\s+table|chmod\s+777/i, name: 'Destructive Command Execution' },
+    { pattern: /adopt\s+the\s+persona|act\s+as\s+an?\s+unrestricted|unconstrained/i, name: 'Persona Jailbreak Hijack' },
+    { pattern: /compliance\s+auditor|security\s+compliance\s+scenario/i, name: 'Compliance Framing Exploit' },
+    { pattern: /chapter\s+\d+.*execute|narrative\s+chapter/i, name: 'Narrative Story Jailbreak' }
   ];
 
   for (const { pattern, name } of injectionPatterns) {

@@ -4,6 +4,7 @@ import { logAuditIncident } from '@/lib/audit-logger';
 import { evaluateSemanticSafety } from '@/lib/semantic-classifier';
 import { executeToolInSandbox } from '@/lib/wasm-sandbox';
 import { validateAgentMTLS } from '@/lib/mtls-validator';
+import { execute5StepVerification } from '@/lib/verification-engine';
 
 export const runtime = 'nodejs';
 
@@ -229,7 +230,38 @@ export async function POST(req: Request) {
 
     const fullText = sessionCheck.messages.join(' \n ');
 
-    // 1. Shift-Left Validation: Normalization + Base64 Decoding + Threat Check + AST Bounds
+    // 1. Core 5-Step Verification Engine Execution
+    const verification = execute5StepVerification({ query: fullText, lang: body.lang });
+    if (verification.blocked) {
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: verification.triggeredRules.join(', ') || 'VERIFICATION_ENGINE_BLOCK',
+      });
+
+      return NextResponse.json(
+        {
+          status: 'blocked',
+          action: 'block',
+          agent_id: agentId,
+          message: 'Request blocked due to security guardrail violation.',
+          block_reason: `Security Enforcement Block: Threat pattern or injection vector detected (${verification.threatType || 'LLM01_INJECTION'}).`,
+          routing_decision: { intent: 'security_threat', decision: 'block', confidence: 0.99, complexity: 'high' },
+          risk: { elevated: true, reason: 'Action-level security override blocked.' },
+          schema_validation: { valid: false, reason: 'Disallowed action pattern.' },
+          triggered_rules: verification.triggeredRules,
+          verification_steps: verification.steps,
+          success: false,
+          blocked: true,
+          threatDetected: true,
+          error: 'Security Enforcement Block: Threat pattern or injection vector detected.',
+          response: 'Request blocked due to security guardrail violation.',
+        },
+        { status: 422 }
+      );
+    }
+
     const normalizedInput = normalizeUnicode(fullText);
     const fullyDecodedStream = inspectBase64Payloads(normalizedInput);
 
