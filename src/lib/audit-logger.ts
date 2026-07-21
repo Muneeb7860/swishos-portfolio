@@ -4,6 +4,7 @@
  */
 
 import { dispatchIncidentWebhook } from './incident-webhooks';
+import { forwardSyslogIncident } from '../../scripts/syslog-forwarder';
 
 export interface SecurityIncidentRow {
   id?: number;
@@ -53,6 +54,15 @@ export function logAuditIncident(incident: {
     endpoint: row.endpoint,
     ruleTriggered: row.rule_triggered,
     rawPayload: row.payload,
+    timestamp: row.timestamp,
+  });
+
+  // 5. Forward CEF RFC-5424 Syslog line to SIEM collectors
+  forwardSyslogIncident({
+    ip: row.ip,
+    endpoint: row.endpoint,
+    ruleTriggered: row.rule_triggered,
+    rawPayload: JSON.stringify(row.payload),
     timestamp: row.timestamp,
   });
 
