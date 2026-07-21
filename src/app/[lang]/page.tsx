@@ -55,7 +55,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'stretch' }}>
-              {/* Option 1: Open Source Core */}
+              {/* Option 1: Open Source Core (Clean Panel Background) */}
               <div className="glass-card reveal" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <span className="badge-pill" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10B981', borderColor: 'rgba(16, 185, 129, 0.25)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
@@ -92,8 +92,8 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                 </a>
               </div>
 
-              {/* Option 2: Enterprise Security Audit */}
-              <div className="glass-card reveal" style={{ border: '1px solid var(--line-strong)', boxShadow: '0 20px 30px -5px rgba(15, 23, 42, 0.08), 0 8px 12px -6px rgba(15, 23, 42, 0.04)', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              {/* Option 2: Enterprise Security Audit (Soft Tinted Background, Crisp Neutral Border) */}
+              <div className="glass-card-tinted reveal" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <span className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--txt)' }}>
                     <TargetIcon size={14} color="var(--brand)" /> HIGH-TOUCH ENGAGEMENT
