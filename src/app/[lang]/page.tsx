@@ -54,9 +54,9 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               <p>{isAr ? 'اختر بين أدوات المطورين المجانية المفتوحة المصدر وتدقيق الأمان المباشر للمؤسسات' : 'Adopt the open-source developer SDK or engage for a high-touch 1-week security audit.'}</p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'stretch' }}>
               {/* Option 1: Open Source Core */}
-              <div className="glass-card reveal">
+              <div className="glass-card reveal" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <span className="badge-pill" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10B981', borderColor: 'rgba(16, 185, 129, 0.25)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                     <CodeIcon size={14} color="#10B981" /> OPEN SOURCE / FREE
@@ -69,17 +69,31 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                     ? 'حزمة حماية مفتوحة المصدر لمطوري LangChain و CrewAI و AutoGen لتطبيق معايير NFKC وحدود الإنفاق ($5/يوم).'
                     : 'Open-source runtime SDK and GitHub Action for developers to intercept prompt injections and enforce AST tool bounds.'}
                 </p>
-                <div style={{ background: '#0F172A', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                
+                {/* Dark IDE Code Container */}
+                <div style={{ background: '#0F172A', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <code>$ pip install swishos</code>
                   <span style={{ fontSize: '11px', color: '#94A3B8' }}>v5.0.0</span>
                 </div>
-                <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" className="btn-sec" style={{ width: '100%', justifyContent: 'center', gap: '8px' }}>
+
+                {/* Key Bullets */}
+                <div style={{ display: 'grid', gap: '8px', marginBottom: '24px', fontSize: '13px', color: 'var(--muted)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'معايير NFKC وحدود الإنفاق اليومي ($5/يوم)' : 'NFKC Unicode Normalization + $5/Day Spend Caps'}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'حاوية WASM وإعادة التوجيه إلى المضيف المحلي' : 'WASM Sandbox Container + Metadata Egress Blocker'}
+                  </div>
+                </div>
+
+                {/* Card Button */}
+                <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" className="btn-sec" style={{ width: '100%', justifyContent: 'center', gap: '8px', marginTop: 'auto' }}>
                   <GithubIcon size={16} /> {isAr ? 'عرض الحزمة على GitHub' : 'View Docs & GitHub Repo'}
                 </a>
               </div>
 
               {/* Option 2: Enterprise Security Audit */}
-              <div className="glass-card reveal" style={{ border: '2px solid #3B82F6' }}>
+              <div className="glass-card reveal" style={{ border: '2px solid #3B82F6', display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <span className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                     <TargetIcon size={14} color="#3B82F6" /> HIGH-TOUCH ENGAGEMENT
@@ -92,10 +106,25 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                     ? 'تدقيق أمني شامل لمدة أسبوع واحد بواسطة مهندس حلول ذو خبرة سابقة في برامج وطنية تخدم 5.6M مستخدم.'
                     : 'Fixed 1-week threat modeling, adversarial red-teaming, guardrail gap analysis, and CISO debrief.'}
                 </p>
-                <div style={{ background: 'var(--bg)', padding: '12px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, color: '#10B981', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid var(--line)' }}>
-                  <CheckCircleIcon size={16} color="#10B981" /> {isAr ? 'تسليم التقرير والتعديلات البرمجية خلال 7 أيام' : '1-Week Delivery + PR-Ready Code Fixes'}
+
+                {/* Audit Highlight Container */}
+                <div style={{ background: 'rgba(59, 130, 246, 0.08)', padding: '14px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: 700, color: '#3B82F6', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+                  <span>1-Week Delivery + PR-Ready Fixes</span>
+                  <span style={{ fontSize: '11px', background: '#3B82F6', color: '#FFF', padding: '2px 6px', borderRadius: '4px' }}>CISO Ready</span>
                 </div>
-                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ width: '100%', justifyContent: 'center', gap: '8px' }}>
+
+                {/* Key Bullets */}
+                <div style={{ display: 'grid', gap: '8px', marginBottom: '24px', fontSize: '13px', color: 'var(--muted)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckCircleIcon size={15} color="#3B82F6" /> {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026 + سجلات هجوم curl' : 'OWASP Agentic Risk Heatmap + Exploit Logs'}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckCircleIcon size={15} color="#3B82F6" /> {isAr ? 'تقرير تنفيذي ومراجعة شفهية مع رئيس قطاع الأمن (CISO)' : '1-Week Delivery + Executive CISO Debrief'}
+                  </div>
+                </div>
+
+                {/* Card Button */}
+                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ width: '100%', justifyContent: 'center', gap: '8px', marginTop: 'auto' }}>
                   <TargetIcon size={16} /> {isAr ? 'احجز تدقيق الأمان المباشر' : 'Book a 1-Week Audit'}
                 </Link>
               </div>
