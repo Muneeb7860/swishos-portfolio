@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit } from '@/lib/rate-limiter';
 
 interface ContactPayload {
   firstName: string;
@@ -33,6 +34,16 @@ export async function POST(req: NextRequest) {
   let payload: ContactPayload | null = null;
 
   try {
+    const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
+    const rateCheck = checkRateLimit(clientIp, 5, 60000);
+
+    if (!rateCheck.allowed) {
+      return NextResponse.json(
+        { error: 'Too many contact submissions from this IP. Please wait a minute before retrying.' },
+        { status: 429 }
+      );
+    }
+
     const body = (await req.json()) as ContactPayload;
     payload = body;
     const { firstName, lastName, email, company, message } = body;

@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit } from '@/lib/rate-limiter';
+import { logAuditIncident } from '@/lib/audit-logger';
 
 const MAX_MESSAGE_LENGTH = 1000;
 
@@ -44,6 +46,23 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
+    const rateCheck = checkRateLimit(clientIp, 10, 60000);
+
+    if (!rateCheck.allowed) {
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/chat',
+        rawPayload: { error: 'Rate limit exceeded on chat route' },
+        ruleTriggered: 'CHAT_ROUTE_RATE_LIMIT_EXCEEDED',
+      });
+
+      return NextResponse.json(
+        { reply: 'You have sent too many requests. Please wait a minute before retrying.' },
+        { status: 429 }
+      );
+    }
+
     const { message } = await req.json();
     if (!message?.trim()) {
       return NextResponse.json({ error: 'No message provided' }, { status: 400 });
