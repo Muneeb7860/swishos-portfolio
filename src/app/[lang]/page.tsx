@@ -93,7 +93,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               </div>
 
               {/* Option 2: Enterprise Security Audit */}
-              <div className="glass-card reveal" style={{ border: '2px solid #3B82F6', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div className="glass-card reveal" style={{ border: '1.5px solid var(--brand)', boxShadow: '0 8px 32px var(--glow)', display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <span className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                     <TargetIcon size={14} color="#3B82F6" /> HIGH-TOUCH ENGAGEMENT
