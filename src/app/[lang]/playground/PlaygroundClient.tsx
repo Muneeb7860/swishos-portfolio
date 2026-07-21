@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { SecurityPlaygroundDashboard } from '@/components/SecurityPlaygroundDashboard';
 
 interface PlaygroundClientProps {
   lang: string;
@@ -210,6 +211,11 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
               </div>
             )}
           </div>
+        </div>
+
+        {/* v0.5.0 Hardened Threat Enclave Dashboard */}
+        <div style={{ marginTop: '40px' }}>
+          <SecurityPlaygroundDashboard />
         </div>
 
         {/* CTA Conversion Box */}
