@@ -92,8 +92,8 @@ header {
   background: rgba(248, 250, 252, 0.92);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; width: 100%; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: 'Sora'; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
-/* BRAND LOGO - header is always dark frosted glass, always use dark logo (white on dark) */
+.brand { display: flex; align-items: center; gap: 10px; font-family: 'Sora'; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; flex-shrink: 0; min-width: max-content; text-decoration: none; }
+.brand-logo-light, .brand-logo-dark { height: 38px; width: auto; max-width: 180px; object-fit: contain; flex-shrink: 0; }
 .brand-logo-light { display: none; }
 .brand-logo-dark { display: block; }
 /* If the user switches to light theme, still keep dark logo in header since bg is always dark */
@@ -467,7 +467,9 @@ section { padding: 64px 0; }
   flex-wrap: wrap;
   gap: 12px;
   border-bottom: 1px solid var(--line-strong);
+  padding-top: 32px;
   padding-bottom: 16px;
+  margin-top: 64px;
   margin-bottom: 28px;
 }
 .support-sec-head h2 {

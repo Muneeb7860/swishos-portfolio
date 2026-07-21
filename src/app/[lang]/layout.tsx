@@ -113,13 +113,13 @@ export default async function RootLayout(props: {
           {/* GLOBAL FOOTER */}
           <footer>
             <div className="wrap" style={{ borderTop: '1px solid var(--line)', paddingTop: '56px', paddingBottom: '56px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '48px', marginBottom: '48px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '48px', width: '100%', justifyContent: 'space-between', marginBottom: '48px' }}>
                 {/* Brand */}
                 <div>
                   <div style={{ fontFamily: 'Sora', fontWeight: 800, fontSize: '18px', marginBottom: '12px', color: 'var(--txt)' }}>
                     SwishOS
                   </div>
-                  <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, maxWidth: '220px' }}>
+                  <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, maxWidth: '360px' }}>
                     {dict.footer?.tagline || 'AI Agent Security & Governance. Red-teaming, guardrails, and continuous evals.'}
                   </p>
                 </div>
