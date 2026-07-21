@@ -95,10 +95,10 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {/* Option 2: Enterprise Security Audit */}
               <div className="glass-card reveal" style={{ border: '1px solid var(--line-strong)', boxShadow: '0 20px 30px -5px rgba(15, 23, 42, 0.08), 0 8px 12px -6px rgba(15, 23, 42, 0.04)', display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    <TargetIcon size={14} color="#3B82F6" /> HIGH-TOUCH ENGAGEMENT
+                  <span className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--txt)' }}>
+                    <TargetIcon size={14} color="var(--brand)" /> HIGH-TOUCH ENGAGEMENT
                   </span>
-                  <span style={{ fontSize: '13px', fontWeight: 800, color: '#3B82F6' }}>$7,500 – $12,500</span>
+                  <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt)' }}>$7,500 – $12,500</span>
                 </div>
                 <h3 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '12px' }}>AI Agent Security Audit</h3>
                 <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
@@ -107,19 +107,19 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                     : 'Fixed 1-week threat modeling, adversarial red-teaming, guardrail gap analysis, and CISO debrief.'}
                 </p>
 
-                {/* Audit Highlight Container */}
-                <div style={{ background: 'rgba(59, 130, 246, 0.08)', padding: '14px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: 700, color: '#3B82F6', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+                {/* Audit Highlight Container - Neutral Dark IDE Style */}
+                <div style={{ background: '#0F172A', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span>1-Week Delivery + PR-Ready Fixes</span>
-                  <span style={{ fontSize: '11px', background: '#3B82F6', color: '#FFF', padding: '2px 6px', borderRadius: '4px' }}>CISO Ready</span>
+                  <span style={{ fontSize: '11px', background: '#334155', color: '#F8FAFC', padding: '2px 8px', borderRadius: '4px' }}>CISO Ready</span>
                 </div>
 
                 {/* Key Bullets */}
                 <div style={{ display: 'grid', gap: '8px', marginBottom: '24px', fontSize: '13px', color: 'var(--muted)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckCircleIcon size={15} color="#3B82F6" /> {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026 + سجلات هجوم curl' : 'OWASP Agentic Risk Heatmap + Exploit Logs'}
+                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026 + سجلات هجوم curl' : 'OWASP Agentic Risk Heatmap + Exploit Logs'}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckCircleIcon size={15} color="#3B82F6" /> {isAr ? 'تقرير تنفيذي ومراجعة شفهية مع رئيس قطاع الأمن (CISO)' : '1-Week Delivery + Executive CISO Debrief'}
+                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'تقرير تنفيذي ومراجعة شفهية مع رئيس قطاع الأمن (CISO)' : '1-Week Delivery + Executive CISO Debrief'}
                   </div>
                 </div>
 
