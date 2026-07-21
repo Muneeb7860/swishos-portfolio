@@ -13,6 +13,7 @@ import { auditDependencies } from './audit-deps';
 import { generatePenTestReport } from './generate-pen-test-report';
 import { runRateLimitStressTest } from './stress-test-ratelimit';
 import { runPitchWizard } from './demo-audit-wizard';
+import { prospectClient } from './prospect-auditor';
 
 const AUDIT_PROOF_SECRET = process.env.AUDIT_PROOF_SECRET || 'swishos-audit-proof-signature-key-v4';
 
@@ -33,6 +34,7 @@ Commands:
   report [--client <NAME>]               Generate formal executive penetration testing HTML/JSON report
   stress [--target <URL>]                Run high-concurrency rate-limit & tarpit stress test
   pitch  [--client <NAME>]               Run turnkey audit wizard & generate CISO cold pitch email
+  prospect --client <NAME> --target <URL> Perform red-team audit scan & format CISO pitch email package
   help                                   Show this help message
 `);
 }
@@ -139,6 +141,16 @@ function handlePitch(args: string[]) {
   runPitchWizard({ clientName, outputDir: dir });
 }
 
+function handleProspect(args: string[]) {
+  const clientIdx = args.indexOf('--client');
+  const clientName = clientIdx !== -1 && clientIdx + 1 < args.length ? args[clientIdx + 1] : 'Target Prospect';
+  const targetIdx = args.indexOf('--target');
+  const target = targetIdx !== -1 && targetIdx + 1 < args.length ? args[targetIdx + 1] : 'http://localhost:3000/api/support';
+  const dirIdx = args.indexOf('--output-dir');
+  const dir = dirIdx !== -1 && dirIdx + 1 < args.length ? args[dirIdx + 1] : undefined;
+  void prospectClient({ clientName, targetEndpoint: target, outputDir: dir });
+}
+
 function main() {
   const args = process.argv.slice(2);
   const command = args[0] || 'help';
@@ -170,6 +182,9 @@ function main() {
       break;
     case 'pitch':
       handlePitch(args.slice(1));
+      break;
+    case 'prospect':
+      handleProspect(args.slice(1));
       break;
     case 'help':
     default:

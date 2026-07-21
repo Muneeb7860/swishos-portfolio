@@ -18,6 +18,7 @@ import { generatePenTestReport } from './generate-pen-test-report';
 import { exportAuditLedgerFiles } from './export-audit-ledger';
 import { writeSQLMigrationFile } from './generate-sql-schema';
 import { runPitchWizard } from './demo-audit-wizard';
+import { prospectClient } from './prospect-auditor';
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
@@ -111,9 +112,12 @@ async function runMasterTestSuite() {
   const schemaPath = writeSQLMigrationFile(tmpDir);
   assert(fs.existsSync(schemaPath), 'SQL Schema Generator Outputs DDL Migration File');
 
-  // 15. Pitch Wizard
+  // 15. Pitch Wizard & Prospect Auditor
   const pitchPaths = runPitchWizard({ clientName: 'Unit Test Client', outputDir: tmpDir });
   assert(fs.existsSync(pitchPaths.emailPath), 'Pitch Wizard Outputs CISO Cold Pitch Email');
+
+  const prospectPaths = await prospectClient({ clientName: 'Unit Test Prospect', outputDir: tmpDir });
+  assert(fs.existsSync(prospectPaths.emailPath), 'Prospect Auditor Performs Red-Team Audit Scan & Outputs Email');
 
   // Cleanup temporary test output directory
   fs.rmSync(tmpDir, { recursive: true, force: true });
