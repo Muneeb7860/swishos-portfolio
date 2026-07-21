@@ -11,6 +11,8 @@ import { applyExponentialTarpit } from '@/lib/tarpit-engine';
 import { createZeroInfoRefusal } from '@/lib/flat-refusal';
 import { computeClientFingerprint, applyGlobalFingerprintTarpit } from '@/lib/global-tarpit';
 import { evaluateSemanticCentroidDistance } from '@/lib/semantic-centroid';
+import { evaluateConcatenatedVariableAST } from '@/lib/variable-ast-tracker';
+import { probeToolCallInShadowSandbox } from '@/lib/shadow-probe';
 
 export const runtime = 'nodejs';
 
@@ -274,6 +276,36 @@ export async function POST(req: Request) {
     }
 
     const fullText = sessionCheck.messages.join(' \n ');
+
+    // 0g. Multi-Turn Variable Concatenation AST Tracker (Closes 12-Turn Delayed Payload Window)
+    const varASTCheck = evaluateConcatenatedVariableAST(
+      sessionCheck.messages.map(msg => ({ role: 'user', content: msg }))
+    );
+    if (varASTCheck.isThreat) {
+      await applyGlobalFingerprintTarpit(globalFingerprint);
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: 'MULTI_TURN_CONCATENATED_VARIABLE_INJECTION',
+      });
+      return createZeroInfoRefusal();
+    }
+
+    // 0h. Pre-Execution Shadow Sandbox Probing (Validates proposed tool calls before main execution)
+    if (body.proposedToolCall) {
+      const shadowProbe = await probeToolCallInShadowSandbox(body.proposedToolCall);
+      if (!shadowProbe.allowed) {
+        await applyGlobalFingerprintTarpit(globalFingerprint);
+        logAuditIncident({
+          ip: clientIp,
+          endpoint: '/api/support',
+          rawPayload: rawQuery,
+          ruleTriggered: `SHADOW_SANDBOX_PROBE_VIOLATION_${shadowProbe.toolName}`,
+        });
+        return createZeroInfoRefusal();
+      }
+    }
 
     // 1. Core 5-Step Verification Engine Execution
     const verification = execute5StepVerification({ query: fullText, lang: body.lang });
