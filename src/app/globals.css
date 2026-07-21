@@ -5,11 +5,11 @@
   --bg-soft: #F1F5F9;
   --panel: #FFFFFF;
   --panel-2: #E2E8F0;
-  --line: rgba(15, 23, 42, 0.10);
-  --line-strong: rgba(15, 23, 42, 0.18);
+  --line: rgba(15, 23, 42, 0.12);
+  --line-strong: rgba(15, 23, 42, 0.22);
   --txt: #0F172A;
-  --muted: #475569;
-  --muted-2: #64748B;
+  --muted: #334155;
+  --muted-2: #475569;
   --brand: #2563EB;
   --brand-2: #0891B2;
   --accent: #2563EB;
@@ -19,15 +19,15 @@
 }
 
 [data-theme='dark'] {
-  --bg: #0F172A;
-  --bg-soft: #1E293B;
-  --panel: #1E293B;
-  --panel-2: #334155;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-strong: rgba(255, 255, 255, 0.22);
+  --bg: #0B0F17;
+  --bg-soft: #161E2E;
+  --panel: #161E2E;
+  --panel-2: #222F43;
+  --line: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.24);
   --txt: #F8FAFC;
-  --muted: #94A3B8;
-  --muted-2: #64748B;
+  --muted: #CBD5E1;
+  --muted-2: #94A3B8;
   --brand: #3B82F6;
   --brand-2: #06B6D4;
   --accent: #3B82F6;
@@ -219,28 +219,33 @@ section { padding: 64px 0; }
 /* SERVICE BOT */
 .service-bot {
   position: fixed;
-  bottom: 24px;
-  inset-inline-end: 24px;
+  bottom: 28px;
+  inset-inline-end: 28px;
   width: 60px;
   height: 60px;
   border-radius: 30px;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
   display: grid;
   place-items: center;
   cursor: pointer;
   z-index: 1000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.service-bot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.50);
 }
 .bot-window {
   position: fixed;
-  bottom: 96px;
-  inset-inline-end: 24px;
-  width: 320px;
-  height: 400px;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  bottom: 100px;
+  inset-inline-end: 28px;
+  width: 340px;
+  height: 440px;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.25);
   display: flex;
   flex-direction: column;
   z-index: 1000;

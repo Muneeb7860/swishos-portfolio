@@ -11,6 +11,7 @@ import { ServiceBot } from "../../components/ServiceBot";
 import { MobileMenu } from "../../components/MobileMenu";
 import { ChatwootWidget } from "../../components/ChatwootWidget";
 import { SupportChatDrawer } from "../../components/SupportChatDrawer";
+import { BrandLogo } from "../../components/BrandLogo";
 
 import en from "../../dictionaries/en.json";
 import ar from "../../dictionaries/ar.json";
@@ -77,9 +78,8 @@ export default async function RootLayout(props: {
           {/* GLOBAL NAVIGATION */}
           <header>
             <div className="wrap nav">
-              <Link href={`/${lang}`} className="brand">
-                <Image src="/logo-light.png" alt="SwishOS" className="brand-logo-light" width={160} height={40} priority />
-                <Image src="/logo-dark.png" alt="SwishOS" className="brand-logo-dark" width={160} height={40} priority />
+              <Link href={`/${lang}`} style={{ textDecoration: 'none' }}>
+                <BrandLogo />
               </Link>
               <nav className="nav-links">
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
