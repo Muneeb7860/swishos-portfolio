@@ -18,6 +18,7 @@ import { sanitizeMemoryForStorage, validateRetrievedMemory } from '@/lib/agent-m
 import { traceVerificationStep } from '@/lib/otel-tracer';
 import { evaluateGraphQLQuerySafety } from '@/lib/graphql-agent-guard';
 import { applyRateLimitHeaders } from '@/lib/rate-limit-headers';
+import { handleCORSPreflight, applySecurityHeaders } from '@/lib/cors-policy';
 
 export const runtime = 'nodejs';
 
@@ -551,11 +552,13 @@ export async function POST(req: Request) {
       createdAt: new Date().toISOString()
     });
 
-    return applyRateLimitHeaders(response, {
+    const finalResponse = applyRateLimitHeaders(response, {
       limit: 10,
       remaining: Math.max(0, 10 - rateCheck.currentCount),
       resetInSeconds: Math.ceil(rateCheck.ttlRemainingMs / 1000),
     });
+
+    return applySecurityHeaders(req, finalResponse);
 
   } catch (error) {
     console.error('[SUPPORT ROUTE ERROR]:', error);
@@ -573,6 +576,12 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+}
+
+export async function OPTIONS(req: Request) {
+  const preflight = handleCORSPreflight(req);
+  if (preflight) return preflight;
+  return new NextResponse(null, { status: 204 });
 }
 
 export async function GET(req: Request) {
