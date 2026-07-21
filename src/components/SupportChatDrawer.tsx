@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
+import { MessageSquareIcon } from './Icons';
 
 interface Message {
   id: string;
@@ -102,7 +103,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
 
   return (
     <>
-      {/* Floating Toggle Button */}
+      {/* Floating Toggle Button - Minimal Icon-Only */}
       <button
         onClick={() => setIsOpen(prev => !prev)}
         aria-label="Toggle Live Support Chat"
@@ -111,34 +112,21 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
           bottom: '24px',
           ...posStyle,
           zIndex: 9999,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          padding: '12px 20px',
-          borderRadius: '999px',
-          background: 'var(--brand, #E10600)',
+          width: '44px',
+          height: '44px',
+          borderRadius: '50%',
+          background: 'var(--brand, #2563EB)',
           color: '#ffffff',
-          fontWeight: 700,
-          fontSize: '13px',
-          border: '1px solid var(--brand-2, #FF332A)',
-          boxShadow: '0 8px 30px rgba(225, 6, 0, 0.4), 0 4px 12px rgba(0,0,0,0.3)',
+          display: 'grid',
+          placeItems: 'center',
+          border: 'none',
+          boxShadow: '0 4px 16px rgba(37, 99, 235, 0.35)',
           cursor: 'pointer',
-          transition: 'all 0.25s ease',
+          opacity: 0.85,
+          transition: 'all 0.2s ease',
         }}
       >
-        <span style={{
-          width: '8px',
-          height: '8px',
-          borderRadius: '50%',
-          background: '#4ade80',
-          boxShadow: '0 0 8px #4ade80',
-          display: 'inline-block'
-        }} />
-        <span style={{ whiteSpace: 'nowrap' }}>
-          {isOpen
-            ? (lang === 'ar' ? 'إغلاق المحادثة' : 'Close Chat')
-            : (lang === 'ar' ? '💬 مساعد SwishOS الأمني • متصل' : '💬 Live AI Assistant • Online')}
-        </span>
+        <MessageSquareIcon size={20} color="#FFFFFF" />
       </button>
 
       {/* Slide-Out Chat Drawer */}

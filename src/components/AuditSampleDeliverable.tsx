@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { FileTextIcon, TargetIcon, ShieldIcon, CodeIcon, CheckCircleIcon } from './Icons';
 
 export function AuditSampleDeliverable({ lang }: { lang?: string }) {
   const isAr = lang === 'ar';
@@ -18,8 +19,8 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
       }}
     >
       <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 36px auto' }}>
-        <span className="badge-pill" style={{ marginBottom: '14px' }}>
-          📄 {isAr ? 'معاينة مخرجات التقرير المباشر' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
+        <span className="badge-pill" style={{ marginBottom: '14px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+          <FileTextIcon size={14} color="#3B82F6" /> {isAr ? 'معاينة مخرجات التقرير المباشر' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
         </span>
         <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '14px' }}>
           {isAr ? 'ما الذي تحصل عليه في تدقيق أمن وكيل الذكاء الاصطناعي؟' : 'What You Receive in a 1-Week Security Audit'}
@@ -37,8 +38,8 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         {/* Mockup 1: OWASP Risk Heatmap */}
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6' }}>
-              ARTIFACT 01
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <ShieldIcon size={14} color="#3B82F6" /> ARTIFACT 01
             </span>
             <span style={{ fontSize: '11px', background: 'rgba(239,68,68,0.15)', color: '#EF4444', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
               CISO MATRIX
@@ -52,19 +53,19 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
           <div style={{ background: '#0F172A', borderRadius: '10px', padding: '14px', marginTop: 'auto', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'monospace', fontSize: '12px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
               <span style={{ color: '#94A3B8' }}>LLM06 Excessive Agency</span>
-              <span style={{ color: '#EF4444', fontWeight: 700 }}>🛑 CRITICAL (0.94)</span>
+              <span style={{ color: '#EF4444', fontWeight: 700 }}>CRITICAL (0.94)</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
               <span style={{ color: '#94A3B8' }}>ASI10 Spend Cap Limit</span>
-              <span style={{ color: '#F59E0B', fontWeight: 700 }}>⚠️ HIGH ($450/hr)</span>
+              <span style={{ color: '#F59E0B', fontWeight: 700 }}>HIGH ($450/hr)</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
               <span style={{ color: '#94A3B8' }}>LLM01 Prompt Injection</span>
-              <span style={{ color: '#EF4444', fontWeight: 700 }}>🛑 EXPOSED</span>
+              <span style={{ color: '#EF4444', fontWeight: 700 }}>EXPOSED</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0' }}>
               <span style={{ color: '#94A3B8' }}>ASI06 WASM Isolation</span>
-              <span style={{ color: '#10B981', fontWeight: 700 }}>✅ MITIGATED</span>
+              <span style={{ color: '#10B981', fontWeight: 700 }}>MITIGATED</span>
             </div>
           </div>
         </div>
@@ -72,8 +73,8 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         {/* Mockup 2: Reproducible Payload Exploits */}
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6' }}>
-              ARTIFACT 02
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <CodeIcon size={14} color="#3B82F6" /> ARTIFACT 02
             </span>
             <span style={{ fontSize: '11px', background: 'rgba(59,130,246,0.15)', color: '#3B82F6', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
               EXPLOIT LOGS
@@ -98,8 +99,8 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         {/* Mockup 3: PR-Ready Remediation Diffs */}
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6' }}>
-              ARTIFACT 03
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircleIcon size={14} color="#3B82F6" /> ARTIFACT 03
             </span>
             <span style={{ fontSize: '11px', background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
               PR DIFF PATCH
@@ -126,8 +127,8 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
 
       {/* CTA Line */}
       <div style={{ textAlign: 'center' }}>
-        <Link href={`/${lang || 'en'}/contact?plan=audit`} className="btn-pri">
-          🎯 {isAr ? 'احجز تدقيق الأمان المباشر ($7,500 - $12,500)' : 'Book a 1-Week Security Audit ($7,500 – $12,500)'}
+        <Link href={`/${lang || 'en'}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+          <TargetIcon size={16} /> {isAr ? 'احجز تدقيق الأمان المباشر ($7,500 - $12,500)' : 'Book a 1-Week Security Audit ($7,500 – $12,500)'}
         </Link>
       </div>
     </div>

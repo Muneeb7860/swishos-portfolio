@@ -121,28 +121,62 @@ header {
   transform-origin: left;
 }
 .nav-cta {
-  padding: 9px 18px; border-radius: 10px;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: #fff; font-weight: 600; font-size: 14px;
-  box-shadow: 0 6px 20px var(--glow);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1.5px solid var(--brand);
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 .nav-cta:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px var(--glow), 0 0 10px rgba(91, 140, 255, 0.35);
+  background: var(--brand);
+  color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
-/* BUTTONS */
-.btn {
-  padding: 13px 26px; border-radius: 12px; font-weight: 600; font-size: 15px;
-  cursor: pointer; border: 1px solid transparent;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-  display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%;
+/* BUTTONS & CTA HIERARCHY */
+.btn-pri {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand), #0891B2);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px var(--glow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent;
 }
-.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: 0 10px 30px var(--glow); }
-.btn-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 40px var(--glow), 0 0 12px rgba(123, 91, 255, 0.4);
+.btn-pri:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--glow);
+}
+
+.btn-sec {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--txt);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1px solid var(--line-strong);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.btn-sec:hover {
+  background: var(--bg-soft);
+  border-color: var(--brand);
 }
 
 /* FORMS */
