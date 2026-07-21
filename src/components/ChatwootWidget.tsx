@@ -12,8 +12,8 @@ declare global {
     };
     $chatwoot?: {
       run: (config: { websiteToken: string; baseUrl: string }) => void;
-      setUser: (id: string, user: Record<string, any>) => void;
-      setCustomAttributes: (attributes: Record<string, any>) => void;
+      setUser: (id: string, user: Record<string, unknown>) => void;
+      setCustomAttributes: (attributes: Record<string, unknown>) => void;
       toggle: (state?: string) => void;
     };
   }

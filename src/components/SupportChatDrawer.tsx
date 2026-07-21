@@ -12,6 +12,10 @@ interface Message {
   actionLabel?: string;
 }
 
+function generateMsgId(prefix: string): string {
+  return `${prefix}-${Math.random().toString(36).substring(2, 9)}`;
+}
+
 export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -40,7 +44,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
     if (!query.trim() || loading) return;
 
     const userMsg: Message = {
-      id: `user-${Date.now()}`,
+      id: generateMsgId('user'),
       sender: 'user',
       text: query,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -68,7 +72,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
       const data = await res.json();
       
       const botMsg: Message = {
-        id: `bot-${Date.now()}`,
+        id: generateMsgId('bot'),
         sender: 'assistant',
         text: data.automatedReply || (lang === 'ar' ? 'تم استلام طلبك وتصنيفه بنجاح.' : 'Your request has been triaged and dispatched.'),
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),

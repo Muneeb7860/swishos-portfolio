@@ -30,11 +30,24 @@ const PRESET_PAYLOADS = [
   },
 ];
 
+interface PlaygroundResult {
+  statusHttp?: number;
+  status?: string;
+  message?: string;
+  automatedReply?: string;
+  ticketId?: string;
+  sla?: string;
+  error?: string;
+  blocked?: boolean;
+  triggered_rules?: string[];
+  [key: string]: unknown;
+}
+
 export function PlaygroundClient({ lang }: PlaygroundClientProps) {
   const isAr = lang === 'ar';
   const [query, setQuery] = useState(PRESET_PAYLOADS[0].payload);
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<PlaygroundResult | null>(null);
 
   const handleTestPayload = async (textToTest?: string) => {
     const payload = textToTest !== undefined ? textToTest : query;
@@ -49,8 +62,9 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
       });
       const data = await res.json();
       setResult({ statusHttp: res.status, ...data });
-    } catch (err: any) {
-      setResult({ error: err.message || 'Failed to connect to gateway' });
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to connect to gateway';
+      setResult({ error: errorMessage });
     } finally {
       setLoading(false);
     }

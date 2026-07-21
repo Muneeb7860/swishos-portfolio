@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
@@ -15,25 +15,19 @@ export default function ContactClient({ lang }: { lang: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', company: '', message: '' });
-
-  useEffect(() => {
-    if (plan === 'audit' && !form.message) {
-      setForm(prev => ({
-        ...prev,
-        message: lang === 'ar'
-          ? 'مرحباً، أود حجز تدقيق أمني لوكيل الذكاء الاصطناعي الخاص بنا.'
-          : 'Hi, I would like to book an AI Agent Security Audit for our team.'
-      }));
-    } else if (plan === 'retainer' && !form.message) {
-      setForm(prev => ({
-        ...prev,
-        message: lang === 'ar'
-          ? 'مرحباً، أود الاستفسار عن الاشتراك الشهري لحواجز الحماية واختبار الاختراق.'
-          : 'Hi, I would like to discuss a Guardrail & Red-Team Retainer for our AI agents.'
-      }));
+  const [form, setForm] = useState(() => {
+    let initialMsg = '';
+    if (plan === 'audit') {
+      initialMsg = lang === 'ar'
+        ? 'مرحباً، أود حجز تدقيق أمني لوكيل الذكاء الاصطناعي الخاص بنا.'
+        : 'Hi, I would like to book an AI Agent Security Audit for our team.';
+    } else if (plan === 'retainer') {
+      initialMsg = lang === 'ar'
+        ? 'مرحباً، أود الاستفسار عن الاشتراك الشهري لحواجز الحماية واختبار الاختراق.'
+        : 'Hi, I would like to discuss a Guardrail & Red-Team Retainer for our AI agents.';
     }
-  }, [plan, lang]);
+    return { firstName: '', lastName: '', email: '', company: '', message: initialMsg };
+  });
 
   useScrollReveal();
 

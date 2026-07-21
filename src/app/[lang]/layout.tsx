@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
-import Image from "next/image";
 import "../globals.css";
 import "@/lib/secret-guard";
 import { ThemeProvider } from "../../components/ThemeProvider";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { LanguageSwitcher } from "../../components/LanguageSwitcher";
-import { ServiceBot } from "../../components/ServiceBot";
 import { MobileMenu } from "../../components/MobileMenu";
 import { ChatwootWidget } from "../../components/ChatwootWidget";
 import { SupportChatDrawer } from "../../components/SupportChatDrawer";
