@@ -119,6 +119,10 @@ export function generatePrintableHTMLReport(clientName: string, dateStr: string)
 }
 
 export function generatePenTestReport(clientName = 'Enterprise Audit Client', outputDir = '.'): { htmlPath: string; jsonPath: string } {
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
   const dateStr = new Date().toISOString().split('T')[0];
   const htmlContent = generatePrintableHTMLReport(clientName, dateStr);
 
