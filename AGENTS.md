@@ -27,6 +27,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **Sub-Word Character N-Gram Centroid Distance**: Centroid distance classification MUST combine token matching with sub-word character N-gram containment (`includes(kw)`) at a lowered threshold ($\le 0.25$) to catch adversarial prompts attempting to glide just under static keyword density limits.
 - **Multi-Turn Variable Concatenation AST Tracking**: Multi-turn session handlers MUST extract and reconstruct assigned string variables (`A`, `B`, `C`) across all conversation history turns (`turns 1..12`) to evaluate the full concatenated string AST against threat centroids before model execution, eliminating multi-turn delayed payload splitting.
 - **Pre-Execution Shadow Sandbox Probing**: Proposed agent tool calls MUST be executed inside an isolated shadow WASM/gVisor sandbox *before* committing execution state or returning results to validate parameters, restricted file access (`/etc/passwd`, `.env`), and side-effects out-of-band.
+- **Sub-1ms Edge WAF Cryptographic Audit Signatures**: Edge CDN scripts (Cloudflare Workers) MUST enforce shift-left NFKC normalization and centroid density filtering at global edge nodes, using Web Crypto API (`crypto.subtle`) to generate signed `X-SwishOS-Audit-Proof` HMAC headers directly on edge blocks to reduce origin server load to zero.
+- **Automated CI/CD 100% Pass Rate Security Gate**: CI/CD pipelines (GitHub Actions) MUST run automated red-team security sweeps (`benchmark_runner.py`) against background production server builds, verifying cryptographic audit proof signatures and failing PR builds if overall defense pass rate drops below 100.0%.
+
 
 
 
