@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "swishos": "npx tsx scripts/swishos-cli.ts"
+    "swishos": "npx tsx scripts/swishos-cli.ts",
+    "audit:deps": "npx tsx scripts/audit-deps.ts"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",

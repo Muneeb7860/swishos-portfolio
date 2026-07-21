@@ -9,6 +9,7 @@ import crypto from 'crypto';
 import { exportAuditLedgerFiles } from './export-audit-ledger';
 import { sendExecutiveDigest, loadDigestKPIs } from './schedule-weekly-digest';
 import { writeSQLMigrationFile } from './generate-sql-schema';
+import { auditDependencies } from './audit-deps';
 
 const AUDIT_PROOF_SECRET = process.env.AUDIT_PROOF_SECRET || 'swishos-audit-proof-signature-key-v4';
 
@@ -25,6 +26,7 @@ Commands:
   export [--output-dir <DIR>]            Export PII-redacted SOC2 / ISO 27001 CSV/JSON audit ledgers
   digest [--output-dir <DIR>]            Generate dark-mode HTML executive security email report
   schema [--output-dir <DIR>]            Generate Supabase PostgreSQL DDL migration file
+  deps   [--root-dir <DIR>]              Run automated dependency vulnerability & lockfile audit
   help                                   Show this help message
 `);
 }
@@ -97,6 +99,15 @@ function handleSchema(args: string[]) {
   writeSQLMigrationFile(dir);
 }
 
+function handleDeps(args: string[]) {
+  const dirIdx = args.indexOf('--root-dir');
+  const dir = dirIdx !== -1 && dirIdx + 1 < args.length ? args[dirIdx + 1] : '.';
+  const result = auditDependencies(dir);
+  if (!result.passed) {
+    process.exit(1);
+  }
+}
+
 function main() {
   const args = process.argv.slice(2);
   const command = args[0] || 'help';
@@ -116,6 +127,9 @@ function main() {
       break;
     case 'schema':
       handleSchema(args.slice(1));
+      break;
+    case 'deps':
+      handleDeps(args.slice(1));
       break;
     case 'help':
     default:
