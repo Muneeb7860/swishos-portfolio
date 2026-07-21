@@ -6,7 +6,7 @@ export function BrandLogo({ className = '' }: { className?: string }) {
   return (
     <div className={`brand-logo-container ${className}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
       {/* Futuristic Shield Icon */}
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path
           d="M16 3L4 8V16C4 22.627 9.373 28.164 16 29.5C22.627 28.164 28 22.627 28 16V8L16 3Z"
           fill="url(#shield-grad)"

@@ -20,7 +20,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
 
   return (
     <>
-      <main>
+      <main id="main-content">
         {/* HERO */}
         <section className="hero" style={{ paddingBottom: '60px' }}>
           <div className="wrap">

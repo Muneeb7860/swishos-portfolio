@@ -74,14 +74,17 @@ export default async function RootLayout(props: {
     <html lang={lang} suppressHydrationWarning dir={isRtl ? 'rtl' : 'ltr'}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <a href="#main-content" className="skip-link">
+            {lang === 'ar' ? 'الانتقال إلى المحتوى الرئيسي' : 'Skip to main content'}
+          </a>
           
           {/* GLOBAL NAVIGATION */}
           <header>
             <div className="wrap nav">
-              <Link href={`/${lang}`} style={{ textDecoration: 'none' }}>
+              <Link href={`/${lang}`} aria-label="SwishOS Home" style={{ textDecoration: 'none' }}>
                 <BrandLogo />
               </Link>
-              <nav className="nav-links">
+              <nav className="nav-links" aria-label={lang === 'ar' ? 'التنقل الرئيسي' : 'Main Navigation'}>
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
                 <Link href={`/${lang}/playground`}>{dict.nav.playground}</Link>
                 <Link href={`/${lang}/pricing`}>{dict.nav.pricing}</Link>
