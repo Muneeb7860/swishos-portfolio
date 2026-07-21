@@ -3,6 +3,8 @@
  * Captures structured incident telemetry into the `security_incidents` table schema.
  */
 
+import { dispatchIncidentWebhook } from './incident-webhooks';
+
 export interface SecurityIncidentRow {
   id?: number;
   ip: string;
@@ -44,6 +46,15 @@ export function logAuditIncident(incident: {
 
   // 3. Structured console output for Vercel Logs / Datadog / Supabase webhooks
   console.error('[SECURITY INCIDENT AUDIT LOG]', JSON.stringify({ ...row, sql: sqlStatement }));
+
+  // 4. Dispatch background webhook alerts (Slack / PagerDuty) asynchronously
+  void dispatchIncidentWebhook({
+    ip: row.ip,
+    endpoint: row.endpoint,
+    ruleTriggered: row.rule_triggered,
+    rawPayload: row.payload,
+    timestamp: row.timestamp,
+  });
 
   return row;
 }
