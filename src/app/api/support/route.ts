@@ -16,6 +16,7 @@ import { probeToolCallInShadowSandbox } from '@/lib/shadow-probe';
 import { incrementRedisRateLimit } from '@/lib/redis-state';
 import { sanitizeMemoryForStorage, validateRetrievedMemory } from '@/lib/agent-memory-guard';
 import { traceVerificationStep } from '@/lib/otel-tracer';
+import { evaluateGraphQLQuerySafety } from '@/lib/graphql-agent-guard';
 
 export const runtime = 'nodejs';
 
@@ -264,6 +265,19 @@ export async function POST(req: Request) {
         endpoint: '/api/support',
         rawPayload: rawQuery,
         ruleTriggered: 'ASI08_MEMORY_PROVENANCE_TAMPERING_DETECTED',
+      });
+      return createZeroInfoRefusal();
+    }
+
+    // 0c3. GraphQL & Nested Tool Query Defense Check
+    const graphqlCheck = evaluateGraphQLQuerySafety(rawQuery);
+    if (!graphqlCheck.isSafe) {
+      await applyGlobalFingerprintTarpit(globalFingerprint);
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: graphqlCheck.matchedRule || 'GRAPHQL_QUERY_SAFETY_VIOLATION',
       });
       return createZeroInfoRefusal();
     }
