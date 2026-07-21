@@ -28,6 +28,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# compliance audit exports
+audit_ledger.json
+audit_ledger.csv
+checksums.sha256
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
