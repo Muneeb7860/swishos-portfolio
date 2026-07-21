@@ -5,6 +5,10 @@ import { evaluateSemanticSafety } from '@/lib/semantic-classifier';
 import { executeToolInSandbox } from '@/lib/wasm-sandbox';
 import { validateAgentMTLS } from '@/lib/mtls-validator';
 import { execute5StepVerification } from '@/lib/verification-engine';
+import { analyzeTokenEntropy } from '@/lib/token-entropy';
+import { evaluateTrajectoryEntropy } from '@/lib/trajectory-entropy';
+import { applyExponentialTarpit } from '@/lib/tarpit-engine';
+import { createZeroInfoRefusal } from '@/lib/flat-refusal';
 
 export const runtime = 'nodejs';
 
@@ -212,20 +216,43 @@ export async function POST(req: Request) {
     const subject = body.subject || '';
     const sessionId = body.sessionId || clientIp;
 
-    // 0d. Multi-Turn Session Budget Check
+    // 0d. Token Entropy & Adversarial Noise Check (Step 0)
+    const tokenEntropy = analyzeTokenEntropy(rawQuery);
+    if (tokenEntropy.isAnomalous) {
+      await applyExponentialTarpit(sessionId);
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: 'TOKEN_ENTROPY_ADVERSARIAL_NOISE',
+      });
+      return createZeroInfoRefusal();
+    }
+
+    // 0e. Stateful Trajectory Entropy & MCTS Search Tree Lock
+    const trajectory = evaluateTrajectoryEntropy(sessionId, rawQuery);
+    if (trajectory.isSearchTreeDetected) {
+      await applyExponentialTarpit(sessionId);
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: rawQuery,
+        ruleTriggered: 'MCTS_TAP_SEARCH_TREE_DETECTED',
+      });
+      return createZeroInfoRefusal();
+    }
+
+    // 0f. Multi-Turn Session Budget Check
     const sessionCheck = checkSessionBudget(sessionId, `${subject} ${rawQuery}`);
     if (!sessionCheck.allowed) {
+      await applyExponentialTarpit(sessionId);
       logAuditIncident({
         ip: clientIp,
         endpoint: '/api/support',
         rawPayload: rawQuery,
         ruleTriggered: 'SESSION_CALL_BUDGET_EXCEEDED',
       });
-
-      return NextResponse.json(
-        { status: 'blocked', error: sessionCheck.reason, callCount: sessionCheck.callCount },
-        { status: 429 }
-      );
+      return createZeroInfoRefusal();
     }
 
     const fullText = sessionCheck.messages.join(' \n ');
@@ -233,6 +260,7 @@ export async function POST(req: Request) {
     // 1. Core 5-Step Verification Engine Execution
     const verification = execute5StepVerification({ query: fullText, lang: body.lang });
     if (verification.blocked) {
+      await applyExponentialTarpit(sessionId);
       logAuditIncident({
         ip: clientIp,
         endpoint: '/api/support',
@@ -240,26 +268,7 @@ export async function POST(req: Request) {
         ruleTriggered: verification.triggeredRules.join(', ') || 'VERIFICATION_ENGINE_BLOCK',
       });
 
-      return NextResponse.json(
-        {
-          status: 'blocked',
-          action: 'block',
-          agent_id: agentId,
-          message: 'Request blocked due to security guardrail violation.',
-          block_reason: `Security Enforcement Block: Threat pattern or injection vector detected (${verification.threatType || 'LLM01_INJECTION'}).`,
-          routing_decision: { intent: 'security_threat', decision: 'block', confidence: 0.99, complexity: 'high' },
-          risk: { elevated: true, reason: 'Action-level security override blocked.' },
-          schema_validation: { valid: false, reason: 'Disallowed action pattern.' },
-          triggered_rules: verification.triggeredRules,
-          verification_steps: verification.steps,
-          success: false,
-          blocked: true,
-          threatDetected: true,
-          error: 'Security Enforcement Block: Threat pattern or injection vector detected.',
-          response: 'Request blocked due to security guardrail violation.',
-        },
-        { status: 422 }
-      );
+      return createZeroInfoRefusal();
     }
 
     const normalizedInput = normalizeUnicode(fullText);
