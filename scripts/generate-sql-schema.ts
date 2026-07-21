@@ -1,4 +1,13 @@
--- ==============================================================================
+/**
+ * SwishOS Supabase PostgreSQL Security Incidents Schema DDL Generator
+ * Outputs production SQL migration files with B-Tree, GIN, BRIN indexes, and RLS security policies.
+ */
+
+import fs from 'fs';
+import path from 'path';
+
+export function generatePostgreSQLDDL(): string {
+  return `-- ==============================================================================
 -- SwishOS Enclave Security Incidents Supabase PostgreSQL Migration (v0.5.0)
 -- Production DDL with B-Tree, GIN, BRIN Indexes and Row-Level Security (RLS)
 -- ==============================================================================
@@ -47,3 +56,25 @@ DROP POLICY IF EXISTS service_role_insert ON public.security_incidents;
 CREATE POLICY service_role_insert ON public.security_incidents
   FOR INSERT TO service_role
   WITH CHECK (true);
+`;
+}
+
+export function writeSQLMigrationFile(outputDir = 'supabase/migrations') {
+  const ddl = generatePostgreSQLDDL();
+  const absoluteDir = path.resolve(outputDir);
+
+  if (!fs.existsSync(absoluteDir)) {
+    fs.mkdirSync(absoluteDir, { recursive: true });
+  }
+
+  const filePath = path.join(absoluteDir, '20260721_security_incidents.sql');
+  fs.writeFileSync(filePath, ddl, 'utf-8');
+
+  console.log(`✅ Supabase PostgreSQL DDL Migration written to: ${filePath}`);
+  return filePath;
+}
+
+// Auto-run if executed directly
+if (require.main === module) {
+  writeSQLMigrationFile();
+}

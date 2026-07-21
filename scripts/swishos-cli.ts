@@ -8,6 +8,7 @@
 import crypto from 'crypto';
 import { exportAuditLedgerFiles } from './export-audit-ledger';
 import { sendExecutiveDigest, loadDigestKPIs } from './schedule-weekly-digest';
+import { writeSQLMigrationFile } from './generate-sql-schema';
 
 const AUDIT_PROOF_SECRET = process.env.AUDIT_PROOF_SECRET || 'swishos-audit-proof-signature-key-v4';
 
@@ -23,6 +24,7 @@ Commands:
   audit  --target <URL>                  Run automated red-team benchmark sweep against endpoint
   export [--output-dir <DIR>]            Export PII-redacted SOC2 / ISO 27001 CSV/JSON audit ledgers
   digest [--output-dir <DIR>]            Generate dark-mode HTML executive security email report
+  schema [--output-dir <DIR>]            Generate Supabase PostgreSQL DDL migration file
   help                                   Show this help message
 `);
 }
@@ -88,6 +90,13 @@ function handleDigest() {
   void sendExecutiveDigest(kpis);
 }
 
+function handleSchema(args: string[]) {
+  const dirIdx = args.indexOf('--output-dir');
+  const dir = dirIdx !== -1 && dirIdx + 1 < args.length ? args[dirIdx + 1] : 'supabase/migrations';
+  console.log(`\n🗄️  Generating Supabase PostgreSQL DDL Migration...`);
+  writeSQLMigrationFile(dir);
+}
+
 function main() {
   const args = process.argv.slice(2);
   const command = args[0] || 'help';
@@ -104,6 +113,9 @@ function main() {
       break;
     case 'digest':
       handleDigest();
+      break;
+    case 'schema':
+      handleSchema(args.slice(1));
       break;
     case 'help':
     default:
