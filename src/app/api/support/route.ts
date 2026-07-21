@@ -17,6 +17,7 @@ import { incrementRedisRateLimit } from '@/lib/redis-state';
 import { sanitizeMemoryForStorage, validateRetrievedMemory } from '@/lib/agent-memory-guard';
 import { traceVerificationStep } from '@/lib/otel-tracer';
 import { evaluateGraphQLQuerySafety } from '@/lib/graphql-agent-guard';
+import { applyRateLimitHeaders } from '@/lib/rate-limit-headers';
 
 export const runtime = 'nodejs';
 
@@ -524,7 +525,7 @@ export async function POST(req: Request) {
       replyText = 'Defect report received. Diagnostics underway.';
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       status: 'success',
       action: 'allow',
       agent_id: agentId,
@@ -548,6 +549,12 @@ export async function POST(req: Request) {
       actionUrl,
       actionLabel,
       createdAt: new Date().toISOString()
+    });
+
+    return applyRateLimitHeaders(response, {
+      limit: 10,
+      remaining: Math.max(0, 10 - rateCheck.currentCount),
+      resetInSeconds: Math.ceil(rateCheck.ttlRemainingMs / 1000),
     });
 
   } catch (error) {
