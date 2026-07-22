@@ -46,14 +46,16 @@ interface PlaygroundResult {
 
 export function PlaygroundClient({ lang }: PlaygroundClientProps) {
   const isAr = lang === 'ar';
-  const [query, setQuery] = useState(PRESET_PAYLOADS[0].payload);
+  const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<PlaygroundResult | null>(null);
+  const [copiedMail, setCopiedMail] = useState(false);
 
   const handleTestPayload = async (textToTest?: string) => {
     const payload = textToTest !== undefined ? textToTest : query;
     setLoading(true);
     setResult(null);
+    setCopiedMail(false);
 
     try {
       const res = await fetch('/api/support', {
@@ -79,6 +81,34 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const getIncidentMailContent = () => {
+    if (!result) return '';
+    const timestamp = new Date().toISOString();
+    const rules = result.triggered_rules?.join(', ') || (result.block_reason as string) || (result.message as string) || 'SECURITY_GUARDRAIL_INTERCEPT';
+    return `Subject: [SECURITY INCIDENT REPORT] SwishOS AI Guardrail Intercept - ${timestamp}
+To: ciso@swishos.security, sec-ops@swishos.security
+
+=== SWISHOS ADVERSARIAL THREAT DISPATCH ===
+Timestamp: ${timestamp}
+Target Session ID: guest-user / swishos-triage-v1
+Action Taken: ${result.blocked ? 'BLOCKED (HTTP 422)' : 'ALLOWED (HTTP 200)'}
+HTTP Status Code: ${result.statusHttp || 200}
+Enforcement Trigger: ${rules}
+
+=== INTERCEPTED ADVERSARIAL PAYLOAD ===
+${query || '(Preset Payload Executed)'}
+
+=== CRYPTOGRAPHIC AUDIT DISPATCH ===
+${JSON.stringify(result, null, 2)}`;
+  };
+
+  const handleCopyMail = () => {
+    const mailText = getIncidentMailContent();
+    navigator.clipboard.writeText(mailText);
+    setCopiedMail(true);
+    setTimeout(() => setCopiedMail(false), 3000);
   };
 
   return (
@@ -228,13 +258,76 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
                       fontSize: '12px',
                       color: 'var(--txt)',
                       overflowX: 'auto',
-                      maxHeight: '260px',
+                      maxHeight: '220px',
                       border: '1px solid var(--line)',
                       fontFamily: 'monospace',
+                      marginBottom: '16px',
                     }}
                   >
                     {JSON.stringify(result, null, 2)}
                   </pre>
+
+                  {/* Incident Email Dispatcher */}
+                  <div style={{ padding: '16px', borderRadius: '12px', background: 'var(--bg-soft)', border: '1px solid var(--line-strong)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', gap: '8px', flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                        📧 {isAr ? 'تقرير حادثة أمنية تلقائي (Mail Dispatch)' : 'Auto-Generated Incident Email Alert'}
+                      </span>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          onClick={handleCopyMail}
+                          style={{
+                            padding: '6px 12px',
+                            borderRadius: '6px',
+                            border: '1px solid var(--brand)',
+                            background: copiedMail ? '#10b981' : 'var(--brand)',
+                            color: '#ffffff',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease',
+                          }}
+                        >
+                          {copiedMail ? (isAr ? '✓ تم نسخ البريد' : '✓ Email Copied!') : (isAr ? '📋 نسخ البريد' : '📋 Copy Incident Email')}
+                        </button>
+                        <a
+                          href={`mailto:ciso@swishos.security?subject=${encodeURIComponent('[SECURITY INCIDENT REPORT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
+                          style={{
+                            padding: '6px 12px',
+                            borderRadius: '6px',
+                            border: '1px solid var(--line-strong)',
+                            background: 'var(--bg)',
+                            color: 'var(--txt)',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                          }}
+                        >
+                          ✉️ {isAr ? 'إرسال عبر البريد' : 'Send via Mail'}
+                        </a>
+                      </div>
+                    </div>
+                    <pre
+                      style={{
+                        background: 'var(--bg)',
+                        padding: '10px 12px',
+                        borderRadius: '6px',
+                        fontSize: '11px',
+                        color: 'var(--muted)',
+                        fontFamily: 'monospace',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                        margin: 0,
+                        maxHeight: '120px',
+                        overflowY: 'auto',
+                        border: '1px solid var(--line)',
+                      }}
+                    >
+                      {getIncidentMailContent()}
+                    </pre>
+                  </div>
                 </div>
               )}
             </div>

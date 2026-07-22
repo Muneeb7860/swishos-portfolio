@@ -40,19 +40,45 @@ interface SimulationResult {
 }
 
 export function SecurityPlaygroundDashboard() {
-  const [query, setQuery] = useState(PRESETS[0].query);
-  const [proposedTool, setProposedTool] = useState<string>(
-    PRESETS[0].proposedToolCall ? JSON.stringify(PRESETS[0].proposedToolCall, null, 2) : ''
-  );
+  const [query, setQuery] = useState('');
+  const [proposedTool, setProposedTool] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SimulationResult | null>(null);
   const [proofHeader, setProofHeader] = useState<string | null>(null);
+  const [copiedMail, setCopiedMail] = useState(false);
 
   const handleSelectPreset = (preset: Preset) => {
     setQuery(preset.query);
     setProposedTool(preset.proposedToolCall ? JSON.stringify(preset.proposedToolCall, null, 2) : '');
     setResult(null);
     setProofHeader(null);
+    setCopiedMail(false);
+  };
+
+  const getIncidentMailContent = () => {
+    if (!result) return '';
+    const timestamp = new Date().toISOString();
+    return `Subject: [SECURITY ENCLAVE ALERT] SwishOS Threat Probe Execution - ${timestamp}
+To: ciso@swishos.security, sec-ops@swishos.security
+
+=== SWISHOS THREAT ENCLAVE AUDIT DISPATCH ===
+Timestamp: ${timestamp}
+Enclave Status Code: HTTP ${result.status}
+Audit HMAC Signature: ${proofHeader || 'CRYPTOGRAPHIC_PROOF_VERIFIED'}
+
+=== EVALUATED PROBE PAYLOAD ===
+${query || '(Adversarial Vector Presets Executed)'}
+${proposedTool ? `\n=== SHADOW PROBE JSON ===\n${proposedTool}` : ''}
+
+=== ENCLAVE TELEMETRY DATA ===
+${JSON.stringify(result.data, null, 2)}`;
+  };
+
+  const handleCopyMail = () => {
+    const mailText = getIncidentMailContent();
+    navigator.clipboard.writeText(mailText);
+    setCopiedMail(true);
+    setTimeout(() => setCopiedMail(false), 3000);
   };
 
   const handleRunSimulation = async () => {
@@ -306,10 +332,71 @@ export function SecurityPlaygroundDashboard() {
             fontFamily: 'monospace',
             fontSize: '12px',
             overflowX: 'auto',
-            maxHeight: '260px'
+            maxHeight: '220px',
+            marginBottom: '14px'
           }}>
             {JSON.stringify(result.data, null, 2)}
           </pre>
+
+          {/* Incident Email Dispatcher */}
+          <div style={{ padding: '14px 16px', borderRadius: '8px', background: 'var(--bg-soft)', border: '1px solid var(--line-strong)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', gap: '8px', flexWrap: 'wrap' }}>
+              <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                📧 Auto-Generated Incident Email Alert
+              </span>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button
+                  onClick={handleCopyMail}
+                  style={{
+                    padding: '5px 10px',
+                    borderRadius: '6px',
+                    border: '1px solid var(--brand)',
+                    background: copiedMail ? '#10b981' : 'var(--brand)',
+                    color: '#ffffff',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  {copiedMail ? '✓ Email Copied!' : '📋 Copy Incident Email'}
+                </button>
+                <a
+                  href={`mailto:ciso@swishos.security?subject=${encodeURIComponent('[SECURITY ENCLAVE ALERT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
+                  style={{
+                    padding: '5px 10px',
+                    borderRadius: '6px',
+                    border: '1px solid var(--line-strong)',
+                    background: 'var(--bg)',
+                    color: 'var(--txt)',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center'
+                  }}
+                >
+                  ✉️ Send via Mail
+                </a>
+              </div>
+            </div>
+            <pre style={{
+              padding: '10px 12px',
+              borderRadius: '6px',
+              background: 'var(--bg)',
+              border: '1px solid var(--line)',
+              color: 'var(--muted)',
+              fontFamily: 'monospace',
+              fontSize: '11px',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
+              margin: 0,
+              maxHeight: '120px',
+              overflowY: 'auto'
+            }}>
+              {getIncidentMailContent()}
+            </pre>
+          </div>
         </div>
       )}
     </section>
