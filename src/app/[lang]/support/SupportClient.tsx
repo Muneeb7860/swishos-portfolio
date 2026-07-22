@@ -82,12 +82,12 @@ export default function SupportClient({ lang }: { lang: string }) {
   const webhookSnippet = `curl -X POST https://swishos.io/api/support \\
   -H "Content-Type: application/json" \\
   -d '{
-    "channel": "api",
-    "category": "security_incident",
-    "name": "Security Lead",
-    "email": "sec-ops@company.com",
-    "subject": "Guardrail evaluation log trace",
-    "message": "Adversarial bypass trace detected on endpoint."
+    "channel": "${activeChannel}",
+    "category": "${category}",
+    "name": "${form.name.replace(/"/g, '\\"') || 'Security Lead'}",
+    "email": "${form.email.replace(/"/g, '\\"') || 'sec-ops@company.com'}",
+    "subject": "${form.subject.replace(/"/g, '\\"') || 'Guardrail evaluation log trace'}",
+    "message": "${form.message.replace(/"/g, '\\"').replace(/\n/g, ' ') || 'Adversarial bypass trace detected on endpoint.'}"
   }'`;
 
   const channelIcons: Record<string, string> = { web: '🌐', api: '⚡', audit_desk: '🛡️', slack: '💬', email: '📧' };
@@ -102,6 +102,21 @@ export default function SupportClient({ lang }: { lang: string }) {
           <span className="pill"><span className="dot" />{t.badge}</span>
           <h1>{t.title}</h1>
           <p>{t.subtitle}</p>
+        </div>
+
+        {/* Enterprise Social Proof Trust Badge */}
+        <div className="trust-proof-banner reveal mb-8 p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center space-x-3">
+            <span className="text-xl">🛡️</span>
+            <div>
+              <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Enterprise Architect Verified</div>
+              <div className="text-xs text-slate-300 font-medium">Shipped zero-trust guardrails for 5.6M+ active AI agent user sessions</div>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2 text-xs font-mono bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>SOC2 Type II & EU AI Act Compliant</span>
+          </div>
         </div>
 
         {/* Telemetry Section */}
