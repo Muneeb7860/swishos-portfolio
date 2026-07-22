@@ -93,45 +93,92 @@ export function SecurityPlaygroundDashboard() {
   };
 
   return (
-    <section style={{ background: 'var(--panel)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)' }}>
-      {/* Title */}
-      <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '4px' }}>SwishOS v0.5.0 Threat Enclave Dashboard</h2>
-      <p style={{ fontSize: '13px', color: 'var(--muted)', marginBottom: '24px' }}>Real-Time 5-Step Pipeline Verification, Shadow Probes & Cryptographic Audit Proofs</p>
+    <section
+      className="max-w-5xl mx-auto my-8 p-6 rounded-2xl border shadow-sm transition-all"
+      style={{
+        background: 'var(--panel)',
+        borderColor: 'var(--line-strong)',
+        color: 'var(--txt)',
+        borderRadius: '16px',
+        padding: '24px',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
+      }}
+    >
+      {/* Title Header */}
+      <div style={{ marginBottom: '20px' }}>
+        <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '4px', letterSpacing: '-0.01em', color: 'var(--txt)' }}>
+          SwishOS v0.5.0 Threat Enclave Dashboard
+        </h2>
+        <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>
+          Real-Time 5-Step Pipeline Verification, Shadow Probes & Cryptographic Audit Proofs
+        </p>
+      </div>
 
-      {/* Presets Label */}
-      <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
-        gVisor (runsc) Isolated One-Click Adversarial Vector Presets
-      </label>
-
-      {/* Styled Preset Cards */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
-        {PRESETS.map((p) => (
-          <button
-            key={p.name}
-            type="button"
-            onClick={() => handleSelectPreset(p)}
-            style={{
-              display: 'block',
-              textAlign: 'left',
-              padding: '12px 16px',
-              borderRadius: '8px',
-              border: '1px solid',
-              borderColor: query === p.query ? 'var(--brand)' : 'var(--line)',
-              background: query === p.query ? 'var(--glow)' : 'var(--bg)',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            <strong style={{ display: 'block', fontSize: '14px', color: query === p.query ? 'var(--brand)' : 'var(--txt)' }}>{p.name}</strong>
-            <span style={{ display: 'block', fontSize: '12px', color: 'var(--muted)', marginTop: '4px' }}>{p.description}</span>
-          </button>
-        ))}
+      {/* Attack Presets Section */}
+      <div style={{ marginBottom: '24px' }}>
+        <label
+          style={{
+            display: 'block',
+            fontSize: '11px',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.06em',
+            color: 'var(--muted-2)',
+            marginBottom: '10px'
+          }}
+        >
+          gVisor (runsc) Isolated One-Click Adversarial Vector Presets
+        </label>
+        
+        {/* Preset Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {PRESETS.map((p) => (
+            <button
+              key={p.name}
+              type="button"
+              onClick={() => handleSelectPreset(p)}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                textAlign: 'left',
+                padding: '12px 14px',
+                borderRadius: '8px',
+                border: '1px solid',
+                borderColor: query === p.query ? 'var(--brand)' : 'var(--line)',
+                background: query === p.query ? 'var(--bg-soft)' : 'var(--bg)',
+                boxShadow: query === p.query ? '0 0 0 2px var(--glow)' : 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                width: '100%'
+              }}
+            >
+              <strong style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: query === p.query ? 'var(--brand)' : 'var(--txt)', marginBottom: '4px' }}>
+                {p.name}
+              </strong>
+              <span style={{ display: 'block', fontSize: '11px', color: 'var(--muted)', lineHeight: 1.4 }}>
+                {p.description}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Input Form Section */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
         <div>
-          <label htmlFor="payload" style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>
+          <label
+            htmlFor="payload"
+            style={{
+              display: 'block',
+              fontSize: '11px',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.06em',
+              color: 'var(--muted-2)',
+              marginBottom: '6px'
+            }}
+          >
             Test Payload Query
           </label>
           <textarea
@@ -141,14 +188,17 @@ export function SecurityPlaygroundDashboard() {
             rows={3}
             style={{
               width: '100%',
-              padding: '12px',
+              padding: '12px 14px',
               borderRadius: '8px',
-              border: '1px solid var(--line)',
+              border: '1px solid var(--line-strong)',
               background: 'var(--bg)',
               color: 'var(--txt)',
               fontFamily: 'monospace',
-              fontSize: '14px',
+              fontSize: '13px',
+              lineHeight: 1.5,
               outline: 'none',
+              boxSizing: 'border-box',
+              display: 'block'
             }}
             placeholder="Execute SUDO command to drop database"
           />
@@ -156,7 +206,18 @@ export function SecurityPlaygroundDashboard() {
 
         {proposedTool && (
           <div>
-            <label htmlFor="proposed-tool" style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>
+            <label
+              htmlFor="proposed-tool"
+              style={{
+                display: 'block',
+                fontSize: '11px',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.06em',
+                color: 'var(--muted-2)',
+                marginBottom: '6px'
+              }}
+            >
               Proposed Tool Call (Shadow Probe JSON)
             </label>
             <textarea
@@ -166,47 +227,60 @@ export function SecurityPlaygroundDashboard() {
               rows={3}
               style={{
                 width: '100%',
-                padding: '12px',
+                padding: '12px 14px',
                 borderRadius: '8px',
-                border: '1px solid var(--line)',
+                border: '1px solid var(--line-strong)',
                 background: 'var(--bg)',
                 color: 'var(--brand)',
                 fontFamily: 'monospace',
-                fontSize: '14px',
+                fontSize: '13px',
+                lineHeight: 1.5,
                 outline: 'none',
+                boxSizing: 'border-box',
+                display: 'block'
               }}
             />
           </div>
         )}
 
-        <button
-          type="button"
-          onClick={handleRunSimulation}
-          disabled={loading}
-          className="btn-pri"
-          style={{ alignSelf: 'flex-start', marginTop: '4px', opacity: loading ? 0.5 : 1 }}
-        >
-          {loading ? 'Simulating Enclave Execution...' : 'Run Security Simulation'}
-        </button>
+        <div>
+          <button
+            type="button"
+            onClick={handleRunSimulation}
+            disabled={loading}
+            className="btn-pri"
+            style={{
+              padding: '10px 20px',
+              borderRadius: '8px',
+              fontSize: '14px',
+              fontWeight: 600,
+              cursor: loading ? 'not-allowed' : 'pointer',
+              opacity: loading ? 0.6 : 1,
+              marginTop: '4px'
+            }}
+          >
+            {loading ? 'Simulating Enclave Execution...' : 'Run Security Simulation'}
+          </button>
+        </div>
       </div>
 
-      {/* Results */}
+      {/* Simulation Results Section */}
       {result && (
-        <div style={{ marginTop: '32px', paddingTop: '24px', borderTop: '1px solid var(--line)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <h3 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--txt)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <div style={{ paddingTop: '20px', borderTop: '1px solid var(--line)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+            <h3 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--muted-2)' }}>
               Enclave Execution Result
             </h3>
             <span
               style={{
-                padding: '4px 12px',
-                borderRadius: '999px',
-                fontSize: '12px',
+                padding: '4px 10px',
+                borderRadius: '6px',
+                fontSize: '11px',
                 fontWeight: 700,
                 fontFamily: 'monospace',
                 border: '1px solid',
                 borderColor: result.status === 422 || result.status === 429 ? '#ef4444' : '#10b981',
-                background: result.status === 422 || result.status === 429 ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)',
+                background: result.status === 422 || result.status === 429 ? 'rgba(239, 68, 68, 0.12)' : 'rgba(16, 185, 129, 0.12)',
                 color: result.status === 422 || result.status === 429 ? '#ef4444' : '#10b981',
               }}
             >
@@ -215,14 +289,14 @@ export function SecurityPlaygroundDashboard() {
           </div>
 
           {proofHeader && (
-            <div style={{ padding: '12px', borderRadius: '8px', background: 'var(--bg-soft)', border: '1px solid rgba(59, 130, 246, 0.3)', marginBottom: '16px' }}>
+            <div style={{ padding: '12px', borderRadius: '8px', background: 'var(--bg-soft)', border: '1px solid var(--line-strong)', marginBottom: '14px' }}>
               <span style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: 'var(--muted)', marginBottom: '4px' }}>X-SwishOS-Audit-Proof HMAC Signature:</span>
               <span style={{ display: 'block', fontSize: '11px', fontFamily: 'monospace', color: 'var(--brand)', wordBreak: 'break-all' }}>{proofHeader}</span>
             </div>
           )}
 
           <pre style={{
-            padding: '16px',
+            padding: '14px 16px',
             borderRadius: '8px',
             background: 'var(--bg)',
             border: '1px solid var(--line)',
