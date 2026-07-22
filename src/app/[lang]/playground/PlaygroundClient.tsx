@@ -62,10 +62,20 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
         body: JSON.stringify({ query: payload, lang }),
       });
       const data = await res.json();
-      setResult({ statusHttp: res.status, ...data });
+      const isBlocked = res.status >= 400 || data.blocked === true || data.status === 'blocked' || data.action === 'block';
+      setResult({
+        statusHttp: res.status,
+        blocked: isBlocked,
+        ...data,
+      });
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to connect to gateway';
-      setResult({ error: errorMessage });
+      setResult({
+        statusHttp: 500,
+        blocked: true,
+        error: errorMessage,
+        message: errorMessage,
+      });
     } finally {
       setLoading(false);
     }
@@ -168,10 +178,10 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
 
               {result && (
                 <div>
-                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
                     <span
                       style={{
-                        padding: '4px 12px',
+                        padding: '6px 14px',
                         borderRadius: '12px',
                         fontWeight: 700,
                         fontSize: '12px',
@@ -182,19 +192,30 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
                     >
                       {result.blocked ? (isAr ? '❌ تم الإغلاق والاعتراض' : '❌ BLOCKED BY GUARDRAIL') : (isAr ? '🟢 مسموح ومطابق' : '🟢 ALLOWED')}
                     </span>
-                    <span style={{ fontSize: '12px', color: 'var(--muted)' }}>HTTP Status: {result.statusHttp}</span>
+                    <span style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 600 }}>
+                      HTTP Status: {result.statusHttp || 200}
+                    </span>
                   </div>
 
-                  {result.triggered_rules && result.triggered_rules.length > 0 && (
+                  {(result.triggered_rules && result.triggered_rules.length > 0) ? (
                     <div style={{ marginBottom: '16px' }}>
                       <div style={{ fontSize: '12px', fontWeight: 700, color: '#ef4444', marginBottom: '4px' }}>
                         {isAr ? 'القواعد المُفعلة للاعترض:' : 'Rule Violation Triggered:'}
                       </div>
-                      <code style={{ fontSize: '13px', background: 'var(--bg)', padding: '6px 10px', borderRadius: '6px', color: '#ef4444', display: 'block' }}>
+                      <code style={{ fontSize: '13px', background: 'var(--bg)', padding: '6px 10px', borderRadius: '6px', color: '#ef4444', display: 'block', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
                         {result.triggered_rules.join(', ')}
                       </code>
                     </div>
-                  )}
+                  ) : result.blocked ? (
+                    <div style={{ marginBottom: '16px' }}>
+                      <div style={{ fontSize: '12px', fontWeight: 700, color: '#ef4444', marginBottom: '4px' }}>
+                        {isAr ? 'تفاصيل الإغلاق الأمني:' : 'Security Enforcement Detail:'}
+                      </div>
+                      <code style={{ fontSize: '13px', background: 'var(--bg)', padding: '6px 10px', borderRadius: '6px', color: '#ef4444', display: 'block', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
+                        {(result.block_reason as string) || (result.message as string) || (result.error as string) || 'Zero-Information Flat Refusal (Cryptographically Signed Audit Proof)'}
+                      </code>
+                    </div>
+                  ) : null}
 
                   <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--muted)', marginBottom: '4px' }}>
                     {isAr ? 'التقرير الفني الكامل (JSON):' : 'Full Telemetry JSON:'}
@@ -202,12 +223,14 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
                   <pre
                     style={{
                       background: 'var(--bg)',
-                      padding: '12px',
+                      padding: '14px',
                       borderRadius: '8px',
                       fontSize: '12px',
                       color: 'var(--txt)',
                       overflowX: 'auto',
                       maxHeight: '260px',
+                      border: '1px solid var(--line)',
+                      fontFamily: 'monospace',
                     }}
                   >
                     {JSON.stringify(result, null, 2)}
