@@ -93,64 +93,62 @@ export function SecurityPlaygroundDashboard() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto my-8 p-6 rounded-2xl bg-neutral-900/90 border border-neutral-800 text-neutral-100 shadow-2xl backdrop-blur-md">
+    <div className="w-full max-w-5xl mx-auto my-8 p-6 rounded-lg bg-slate-900 border border-slate-800 text-slate-100 shadow-xl">
       {/* Header */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-neutral-800 gap-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-slate-800 gap-4">
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-            <span className="inline-block w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span className="inline-block w-3 h-3 rounded-full bg-blue-500 animate-pulse"></span>
             SwishOS v0.5.0 Threat Enclave Dashboard
           </h2>
-          <p className="text-sm text-neutral-400 mt-1">
+          <p className="text-sm text-slate-400 mt-1">
             Real-Time 5-Step Pipeline Verification, Shadow Probes & Cryptographic Audit Proofs
           </p>
         </div>
-        <div className="px-3 py-1.5 rounded-full text-xs font-mono bg-emerald-950/60 border border-emerald-500/30 text-emerald-400">
+        <div className="px-3 py-1.5 rounded-full text-xs font-mono bg-blue-900/30 border border-blue-500/30 text-blue-400">
           gVisor (runsc) Isolated
         </div>
       </div>
 
       {/* Attack Presets */}
       <div className="my-6">
-        <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-3">
+        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
           One-Click Adversarial Vector Presets
         </label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-4">
           {PRESETS.map((p) => (
             <button
               key={p.name}
               onClick={() => handleSelectPreset(p)}
-              className={`p-3 rounded-xl text-left border transition-all ${
+              className={`p-3 rounded-lg text-left border transition-all ${
                 query === p.query
-                  ? 'bg-neutral-800 border-emerald-500/50 text-white shadow-lg'
-                  : 'bg-neutral-950/50 border-neutral-800 text-neutral-300 hover:border-neutral-700'
+                  ? 'bg-slate-800 border-blue-500 text-white shadow-lg'
+                  : 'bg-slate-900 border-slate-700 text-slate-300 hover:border-blue-500'
               }`}
             >
               <div className="font-semibold text-sm">{p.name}</div>
-              <div className="text-xs text-neutral-400 mt-1 line-clamp-1">{p.description}</div>
+              <div className="text-xs text-slate-400 mt-1">{p.description}</div>
             </button>
           ))}
         </div>
       </div>
 
       {/* Inputs */}
-      <div className="space-y-4">
-        <div>
-          <label htmlFor="test-query-input" className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
-            Test Payload Query
-          </label>
-          <textarea
-            id="test-query-input"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            rows={3}
-            className="w-full p-3 rounded-xl bg-neutral-950 border border-neutral-800 text-neutral-100 font-mono text-sm focus:outline-none focus:border-emerald-500/50"
-          />
-        </div>
+      <div className="flex flex-col gap-2 mt-4">
+        <label htmlFor="test-query-input" className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Test Payload Query
+        </label>
+        <textarea
+          id="test-query-input"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          rows={3}
+          className="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 focus:outline-none focus:border-blue-500"
+        />
 
         {proposedTool && (
-          <div>
-            <label htmlFor="proposed-tool-input" className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+          <>
+            <label htmlFor="proposed-tool-input" className="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-2">
               Proposed Tool Call (Shadow Probe JSON)
             </label>
             <textarea
@@ -158,18 +156,15 @@ export function SecurityPlaygroundDashboard() {
               value={proposedTool}
               onChange={(e) => setProposedTool(e.target.value)}
               rows={3}
-              className="w-full p-3 rounded-xl bg-neutral-950 border border-neutral-800 text-emerald-300 font-mono text-xs focus:outline-none focus:border-emerald-500/50"
+              className="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-blue-300 font-mono text-xs focus:outline-none focus:border-blue-500"
             />
-          </div>
+          </>
         )}
-      </div>
 
-      {/* Action Button */}
-      <div className="mt-6 flex justify-end">
         <button
           onClick={handleRunSimulation}
           disabled={loading}
-          className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-950/40 disabled:opacity-50"
+          className="mt-2 self-start px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition disabled:opacity-50"
         >
           {loading ? 'Simulating Enclave Execution...' : 'Run Security Simulation'}
         </button>
@@ -177,7 +172,7 @@ export function SecurityPlaygroundDashboard() {
 
       {/* Results */}
       {result && (
-        <div className="mt-8 pt-6 border-t border-neutral-800 space-y-4 animate-fadeIn">
+        <div className="mt-8 pt-6 border-t border-slate-800 space-y-4 animate-fadeIn">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
               Enclave Execution Result
@@ -194,13 +189,13 @@ export function SecurityPlaygroundDashboard() {
           </div>
 
           {proofHeader && (
-            <div className="p-3 rounded-xl bg-neutral-950 border border-emerald-500/30 font-mono text-xs text-emerald-400">
-              <span className="text-neutral-400 font-bold block mb-1">X-SwishOS-Audit-Proof HMAC Signature:</span>
+            <div className="p-3 rounded-lg bg-slate-800 border border-blue-500/30 font-mono text-xs text-blue-400">
+              <span className="text-slate-400 font-bold block mb-1">X-SwishOS-Audit-Proof HMAC Signature:</span>
               <span className="break-all">{proofHeader}</span>
             </div>
           )}
 
-          <pre className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 text-neutral-300 font-mono text-xs overflow-x-auto max-h-60">
+          <pre className="p-4 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-xs overflow-x-auto max-h-60">
             {JSON.stringify(result.data, null, 2)}
           </pre>
         </div>
