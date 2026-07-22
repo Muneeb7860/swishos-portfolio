@@ -1,5 +1,7 @@
 # 🛡️ SwishOS Platform: Frontier-Grade Zero-Trust AI Agent Enclave
 
+> **SwishOS stops autonomous AI agents from leaking secrets, executing unauthorized financial actions, or breaching EU AI Act compliance — with zero SaaS latency.**
+
 [![PyPI version](https://img.shields.io/badge/agentic--redteam-v0.5.0-blue.svg)](https://github.com/Muneeb7860/agentic-redteam)
 [![CI/CD Security Gate](https://img.shields.io/badge/Security--Gate-100%25--PASS-emerald.svg)](https://github.com/Muneeb7860/swishos-portfolio/actions)
 [![gVisor Virtual Kernel](https://img.shields.io/badge/gVisor-runsc--isolated-purple.svg)](docker-compose.production.yml)
