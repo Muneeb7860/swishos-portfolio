@@ -93,11 +93,11 @@ export function SecurityPlaygroundDashboard() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto my-8 p-6 rounded-lg bg-slate-900 border border-slate-800 text-slate-100 shadow-xl">
+    <section className="w-full max-w-5xl mx-auto my-12 p-6 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl text-slate-100">
       {/* Header */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-slate-800 gap-4 mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
             <span className="inline-block w-3 h-3 rounded-full bg-blue-500 animate-pulse"></span>
             SwishOS v0.5.0 Threat Enclave Dashboard
           </h2>
@@ -111,39 +111,39 @@ export function SecurityPlaygroundDashboard() {
       </div>
 
       {/* Attack Presets */}
-      <div className="my-6">
-        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-          One-Click Adversarial Vector Presets
-        </label>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-4">
-          {PRESETS.map((p) => (
-            <button
-              key={p.name}
-              onClick={() => handleSelectPreset(p)}
-              className={`p-3 rounded-lg text-left border transition-all ${
-                query === p.query
-                  ? 'bg-slate-800 border-blue-500 text-white shadow-lg'
-                  : 'bg-slate-900 border-slate-700 text-slate-300 hover:border-blue-500'
-              }`}
-            >
-              <div className="font-semibold text-sm">{p.name}</div>
-              <div className="text-xs text-slate-400 mt-1">{p.description}</div>
-            </button>
-          ))}
-        </div>
+      <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+        gVisor (runsc) Isolated One-Click Adversarial Vector Presets
+      </label>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+        {PRESETS.map((p) => (
+          <button
+            key={p.name}
+            type="button"
+            onClick={() => handleSelectPreset(p)}
+            className={`p-3 text-left border rounded-xl transition group ${
+              query === p.query
+                ? 'bg-slate-700/80 border-blue-500 text-white shadow-lg'
+                : 'bg-slate-800 hover:bg-slate-700/80 border-slate-700 text-slate-200'
+            }`}
+          >
+            <span className={`block text-xs font-bold ${query === p.query ? 'text-blue-400' : 'text-slate-200 group-hover:text-blue-400'}`}>{p.name}</span>
+            <span className="block text-[11px] text-slate-400 mt-1 leading-snug">{p.description}</span>
+          </button>
+        ))}
       </div>
 
-      {/* Inputs */}
-      <div className="flex flex-col gap-2 mt-4">
-        <label htmlFor="test-query-input" className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+      {/* Inputs & Trigger */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="payload-query" className="text-xs font-semibold uppercase tracking-wider text-slate-400">
           Test Payload Query
         </label>
         <textarea
-          id="test-query-input"
+          id="payload-query"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           rows={3}
-          className="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 focus:outline-none focus:border-blue-500"
+          placeholder="Enter payload query..."
+          className="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 text-sm font-mono transition"
         />
 
         {proposedTool && (
@@ -156,18 +156,22 @@ export function SecurityPlaygroundDashboard() {
               value={proposedTool}
               onChange={(e) => setProposedTool(e.target.value)}
               rows={3}
-              className="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-blue-300 font-mono text-xs focus:outline-none focus:border-blue-500"
+              placeholder="Enter JSON tool payload..."
+              className="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-blue-300 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 text-sm font-mono transition"
             />
           </>
         )}
 
-        <button
-          onClick={handleRunSimulation}
-          disabled={loading}
-          className="mt-2 self-start px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition disabled:opacity-50"
-        >
-          {loading ? 'Simulating Enclave Execution...' : 'Run Security Simulation'}
-        </button>
+        <div className="mt-2">
+          <button
+            type="button"
+            onClick={handleRunSimulation}
+            disabled={loading}
+            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium text-sm transition shadow-lg shadow-blue-600/20 disabled:opacity-50 disabled:shadow-none"
+          >
+            {loading ? 'Simulating Enclave Execution...' : 'Run Security Simulation'}
+          </button>
+        </div>
       </div>
 
       {/* Results */}
@@ -200,6 +204,6 @@ export function SecurityPlaygroundDashboard() {
           </pre>
         </div>
       )}
-    </div>
+    </section>
   );
 }
