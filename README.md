@@ -104,11 +104,17 @@ npm run swishos schema --output-dir supabase/migrations
 # Run automated supply chain dependency & lockfile audit
 npm run swishos deps
 
-# Generate formal executive penetration testing HTML/JSON report
+# Run formal executive penetration testing HTML/JSON report
 npm run swishos report --client "Enterprise Client Name"
 
 # Run high-concurrency rate-limit & tarpit stress test
 npm run swishos stress --target http://localhost:3000/api/support
+
+# Run turnkey sales audit wizard & generate CISO cold pitch email
+npm run swishos pitch --client "Stripe AI"
+
+# Perform automated red-team audit scan & format CISO pitch email package
+npm run swishos prospect --client "Ramp AI" --target http://localhost:3000/api/support
 ```
 
 ---
@@ -135,9 +141,16 @@ docker compose -f docker-compose.production.yml up -d
 
 ---
 
-## 💼 Commercial Services & Enterprise Licensing
+## 💼 Commercial Services & Sales Playbooks
 
-SwishOS offers commercial AI Agent Security Audits ($7,500 - $12,500) and Enterprise Managed Enclave Licenses. Learn more in our [Commercial Services Guide (`COMMERCIAL.md`)](COMMERCIAL.md).
+SwishOS offers commercial AI Agent Security Audits ($7,500 - $12,500) and Enterprise Managed Enclave Licenses. Explore our enterprise sales enablement assets:
+
+- 📑 **[Architectural Specification (`ARCHITECTURE.md`)](ARCHITECTURE.md)**: Threat model matrices and zero-trust invariants.
+- 💰 **[Commercial Pricing Guide (`COMMERCIAL.md`)](COMMERCIAL.md)**: Pricing tiers and SLA guarantees.
+- ✉️ **[CISO Cold Outreach Playbook (`COLD_OUTREACH.md`)](COLD_OUTREACH.md)**: High-converting cold outreach email templates.
+- 📊 **[Enterprise Sales Presentation Deck (`SALES_DECK.md`)](SALES_DECK.md)**: 10-slide Markdown presentation deck.
+- 📱 **[Social Media Marketing Campaign (`LINKEDIN_MARKETING.md`)](LINKEDIN_MARKETING.md)**: Viral launch posts & campaign copy.
+- 🤝 **[VC & BFSI Executive Outreach (`VC_AND_BFSI_OUTREACH.md`)](VC_AND_BFSI_OUTREACH.md)**: Target investor & banking GM scripts.
 
 ---
 
