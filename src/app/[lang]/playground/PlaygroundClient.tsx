@@ -111,29 +111,32 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
           </div>
         </div>
 
-        {/* Payload Input Box */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-          <div style={{ background: 'var(--card-bg)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '16px' }}>
-              {isAr ? '1. ادخل النص أو الحمولة:' : '1. Adversarial Payload Stream:'}
-            </h3>
-            <textarea
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              rows={6}
-              style={{
-                width: '100%',
-                background: 'var(--bg)',
-                color: 'var(--txt)',
-                border: '1px solid var(--line)',
-                borderRadius: '8px',
-                padding: '14px',
-                fontFamily: 'monospace',
-                fontSize: '14px',
-                marginBottom: '16px',
-              }}
-              placeholder="Type prompt or attack vector..."
-            />
+        {/* Payload Input Box & Inspector Row */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'stretch' }}>
+          {/* Left Column Card */}
+          <div style={{ background: 'var(--card-bg)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+            <div>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '16px' }}>
+                {isAr ? '1. ادخل النص أو الحمولة:' : '1. Adversarial Payload Stream:'}
+              </h3>
+              <textarea
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                rows={6}
+                style={{
+                  width: '100%',
+                  background: 'var(--bg)',
+                  color: 'var(--txt)',
+                  border: '1px solid var(--line)',
+                  borderRadius: '8px',
+                  padding: '14px',
+                  fontFamily: 'monospace',
+                  fontSize: '14px',
+                  marginBottom: '16px',
+                }}
+                placeholder="Type prompt or attack vector..."
+              />
+            </div>
             <button
               onClick={() => handleTestPayload()}
               disabled={loading}
@@ -145,71 +148,73 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
           </div>
 
           {/* Real-time Inspector Response */}
-          <div style={{ background: 'var(--card-bg)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '16px' }}>
-              {isAr ? '2. نتائج التفتيش واتخاذ القرار:' : '2. Guardrail Inspector Output:'}
-            </h3>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+            <div>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '16px' }}>
+                {isAr ? '2. نتائج التفتيش واتخاذ القرار:' : '2. Guardrail Inspector Output:'}
+              </h3>
 
-            {!result && !loading && (
-              <div style={{ color: 'var(--muted)', fontSize: '14px', fontStyle: 'italic', paddingTop: '40px', textAlign: 'center' }}>
-                {isAr ? 'انقر على "تشغيل الفحص" لعرض تحليلات الحماية' : 'Click "Test Payload Live" to view security evaluation traces'}
-              </div>
-            )}
+              {!result && !loading && (
+                <div style={{ color: 'var(--muted)', fontSize: '14px', fontStyle: 'italic', paddingTop: '40px', textAlign: 'center' }}>
+                  {isAr ? 'انقر على "تشغيل الفحص" لعرض تحليلات الحماية' : 'Click "Test Payload Live" to view security evaluation traces'}
+                </div>
+              )}
 
-            {loading && (
-              <div style={{ color: 'var(--muted)', fontSize: '14px', paddingTop: '40px', textAlign: 'center' }}>
-                ⚡ {isAr ? 'جاري الفحص الهيكلي عبر الطبقات الأربع...' : 'Running shift-left normalization & threat filters...'}
-              </div>
-            )}
+              {loading && (
+                <div style={{ color: 'var(--muted)', fontSize: '14px', paddingTop: '40px', textAlign: 'center' }}>
+                  ⚡ {isAr ? 'جاري الفحص الهيكلي عبر الطبقات الأربع...' : 'Running shift-left normalization & threat filters...'}
+                </div>
+              )}
 
-            {result && (
-              <div>
-                <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '16px' }}>
-                  <span
+              {result && (
+                <div>
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '16px' }}>
+                    <span
+                      style={{
+                        padding: '4px 12px',
+                        borderRadius: '12px',
+                        fontWeight: 700,
+                        fontSize: '12px',
+                        background: result.blocked ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)',
+                        color: result.blocked ? '#ef4444' : '#10b981',
+                        border: `1px solid ${result.blocked ? '#ef4444' : '#10b981'}`,
+                      }}
+                    >
+                      {result.blocked ? (isAr ? '❌ تم الإغلاق والاعتراض' : '❌ BLOCKED BY GUARDRAIL') : (isAr ? '🟢 مسموح ومطابق' : '🟢 ALLOWED')}
+                    </span>
+                    <span style={{ fontSize: '12px', color: 'var(--muted)' }}>HTTP Status: {result.statusHttp}</span>
+                  </div>
+
+                  {result.triggered_rules && result.triggered_rules.length > 0 && (
+                    <div style={{ marginBottom: '16px' }}>
+                      <div style={{ fontSize: '12px', fontWeight: 700, color: '#ef4444', marginBottom: '4px' }}>
+                        {isAr ? 'القواعد المُفعلة للاعترض:' : 'Rule Violation Triggered:'}
+                      </div>
+                      <code style={{ fontSize: '13px', background: 'var(--bg)', padding: '6px 10px', borderRadius: '6px', color: '#ef4444', display: 'block' }}>
+                        {result.triggered_rules.join(', ')}
+                      </code>
+                    </div>
+                  )}
+
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--muted)', marginBottom: '4px' }}>
+                    {isAr ? 'التقرير الفني الكامل (JSON):' : 'Full Telemetry JSON:'}
+                  </div>
+                  <pre
                     style={{
-                      padding: '4px 12px',
-                      borderRadius: '12px',
-                      fontWeight: 700,
+                      background: 'var(--bg)',
+                      padding: '12px',
+                      borderRadius: '8px',
                       fontSize: '12px',
-                      background: result.blocked ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)',
-                      color: result.blocked ? '#ef4444' : '#10b981',
-                      border: `1px solid ${result.blocked ? '#ef4444' : '#10b981'}`,
+                      color: 'var(--txt)',
+                      overflowX: 'auto',
+                      maxHeight: '260px',
                     }}
                   >
-                    {result.blocked ? (isAr ? '❌ تم الإغلاق والاعتراض' : '❌ BLOCKED BY GUARDRAIL') : (isAr ? '🟢 مسموح ومطابق' : '🟢 ALLOWED')}
-                  </span>
-                  <span style={{ fontSize: '12px', color: 'var(--muted)' }}>HTTP Status: {result.statusHttp}</span>
+                    {JSON.stringify(result, null, 2)}
+                  </pre>
                 </div>
-
-                {result.triggered_rules && result.triggered_rules.length > 0 && (
-                  <div style={{ marginBottom: '16px' }}>
-                    <div style={{ fontSize: '12px', fontWeight: 700, color: '#ef4444', marginBottom: '4px' }}>
-                      {isAr ? 'القواعد المُفعلة للاعترض:' : 'Rule Violation Triggered:'}
-                    </div>
-                    <code style={{ fontSize: '13px', background: 'var(--bg)', padding: '6px 10px', borderRadius: '6px', color: '#ef4444', display: 'block' }}>
-                      {result.triggered_rules.join(', ')}
-                    </code>
-                  </div>
-                )}
-
-                <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--muted)', marginBottom: '4px' }}>
-                  {isAr ? 'التقرير الفني الكامل (JSON):' : 'Full Telemetry JSON:'}
-                </div>
-                <pre
-                  style={{
-                    background: 'var(--bg)',
-                    padding: '12px',
-                    borderRadius: '8px',
-                    fontSize: '12px',
-                    color: 'var(--txt)',
-                    overflowX: 'auto',
-                    maxHeight: '260px',
-                  }}
-                >
-                  {JSON.stringify(result, null, 2)}
-                </pre>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
 

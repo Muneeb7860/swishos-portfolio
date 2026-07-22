@@ -94,10 +94,10 @@ export function SecurityPlaygroundDashboard() {
 
   return (
     <section
-      className="max-w-5xl mx-auto my-8 p-6 rounded-2xl border shadow-sm transition-all"
       style={{
+        width: '100%',
         background: 'var(--panel)',
-        borderColor: 'var(--line-strong)',
+        border: '1px solid var(--line-strong)',
         color: 'var(--txt)',
         borderRadius: '16px',
         padding: '24px',
@@ -131,7 +131,7 @@ export function SecurityPlaygroundDashboard() {
         </label>
         
         {/* Preset Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', alignItems: 'stretch' }}>
           {PRESETS.map((p) => (
             <button
               key={p.name}
@@ -140,6 +140,8 @@ export function SecurityPlaygroundDashboard() {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                height: '100%',
+                justifyContent: 'flex-start',
                 alignItems: 'flex-start',
                 textAlign: 'left',
                 padding: '12px 14px',
