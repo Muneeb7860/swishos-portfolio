@@ -29,13 +29,19 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
             <p className="sub reveal" style={{ maxWidth: '720px', margin: '16px auto 24px auto' }}>{dict.hero.subtitle}</p>
 
             {/* Consolidated CTAs */}
-            <div className="hero-cta reveal" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '32px' }}>
-              <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                <TargetIcon size={16} /> {isAr ? 'احجز تدقيق أمن وكيل الذكاء الاصطناعي' : 'Book an Agent Security Audit'}
-              </Link>
-              <Link href={`/${lang}/playground`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                <CodeIcon size={16} /> {isAr ? 'اختبر الحمولة المباشرة' : 'Try Live Playground'}
-              </Link>
+            <div className="hero-cta reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginBottom: '32px' }}>
+              <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <TargetIcon size={16} /> {isAr ? 'احجز تدقيق أمن وكيل الذكاء الاصطناعي' : 'Book an Agent Security Audit'}
+                </Link>
+                <Link href={`/${lang}/playground`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <CodeIcon size={16} /> {isAr ? 'اختبر الحمولة المباشرة' : 'Try Live Playground'}
+                </Link>
+              </div>
+              {/* High-Intent Sub-caption Badge */}
+              <div style={{ fontSize: '12px', color: 'var(--muted)', background: 'rgba(255, 255, 255, 0.05)', padding: '4px 12px', borderRadius: '20px', border: '1px solid var(--line)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <span>⚡</span> {isAr ? 'اختبر هجمات الحقن المباشرة وتخطي الأمان ضد وكيل الذكاء الاصطناعي' : 'Live Threat Simulation: Test real-time prompt injections, homoglyph bypasses & spend-cap overrides against an active AI agent'}
+              </div>
             </div>
 
             {/* Above-The-Fold Code Terminal */}
@@ -49,9 +55,9 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
         <section style={{ background: 'var(--bg-soft)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
           <div className="wrap">
             <div className="sec-head reveal">
-              <span className="eyebrow">{isAr ? 'النموذج والأداء' : 'HOW IT WORKS'}</span>
-              <h2>{isAr ? 'المحرك المفتوح مقابل تدقيق المؤسسات' : 'SwishOS Open Source Core vs. Enterprise Audit'}</h2>
-              <p>{isAr ? 'اختر بين أدوات المطورين المجانية المفتوحة المصدر وتدقيق الأمان المباشر للمؤسسات' : 'Adopt the open-source developer SDK or engage for a high-touch 1-week security audit.'}</p>
+              <span className="eyebrow">{isAr ? 'النموذج والأداء' : 'ENGAGEMENT MODELS'}</span>
+              <h2>{isAr ? 'المحرك المفتوح مقابل تدقيق المؤسسات' : 'Open-Source Security Platform vs. Enterprise Advisory Audit'}</h2>
+              <p>{isAr ? 'اختر بين أدوات المطورين المجانية المفتوحة المصدر وتدقيق الأمان المباشر للمؤسسات' : 'Deploy our open-source security SDK / PyPI scanner or engage our security research team for a high-touch 1-week threat audit.'}</p>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'stretch' }}>
@@ -59,36 +65,36 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               <div className="glass-card reveal" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <span className="badge-pill" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10B981', borderColor: 'rgba(16, 185, 129, 0.25)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    <CodeIcon size={14} color="#10B981" /> OPEN SOURCE / FREE
+                    <CodeIcon size={14} color="#10B981" /> FOR ENGINEERING TEAMS / FREE
                   </span>
                   <span style={{ fontSize: '12px', color: 'var(--muted)', fontFamily: 'monospace' }}>pip / npm / WASM</span>
                 </div>
-                <h3 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '12px' }}>SwishOS Core SDK</h3>
+                <h3 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '12px' }}>SwishOS Security Platform & SDK</h3>
                 <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
                   {isAr
                     ? 'حزمة حماية مفتوحة المصدر لمطوري LangChain و CrewAI و AutoGen لتطبيق معايير NFKC وحدود الإنفاق ($5/يوم).'
-                    : 'Open-source runtime SDK and GitHub Action for developers to intercept prompt injections and enforce AST tool bounds.'}
+                    : 'Open-source PyPI scanner (agentic-redteam), zero-trust WASM enclave, and runtime guardrails for action-taking AI agents.'}
                 </p>
                 
                 {/* Dark IDE Code Container */}
                 <div style={{ background: '#0F172A', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <code>$ pip install swishos</code>
-                  <span style={{ fontSize: '11px', color: '#94A3B8' }}>v5.0.0</span>
+                  <code>$ pip install agentic-redteam</code>
+                  <span style={{ fontSize: '11px', color: '#94A3B8' }}>v1.0.0</span>
                 </div>
 
                 {/* Key Bullets */}
                 <div style={{ display: 'grid', gap: '8px', marginBottom: '24px', fontSize: '13px', color: 'var(--muted)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'معايير NFKC وحدود الإنفاق اليومي ($5/يوم)' : 'NFKC Unicode Normalization + $5/Day Spend Caps'}
+                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'معايير NFKC وحدود الإنفاق اليومي ($5/يوم)' : 'SARIF v2.1 Output + OWASP LLM 0–100 Scoring Engine'}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'حاوية WASM وإعادة التوجيه إلى المضيف المحلي' : 'WASM Sandbox Container + Metadata Egress Blocker'}
+                    <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'حاوية WASM وإعادة التوجيه إلى المضيف المحلي' : 'Zero-Trust WASM Sandbox Container & Stream Redactor'}
                   </div>
                 </div>
 
                 {/* Card Button */}
                 <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" className="btn-sec" style={{ width: '100%', justifyContent: 'center', gap: '8px', marginTop: 'auto' }}>
-                  <GithubIcon size={16} /> {isAr ? 'عرض الحزمة على GitHub' : 'View Docs & GitHub Repo'}
+                  <GithubIcon size={16} /> {isAr ? 'عرض الحزمة على GitHub' : 'View GitHub & CLI Docs'}
                 </a>
               </div>
 
@@ -96,15 +102,15 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               <div className="glass-card-tinted reveal" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <span className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--txt)' }}>
-                    <TargetIcon size={14} color="var(--brand)" /> HIGH-TOUCH ENGAGEMENT
+                    <TargetIcon size={14} color="var(--brand)" /> FOR CISOS & SECURITY LEADERSHIP
                   </span>
                   <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt)' }}>$7,500 – $12,500</span>
                 </div>
                 <h3 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '12px' }}>AI Agent Security Audit</h3>
                 <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
                   {isAr
-                    ? 'تدقيق أمني شامل لمدة أسبوع واحد بواسطة مهندس حلول ذو خبرة سابقة في برامج وطنية تخدم 5.6M مستخدم.'
-                    : 'Fixed 1-week threat modeling, adversarial red-teaming, guardrail gap analysis, and CISO debrief.'}
+                    ? 'تدقيق أمني شامل لمدة أسبوع واحد بواسطة فريق أبحاث أمن الذكاء الاصطناعي مع تقرير تنفيذي للرئيس التنفيذي للأمن.'
+                    : 'Fixed 1-week threat modeling, adversarial red-teaming, guardrail gap analysis, and CISO debrief led by senior security architects.'}
                 </p>
 
                 {/* Audit Highlight Container - Neutral Dark IDE Style */}
