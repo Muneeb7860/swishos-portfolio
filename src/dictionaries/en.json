@@ -1,6 +1,8 @@
 {
   "nav": {
     "home": "Home",
+    "advisory": "Enterprise Advisory",
+    "developers": "Developer SDK",
     "features": "Approach",
     "pricing": "Engagements",
     "playground": "Playground",
@@ -8,8 +10,8 @@
     "leaderboard": "Leaderboard",
     "roi": "ROI Calculator",
     "vision": "Vision",
-    "contact": "Book an Audit",
-    "support": "Support",
+    "contact": "Schedule Security Audit",
+    "support": "Support & SLAs",
     "login": "Sign In",
     "signup": "Request Access"
   },

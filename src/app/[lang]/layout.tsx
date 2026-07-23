@@ -83,27 +83,21 @@ export default async function RootLayout(props: {
                 <BrandLogo />
               </Link>
               <nav className="nav-links" aria-label={lang === 'ar' ? 'التنقل الرئيسي' : 'Main Navigation'}>
-                <Link href={`/${lang}`}>{dict.nav.home}</Link>
-                <Link href={`/${lang}/playground`}>{dict.nav.playground}</Link>
-                <Link href={`/${lang}/leaderboard`}>{dict.nav.leaderboard}</Link>
-                <Link href={`/${lang}/trust-graph`}>{dict.nav.trustGraph}</Link>
-                <Link href={`/${lang}/pricing`}>{dict.nav.pricing}</Link>
+                <Link href={`/${lang}/advisory`}>{dict.nav.advisory}</Link>
+                <Link href={`/${lang}/developers`}>{dict.nav.developers}</Link>
                 <Link href={`/${lang}/support`}>{dict.nav.support}</Link>
               </nav>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <LanguageSwitcher currentLang={lang} />
                 <ThemeToggle />
-                <Link href={`/${lang}/contact`} className="nav-cta nav-cta-desktop">{dict.nav.contact}</Link>
+                <Link href={`/${lang}/contact?plan=audit`} className="nav-cta nav-cta-desktop">{dict.nav.contact}</Link>
                 <MobileMenu
                   links={[
-                    { href: `/${lang}`, label: dict.nav.home },
-                    { href: `/${lang}/playground`, label: dict.nav.playground },
-                    { href: `/${lang}/leaderboard`, label: dict.nav.leaderboard },
-                    { href: `/${lang}/trust-graph`, label: dict.nav.trustGraph },
-                    { href: `/${lang}/pricing`, label: dict.nav.pricing },
+                    { href: `/${lang}/advisory`, label: dict.nav.advisory },
+                    { href: `/${lang}/developers`, label: dict.nav.developers },
                     { href: `/${lang}/support`, label: dict.nav.support },
                   ]}
-                  cta={{ primaryHref: `/${lang}/contact`, primaryLabel: dict.nav.contact }}
+                  cta={{ primaryHref: `/${lang}/contact?plan=audit`, primaryLabel: dict.nav.contact }}
                 />
               </div>
             </div>

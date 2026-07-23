@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import type { FrameworkBenchmark } from '@/app/api/leaderboard/route';
+import { BENCHMARK_DATA, type FrameworkBenchmark } from '@/app/api/leaderboard/route';
 
 interface LeaderboardTableProps {
-  data: FrameworkBenchmark[];
+  data?: FrameworkBenchmark[];
 }
 
-export function LeaderboardTable({ data }: LeaderboardTableProps) {
+export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [expandedId, setExpandedId] = useState<string | null>('swishos-enclave');
