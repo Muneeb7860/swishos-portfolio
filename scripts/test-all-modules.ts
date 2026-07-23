@@ -188,7 +188,22 @@ async function runMasterTestSuite() {
     'SOC 2 Report Generator Findings Matrix Contains OWASP LLM Findings With PASS Status'
   );
 
+  // 29. Trust Graph API: returns nodes array with at least 3 agents
+  const { DEMO_NODES: trustNodes, DEMO_EDGES: trustEdges } = await import('../src/app/api/trust-graph/route');
+  assert(
+    Array.isArray(trustNodes) && trustNodes.length >= 3,
+    'Trust Graph API Returns Nodes Array With At Least 3 Agents'
+  );
+
+  // 30. Trust Graph API: every edge has source, target, and trusted boolean fields
+  const edgeFieldsValid = trustEdges.every(
+    (e: { source: string; target: string; trusted: boolean }) =>
+      typeof e.source === 'string' && typeof e.target === 'string' && typeof e.trusted === 'boolean'
+  );
+  assert(edgeFieldsValid, 'Trust Graph API Edges All Have source, target, and trusted Boolean Fields');
+
   // Cleanup temporary test output directory
+
 
 
   fs.rmSync(tmpDir, { recursive: true, force: true });
