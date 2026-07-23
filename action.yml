@@ -1,0 +1,55 @@
+name: 'SwishOS Agentic Security Gate'
+description: 'Automated OWASP LLM & ASI01-10 Security Audit Scanner for AI Agent Pipelines'
+author: 'SwishOS Security Research Team'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  target-url:
+    description: 'Target AI Agent HTTP Endpoint URL to scan'
+    required: true
+    default: 'http://localhost:3000/api/support'
+  config-file:
+    description: 'Path to SwishOS configuration file'
+    required: false
+    default: '.github/swishos.yml'
+  fail-on-severity:
+    description: 'Minimum severity level to fail CI build (CRITICAL, HIGH, MEDIUM)'
+    required: false
+    default: 'HIGH'
+  github-token:
+    description: 'GitHub token for posting PR audit comment'
+    required: false
+
+outputs:
+  audit-status:
+    description: 'Overall security audit result (PASSED / FAILED)'
+  vulnerabilities-found:
+    description: 'Total number of security vulnerabilities detected'
+  report-html-path:
+    description: 'Local file path to HTML penetration testing report'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install agentic-redteam scanner
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install agentic-redteam
+
+    - name: Run SwishOS Security Audit Scan
+      shell: bash
+      run: |
+        agentic-redteam scan --target "${{ inputs.target-url }}" --output-dir scratch_test_output
+
+    - name: Generate PR Audit Comment & Enforce Gate
+      shell: bash
+      run: |
+        npx tsx scripts/github-pr-commenter.ts --report scratch_test_output/pen_test_report.json --fail-on ${{ inputs.fail-on-severity }}

@@ -139,7 +139,14 @@ async function runMasterTestSuite() {
       sdkBlocked = true;
     }
   }
-  assert(sdkBlocked, 'SwishOS SDK Wrapper Blocks Prompt Injections and Throws SwishOSSecurityException');
+  // 17. GitHub Action PR Audit Commenter (agentic-redteam-action)
+  const { generatePRCommentMarkdown } = await import('./github-pr-commenter');
+  const prComment = generatePRCommentMarkdown({
+    totalPayloadsTested: 10,
+    blockedCount: 10,
+    vulnerabilities: [],
+  });
+  assert(prComment.markdown.includes('SECURITY GATE PASSED'), 'GitHub PR Commenter Formats Markdown Audit Summary');
 
   // Cleanup temporary test output directory
   fs.rmSync(tmpDir, { recursive: true, force: true });

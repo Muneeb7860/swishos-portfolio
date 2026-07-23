@@ -1,0 +1,32 @@
+# SwishOS Agent Enclave Security Config v0.7.0
+version: '0.7.0'
+
+target:
+  endpoint: 'http://localhost:3000/api/support'
+  timeout_seconds: 15
+
+scan:
+  mode: 'smoke_test' # Options: smoke_test, full_sweep, custom
+  fail_on_severity: 'HIGH'
+  max_allowed_vulnerabilities: 0
+
+matrices:
+  owasp_llm_top_10:
+    enabled: true
+    vectors:
+      - 'LLM01_PROMPT_INJECTION'
+      - 'LLM02_INSECURE_OUTPUT'
+      - 'LLM06_SENSITIVE_INFO_DISCLOSURE'
+      - 'LLM08_EXCESSIVE_AGENCY'
+  agentic_asi_top_10:
+    enabled: true
+    vectors:
+      - 'ASI01_MULTI_TURN_AST_SPLITTING'
+      - 'ASI06_SHADOW_SANDBOX_ESCAPE'
+      - 'ASI07_UNAUTHORIZED_INTER_AGENT_CALL'
+      - 'ASI08_RAG_MEMORY_POISONING'
+
+reporting:
+  post_pr_comment: true
+  export_html_report: true
+  export_json_ledger: true
