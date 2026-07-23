@@ -57,13 +57,13 @@ export function decodeAdversarialCiphers(text: string): string[] {
     } catch {}
   }
 
-  // 2. ROT13 transformation (Conditional on rot13 cipher markers to prevent false positive blocks)
-  if (/rot13|cipher|caesar|obfuscat/i.test(text)) {
-    const rot13 = text.replace(/[a-zA-Z]/g, (c) => {
-      const code = c.charCodeAt(0);
-      const base = code >= 97 ? 97 : 65;
-      return String.fromCharCode(((code - base + 13) % 26) + base);
-    });
+  // 2. ROT13 transformation (Dictionary-aware: checks if ROT13 unveils threat keywords)
+  const rot13 = text.replace(/[a-zA-Z]/g, (c) => {
+    const code = c.charCodeAt(0);
+    const base = code >= 97 ? 97 : 65;
+    return String.fromCharCode(((code - base + 13) % 26) + base);
+  });
+  if (/rot13|cipher|caesar|obfuscat/i.test(text) || /\b(?:ignore|override|bypass|system|instructions|delete|secret)\b/i.test(rot13)) {
     variations.push(rot13);
   }
 
