@@ -132,14 +132,15 @@ function normalizeUnicode(text: string): string {
 
 function inspectBase64Payloads(text: string): string {
   let decodedText = text;
-  const base64Regex = /([A-Za-z0-9+/]{20,}={0,2})/g;
+  const base64Regex = /([A-Za-z0-9_\-\/+=]{16,})/g;
   const matches = text.match(base64Regex);
 
   if (matches) {
-    for (const match of matches) {
+    for (const rawMatch of matches) {
+      const match = rawMatch.replace(/-/g, '+').replace(/_/g, '/');
       try {
         const decoded = Buffer.from(match, 'base64').toString('utf-8');
-        if (/^[\x20-\x7E\s]+$/.test(decoded)) {
+        if (/^[\x20-\x7E\s]{6,}$/.test(decoded)) {
           decodedText += ` ${decoded}`;
         }
       } catch {}

@@ -14,8 +14,8 @@ export interface FlatRefusalOptions {
  * to completely eliminate sub-millisecond HTTP timing side-channel leaks.
  */
 async function padTimingJitter(startTimeMs?: number): Promise<void> {
-  const targetDurationMs = 50 + crypto.randomInt(0, 10);
   const elapsed = startTimeMs ? performance.now() - startTimeMs : 0;
+  const targetDurationMs = Math.max(120, elapsed + 15 + crypto.randomInt(0, 15));
   const sleepTime = Math.max(0, targetDurationMs - elapsed);
   if (sleepTime > 0) {
     await new Promise((resolve) => setTimeout(resolve, sleepTime));

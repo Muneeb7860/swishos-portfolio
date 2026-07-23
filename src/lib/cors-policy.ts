@@ -57,7 +57,7 @@ export function applySecurityHeaders(req: Request, res: NextResponse): NextRespo
     res.headers.set('Access-Control-Allow-Origin', 'https://swishos.dev');
   }
 
-  res.headers.set('Access-Control-Expose-Headers', 'X-SwishOS-Audit-Proof, X-SwishOS-Edge-Proxy, X-RateLimit-Limit, X-RateLimit-Remaining');
+  res.headers.set('Access-Control-Expose-Headers', 'X-SwishOS-Audit-Proof, X-SwishOS-Audit-Timestamp, X-SwishOS-Audit-Nonce, X-SwishOS-Edge-Proxy, X-RateLimit-Limit, X-RateLimit-Remaining');
   res.headers.set('Vary', 'Origin');
 
   // Hardened Enterprise Security Headers
