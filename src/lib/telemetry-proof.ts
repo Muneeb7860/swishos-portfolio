@@ -4,8 +4,9 @@ function resolveAuditSecret(): string {
   if (process.env.AUDIT_PROOF_SECRET) {
     return process.env.AUDIT_PROOF_SECRET;
   }
-  // Generate random 32-byte key per startup to prevent static key forgery
-  return crypto.randomBytes(32).toString('hex');
+  // Deterministic seed fallback based on deployment commit or environment to prevent multi-lambda HMAC signature drift
+  const seed = process.env.VERCEL_GIT_COMMIT_SHA || process.env.NODE_ENV || 'swishos-master-audit-secret-v1';
+  return crypto.createHash('sha256').update(seed).digest('hex');
 }
 
 const AUDIT_PROOF_SECRET = resolveAuditSecret();

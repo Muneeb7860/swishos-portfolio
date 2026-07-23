@@ -57,12 +57,12 @@ export function calculateQueryDepth(queryStr: string): number {
 }
 
 /**
- * Counts GraphQL field aliases matching `alias_name: field_name` pattern while ignoring standard JSON quoted properties.
+ * Counts GraphQL field aliases matching `alias_name: field_name` pattern while stripping all standard JSON property keys.
  */
 export function countFieldAliases(queryStr: string): number {
-  // Ignore quoted JSON keys (e.g. "key": "val")
-  const strippedJsonQuotes = queryStr.replace(/"[^"]+"\s*:\s*"[^"]+"/g, '');
-  const aliasMatches = strippedJsonQuotes.match(/\b[A-Za-z0-9_]+\s*:\s*[A-Za-z0-9_]+\b/g);
+  // Strip all JSON property keys (e.g. "key": 123, "active": true, "name": "val")
+  const strippedJsonKeys = queryStr.replace(/"[^"]+"\s*:/g, '');
+  const aliasMatches = strippedJsonKeys.match(/\b[A-Za-z0-9_]+\s*:\s*[A-Za-z0-9_]+\b/g);
   return aliasMatches ? aliasMatches.length : 0;
 }
 
