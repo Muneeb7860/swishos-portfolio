@@ -30,6 +30,7 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith('/api/')) {
     response.headers.set('X-SwishOS-Edge-Proxy', 'v0.5.0-vercel-edge');
     response.headers.set('Access-Control-Allow-Origin', effectiveOrigin);
+    response.headers.set('Vary', 'Origin');
   }
 
   return response;

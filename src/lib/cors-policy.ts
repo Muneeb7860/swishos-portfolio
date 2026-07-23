@@ -56,6 +56,8 @@ export function applySecurityHeaders(req: Request, res: NextResponse): NextRespo
     res.headers.set('Access-Control-Allow-Origin', 'https://swishos.dev');
   }
 
+  res.headers.set('Vary', 'Origin');
+
   // Hardened Enterprise Security Headers
   res.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   res.headers.set('X-Content-Type-Options', 'nosniff');

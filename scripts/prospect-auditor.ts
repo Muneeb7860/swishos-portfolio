@@ -22,6 +22,18 @@ export async function prospectClient(options: ProspectOptions): Promise<{ htmlPa
   console.log(`\n🔍 SwishOS Prospect Auditor: Initiating Red-Team Audit Scan for ${clientName}...`);
   console.log(` 🎯 Target Endpoint: ${target}`);
 
+  // Probe target endpoint connectivity
+  try {
+    const res = await fetch(target, { method: 'HEAD', signal: AbortSignal.timeout(1000) }).catch(() => null);
+    if (res) {
+      console.log(` 🟢 Live Endpoint Reachable (Status: ${res.status})`);
+    } else {
+      console.log(` ℹ️  Target Endpoint Offline / Unreachable (Using Offline Red-Team Engine)`);
+    }
+  } catch {
+    console.log(` ℹ️  Target Endpoint Offline / Unreachable (Using Offline Red-Team Engine)`);
+  }
+
   // Create target output directory
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });

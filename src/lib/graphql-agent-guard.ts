@@ -86,8 +86,9 @@ export function evaluateGraphQLQuerySafety(queryStr: string): GraphQLSafetyCheck
     };
   }
 
-  // 2. Calculate Field Aliases Count
-  const aliasCount = countFieldAliases(queryStr);
+  // 2. Calculate Field Aliases Count (Gated to actual GraphQL operation strings to avoid false blocks on plain text prompts)
+  const isGraphQLStructure = /\b(?:query|mutation|subscription)\b|\{[\s\S]*\}/i.test(queryStr);
+  const aliasCount = isGraphQLStructure ? countFieldAliases(queryStr) : 0;
   if (aliasCount > MAX_ALLOWED_ALIASES) {
     return {
       isSafe: false,
