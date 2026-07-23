@@ -86,8 +86,8 @@ export function evaluateGraphQLQuerySafety(queryStr: string): GraphQLSafetyCheck
     };
   }
 
-  // 2. Calculate Field Aliases Count (Gated strictly to GraphQL operation strings or unquoted GraphQL selection sets)
-  const isGraphQLStructure = /^\s*(?:query|mutation|subscription)\b|^\s*\{\s*[A-Za-z0-9_]+/i.test(queryStr);
+  // 2. Calculate Field Aliases Count (Gated strictly to GraphQL operation strings, fragments, or unquoted GraphQL selection sets)
+  const isGraphQLStructure = /^\s*(?:query|mutation|subscription|fragment)\b|^\s*\{\s*[A-Za-z0-9_]+/i.test(queryStr);
   const aliasCount = isGraphQLStructure ? countFieldAliases(queryStr) : 0;
   if (aliasCount > MAX_ALLOWED_ALIASES) {
     return {

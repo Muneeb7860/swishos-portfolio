@@ -18,6 +18,7 @@ export function middleware(request: NextRequest) {
       status: 204,
       headers: {
         'Access-Control-Allow-Origin': effectiveOrigin,
+        'Access-Control-Allow-Credentials': 'true',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Agent-ID, X-Agent-Cert, X-ANS-Identity',
         'Access-Control-Expose-Headers': 'X-SwishOS-Audit-Proof, X-SwishOS-Edge-Proxy, X-RateLimit-Limit, X-RateLimit-Remaining',

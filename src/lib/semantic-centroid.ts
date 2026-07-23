@@ -57,6 +57,17 @@ export function decodeAdversarialCiphers(text: string): string[] {
     } catch {}
   }
 
+  // 1b. Base64 sequence decoding (e.g. aWdub3JlIGFsbCBpbnN0cnVjdGlvbnM=)
+  const trimmedText = text.trim();
+  if (/^[A-Za-z0-9+/=]{16,}$/.test(trimmedText) && trimmedText.length % 4 === 0) {
+    try {
+      const decodedB64 = Buffer.from(trimmedText, 'base64').toString('utf-8');
+      if (/^[\x20-\x7E\s]+$/.test(decodedB64) && decodedB64 !== text) {
+        variations.push(decodedB64);
+      }
+    } catch {}
+  }
+
   // 2. ROT13 transformation (Dictionary-aware with NFD diacritic stripping for non-ASCII ciphers)
   const normalizedForRot = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const rot13 = normalizedForRot.replace(/[a-zA-Z]/g, (c) => {
