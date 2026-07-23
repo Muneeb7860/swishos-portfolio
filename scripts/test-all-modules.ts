@@ -174,7 +174,22 @@ async function runMasterTestSuite() {
     'Stream Guardrail Sliding Window Catches API Key Split Across Two Adjacent Chunks'
   );
 
+  // 21. SOC 2 Report Generator: HTML contains CC6, CC7, CC8 TSC section markers
+  const { generateSOC2ReportHTML } = await import('../src/lib/soc2-report-generator');
+  const soc2Html = generateSOC2ReportHTML('Test Corp', {});
+  assert(
+    soc2Html.includes('CC6') && soc2Html.includes('CC7') && soc2Html.includes('CC8'),
+    'SOC 2 Report Generator Produces HTML With CC6, CC7, CC8 TSC Section Markers'
+  );
+
+  // 22. SOC 2 Report Generator: HTML contains at least one PASS finding row
+  assert(
+    soc2Html.includes('✓ PASS') && soc2Html.includes('LLM01'),
+    'SOC 2 Report Generator Findings Matrix Contains OWASP LLM Findings With PASS Status'
+  );
+
   // Cleanup temporary test output directory
+
 
   fs.rmSync(tmpDir, { recursive: true, force: true });
 
