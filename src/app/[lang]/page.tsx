@@ -5,7 +5,7 @@ import Link from 'next/link';
 import en from '../../dictionaries/en.json';
 import ar from '../../dictionaries/ar.json';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { HeroCodeTerminal } from '../../components/HeroCodeTerminal';
+import { EnterpriseThreatScorecard } from '../../components/EnterpriseThreatScorecard';
 import { AuditSampleDeliverable } from '../../components/AuditSampleDeliverable';
 import { CodeIcon, GithubIcon, TargetIcon, CheckCircleIcon } from '../../components/Icons';
 
@@ -26,27 +26,49 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
           <div className="wrap">
             <span className="pill reveal"><span className="dot"></span>{dict.hero.badge}</span>
             <h1 className="reveal">{dict.hero.title1}<br /><span className="grad">{dict.hero.title2}</span></h1>
-            <p className="sub reveal" style={{ maxWidth: '720px', margin: '16px auto 24px auto' }}>{dict.hero.subtitle}</p>
+            <p className="sub reveal" style={{ maxWidth: '780px', margin: '16px auto 24px auto' }}>{dict.hero.subtitle}</p>
 
-            {/* Consolidated CTAs */}
-            <div className="hero-cta reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginBottom: '32px' }}>
+            {/* Verifiable Compliance Proof Bar */}
+            <div className="reveal" style={{
+              display: 'flex',
+              gap: '12px',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              marginBottom: '28px',
+              fontSize: '12px',
+              fontWeight: 700,
+            }}>
+              <span style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', padding: '6px 14px', borderRadius: '8px', color: 'var(--txt)' }}>
+                🛡️ SOC 2 Type II CC6/CC7/CC8 Mapped
+              </span>
+              <span style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', padding: '6px 14px', borderRadius: '8px', color: 'var(--txt)' }}>
+                ⚖️ EU AI Act Article 15 Compliant
+              </span>
+              <span style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', padding: '6px 14px', borderRadius: '8px', color: 'var(--txt)' }}>
+                📄 OASIS SARIF v2.1.0 Ready
+              </span>
+            </div>
+
+            {/* Executive CTAs */}
+            <div className="hero-cta reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', marginBottom: '40px' }}>
               <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <TargetIcon size={16} /> {isAr ? 'احجز تدقيق أمن وكيل الذكاء الاصطناعي' : 'Book an Agent Security Audit'}
+                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 26px' }}>
+                  <TargetIcon size={16} /> {isAr ? 'جدولة تدقيق أمني للمؤسسات ($7,500 – $12,500)' : 'Schedule Security Audit ($7,500 – $12,500)'}
                 </Link>
-                <Link href={`/${lang}/playground`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <CodeIcon size={16} /> {isAr ? 'اختبر الحمولة المباشرة' : 'Try Live Playground'}
+                <Link href={`/${lang}/advisory`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 26px' }}>
+                  {isAr ? 'استكشاف خدمات الاستشارات' : 'Explore Enterprise Advisory →'}
                 </Link>
               </div>
-              {/* High-Intent Sub-caption Badge */}
-              <div style={{ fontSize: '12px', color: 'var(--muted)', background: 'rgba(255, 255, 255, 0.05)', padding: '4px 12px', borderRadius: '20px', border: '1px solid var(--line)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <span>⚡</span> {isAr ? 'اختبر هجمات الحقن المباشرة وتخطي الأمان ضد وكيل الذكاء الاصطناعي' : 'Live Threat Simulation: Test real-time prompt injections, homoglyph bypasses & spend-cap overrides against an active AI agent'}
+
+              {/* Developer SDK Link */}
+              <div style={{ fontSize: '13px', color: 'var(--muted)' }}>
+                Building custom AI agents? <Link href={`/${lang}/developers`} style={{ color: 'var(--brand)', fontWeight: 700, textDecoration: 'underline' }}>View Developer SDK & PyPI Harness Docs →</Link>
               </div>
             </div>
 
-            {/* Above-The-Fold Code Terminal */}
+            {/* Enterprise Threat Mitigation & Compliance Scorecard */}
             <div className="reveal">
-              <HeroCodeTerminal />
+              <EnterpriseThreatScorecard />
             </div>
           </div>
         </section>
