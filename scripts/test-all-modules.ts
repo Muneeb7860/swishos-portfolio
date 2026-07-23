@@ -202,7 +202,22 @@ async function runMasterTestSuite() {
   );
   assert(edgeFieldsValid, 'Trust Graph API Edges All Have source, target, and trusted Boolean Fields');
 
+  // 31. Leaderboard API: returns 5 evaluated framework benchmarks
+  const { BENCHMARK_DATA: leaderboardData } = await import('../src/app/api/leaderboard/route');
+  assert(
+    Array.isArray(leaderboardData) && leaderboardData.length >= 5,
+    'Leaderboard API Returns Benchmark Data Array For At Least 5 Frameworks'
+  );
+
+  // 32. Leaderboard API: SwishOS Native Enclave scores 100% across all categories
+  const nativeEnclave = leaderboardData.find((f: { id: string }) => f.id === 'swishos-enclave');
+  assert(
+    Boolean(nativeEnclave && nativeEnclave.owaspScore === 100 && nativeEnclave.categories.promptInjection === 100),
+    'Leaderboard API SwishOS Native Enclave Scores 100% Across OWASP Categories'
+  );
+
   // Cleanup temporary test output directory
+
 
 
 

@@ -85,6 +85,8 @@ export default async function RootLayout(props: {
               <nav className="nav-links" aria-label={lang === 'ar' ? 'التنقل الرئيسي' : 'Main Navigation'}>
                 <Link href={`/${lang}`}>{dict.nav.home}</Link>
                 <Link href={`/${lang}/playground`}>{dict.nav.playground}</Link>
+                <Link href={`/${lang}/leaderboard`}>{dict.nav.leaderboard}</Link>
+                <Link href={`/${lang}/trust-graph`}>{dict.nav.trustGraph}</Link>
                 <Link href={`/${lang}/pricing`}>{dict.nav.pricing}</Link>
                 <Link href={`/${lang}/support`}>{dict.nav.support}</Link>
               </nav>
@@ -95,10 +97,10 @@ export default async function RootLayout(props: {
                 <MobileMenu
                   links={[
                     { href: `/${lang}`, label: dict.nav.home },
-                    { href: `/${lang}/features`, label: dict.nav.features },
-                    { href: `/${lang}/pricing`, label: dict.nav.pricing },
                     { href: `/${lang}/playground`, label: dict.nav.playground },
-                    { href: `/${lang}/vision`, label: dict.nav.vision },
+                    { href: `/${lang}/leaderboard`, label: dict.nav.leaderboard },
+                    { href: `/${lang}/trust-graph`, label: dict.nav.trustGraph },
+                    { href: `/${lang}/pricing`, label: dict.nav.pricing },
                     { href: `/${lang}/support`, label: dict.nav.support },
                   ]}
                   cta={{ primaryHref: `/${lang}/contact`, primaryLabel: dict.nav.contact }}
