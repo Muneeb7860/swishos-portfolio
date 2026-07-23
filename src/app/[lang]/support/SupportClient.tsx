@@ -107,25 +107,26 @@ export default function SupportClient({ lang }: { lang: string }) {
         {/* Enterprise Social Proof & SLA Banner */}
         <div className="trust-proof-banner reveal" style={{
           marginBottom: '40px',
-          padding: '16px 20px',
-          borderRadius: '12px',
-          border: '1px solid var(--line-strong)',
-          background: 'var(--panel)',
+          padding: '18px 24px',
+          borderRadius: '16px',
+          border: '1px solid rgba(255, 255, 255, 0.18)',
+          background: '#0F172A',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '16px',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '20px' }}>🛡️</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <span style={{ fontSize: '24px' }}>🛡️</span>
             <div>
-              <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--txt)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Enterprise Incident & Support Operations</div>
-              <div style={{ fontSize: '13px', color: 'var(--muted)' }}>Shipped zero-trust guardrails & threat monitoring for 5.6M+ active AI agent user sessions</div>
+              <div style={{ fontSize: '13px', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Enterprise Incident & Support Operations</div>
+              <div style={{ fontSize: '13px', color: '#94A3B8', fontWeight: 500 }}>Shipped zero-trust guardrails & threat monitoring for 5.6M+ active AI agent user sessions</div>
             </div>
           </div>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <span style={{ fontSize: '12px', fontFamily: 'monospace', background: 'var(--panel-2)', padding: '6px 12px', borderRadius: '8px', border: '1px solid var(--line-strong)', color: '#10b981', fontWeight: 700 }}>
+            <span style={{ fontSize: '12px', fontFamily: 'monospace', background: '#1E293B', padding: '8px 14px', borderRadius: '10px', border: '1px solid rgba(16, 185, 129, 0.4)', color: '#34D399', fontWeight: 800 }}>
               🟢 P1 Emergency Response: &lt;15 Min SLA
             </span>
           </div>
@@ -225,31 +226,32 @@ export default function SupportClient({ lang }: { lang: string }) {
           <div>
             {/* Enterprise SLA Commitments Card */}
             <div style={{
-              background: 'var(--panel)',
-              border: '1px solid var(--line-strong)',
+              background: '#0F172A',
+              border: '1px solid rgba(255, 255, 255, 0.18)',
               borderRadius: 'var(--radius)',
               padding: '28px',
               marginBottom: '24px',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.35)',
             }}>
-              <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#F8FAFC', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span>⚡</span> Enterprise SLA Commitments
               </h3>
 
               <div style={{ display: 'grid', gap: '12px', marginBottom: '20px' }}>
-                <div style={{ background: 'var(--panel-2)', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(239, 68, 68, 0.25)' }}>
+                <div style={{ background: '#1E293B', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#EF4444' }}>🚨 P1 Critical Security Breach</span>
-                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'rgba(239, 68, 68, 0.15)', color: '#EF4444', padding: '2px 8px', borderRadius: '4px' }}>&lt; 15 Min SLA</span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#F87171' }}>🚨 P1 Critical Security Breach</span>
+                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'rgba(239, 68, 68, 0.25)', color: '#F87171', padding: '3px 10px', borderRadius: '6px' }}>&lt; 15 Min SLA</span>
                   </div>
-                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Immediate paging to SwishOS Security Incident Response Team.</p>
+                  <p style={{ fontSize: '12px', color: '#94A3B8', margin: 0 }}>Immediate paging to SwishOS Security Incident Response Team.</p>
                 </div>
 
-                <div style={{ background: 'var(--panel-2)', padding: '14px 16px', borderRadius: '10px', border: '1px solid var(--line-strong)' }}>
+                <div style={{ background: '#1E293B', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--txt)' }}>⚡ P2 Technical / Guardrail Support</span>
-                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'var(--line)', color: 'var(--txt)', padding: '2px 8px', borderRadius: '4px' }}>&lt; 4 Hours SLA</span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#F8FAFC' }}>⚡ P2 Technical / Guardrail Support</span>
+                    <span style={{ fontSize: '12px', fontWeight: 800, background: '#334155', color: '#60A5FA', padding: '3px 10px', borderRadius: '6px' }}>&lt; 4 Hours SLA</span>
                   </div>
-                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Guardrail policy tuning, AST rule assistance, and SDK integration.</p>
+                  <p style={{ fontSize: '12px', color: '#94A3B8', margin: 0 }}>Guardrail policy tuning, AST rule assistance, and SDK integration.</p>
                 </div>
               </div>
             </div>
