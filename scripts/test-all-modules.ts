@@ -148,7 +148,34 @@ async function runMasterTestSuite() {
   });
   assert(prComment.markdown.includes('SECURITY GATE PASSED'), 'GitHub PR Commenter Formats Markdown Audit Summary');
 
+  // 18. Stream Guardrail: guardText() redact mode removes API key from outbound reply
+  const { guardText } = await import('../src/lib/stream-guardrail');
+  const redactResult = guardText('Your key is sk-abc123def456ghi789jkl012mno345pqr', 'redact');
+  assert(
+    redactResult.text.includes('[REDACTED:API_KEY]') && !redactResult.text.includes('sk-abc'),
+    'Stream Guardrail Redact Mode Replaces API Key In Outbound Text'
+  );
+
+  // 19. Stream Guardrail: guardText() block mode returns blocked=true and blocked sentinel text
+  const blockResult = guardText('Your AWS key is AKIAIOSFODNN7EXAMPLE here.', 'block');
+  assert(
+    blockResult.blocked === true && blockResult.text === '[SWISHOS-STREAM-BLOCKED]',
+    'Stream Guardrail Block Mode Returns Blocked Sentinel On AWS Key Violation'
+  );
+
+  // 20. Stream Guardrail: Sliding window catches secret stitched from two adjacent chunks
+  //     (Tests same regex logic as TransformStream flush without Web Streams async plumbing)
+  const chunk1Str = 'Your key is sk-abc123def456gh';
+  const chunk2Str = 'i789jkl012mno345pqr\n';
+  const stitchedWindow = chunk1Str + chunk2Str; // simulates flush of sliding window buffer
+  const stitchedResult = guardText(stitchedWindow, 'redact');
+  assert(
+    stitchedResult.text.includes('[REDACTED:API_KEY]') && !stitchedResult.text.includes('sk-abc123'),
+    'Stream Guardrail Sliding Window Catches API Key Split Across Two Adjacent Chunks'
+  );
+
   // Cleanup temporary test output directory
+
   fs.rmSync(tmpDir, { recursive: true, force: true });
 
   console.log(`\n=================================================`);

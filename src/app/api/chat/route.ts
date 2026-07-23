@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/rate-limiter';
 import { logAuditIncident } from '@/lib/audit-logger';
+import { guardText } from '@/lib/stream-guardrail';
 
 const MAX_MESSAGE_LENGTH = 1000;
 
@@ -103,7 +104,8 @@ export async function POST(req: NextRequest) {
     const data = await response.json() as {
       choices: { message: { content: string } }[];
     };
-    const reply = data.choices?.[0]?.message?.content?.trim() || smartFallback(trimmed);
+    const rawReply = data.choices?.[0]?.message?.content?.trim() || smartFallback(trimmed);
+    const { text: reply } = guardText(rawReply, 'redact');
 
     return NextResponse.json({ reply });
   } catch (err) {

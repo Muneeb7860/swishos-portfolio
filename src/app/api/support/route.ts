@@ -19,6 +19,7 @@ import { traceVerificationStep } from '@/lib/otel-tracer';
 import { evaluateGraphQLQuerySafety } from '@/lib/graphql-agent-guard';
 import { applyRateLimitHeaders } from '@/lib/rate-limit-headers';
 import { handleCORSPreflight, applySecurityHeaders } from '@/lib/cors-policy';
+import { guardText } from '@/lib/stream-guardrail';
 
 export const runtime = 'nodejs';
 
@@ -549,6 +550,32 @@ export async function POST(req: Request) {
       replyText = 'Defect report received. Diagnostics underway.';
     }
 
+    // 5b. Output Streaming Guardrail — redact/block PII & secrets in outbound reply (v0.8.0)
+    const outboundGuard = guardText(replyText, 'block');
+    if (outboundGuard.blocked) {
+      logAuditIncident({
+        ip: clientIp,
+        endpoint: '/api/support',
+        rawPayload: { violations: outboundGuard.violations },
+        ruleTriggered: `STREAM_GUARDRAIL_OUTPUT_BLOCK:${outboundGuard.violations.join(',')}`,
+      });
+      return NextResponse.json(
+        {
+          status: 'blocked',
+          action: 'block',
+          agent_id: agentId,
+          message: 'Outbound stream blocked by guardrail.',
+          block_reason: `Output guardrail detected violations: ${outboundGuard.violations.join(', ')}`,
+          triggered_rules: [`STREAM_GUARDRAIL_OUTPUT_BLOCK`],
+          success: false,
+          blocked: true,
+          error: 'Outbound stream blocked by SwishOS stream guardrail.',
+        },
+        { status: 422 }
+      );
+    }
+    const safeReplyText = outboundGuard.text;
+
     const response = NextResponse.json({
       status: 'success',
       action: 'allow',
@@ -569,7 +596,7 @@ export async function POST(req: Request) {
       sla,
       response: sanitizedQuery,
       sanitizedQuery,
-      automatedReply: replyText,
+      automatedReply: safeReplyText,
       actionUrl,
       actionLabel,
       createdAt: new Date().toISOString()
