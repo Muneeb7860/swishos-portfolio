@@ -43,6 +43,14 @@ if (typeof setInterval !== 'undefined') {
  */
 export function checkRateLimit(ip: string, limit: number = 10, windowMs: number = 60000): { allowed: boolean; remaining: number; resetAt: number } {
   const now = Date.now();
+
+  // Inline Purge for Frozen Serverless Environments
+  if (rateLimitStore.size > 100) {
+    for (const [key, rec] of rateLimitStore.entries()) {
+      if (rec.resetAt < now) rateLimitStore.delete(key);
+    }
+  }
+
   const record = rateLimitStore.get(ip);
 
   if (!record || record.resetAt < now) {

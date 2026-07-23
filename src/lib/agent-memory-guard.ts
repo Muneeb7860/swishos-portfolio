@@ -7,7 +7,13 @@
 import crypto from 'crypto';
 import { evaluateSemanticCentroidDistance } from './semantic-centroid';
 
-const MEMORY_PROVENANCE_SECRET = process.env.MEMORY_PROVENANCE_SECRET || 'swishos-memory-provenance-key-v1';
+function resolveMemorySecret(): string {
+  return (
+    process.env.MEMORY_PROVENANCE_SECRET ||
+    process.env.VERCEL_GIT_COMMIT_SHA ||
+    'swishos-master-memory-provenance-secret-v1'
+  );
+}
 
 const INDIRECT_INJECTION_MARKERS = [
   /ignore\s+previous\s+instructions/gi,
@@ -64,7 +70,7 @@ export function sanitizeMemoryForStorage(
   // 3. Generate HMAC-SHA256 Memory Provenance Signature
   const stringToSign = `${cleanedText}:${sourceId}:${ts}`;
   const provenanceHash = crypto
-    .createHmac('sha256', MEMORY_PROVENANCE_SECRET)
+    .createHmac('sha256', resolveMemorySecret())
     .update(stringToSign)
     .digest('hex');
 
@@ -102,7 +108,7 @@ export function validateRetrievedMemory(record: SanitizedMemoryRecord): Validate
   // 1. Re-verify HMAC Provenance Signature
   const stringToSign = `${record.sanitizedText}:${record.sourceId}:${record.timestamp}`;
   const expectedHash = crypto
-    .createHmac('sha256', MEMORY_PROVENANCE_SECRET)
+    .createHmac('sha256', resolveMemorySecret())
     .update(stringToSign)
     .digest('hex');
 

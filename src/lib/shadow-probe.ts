@@ -13,7 +13,6 @@ export interface ShadowProbeResult {
 }
 
 const FORBIDDEN_SHADOW_SYSCALLS = ['execve', 'unlink', 'chmod', 'chown', 'connect_raw_socket'];
-const FORBIDDEN_SHADOW_FILES = ['/etc/passwd', '/etc/shadow', '/proc/self/environ', '.env', '.env.local'];
 
 /**
  * Executes a proposed tool call in an isolated shadow sandbox before state commitment.
@@ -26,17 +25,18 @@ export async function probeToolCallInShadowSandbox(
   const name = toolCall.name || 'unknown_tool';
   const args = toolCall.arguments || (toolCall as unknown as Record<string, unknown>).args || {};
 
+const RESTRICTED_PATH_REGEX = /\.env(?:\.[a-z0-9_-]+)?|\.git\/|id_rsa|\/etc\/(?:passwd|shadow|master\.passwd)|proc\/self\/environ/i;
+
   // 1. Parameter Inspection for forbidden files / commands
   const argsString = JSON.stringify(args || {}).toLowerCase();
-  for (const forbiddenFile of FORBIDDEN_SHADOW_FILES) {
-    if (argsString.includes(forbiddenFile.toLowerCase())) {
-      return {
-        allowed: false,
-        toolName: name,
-        probePassed: false,
-        reason: `Shadow Probe Violation: Attempted access to restricted file '${forbiddenFile}'.`,
-      };
-    }
+  
+  if (RESTRICTED_PATH_REGEX.test(argsString) || argsString.includes('..%2f') || argsString.includes('../')) {
+    return {
+      allowed: false,
+      toolName: name,
+      probePassed: false,
+      reason: `Shadow Probe Violation: Attempted access to restricted path or environment configuration.`,
+    };
   }
 
   for (const syscall of FORBIDDEN_SHADOW_SYSCALLS) {
