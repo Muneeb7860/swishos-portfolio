@@ -22,25 +22,36 @@ export function calculateQueryDepth(queryStr: string): number {
   let currentDepth = 0;
   let maxDepth = 0;
   let inString = false;
+  let inComment = false;
   let stringChar = '';
 
   for (let i = 0; i < queryStr.length; i++) {
     const char = queryStr[i];
 
+    if (inComment) {
+      if (char === '\n' || char === '\r') {
+        inComment = false;
+      }
+      continue;
+    }
+
     if (inString) {
       if (char === stringChar) {
-        // Count preceding backslashes to check if quote is escaped or closing after an escaped backslash (e.g. "\\\"")
         let backslashCount = 0;
         let j = i - 1;
         while (j >= 0 && queryStr[j] === '\\') {
           backslashCount++;
           j--;
         }
-        // Even number of preceding backslashes means quote is NOT escaped (it closes string)
         if (backslashCount % 2 === 0) {
           inString = false;
         }
       }
+      continue;
+    }
+
+    if (char === '#') {
+      inComment = true;
       continue;
     }
 
@@ -69,8 +80,8 @@ export function calculateQueryDepth(queryStr: string): number {
  * Counts GraphQL field aliases matching `alias_name: field_name` pattern while stripping all standard JSON property keys.
  */
 export function countFieldAliases(queryStr: string): number {
-  // Strip all JSON property keys (e.g. "key": 123, "active": true, "name": "val")
-  const strippedJsonKeys = queryStr.replace(/"[^"]+"\s*:/g, '');
+  // Strip all JSON property keys (double/single quoted or backticked)
+  const strippedJsonKeys = queryStr.replace(/(?:"[^"]+"|'[^']+'|`[^`]+`)\s*:/g, '');
   const aliasMatches = strippedJsonKeys.match(/\b[A-Za-z0-9_]+\s*:\s*[A-Za-z0-9_]+\b/g);
   return aliasMatches ? aliasMatches.length : 0;
 }
@@ -109,7 +120,7 @@ export function evaluateGraphQLQuerySafety(queryStr: string): GraphQLSafetyCheck
   }
 
   // 3. Check Directive Manipulation
-  if (/@skip\s*\(|\b@include\s*\(/i.test(queryStr)) {
+  if (/@\s*(?:skip|include)\s*\(/i.test(queryStr)) {
     return {
       isSafe: false,
       maxDepth,
