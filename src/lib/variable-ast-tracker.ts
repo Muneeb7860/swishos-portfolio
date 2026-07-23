@@ -26,11 +26,11 @@ export function evaluateConcatenatedVariableAST(history: HistoryMessage[]): Conc
   // 1. Extract all string assignments, key-value mappings, and raw content chunks
   const stringAssignments: string[] = [];
   
-  // Patterns: JS/Python variable assignments, template literals, dict indexing, and natural language bindings
+  // Patterns: JS/Python variable assignments, template literals, dict indexing, and bounded natural language bindings (<= 64 chars)
   const Patterns = [
     /(?:var|let|const|[a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*['"`]([^'"`]+)['"`]/gi,
     /\[['"]?([a-zA-Z0-9_]+)['"]?\]\s*=\s*['"`]([^'"`]+)['"`]/gi,
-    /(?:codeword|key|step|var|val|part)\s+[a-zA-Z0-9_]+\s+(?:is|means|equals|:)\s+['"`]?([a-zA-Z0-9_\s]+)['"`]?/gi
+    /(?:codeword|key|step|var|val|part)\s+[a-zA-Z0-9_]+\s+(?:is|means|equals|:)\s+['"`]?([a-zA-Z0-9_\s]{1,64})['"`]?/gi
   ];
 
   for (const msg of history) {
@@ -45,7 +45,7 @@ export function evaluateConcatenatedVariableAST(history: HistoryMessage[]): Conc
       let match: RegExpExecArray | null;
       while ((match = pattern.exec(text)) !== null) {
         const val = match[2] || match[1];
-        if (val && val.length > 1) {
+        if (val && val.length > 1 && val.length <= 64) {
           stringAssignments.push(val);
         }
       }

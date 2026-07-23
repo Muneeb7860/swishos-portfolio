@@ -15,7 +15,8 @@ export interface PitchWizardOptions {
 
 export function generateColdPitchEmail(clientName: string): string {
   const clientSlug = clientName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  const reportUrl = `https://audit.swishos.dev/reports/${clientSlug}-audit-2026`;
+  const baseUrl = process.env.AUDIT_PORTAL_BASE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://portfolio-eight-theta-fp2kdb67zc.vercel.app';
+  const reportUrl = `${baseUrl}/en/playground?client=${clientSlug}`;
 
   return `Subject: Security Audit Findings for ${clientName}'s AI Agent Endpoint
 

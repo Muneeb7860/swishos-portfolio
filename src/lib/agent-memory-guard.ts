@@ -77,6 +77,15 @@ export function sanitizeMemoryForStorage(
   };
 }
 
+function escapeXmlEntities(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 /**
  * Validates retrieved memory chunk before prompt insertion.
  * Verifies provenance hash out-of-band and encapsulates memory in structural XML.
@@ -115,8 +124,9 @@ export function validateRetrievedMemory(record: SanitizedMemoryRecord): Validate
     };
   }
 
-  // 3. Structural XML Encapsulation
-  const encapsulatedXml = `<trusted_context provenance="${record.provenanceHash}" source="${record.sourceId}">\n${record.sanitizedText}\n</trusted_context>`;
+  // 3. Structural XML Encapsulation with XML Entity Escaping (Prevents XML Tag Breakout)
+  const escapedText = escapeXmlEntities(record.sanitizedText);
+  const encapsulatedXml = `<trusted_context provenance="${record.provenanceHash}" source="${record.sourceId}">\n${escapedText}\n</trusted_context>`;
 
   return {
     isValid: true,

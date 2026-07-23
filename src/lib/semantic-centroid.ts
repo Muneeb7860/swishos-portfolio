@@ -57,13 +57,15 @@ export function decodeAdversarialCiphers(text: string): string[] {
     } catch {}
   }
 
-  // 2. ROT13 transformation
-  const rot13 = text.replace(/[a-zA-Z]/g, (c) => {
-    const code = c.charCodeAt(0);
-    const base = code >= 97 ? 97 : 65;
-    return String.fromCharCode(((code - base + 13) % 26) + base);
-  });
-  variations.push(rot13);
+  // 2. ROT13 transformation (Conditional on rot13 cipher markers to prevent false positive blocks)
+  if (/rot13|cipher|caesar|obfuscat/i.test(text)) {
+    const rot13 = text.replace(/[a-zA-Z]/g, (c) => {
+      const code = c.charCodeAt(0);
+      const base = code >= 97 ? 97 : 65;
+      return String.fromCharCode(((code - base + 13) % 26) + base);
+    });
+    variations.push(rot13);
+  }
 
   // 3. Mathematical Unicode normalization (NFKC)
   try {
