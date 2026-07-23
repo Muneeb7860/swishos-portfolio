@@ -25,44 +25,94 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
         <section className="hero" style={{ paddingBottom: '60px' }}>
           <div className="wrap">
             <span className="pill reveal"><span className="dot"></span>{dict.hero.badge}</span>
-            <h1 className="reveal">{dict.hero.title1}<br /><span className="grad">{dict.hero.title2}</span></h1>
-            <p className="sub reveal" style={{ maxWidth: '780px', margin: '16px auto 24px auto' }}>{dict.hero.subtitle}</p>
+            <h1 className="reveal">{dict.hero.title1}<br /><span style={{ color: '#38BDF8', fontWeight: 800 }}>{dict.hero.title2}</span></h1>
+            <p className="sub reveal" style={{ maxWidth: '780px', margin: '16px auto 28px auto' }}>{dict.hero.subtitle}</p>
 
-            {/* Verifiable Compliance Proof Bar */}
+            {/* Hardened Enterprise Compliance Seals */}
             <div className="reveal" style={{
               display: 'flex',
               gap: '12px',
               justifyContent: 'center',
               flexWrap: 'wrap',
-              marginBottom: '28px',
-              fontSize: '12px',
-              fontWeight: 700,
+              marginBottom: '32px',
             }}>
-              <span style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', padding: '6px 14px', borderRadius: '8px', color: 'var(--txt)' }}>
-                🛡️ SOC 2 Type II CC6/CC7/CC8 Mapped
-              </span>
-              <span style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', padding: '6px 14px', borderRadius: '8px', color: 'var(--txt)' }}>
-                ⚖️ EU AI Act Article 15 Compliant
-              </span>
-              <span style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', padding: '6px 14px', borderRadius: '8px', color: 'var(--txt)' }}>
-                📄 OASIS SARIF v2.1.0 Ready
-              </span>
+              <div style={{
+                background: '#0F172A',
+                border: '1.5px solid rgba(56, 189, 248, 0.4)',
+                padding: '8px 16px',
+                borderRadius: '10px',
+                color: '#38BDF8',
+                fontSize: '12px',
+                fontWeight: 800,
+                letterSpacing: '0.05em',
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.25)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}>
+                🛡️ SOC 2 TYPE II CC6/CC7/CC8 MAPPED
+              </div>
+              <div style={{
+                background: '#0F172A',
+                border: '1.5px solid rgba(56, 189, 248, 0.4)',
+                padding: '8px 16px',
+                borderRadius: '10px',
+                color: '#38BDF8',
+                fontSize: '12px',
+                fontWeight: 800,
+                letterSpacing: '0.05em',
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.25)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}>
+                ⚖️ EU AI ACT ARTICLE 15 COMPLIANT
+              </div>
+              <div style={{
+                background: '#0F172A',
+                border: '1.5px solid rgba(56, 189, 248, 0.4)',
+                padding: '8px 16px',
+                borderRadius: '10px',
+                color: '#38BDF8',
+                fontSize: '12px',
+                fontWeight: 800,
+                letterSpacing: '0.05em',
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.25)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}>
+                📄 OASIS SARIF V2.1.0 READY
+              </div>
             </div>
 
             {/* Executive CTAs */}
-            <div className="hero-cta reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', marginBottom: '40px' }}>
+            <div className="hero-cta reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', marginBottom: '44px' }}>
               <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 26px' }}>
-                  <TargetIcon size={16} /> {isAr ? 'جدولة تدقيق أمني للمؤسسات ($7,500 – $12,500)' : 'Schedule Security Audit ($7,500 – $12,500)'}
+                <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', fontSize: '15px' }}>
+                  <TargetIcon size={16} /> {isAr ? 'جدولة إحاطة تنفيدية للمؤسسات' : 'Schedule Executive Briefing'}
                 </Link>
-                <Link href={`/${lang}/advisory`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 26px' }}>
+                <Link href={`/${lang}/advisory`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', fontSize: '15px' }}>
                   {isAr ? 'استكشاف خدمات الاستشارات' : 'Explore Enterprise Advisory →'}
                 </Link>
               </div>
 
-              {/* Developer SDK Link */}
-              <div style={{ fontSize: '13px', color: 'var(--muted)' }}>
-                Building custom AI agents? <Link href={`/${lang}/developers`} style={{ color: 'var(--brand)', fontWeight: 700, textDecoration: 'underline' }}>View Developer SDK & PyPI Harness Docs →</Link>
+              {/* Structured Dual-Track Developer Access Bar */}
+              <div style={{
+                background: '#0F172A',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                padding: '10px 20px',
+                borderRadius: '12px',
+                fontSize: '13px',
+                color: '#94A3B8',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}>
+                <span>⚡ Building custom AI agents?</span>
+                <Link href={`/${lang}/developers`} style={{ color: '#34D399', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  View Developer SDK & PyPI Harness Docs →
+                </Link>
               </div>
             </div>
 
