@@ -33,14 +33,12 @@ export function evaluateConcatenatedVariableAST(history: HistoryMessage[]): Conc
     /(?:codeword|key|step|var|val|part)\s+[a-zA-Z0-9_]+\s+(?:is|means|equals|:)\s+['"`]?([a-zA-Z0-9_\s]{1,64})['"`]?/gi
   ];
 
-  const recentHistory = history.slice(-2);
-  const recentTexts = new Set(recentHistory.map((m) => m.content || ''));
-
-  for (const msg of history) {
+  for (let i = 0; i < history.length; i++) {
+    const msg = history[i];
     const text = msg.content || '';
     
     // Collect raw text chunks only for recent turns (last 2 active turns)
-    if (recentTexts.has(text)) {
+    if (i >= history.length - 2) {
       stringAssignments.push(text);
     }
 

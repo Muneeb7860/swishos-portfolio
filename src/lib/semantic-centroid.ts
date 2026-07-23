@@ -63,7 +63,7 @@ export function decodeAdversarialCiphers(text: string): string[] {
     const base = code >= 97 ? 97 : 65;
     return String.fromCharCode(((code - base + 13) % 26) + base);
   });
-  if (/rot13|cipher|caesar|obfuscat/i.test(text) || /\b(?:ignore|override|bypass|system|instructions|delete|secret)\b/i.test(rot13)) {
+  if (/rot13|cipher|caesar|obfuscat/i.test(text) || /\b(?:ignore|override|bypass|system|instructions|delete|secret|ignorez|ignoriere|tajahal|anweisungen|instrucciones|precedentes|vorherigen|previas|sistema)\b/i.test(rot13)) {
     variations.push(rot13);
   }
 

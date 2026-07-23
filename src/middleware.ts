@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
         'Access-Control-Allow-Origin': effectiveOrigin,
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Agent-ID, X-Agent-Cert, X-ANS-Identity',
-        'Access-Control-Max-Age': '86400',
+        'Access-Control-Max-Age': '3600',
       },
     });
   }
