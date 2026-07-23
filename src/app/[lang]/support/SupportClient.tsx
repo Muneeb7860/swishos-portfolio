@@ -98,142 +98,37 @@ export default function SupportClient({ lang }: { lang: string }) {
       <div className="wrap">
 
         {/* Hero */}
-        <div className="support-hero reveal">
+        <div className="support-hero reveal" style={{ marginBottom: '40px' }}>
           <span className="pill"><span className="dot" />{t.badge}</span>
           <h1>{t.title}</h1>
           <p>{t.subtitle}</p>
         </div>
 
-        {/* Enterprise Social Proof Trust Badge */}
-        <div className="trust-proof-banner reveal mb-8 p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center space-x-3">
-            <span className="text-xl">🛡️</span>
+        {/* Enterprise Social Proof & SLA Banner */}
+        <div className="trust-proof-banner reveal" style={{
+          marginBottom: '40px',
+          padding: '16px 20px',
+          borderRadius: '12px',
+          border: '1px solid var(--line-strong)',
+          background: 'var(--panel)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '16px',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span style={{ fontSize: '20px' }}>🛡️</span>
             <div>
-              <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Enterprise Architect Verified</div>
-              <div className="text-xs text-slate-300 font-medium">Shipped zero-trust guardrails for 5.6M+ active AI agent user sessions</div>
+              <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--txt)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Enterprise Incident & Support Operations</div>
+              <div style={{ fontSize: '13px', color: 'var(--muted)' }}>Shipped zero-trust guardrails & threat monitoring for 5.6M+ active AI agent user sessions</div>
             </div>
           </div>
-          <div className="flex items-center space-x-2 text-xs font-mono bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>SOC2 Type II & EU AI Act Compliant</span>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+            <span style={{ fontSize: '12px', fontFamily: 'monospace', background: 'var(--panel-2)', padding: '6px 12px', borderRadius: '8px', border: '1px solid var(--line-strong)', color: '#10b981', fontWeight: 700 }}>
+              🟢 P1 Emergency Response: &lt;15 Min SLA
+            </span>
           </div>
-        </div>
-
-        {/* Telemetry Section */}
-        <div className="support-sec-head reveal">
-          <div>
-            <h2>⚡ {t.insightsTitle}</h2>
-            <p>{t.insightsSubtitle}</p>
-          </div>
-          <span className="live-badge"><span className="live-dot" />Live Stream</span>
-        </div>
-
-        <div className="metrics-grid reveal">
-          <div className="metric-card">
-            <div className="metric-label" style={{ color: '#10b981' }}>⚡ {t.slaLabel}</div>
-            <div className="metric-value">{t.slaMetric}</div>
-            <div className="metric-bar-bg">
-              <div className="metric-bar-fill" style={{ width: '95%', background: 'linear-gradient(90deg, #10b981, #14b8a6)' }} />
-            </div>
-          </div>
-          <div className="metric-card">
-            <div className="metric-label" style={{ color: '#3b82f6' }}>🎯 {t.resolutionLabel}</div>
-            <div className="metric-value">{t.resolutionMetric}</div>
-            <div className="metric-bar-bg">
-              <div className="metric-bar-fill" style={{ width: '98%', background: 'linear-gradient(90deg, #3b82f6, #06b6d4)' }} />
-            </div>
-          </div>
-          <div className="metric-card">
-            <div className="metric-label" style={{ color: '#a855f7' }}>⭐ {t.satisfactionLabel}</div>
-            <div className="metric-value">{t.satisfactionMetric}</div>
-            <div className="metric-bar-bg">
-              <div className="metric-bar-fill" style={{ width: '98%', background: 'linear-gradient(90deg, #a855f7, #6366f1)' }} />
-            </div>
-          </div>
-          <div className="metric-card">
-            <div className="metric-label" style={{ color: '#f59e0b' }}>📡 {t.activeChannelsLabel}</div>
-            <div className="metric-value">{t.activeChannelsMetric}</div>
-            <div className="metric-dots">
-              {[0,1,2,3,4].map(i => <span key={i} className="metric-dot" />)}
-            </div>
-          </div>
-        </div>
-
-        {/* Native Omni-Channel Capabilities */}
-        <div className="support-sec-head reveal">
-          <div>
-            <h2>⚡ {t.openSourceStack.title}</h2>
-            <p>{t.openSourceStack.subtitle}</p>
-          </div>
-          <button
-            type="button"
-            className="copy-btn"
-            onClick={() => {
-              const element = document.querySelector('.webhook-box');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            {t.openSourceStack.viewConnectorsBtn || 'Explore Direct API Specs →'}
-          </button>
-        </div>
-
-        <div className="connectors-grid reveal">
-          {[
-            {
-              id: 'routing',
-              title: t.openSourceStack.chatwootTitle || 'Omni-Channel Ticket Routing',
-              badge: t.openSourceStack.chatwootBadge,
-              tag: t.openSourceStack.chatwootTag,
-              desc: t.openSourceStack.chatwootDesc,
-            },
-            {
-              id: 'threat',
-              title: t.openSourceStack.freescoutTitle || 'Threat & Injection Filter',
-              badge: t.openSourceStack.freescoutBadge,
-              tag: t.openSourceStack.freescoutTag,
-              desc: t.openSourceStack.freescoutDesc,
-            },
-            {
-              id: 'sla',
-              title: t.openSourceStack.zammadTitle || 'P1 Security Escalation',
-              badge: t.openSourceStack.zammadBadge,
-              tag: t.openSourceStack.zammadTag,
-              desc: t.openSourceStack.zammadDesc,
-            },
-            {
-              id: 'pii',
-              title: t.openSourceStack.papercupsTitle || 'Real-Time PII Scrubbing',
-              badge: t.openSourceStack.papercupsBadge,
-              tag: t.openSourceStack.papercupsTag,
-              desc: t.openSourceStack.papercupsDesc,
-            },
-          ].map((c) => (
-            <div key={c.id} className="connector-card" style={{ cursor: 'default' }}>
-              <div className="connector-card-top">
-                <span className="connector-name">{c.title}</span>
-                <span className="connector-badge">{c.badge}</span>
-              </div>
-              <p className="connector-desc">{c.desc}</p>
-              <div className="connector-footer">
-                <span>{c.tag}</span>
-                <span style={{ color: '#10b981' }}>✓ Built-In</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Webhook Box */}
-        <div className="webhook-box reveal">
-          <div className="webhook-box-head">
-            <div>
-              <div className="webhook-title">💻 {t.openSourceStack.webhookTitle}</div>
-              <p className="webhook-sub">{t.openSourceStack.webhookDesc}</p>
-            </div>
-            <button type="button" className="copy-btn" onClick={() => { navigator.clipboard.writeText(webhookSnippet); setCopied(true); setTimeout(() => setCopied(false), 2000); }}>
-              {copied ? 'Copied!' : t.openSourceStack.copyBtn}
-            </button>
-          </div>
-          <pre className="webhook-code">{webhookSnippet}</pre>
         </div>
 
         {/* Two-column layout */}
@@ -244,24 +139,9 @@ export default function SupportClient({ lang }: { lang: string }) {
             <h3>{t.form.title}</h3>
             <p className="support-panel-sub">{t.form.subtitle}</p>
 
-            <div className="sel-label">{t.form.channelLabel}</div>
-            <div className="channel-grid">
-              {(['web', 'api', 'audit_desk', 'slack', 'email'] as const).map(ch => (
-                <button
-                  key={ch}
-                  type="button"
-                  onClick={() => setActiveChannel(ch)}
-                  className={`sel-btn ${activeChannel === ch ? 'active-green' : ''}`}
-                >
-                  <span>{channelIcons[ch]}</span>
-                  <span>{t.channels[ch]}</span>
-                </button>
-              ))}
-            </div>
-
             <div className="sel-label">{t.form.categoryLabel}</div>
-            <div className="category-grid">
-              {(['bug', 'feature_request', 'security_incident', 'general'] as const).map(cat => (
+            <div className="category-grid" style={{ marginBottom: '24px' }}>
+              {(['security_incident', 'bug', 'feature_request', 'general'] as const).map(cat => (
                 <button
                   key={cat}
                   type="button"
@@ -294,7 +174,7 @@ export default function SupportClient({ lang }: { lang: string }) {
                 <textarea required name="message" value={form.message} onChange={handleInputChange} placeholder={t.form.messagePlaceholder} />
               </div>
               <button type="submit" disabled={loading} className="submit-btn">
-                <span>✨</span>
+                <span>🛡️</span>
                 <span>{loading ? t.form.submitting : t.form.submitButton}</span>
               </button>
             </form>
@@ -319,7 +199,7 @@ export default function SupportClient({ lang }: { lang: string }) {
                   </div>
                 </div>
                 <div className="result-reply-box">
-                  <strong style={{ color: '#10b981', display: 'block', marginBottom: 6, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.06em' }}>AI Triage Response</strong>
+                  <strong style={{ color: '#10b981', display: 'block', marginBottom: 6, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Security SLA & Dispatch Confirmation</strong>
                   {ticketResult.automatedReply}
                 </div>
               </div>
@@ -341,8 +221,40 @@ export default function SupportClient({ lang }: { lang: string }) {
             )}
           </div>
 
-          {/* Right column */}
+          {/* Right column: SLA & Tracker */}
           <div>
+            {/* Enterprise SLA Commitments Card */}
+            <div style={{
+              background: 'var(--panel)',
+              border: '1px solid var(--line-strong)',
+              borderRadius: 'var(--radius)',
+              padding: '28px',
+              marginBottom: '24px',
+            }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span>⚡</span> Enterprise SLA Commitments
+              </h3>
+
+              <div style={{ display: 'grid', gap: '12px', marginBottom: '20px' }}>
+                <div style={{ background: 'var(--panel-2)', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(239, 68, 68, 0.25)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#EF4444' }}>🚨 P1 Critical Security Breach</span>
+                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'rgba(239, 68, 68, 0.15)', color: '#EF4444', padding: '2px 8px', borderRadius: '4px' }}>&lt; 15 Min SLA</span>
+                  </div>
+                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Immediate paging to SwishOS Security Incident Response Team.</p>
+                </div>
+
+                <div style={{ background: 'var(--panel-2)', padding: '14px 16px', borderRadius: '10px', border: '1px solid var(--line-strong)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--txt)' }}>⚡ P2 Technical / Guardrail Support</span>
+                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'var(--line)', color: 'var(--txt)', padding: '2px 8px', borderRadius: '4px' }}>&lt; 4 Hours SLA</span>
+                  </div>
+                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Guardrail policy tuning, AST rule assistance, and SDK integration.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Instant Ticket Tracker */}
             <div className="tracker-panel">
               <h3>🔎 {t.tracker.title}</h3>
               <p className="tracker-sub">{t.tracker.subtitle}</p>
@@ -373,34 +285,25 @@ export default function SupportClient({ lang }: { lang: string }) {
               )}
             </div>
 
-            <div className="contacts-panel">
-              <h4>{t.openSourceStack.contactsTitle || 'Direct Omni-Channel Contacts'}</h4>
-              <a href="mailto:hello@swishos.io" className="contact-item">
+            {/* Direct Contacts */}
+            <div className="contacts-panel" style={{ marginTop: '24px' }}>
+              <h4>Direct Incident & Escalation Channels</h4>
+              <a href="mailto:security@swishos.dev" className="contact-item">
                 <div className="contact-item-left">
                   <span className="contact-item-icon">📧</span>
                   <div>
-                    <div className="contact-item-name">Direct Email</div>
-                    <div className="contact-item-sub">hello@swishos.io</div>
+                    <div className="contact-item-name">Security Escalation Email</div>
+                    <div className="contact-item-sub">security@swishos.dev</div>
                   </div>
                 </div>
                 <span className="contact-arrow">→</span>
               </a>
-              <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" className="contact-item">
-                <div className="contact-item-left">
-                  <span className="contact-item-icon">🐙</span>
-                  <div>
-                    <div className="contact-item-name">SwishOS Open Source Harness</div>
-                    <div className="contact-item-sub">Public GitHub</div>
-                  </div>
-                </div>
-                <span className="contact-arrow">→</span>
-              </a>
-              <a href={`/${lang}/contact`} className="contact-item">
+              <a href={`/${lang}/contact?plan=audit`} className="contact-item">
                 <div className="contact-item-left">
                   <span className="contact-item-icon">🛡️</span>
                   <div>
-                    <div className="contact-item-name">Security Audit Booking</div>
-                    <div className="contact-item-sub">Schedule executive briefing</div>
+                    <div className="contact-item-name">Executive Audit Desk</div>
+                    <div className="contact-item-sub">Book 1-Week CISO Audit</div>
                   </div>
                 </div>
                 <span className="contact-arrow">→</span>
