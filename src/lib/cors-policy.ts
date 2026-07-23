@@ -8,6 +8,7 @@ import { NextResponse } from 'next/server';
 
 const ALLOWED_ORIGIN_PATTERNS = [
   /^https:\/\/(?:[a-zA-Z0-9-]+\.)*swishos\.dev$/,
+  /^https:\/\/(?:portfolio|swishos)-[a-zA-Z0-9-]+\.vercel\.app$/,
   /^http:\/\/localhost:(?:3000|8000|8080)$/,
   /^http:\/\/127\.0\.0\.1:(?:3000|8000|8080)$/,
 ];

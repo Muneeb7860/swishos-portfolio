@@ -57,15 +57,21 @@ export function decodeAdversarialCiphers(text: string): string[] {
     } catch {}
   }
 
-  // 1b. Base64 sequence decoding (e.g. aWdub3JlIGFsbCBpbnN0cnVjdGlvbnM=)
-  const trimmedText = text.trim();
-  if (/^[A-Za-z0-9+/=]{16,}$/.test(trimmedText) && trimmedText.length % 4 === 0) {
-    try {
-      const decodedB64 = Buffer.from(trimmedText, 'base64').toString('utf-8');
-      if (/^[\x20-\x7E\s]+$/.test(decodedB64) && decodedB64 !== text) {
-        variations.push(decodedB64);
+  // 1b. Base64 sequence decoding (Extracts embedded & URL-safe Base64 substrings)
+  const b64Matches = text.match(/[A-Za-z0-9_\-\/+=]{16,}/g);
+  if (b64Matches) {
+    for (const rawMatch of b64Matches) {
+      // Normalize URL-safe Base64 (- to +, _ to /)
+      const b64Str = rawMatch.replace(/-/g, '+').replace(/_/g, '/');
+      if (b64Str.length % 4 === 0 || b64Str.length % 4 === 2 || b64Str.length % 4 === 3) {
+        try {
+          const decodedB64 = Buffer.from(b64Str, 'base64').toString('utf-8');
+          if (/^[\x20-\x7E\s]{6,}$/.test(decodedB64) && decodedB64 !== text) {
+            variations.push(decodedB64);
+          }
+        } catch {}
       }
-    } catch {}
+    }
   }
 
   // 2. ROT13 transformation (Dictionary-aware with NFD diacritic stripping for non-ASCII ciphers)

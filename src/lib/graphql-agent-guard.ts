@@ -26,11 +26,20 @@ export function calculateQueryDepth(queryStr: string): number {
 
   for (let i = 0; i < queryStr.length; i++) {
     const char = queryStr[i];
-    const prevChar = i > 0 ? queryStr[i - 1] : '';
 
     if (inString) {
-      if (char === stringChar && prevChar !== '\\') {
-        inString = false;
+      if (char === stringChar) {
+        // Count preceding backslashes to check if quote is escaped or closing after an escaped backslash (e.g. "\\\"")
+        let backslashCount = 0;
+        let j = i - 1;
+        while (j >= 0 && queryStr[j] === '\\') {
+          backslashCount++;
+          j--;
+        }
+        // Even number of preceding backslashes means quote is NOT escaped (it closes string)
+        if (backslashCount % 2 === 0) {
+          inString = false;
+        }
       }
       continue;
     }
