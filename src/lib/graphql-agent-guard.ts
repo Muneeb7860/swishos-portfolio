@@ -16,14 +16,31 @@ const MAX_ALLOWED_DEPTH = 5;
 const MAX_ALLOWED_ALIASES = 10;
 
 /**
- * Calculates max nested depth of braces in a GraphQL/JSON query string.
+ * Calculates max nested depth of braces in a GraphQL/JSON query string, ignoring braces inside string literals.
  */
 export function calculateQueryDepth(queryStr: string): number {
   let currentDepth = 0;
   let maxDepth = 0;
+  let inString = false;
+  let stringChar = '';
 
   for (let i = 0; i < queryStr.length; i++) {
     const char = queryStr[i];
+    const prevChar = i > 0 ? queryStr[i - 1] : '';
+
+    if (inString) {
+      if (char === stringChar && prevChar !== '\\') {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (char === '"' || char === "'" || char === '`') {
+      inString = true;
+      stringChar = char;
+      continue;
+    }
+
     if (char === '{') {
       currentDepth++;
       if (currentDepth > maxDepth) {
@@ -40,10 +57,12 @@ export function calculateQueryDepth(queryStr: string): number {
 }
 
 /**
- * Counts field aliases matching `alias_name: field_name` pattern.
+ * Counts GraphQL field aliases matching `alias_name: field_name` pattern while ignoring standard JSON quoted properties.
  */
 export function countFieldAliases(queryStr: string): number {
-  const aliasMatches = queryStr.match(/\b[A-Za-z0-9_]+\s*:\s*[A-Za-z0-9_]+\b/g);
+  // Ignore quoted JSON keys (e.g. "key": "val")
+  const strippedJsonQuotes = queryStr.replace(/"[^"]+"\s*:\s*"[^"]+"/g, '');
+  const aliasMatches = strippedJsonQuotes.match(/\b[A-Za-z0-9_]+\s*:\s*[A-Za-z0-9_]+\b/g);
   return aliasMatches ? aliasMatches.length : 0;
 }
 
