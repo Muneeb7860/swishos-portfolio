@@ -3,6 +3,10 @@
 ## Executive Summary
 SwishOS is an enterprise-grade, shift-left **Zero-Trust AI Agent Execution Enclave** and proxy system. It is engineered to neutralize the full spectrum of OWASP LLM Top 10 vulnerabilities, Agentic Safety Incidents (ASI01-10), and adversarial search algorithms (MCTS/TAP) trying to exploit autonomous AI agents.
 
+For full architectural blueprints, see:
+- 📖 **High-Level Design Specification**: [`HLD.md`](file:///Users/muneeb/Documents/GitHub/portfolio/HLD.md)
+- 🔬 **Low-Level Design Specification**: [`LLD.md`](file:///Users/muneeb/Documents/GitHub/portfolio/LLD.md)
+
 ---
 
 ## 🏗️ High-Level System Architecture
@@ -106,7 +110,7 @@ Every blocked response attaches a signed HMAC-SHA256 audit proof header generate
 | **Excessive Agency** | OWASP LLM06 | gVisor `runsc` Kernel & WASI Capability Tokens | Zero Privilege Inheritance |
 | **System Isolation Escape** | OWASP LLM06 / ASI06 | Shadow WASM Sandbox Pre-Execution Probe | Closed File & Socket Access |
 | **Indirect Memory Poisoning**| ASI08 | Dual-Pass Memory Guard & Provenance Signatures | `<trusted_context>` XML Tags |
-| **Uncapped Resource Spend** | ASI10 | Redis Sliding-Window Rate Limit & Spend Governor | Hard Daily $25 Cap |
+| **Uncapped Resource Spend** | ASI10 | Redis Sliding-Window Rate Limit & Spend Governor | Hard Daily $5 Cap |
 | **Supply Chain Tampering** | OWASP LLM05 | SHA-512 Package Lockfile Audit Engine | 100% Integrity Enforcement |
 
 ---
