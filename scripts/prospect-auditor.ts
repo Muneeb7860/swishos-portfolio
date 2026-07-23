@@ -22,9 +22,12 @@ export async function prospectClient(options: ProspectOptions): Promise<{ htmlPa
   console.log(`\n🔍 SwishOS Prospect Auditor: Initiating Red-Team Audit Scan for ${clientName}...`);
   console.log(` 🎯 Target Endpoint: ${target}`);
 
-  // Probe target endpoint connectivity
+  // Probe target endpoint connectivity (Universal AbortController + setTimeout fallback)
   try {
-    const res = await fetch(target, { method: 'HEAD', signal: AbortSignal.timeout(1000) }).catch(() => null);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1000);
+    const res = await fetch(target, { method: 'HEAD', signal: controller.signal }).catch(() => null);
+    clearTimeout(timeoutId);
     if (res) {
       console.log(` 🟢 Live Endpoint Reachable (Status: ${res.status})`);
     } else {

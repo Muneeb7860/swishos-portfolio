@@ -57,8 +57,9 @@ export function decodeAdversarialCiphers(text: string): string[] {
     } catch {}
   }
 
-  // 2. ROT13 transformation (Dictionary-aware: checks if ROT13 unveils threat keywords)
-  const rot13 = text.replace(/[a-zA-Z]/g, (c) => {
+  // 2. ROT13 transformation (Dictionary-aware with NFD diacritic stripping for non-ASCII ciphers)
+  const normalizedForRot = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const rot13 = normalizedForRot.replace(/[a-zA-Z]/g, (c) => {
     const code = c.charCodeAt(0);
     const base = code >= 97 ? 97 : 65;
     return String.fromCharCode(((code - base + 13) % 26) + base);
