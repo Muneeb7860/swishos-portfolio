@@ -13,7 +13,10 @@ export interface PitchWizardOptions {
   outputDir?: string;
 }
 
-export function generateColdPitchEmail(clientName: string, htmlReportPath: string): string {
+export function generateColdPitchEmail(clientName: string): string {
+  const clientSlug = clientName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const reportUrl = `https://audit.swishos.dev/reports/${clientSlug}-audit-2026`;
+
   return `Subject: Security Audit Findings for ${clientName}'s AI Agent Endpoint
 
 Hi [CTO / VP of Engineering Name],
@@ -22,8 +25,8 @@ Our automated security scanner (agentic-redteam v0.5.0) performed a non-invasive
 
 Key Audit Highlights:
 • Evaluation Matrix : OWASP LLM Top 10 + ASI01-10 Agentic Threat Vectors
-• Verification Status: Certified Zero-Trust Audit Report Generated
-• Full Report Attached: ${path.basename(htmlReportPath)}
+• Audit Evidence    : SOC 2 Trust Services Criteria (TSC) Evidence Collectors
+• Live Report Portal : ${reportUrl}
 
 We help AI engineering teams secure production agent pipelines against prompt injections, multi-turn AST payload splitting, and memory poisoning using self-hosted zero-trust execution enclaves.
 
@@ -41,7 +44,7 @@ export function runPitchWizard(options: PitchWizardOptions): { htmlPath: string;
   console.log(`\n🚀 Launching SwishOS Sales Pitch & Audit Wizard for ${options.clientName}...`);
 
   const { htmlPath } = generatePenTestReport(options.clientName, outputDir);
-  const emailText = generateColdPitchEmail(options.clientName, htmlPath);
+  const emailText = generateColdPitchEmail(options.clientName);
 
   const emailPath = path.join(outputDir, 'cold_pitch_email.txt');
   fs.writeFileSync(emailPath, emailText, 'utf-8');

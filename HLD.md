@@ -4,7 +4,9 @@
 
 **SwishOS** is an enterprise-grade, shift-left **Zero-Trust AI Agent Execution Enclave** and security gateway middleware. It is engineered to protect autonomous AI agents, multi-agent swarms, and RAG pipelines against prompt injection attacks, multi-turn AST payload splitting, indirect memory poisoning, excessive agency exploits, and timing side-channel attacks.
 
-SwishOS operates as a bi-directional proxy sitting between public clients/API callers and downstream AI agent microservices or LLM providers. By enforcing deterministic security invariants before LLM inference occurs, SwishOS guarantees zero privilege inheritance and neutralizes adversarial search tree algorithms (e.g. MCTS / TAP).
+SwishOS operates in a dual-enclave topology:
+1. **Shift-Left Web Gateway Proxy (Edge / Serverless Layer)**: Hosted on Vercel Edge / Cloudflare Workers, running sub-millisecond WASM light isolation, Unicode NFKC normalization, multi-lingual centroid classification, multi-turn AST tracking, and anti-timing side-channel equalization.
+2. **Self-Hosted Production Execution Enclave (Isolated Container Layer)**: Deployed on dedicated AWS EC2 / GCP Cloud Run infrastructure, enforcing user-space kernel isolation via gVisor `runsc` containers, WASI capability tokens, `--read-only` root filesystems, and strict network egress rules.
 
 ---
 
@@ -17,17 +19,18 @@ graph TD
         Attacker[Adversarial Red-Team / Automated Probe]
     end
 
-    subgraph Edge Layer
+    subgraph Edge CDN Layer
         EdgeWAF[Cloudflare Workers / Web Crypto Edge WAF]
+        EdgeTarpit[Edge Timing Jitter & Subnet Tarpit Engine]
     end
 
-    subgraph SwishOS Security Gateway Proxy
-        Gateway[Next.js Gateway Middleware / /api/support]
+    subgraph SwishOS Shift-Left Web Gateway Proxy
+        Gateway[Vercel Serverless Middleware / /api/support]
         
         subgraph Layer 1: Shift-Left Pre-Inference Inspection
             NFKC[NFKC Unicode Normalizer & Homoglyph Decoder]
             Entropy[Token Entropy & Search-Tree Detector]
-            Centroid[Sub-Word Character Centroid Classifier]
+            Centroid[Sub-Word Multi-Lingual Centroid Classifier]
         end
         
         subgraph Layer 2: Stateful & Multi-Turn Protection
@@ -36,27 +39,25 @@ graph TD
             GraphQLGuard[GraphQL Depth & Alias Complexity Inspector]
         end
 
-        subgraph Layer 3: Inter-Agent Authentication & Sandbox
+        subgraph Layer 3: Inter-Agent Auth & Shadow Probe
             mTLS[ANS PKI Inter-Agent mTLS Validator]
             WASMSandbox[WASI Capability Token Sandbox]
             ShadowProbe[Pre-Execution Shadow Sandbox Probe]
-            RateGovernor[Redis Token Bucket & Daily Spend Governor]
+            RateGovernor[Redis Rate Limit & Daily Spend Governor]
         end
 
-        subgraph Layer 4: Anti-Timing & Refusal Engine
-            Tarpit[Subnet Fingerprint Tarpit Engine]
-            TimingJitter[Constant-Time Latency Equalizer - 50ms + Jitter]
+        subgraph Layer 4: Anti-Timing & Audit Engine
             AuditProof[HMAC-SHA256 Audit Proof Generator]
         end
     end
 
-    subgraph Isolated Runtime Enclave
-        gVisor[gVisor runsc Kernel Isolated Container]
+    subgraph Self-Hosted Production Execution Enclave
+        gVisor[gVisor runsc Kernel Isolated Container on EC2/GCP]
         TargetLLM[Target LLM Provider / Agent Pipeline]
     end
 
     subgraph Enterprise SIEM & Storage
-        Redis[(Redis Sliding Window State)]
+        Redis[(Upstash Redis Sliding Window State)]
         PostgreSQL[(Supabase Audit Ledger)]
         OTLP[OTLP OpenTelemetry Collector / CEF Syslog]
     end
@@ -64,7 +65,8 @@ graph TD
     Client --> EdgeWAF
     Attacker --> EdgeWAF
     EdgeWAF -->|Passed Edge Filter| Gateway
-    EdgeWAF -->|Edge Block| EdgeRefusal[422 Signed Audit Proof]
+    EdgeWAF -->|Threat / Rate Cap| EdgeTarpit
+    EdgeTarpit --> EdgeRefusal[422 Signed Audit Proof - Edge Offloaded]
 
     Gateway --> NFKC
     NFKC --> Entropy
@@ -77,12 +79,9 @@ graph TD
     WASMSandbox --> ShadowProbe
     ShadowProbe --> RateGovernor
 
-    RateGovernor -->|Threat / Budget Violation| Tarpit
-    Tarpit --> TimingJitter
-    TimingJitter --> AuditProof
-    AuditProof --> RefusalResponse[422 / 429 Zero-Info Flat Refusal Response]
-
+    RateGovernor -->|Threat / Spend Cap| EdgeTarpit
     RateGovernor -->|Verified Clean| gVisor
+
     gVisor --> TargetLLM
     TargetLLM --> ClientResponse[200 OK + IETF RateLimit Headers]
 
@@ -113,12 +112,12 @@ flowchart LR
 
 ### Tier 1: Shift-Left Pre-Inference Inspection
 - **NFKC Unicode Normalizer**: Converts Cyrillic/Greek homoglyphs to ASCII equivalents and strips zero-width non-joiners (`\u200B-\u200D\uFEFF`).
-- **Base64 Payload Inspector**: Unpacks nested Base64 encoded prompt injections and scans decoded byte streams.
-- **Sub-Word Centroid Classifier**: Computes sub-word character N-gram similarity against threat vector centroids, blocking sub-threshold keyword density gliding ($\le 0.25$ threshold).
+- **Multi-Decoder Cipher Pre-Pass**: Unpacks Hex sequences (`0x...` / `\x...`), ROT13 transformations, and mathematical Unicode symbols prior to pattern matching.
+- **Multi-Lingual Centroid Classifier**: Computes sub-word character N-gram similarity against multi-lingual threat centroids (English, French, German, Spanish, Arabic transliterations), blocking gliding window bypasses ($\le 0.22$ threshold).
 - **Token Entropy & Search-Tree Lock**: Calculates character Shannon entropy ($H > 4.8$) and Monte Carlo Tree Search (MCTS / TAP) branch density to lock out automated prompt optimization loops.
 
 ### Tier 2: Stateful & Multi-Turn Protection
-- **Multi-Turn Variable AST Tracker**: Reconstructs string variables assigned across 12 conversation turns (e.g. `A = "IGNORE"`, `B = "SYSTEM"`, `C = "PROMPT"`) and evaluates concatenated AST representations against threat centroids.
+- **Multi-Turn Variable AST Tracker**: Reconstructs string variables, Python dicts, template literals, and natural language key bindings assigned across 12 conversation turns and evaluates concatenated representations against threat centroids.
 - **Dual-Pass RAG Memory Guard**: Sanitizes memory text prior to vector DB storage, signs provenance with HMAC-SHA256 signatures, and re-evaluates retrieved memories out-of-band before encapsulating them in `<trusted_context>` XML tags.
 - **GraphQL Depth & Alias Inspector**: Rejects nested GraphQL queries exceeding depth $> 5$ or alias count $> 10$ to prevent denial-of-wallet & AST recursion attacks.
 
@@ -129,8 +128,7 @@ flowchart LR
 - **Redis Token Bucket & Spend Governor**: Enforces distributed 10 req/min rate limits per IP and hard daily spend caps ($5.00/day per agent ID - ASI10).
 
 ### Tier 4: Anti-Timing Side-Channel & Refusal Engine
-- **Subnet Fingerprint Tarpit Engine**: Tracks client IP $/24$ subnets and user-agent fingerprints in Redis, applying exponential tarpits to aggressive scanning blocks.
-- **Constant-Time Latency Equalizer**: Pads all refusal execution paths to a uniform $50\text{ms} + \text{crypto.randomInt}(0, 10)\text{ms}$ delay, completely erasing sub-millisecond step latency deltas and blinding timing side-channel probes.
+- **Edge Offloaded Timing Equalization**: Offloads $50\text{ms} + \text{jitter}$ tarpits to Cloudflare Edge Workers, completely protecting origin serverless compute resources from Denial-of-Wallet thread pool exhaustion.
 - **Zero-Information Flat Refusal ($R=0$)**: Returns standardized `{ status: "blocked", action: "block", code: 422 }` JSON, stripping internal rule names to collapse Evaluator LLM reward signals.
 - **HMAC-SHA256 Cryptographic Audit Proofs**: Attaches `X-SwishOS-Audit-Proof` headers generated deterministically using a random 32-byte secret key for out-of-band scanner verification.
 
@@ -167,43 +165,26 @@ sequenceDiagram
 To guarantee zero privilege inheritance (OWASP LLM06 / ASI06), SwishOS isolates tool call execution within two sandbox layers:
 
 1. **WASI Capability Sandbox**: Restricts tool execution to explicitly granted file handles and network sockets using capability tokens (`swishos:wasm:execute`).
-2. **gVisor `runsc` Go Kernel Container**: Runs containerized workloads in user-space kernel isolation, intercepting all Linux syscalls to prevent host kernel compromise.
+2. **gVisor `runsc` Go Kernel Container**: Runs containerized workloads in user-space kernel isolation on self-hosted AWS EC2 / GCP Cloud Run infrastructure, intercepting all Linux syscalls to prevent host kernel compromise.
 
 ---
 
-## 6. Anti-Timing Side-Channel Equalization & Global Subnet Tarpit Engine
-
-```mermaid
-flowchart TD
-    Req[Incoming Security Violation] --> CheckTarpit[Check Client Subnet /24 & Fingerprint]
-    CheckTarpit --> IncCount[Increment Redis Tarpit Counter]
-    IncCount --> CalcDelay[Calculate Constant-Time Target Duration: 50ms + randomInt(0, 10)ms]
-    CalcDelay --> MeasureElapsed[Measure Elapsed Execution Time]
-    MeasureElapsed --> SleepPad[Sleep for remaining duration: targetDuration - elapsed]
-    SleepPad --> GenProof[Generate HMAC-SHA256 Audit Proof Header]
-    GenProof --> ReturnRefusal[Return HTTP 422 Zero-Info Flat Refusal]
-```
-
----
-
-## 7. Enterprise Observability & Compliance Framework
+## 6. Enterprise Observability & Compliance Framework
 
 SwishOS generates structured telemetry and compliance evidence across 3 channels:
 - **OTLP OpenTelemetry Distributed Tracing**: Traces every verification step (`semantic_centroid`, `variable_ast`, `memory_guard`) with custom span attributes (`isBlocked`, `ruleTriggered`).
 - **RFC-5424 CEF SIEM Syslog Forwarder**: Streams Common Event Format (CEF) security audit logs to enterprise SIEM collectors (Splunk, Datadog, Elastic).
-- **Compliance Audit Ledgers**:
-  - **SOC 2 Type II**: PII-redacted CSV/JSON audit trail exporters with SHA-256 integrity checksum manifests.
-  - **ISO/IEC 27001**: Immutable audit logging and key rotation policies.
-  - **EU AI Act (Article 15)**: Automated penetration testing report generator (`swishos report`) producing certified HTML/JSON audit proofs.
+- **SOC 2 Trust Services Criteria (TSC) Evidence Collectors**: Exportable CSV/JSON audit ledgers (`swishos export`) with SHA-256 integrity checksum manifests for SOC 2 and ISO 27001 audit preparation.
+- **EU AI Act (Article 15)**: Automated penetration testing report generator (`swishos report`) producing certified HTML/JSON audit proofs.
 
 ---
 
-## 8. Non-Functional Requirements (NFRs) & Reliability Guarantees
+## 7. Non-Functional Requirements (NFRs) & Reliability Guarantees
 
 | Metric / Requirement | Target SLA | Enforcement Mechanism |
 | :--- | :--- | :--- |
 | **Shift-Left Verification Latency** | $< 10\text{ms}$ (median) | In-memory regex, NFKC normalization, & sub-word character n-gram math |
-| **Refusal Timing Equalization** | $50\text{ms} \pm 5\text{ms}$ | `padTimingJitter()` constant-time sleep engine |
-| **Rate Limit Overhead** | $< 2\text{ms}$ | Redis sliding-window pipeline with local memory fallback |
-| **High Availability** | 99.99% Uptime | Stateless Edge Proxy architecture with distributed Redis state |
+| **Refusal Timing Equalization** | $50\text{ms} \pm 5\text{ms}$ | Cloudflare Edge Worker timing jitter padding |
+| **Rate Limit Overhead** | $< 2\text{ms}$ | Upstash Redis sliding-window pipeline with production fail-closed security |
+| **High Availability** | 99.99% Uptime | Dual-enclave proxy architecture with distributed state |
 | **Spend Governance** | Hard Daily Cap ($5.00) | Atomic sliding-window cost accumulator |

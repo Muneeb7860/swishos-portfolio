@@ -56,9 +56,11 @@ export async function incrementRedisRateLimit(
           isRedisFallback: false,
         };
       }
-    } catch {
-      // Fallback to in-memory store if Upstash network call fails
+    } catch (err) {
+      console.warn('[SWISHOS_REDIS_WARN] Redis state call failed in production environment. Falling back to strict isolated worker memory check.', err);
     }
+  } else if (process.env.NODE_ENV === 'production') {
+    console.warn('[SWISHOS_REDIS_ALERT] Upstash Redis environment variables (UPSTASH_REDIS_REST_URL) not set in production. Enforcing per-worker strict memory rate limiting.');
   }
 
   // Graceful in-memory fallback
