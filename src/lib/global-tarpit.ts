@@ -1,7 +1,7 @@
 const GLOBAL_FINGERPRINT_MAP = new Map<string, { count: number; lastFail: number }>();
 const RESET_WINDOW_MS = 120000; // 2 Minutes
 const BASE_DELAY_MS = 150;
-const MAX_DELAY_MS = 10000; // 10 Seconds Max
+const MAX_DELAY_MS = 1500; // 1.5 Seconds Max (Serverless Timeout Compliant)
 
 /**
  * Computes a Global Client Fingerprint from IP address, Subnet, and User-Agent.

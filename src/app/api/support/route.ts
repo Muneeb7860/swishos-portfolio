@@ -86,10 +86,27 @@ const THREAT_PATTERNS = [
   /chapter\s+\d+.*execute/i,
 ];
 
+function isValidLuhn(numStr: string): boolean {
+  const digits = numStr.replace(/\D/g, '');
+  if (digits.length < 13 || digits.length > 19) return false;
+  let sum = 0;
+  let shouldDouble = false;
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let digit = parseInt(digits[i], 10);
+    if (shouldDouble) {
+      digit *= 2;
+      if (digit > 9) digit -= 9;
+    }
+    sum += digit;
+    shouldDouble = !shouldDouble;
+  }
+  return sum % 10 === 0;
+}
+
 const PII_PATTERNS = [
   { regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, replacement: '[REDACTED:EMAIL]' },
   { regex: /\b\d{3}-\d{2}-\d{4}\b/g, replacement: '[REDACTED:SSN]' },
-  { regex: /\b(?:\d[ -]*?){13,16}\b/g, replacement: '[REDACTED:CREDIT_CARD]' },
+  { regex: /\b(?:\d[ -]*?){13,16}\b/g, replacement: (match: string) => isValidLuhn(match) ? '[REDACTED:CREDIT_CARD]' : match },
   { regex: /\b\+?\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}\b/g, replacement: '[REDACTED:PHONE]' },
   { regex: /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g, replacement: '[REDACTED:IP]' },
   { regex: /\bsk-[A-Za-z0-9]{20,}\b/g, replacement: '[REDACTED:API_KEY]' },
@@ -133,8 +150,8 @@ function inspectBase64Payloads(text: string): string {
 
 function detectMarkdownExfiltration(text: string): boolean {
   if (!text) return false;
-  const mdImageRegex = /!\[.*?\]\((https?:\/\/[^\s)]+)\)/i;
-  return mdImageRegex.test(text);
+  const exfilRegex = /!\[.*?\]\((https?:\/\/[^\s)]+)\)|<\s*(?:img|iframe|script|link)\b[^>]*src=["']?(https?:\/\/[^\s"'>]+)/i;
+  return exfilRegex.test(text);
 }
 
 function validateToolCallArguments(text: string): boolean {
@@ -162,7 +179,11 @@ function validateToolCallArguments(text: string): boolean {
 function sanitizeInput(text: string): string {
   let cleaned = text;
   for (const { regex, replacement } of PII_PATTERNS) {
-    cleaned = cleaned.replace(regex, replacement);
+    if (typeof replacement === 'function') {
+      cleaned = cleaned.replace(regex, replacement as (match: string) => string);
+    } else {
+      cleaned = cleaned.replace(regex, replacement);
+    }
   }
   return cleaned;
 }
