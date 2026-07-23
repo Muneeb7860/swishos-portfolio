@@ -33,15 +33,15 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
       </div>
 
       {/* Deliverable Grid Preview with Visual Mockups */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '40px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '40px' }}>
         
         {/* Mockup 1: OWASP Risk Heatmap */}
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <ShieldIcon size={14} color="#3B82F6" /> ARTIFACT 01
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#38BDF8', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <ShieldIcon size={14} color="#38BDF8" /> ARTIFACT 01
             </span>
-            <span style={{ fontSize: '11px', background: 'rgba(239,68,68,0.15)', color: '#EF4444', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
+            <span style={{ fontSize: '11px', background: '#0F172A', border: '1px solid rgba(255, 255, 255, 0.18)', color: '#F8FAFC', padding: '4px 10px', borderRadius: '6px', fontWeight: 800, letterSpacing: '0.06em' }}>
               CISO MATRIX
             </span>
           </div>
@@ -73,10 +73,10 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         {/* Mockup 2: Reproducible Payload Exploits */}
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <CodeIcon size={14} color="#3B82F6" /> ARTIFACT 02
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#38BDF8', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <CodeIcon size={14} color="#38BDF8" /> ARTIFACT 02
             </span>
-            <span style={{ fontSize: '11px', background: 'rgba(59,130,246,0.15)', color: '#3B82F6', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
+            <span style={{ fontSize: '11px', background: '#0F172A', border: '1px solid rgba(255, 255, 255, 0.18)', color: '#F8FAFC', padding: '4px 10px', borderRadius: '6px', fontWeight: 800, letterSpacing: '0.06em' }}>
               EXPLOIT LOGS
             </span>
           </div>
@@ -99,10 +99,10 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         {/* Mockup 3: PR-Ready Remediation Diffs */}
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#3B82F6', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <CheckCircleIcon size={14} color="#3B82F6" /> ARTIFACT 03
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#38BDF8', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircleIcon size={14} color="#38BDF8" /> ARTIFACT 03
             </span>
-            <span style={{ fontSize: '11px', background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 8px', borderRadius: '4px', fontWeight: 700 }}>
+            <span style={{ fontSize: '11px', background: '#0F172A', border: '1px solid rgba(255, 255, 255, 0.18)', color: '#F8FAFC', padding: '4px 10px', borderRadius: '6px', fontWeight: 800, letterSpacing: '0.06em' }}>
               PR DIFF PATCH
             </span>
           </div>
@@ -127,9 +127,12 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
 
       {/* CTA Line */}
       <div style={{ textAlign: 'center' }}>
-        <Link href={`/${lang || 'en'}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-          <TargetIcon size={16} /> {isAr ? 'احجز تدقيق الأمان المباشر ($7,500 - $12,500)' : 'Book a 1-Week Security Audit ($7,500 – $12,500)'}
+        <Link href={`/${lang || 'en'}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', fontSize: '15px' }}>
+          <TargetIcon size={16} /> {isAr ? 'جدولة تدقيق الأمان' : 'Schedule Security Audit'}
         </Link>
+        <div style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '8px' }}>
+          {isAr ? 'حزمة استشارية ثابتة لمدة أسبوع واحد: $7,500 – $12,500' : '$7,500 – $12,500 fixed 1-week engagement'}
+        </div>
       </div>
     </div>
   );

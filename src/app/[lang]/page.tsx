@@ -25,7 +25,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
         <section className="hero" style={{ paddingBottom: '60px' }}>
           <div className="wrap">
             <span className="pill reveal"><span className="dot"></span>{dict.hero.badge}</span>
-            <h1 className="reveal">{dict.hero.title1}<br /><span style={{ color: '#F8FAFC', fontWeight: 800 }}>{dict.hero.title2}</span></h1>
+            <h1 className="reveal">{dict.hero.title1}<br /><span style={{ color: 'var(--txt)', fontWeight: 800 }}>{dict.hero.title2}</span></h1>
             <p className="sub reveal" style={{ maxWidth: '780px', margin: '16px auto 28px auto' }}>{dict.hero.subtitle}</p>
 
             {/* Executive CTAs - Clean Single Row */}
@@ -49,11 +49,11 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                 marginBottom: '16px',
               }}>
                 <div style={{
-                  background: '#0F172A',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  background: 'var(--panel)',
+                  border: '1px solid var(--line-strong)',
                   padding: '6px 14px',
                   borderRadius: '8px',
-                  color: '#94A3B8',
+                  color: 'var(--txt)',
                   fontSize: '11px',
                   fontWeight: 800,
                   letterSpacing: '0.05em',
@@ -64,11 +64,11 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   🛡️ SOC 2 TYPE II CC6/CC7/CC8 MAPPED
                 </div>
                 <div style={{
-                  background: '#0F172A',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  background: 'var(--panel)',
+                  border: '1px solid var(--line-strong)',
                   padding: '6px 14px',
                   borderRadius: '8px',
-                  color: '#94A3B8',
+                  color: 'var(--txt)',
                   fontSize: '11px',
                   fontWeight: 800,
                   letterSpacing: '0.05em',
@@ -79,11 +79,11 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   ⚖️ EU AI ACT ARTICLE 15 COMPLIANT
                 </div>
                 <div style={{
-                  background: '#0F172A',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  background: 'var(--panel)',
+                  border: '1px solid var(--line-strong)',
                   padding: '6px 14px',
                   borderRadius: '8px',
-                  color: '#94A3B8',
+                  color: 'var(--txt)',
                   fontSize: '11px',
                   fontWeight: 800,
                   letterSpacing: '0.05em',
