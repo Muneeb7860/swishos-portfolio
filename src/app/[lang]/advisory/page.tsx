@@ -12,34 +12,34 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
   const isRtl = lang === 'ar';
 
   return (
-    <main style={{ background: '#0B0F17', color: '#F8FAFC', minHeight: '100vh', padding: '40px 24px' }}>
+    <main style={{ background: 'var(--bg)', color: 'var(--txt)', minHeight: '100vh', padding: '40px 24px' }}>
       <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
 
         {/* HERO */}
-        <section style={{ textAlign: 'center', padding: '40px 0 60px' }}>
+        <section style={{ textAlign: 'center', padding: '40px 0 48px' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'rgba(56, 189, 248, 0.1)',
-            border: '1px solid rgba(56, 189, 248, 0.3)',
+            background: 'rgba(56, 189, 248, 0.12)',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
             color: '#38BDF8',
             fontSize: '12px',
             fontWeight: 800,
             padding: '6px 16px',
-            borderRadius: '999px',
+            borderRadius: '6px',
             letterSpacing: '0.06em',
             marginBottom: '20px',
           }}>
             <Shield size={14} />
             ENTERPRISE AI SECURITY ADVISORY & AUDIT
           </div>
-          <h1 style={{ fontSize: '42px', fontWeight: 800, lineHeight: 1.15, marginBottom: '16px', letterSpacing: '-0.03em', color: '#F8FAFC' }}>
+          <h1 style={{ fontSize: '42px', fontWeight: 800, lineHeight: 1.15, marginBottom: '16px', letterSpacing: '-0.03em', color: 'var(--txt)' }}>
             {isRtl ? 'تدقيق وأمن وكلاء الذكاء الاصطناعي المؤسسي' : '1-Week AI Agent Threat Model & Compliance Audit'}
           </h1>
-          <p style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '820px', margin: '0 auto 32px', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '18px', color: 'var(--muted)', maxWidth: '820px', margin: '0 auto 32px', lineHeight: 1.6 }}>
             {isRtl
-              ? 'مراجعة أمنية شاملة للنماذج واختبار الاختراق التكتيكي بواسطة مهندسين سابقين في كبرى شركات التقنية.'
+              ? 'مراجعة أمنية شاملة للنماذج وااختبار الاختراق التكتيكي بواسطة مهندسين سابقين في كبرى شركات التقنية.'
               : 'Deterministic threat modeling, adversarial red-teaming, and SOC 2 / EU AI Act compliance verification conducted by senior AI security architects.'}
           </p>
 
@@ -48,56 +48,103 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
               href={`/${lang}/contact?plan=audit`}
               style={{
                 padding: '14px 28px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #2563EB, #0891B2)',
+                borderRadius: '10px',
+                background: '#2563EB',
                 color: '#FFFFFF',
-                fontSize: '14px',
+                fontSize: '15px',
                 fontWeight: 700,
                 textDecoration: 'none',
-                boxShadow: '0 6px 24px rgba(37, 99, 235, 0.35)',
+                boxShadow: '0 4px 16px rgba(37, 99, 235, 0.25)',
               }}
             >
-              {isRtl ? 'احجز تدقيقاً أمنياً ($7,500 – $12,500)' : 'Schedule Security Audit ($7,500 – $12,500)'}
+              {isRtl ? 'جدولة تدقيق أمان للمؤسسات' : 'Schedule Security Audit'}
             </Link>
           </div>
         </section>
 
-        {/* ENGAGEMENT TIERS */}
+        {/* 1. HIERARCHY FLIP: VERIFIABLE COMPLIANCE & TRUST FRAMEWORK FIRST */}
+        <section style={{
+          background: 'var(--panel)',
+          border: '1px solid var(--line-strong)',
+          borderRadius: '16px',
+          padding: '36px',
+          marginBottom: '52px',
+          boxShadow: 'var(--card-shadow)',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <Award color="#38BDF8" size={24} />
+            <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--txt)', margin: 0 }}>
+              {isRtl ? 'إطار الامتثال والثقة القابل للتحقق' : 'Verifiable Compliance & Trust Framework'}
+            </h2>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '28px', maxWidth: '840px', lineHeight: 1.6 }}>
+            SwishOS advisory deliverables map directly to Trust Services Criteria (TSC) and international AI safety regulations before any engagement begins.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '16px' }}>
+            {[
+              { code: 'SOC 2 CC6.1', name: 'Logical Access Controls', desc: 'Deterministic mTLS agent identity & session token validation to prevent inter-agent spoofing.' },
+              { code: 'SOC 2 CC6.8', name: 'Software Threat Defense', desc: 'AST static analysis & sliding-window prompt injection red-teaming against OWASP LLM Top 10.' },
+              { code: 'SOC 2 CC7.1', name: 'Vulnerability Management', desc: 'Automated SARIF v2.1.0 report generation with CVSS v3.1 impact vector scoring.' },
+              { code: 'EU AI Act Art 15', name: 'Robustness & Accuracy', desc: 'Technical robustness, error logging, and fail-closed runtime enclave boundary verification.' },
+            ].map(ctrl => (
+              <div key={ctrl.code} style={{ background: 'var(--bg-soft)', padding: '20px', borderRadius: '12px', border: '1px solid var(--line)' }}>
+                <div style={{ fontSize: '11px', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '4px' }}>{ctrl.code}</div>
+                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--txt)', marginBottom: '8px' }}>{ctrl.name}</div>
+                <div style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.5 }}>{ctrl.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 2. ENGAGEMENT TIERS (MUTED 1PX SLATE BORDERS & BALANCED TYPOGRAPHY) */}
         <section style={{ marginBottom: '60px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <h2 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>
+              {isRtl ? 'نماذج التعاقد المباشر' : 'Advisory Engagement Scopes'}
+            </h2>
+            <p style={{ color: 'var(--muted)', fontSize: '15px' }}>
+              Select a fixed 1-week threat audit or continuous guardrail retainer.
+            </p>
+          </div>
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
 
-            {/* Fixed Audit Tier */}
+            {/* Fixed Audit Tier - Muted Slate Border */}
             <div style={{
-              background: '#0F172A',
-              border: '2px solid #3B82F6',
-              borderRadius: '20px',
+              background: 'var(--panel)',
+              border: '1px solid var(--line-strong)',
+              borderRadius: '16px',
               padding: '36px',
-              boxShadow: '0 0 30px rgba(59, 130, 246, 0.2)',
+              boxShadow: 'var(--card-shadow)',
               position: 'relative',
             }}>
               <div style={{
                 position: 'absolute',
-                top: '-14px',
+                top: '-12px',
                 right: '24px',
-                background: '#2563EB',
-                color: '#FFF',
+                background: 'rgba(56, 189, 248, 0.15)',
+                border: '1px solid rgba(56, 189, 248, 0.35)',
+                color: '#38BDF8',
                 fontSize: '11px',
                 fontWeight: 800,
-                padding: '4px 14px',
-                borderRadius: '999px',
+                padding: '4px 12px',
+                borderRadius: '6px',
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
               }}>
-                MOST POPULAR
+                FIXED SCOPE ENGAGEMENT
               </div>
-              <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#F8FAFC', marginBottom: '8px' }}>1-Week AI Threat Model Audit</h3>
-              <p style={{ color: '#94A3B8', fontSize: '14px', marginBottom: '24px' }}>Deep-dive adversarial evaluation of tool calling, prompt injection resilience, and spend boundaries.</p>
-              <div style={{ fontSize: '36px', fontWeight: 800, color: '#F8FAFC', marginBottom: '4px' }}>$7,500 – $12,500</div>
-              <div style={{ fontSize: '13px', color: '#38BDF8', fontWeight: 700, marginBottom: '24px' }}>Fixed-Scope Deliverable · 5-Day SLA</div>
+              <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>1-Week AI Threat Model Audit</h3>
+              <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>Deep-dive adversarial evaluation of tool calling, prompt injection resilience, and spend boundaries.</p>
+              
+              <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--muted)', marginBottom: '24px' }}>
+                $7,500 – $12,500 <span style={{ fontSize: '13px', fontWeight: 500 }}>(Fixed 1-Week Engagement)</span>
+              </div>
 
-              <hr style={{ borderColor: 'rgba(255, 255, 255, 0.1)', marginBottom: '24px' }} />
+              <hr style={{ borderColor: 'var(--line)', marginBottom: '24px' }} />
 
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: '#CBD5E1' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: 'var(--txt)' }}>
                 {[
                   'Full AST Taint & Prompt Injection Penetration Audit',
                   'OASIS SARIF v2.1.0 Machine-Readable Findings Export',
@@ -118,33 +165,36 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                   display: 'block',
                   textAlign: 'center',
                   padding: '14px 20px',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #2563EB, #0891B2)',
+                  borderRadius: '10px',
+                  background: '#2563EB',
                   color: '#FFF',
                   fontWeight: 700,
                   fontSize: '14px',
                   textDecoration: 'none',
                 }}
               >
-                Book 1-Week Audit →
+                Schedule Security Audit →
               </Link>
             </div>
 
             {/* Monthly Retainer Tier */}
             <div style={{
-              background: '#0F172A',
-              border: '1px solid rgba(255, 255, 255, 0.18)',
-              borderRadius: '20px',
+              background: 'var(--panel)',
+              border: '1px solid var(--line-strong)',
+              borderRadius: '16px',
               padding: '36px',
+              boxShadow: 'var(--card-shadow)',
             }}>
-              <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#F8FAFC', marginBottom: '8px' }}>Guardrail & Red-Team Retainer</h3>
-              <p style={{ color: '#94A3B8', fontSize: '14px', marginBottom: '24px' }}>Continuous attack simulation, custom AST policy tuning, and active incident support.</p>
-              <div style={{ fontSize: '36px', fontWeight: 800, color: '#F8FAFC', marginBottom: '4px' }}>$4,500 <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 500 }}>/ month</span></div>
-              <div style={{ fontSize: '13px', color: '#38BDF8', fontWeight: 700, marginBottom: '24px' }}>Continuous Advisory · P1 Critical SLA</div>
+              <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>Guardrail & Red-Team Retainer</h3>
+              <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>Continuous attack simulation, custom AST policy tuning, and active incident support.</p>
 
-              <hr style={{ borderColor: 'rgba(255, 255, 255, 0.1)', marginBottom: '24px' }} />
+              <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--muted)', marginBottom: '24px' }}>
+                $4,500 <span style={{ fontSize: '14px', fontWeight: 500 }}>/ month</span> <span style={{ fontSize: '13px', fontWeight: 500 }}>(Continuous Advisory)</span>
+              </div>
 
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: '#CBD5E1' }}>
+              <hr style={{ borderColor: 'var(--line)', marginBottom: '24px' }} />
+
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: 'var(--txt)' }}>
                 {[
                   'Continuous Automated Attack Payload Sweeps',
                   'Dedicated Slack Connect Channel with Security Team',
@@ -165,10 +215,10 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                   display: 'block',
                   textAlign: 'center',
                   padding: '14px 20px',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  background: '#1E293B',
-                  color: '#FFF',
+                  borderRadius: '10px',
+                  border: '1px solid var(--line-strong)',
+                  background: 'var(--bg-soft)',
+                  color: 'var(--txt)',
                   fontWeight: 700,
                   fontSize: '14px',
                   textDecoration: 'none',
@@ -181,44 +231,11 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
           </div>
         </section>
 
-        {/* SOC 2 & EU AI ACT COMPLIANCE MATRIX */}
-        <section style={{
-          background: '#0F172A',
-          border: '1px solid rgba(255, 255, 255, 0.18)',
-          borderRadius: '20px',
-          padding: '36px',
-          marginBottom: '60px',
-          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.35)',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-            <Award color="#38BDF8" size={24} />
-            <h2 style={{ fontSize: '24px', fontWeight: 800, color: '#F8FAFC', margin: 0 }}>Verifiable Compliance & Trust Framework</h2>
-          </div>
-          <p style={{ color: '#94A3B8', fontSize: '14px', marginBottom: '28px', maxWidth: '780px' }}>
-            SwishOS advisory deliverables map directly to Trust Services Criteria (TSC) and international AI safety regulations.
-          </p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
-            {[
-              { code: 'SOC 2 CC6.1', name: 'Logical Access Controls', desc: 'Deterministic mTLS agent identity & session token validation to prevent inter-agent spoofing.' },
-              { code: 'SOC 2 CC6.8', name: 'Software Threat Defense', desc: 'AST static analysis & sliding-window prompt injection red-teaming against OWASP LLM Top 10.' },
-              { code: 'SOC 2 CC7.1', name: 'Vulnerability Management', desc: 'Automated SARIF v2.1.0 report generation with CVSS v3.1 impact vector scoring.' },
-              { code: 'EU AI Act Art 15', name: 'Robustness & Accuracy', desc: 'Technical robustness, error logging, and fail-closed runtime enclave boundary verification.' },
-            ].map(ctrl => (
-              <div key={ctrl.code} style={{ background: '#1E293B', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                <div style={{ fontSize: '11px', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '4px' }}>{ctrl.code}</div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: '#F8FAFC', marginBottom: '8px' }}>{ctrl.name}</div>
-                <div style={{ fontSize: '12px', color: '#94A3B8', lineHeight: 1.5 }}>{ctrl.desc}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* DELIVERABLES SAMPLE PREVIEW */}
+        {/* 3. DELIVERABLES SAMPLE PREVIEW */}
         <section style={{ marginBottom: '60px' }}>
           <div style={{ marginBottom: '24px', textAlign: 'center' }}>
-            <h2 style={{ fontSize: '24px', fontWeight: 800, color: '#F8FAFC', marginBottom: '8px' }}>Sample Executive Deliverables</h2>
-            <p style={{ color: '#94A3B8', fontSize: '14px' }}>Inspect sample SARIF v2.1.0 audit reports and vulnerability matrices generated by SwishOS.</p>
+            <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>Sample Executive Deliverables</h2>
+            <p style={{ color: 'var(--muted)', fontSize: '14px' }}>Inspect sample SARIF v2.1.0 audit reports and vulnerability matrices generated by SwishOS.</p>
           </div>
           <AuditSampleDeliverable lang={lang} />
         </section>
