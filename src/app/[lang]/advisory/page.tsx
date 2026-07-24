@@ -21,9 +21,9 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'rgba(56, 189, 248, 0.12)',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
-            color: '#38BDF8',
+            background: 'var(--panel)',
+            border: '1px solid var(--line-strong)',
+            color: 'var(--txt)',
             fontSize: '12px',
             fontWeight: 800,
             padding: '6px 16px',
@@ -31,7 +31,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
             letterSpacing: '0.06em',
             marginBottom: '20px',
           }}>
-            <Shield size={14} />
+            <Shield size={14} color="#38BDF8" />
             ENTERPRISE AI SECURITY ADVISORY & AUDIT
           </div>
           <h1 style={{ fontSize: '42px', fontWeight: 800, lineHeight: 1.15, marginBottom: '16px', letterSpacing: '-0.03em', color: 'var(--txt)' }}>
@@ -39,7 +39,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--muted)', maxWidth: '820px', margin: '0 auto 32px', lineHeight: 1.6 }}>
             {isRtl
-              ? 'مراجعة أمنية شاملة للنماذج وااختبار الاختراق التكتيكي بواسطة مهندسين سابقين في كبرى شركات التقنية.'
+              ? 'مراجعة أمنية شاملة للنماذج واختبار الاختراق التكتيكي بواسطة مهندسين سابقين في كبرى شركات التقنية.'
               : 'Deterministic threat modeling, adversarial red-teaming, and SOC 2 / EU AI Act compliance verification conducted by senior AI security architects.'}
           </p>
 
@@ -62,22 +62,15 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
           </div>
         </section>
 
-        {/* 1. HIERARCHY FLIP: VERIFIABLE COMPLIANCE & TRUST FRAMEWORK FIRST */}
-        <section style={{
-          background: 'var(--panel)',
-          border: '1px solid var(--line-strong)',
-          borderRadius: '16px',
-          padding: '36px',
-          marginBottom: '52px',
-          boxShadow: 'var(--card-shadow)',
-        }}>
+        {/* 1. HIERARCHY FLIP & FLATTENED CARD INCEPTION (NO NESTED BOXES) */}
+        <section style={{ marginBottom: '56px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
             <Award color="#38BDF8" size={24} />
             <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--txt)', margin: 0 }}>
               {isRtl ? 'إطار الامتثال والثقة القابل للتحقق' : 'Verifiable Compliance & Trust Framework'}
             </h2>
           </div>
-          <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '28px', maxWidth: '840px', lineHeight: 1.6 }}>
+          <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '24px', maxWidth: '840px', lineHeight: 1.6 }}>
             SwishOS advisory deliverables map directly to Trust Services Criteria (TSC) and international AI safety regulations before any engagement begins.
           </p>
 
@@ -88,16 +81,16 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
               { code: 'SOC 2 CC7.1', name: 'Vulnerability Management', desc: 'Automated SARIF v2.1.0 report generation with CVSS v3.1 impact vector scoring.' },
               { code: 'EU AI Act Art 15', name: 'Robustness & Accuracy', desc: 'Technical robustness, error logging, and fail-closed runtime enclave boundary verification.' },
             ].map(ctrl => (
-              <div key={ctrl.code} style={{ background: 'var(--bg-soft)', padding: '20px', borderRadius: '12px', border: '1px solid var(--line)' }}>
-                <div style={{ fontSize: '11px', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '4px' }}>{ctrl.code}</div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--txt)', marginBottom: '8px' }}>{ctrl.name}</div>
-                <div style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.5 }}>{ctrl.desc}</div>
+              <div key={ctrl.code} style={{ background: 'var(--panel)', padding: '22px', borderRadius: '12px', border: '1px solid var(--line-strong)', boxShadow: 'var(--card-shadow)' }}>
+                <div style={{ fontSize: '11px', fontWeight: 800, color: 'var(--txt)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px', display: 'inline-block', background: 'var(--bg-soft)', padding: '3px 8px', borderRadius: '4px', border: '1px solid var(--line)' }}>{ctrl.code}</div>
+                <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--txt)', marginBottom: '8px' }}>{ctrl.name}</div>
+                <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>{ctrl.desc}</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* 2. ENGAGEMENT TIERS (MUTED 1PX SLATE BORDERS & BALANCED TYPOGRAPHY) */}
+        {/* 2. ENGAGEMENT TIERS (INLINE DYNAMIC BADGES - ZERO ABSOLUTE OVERFLOW CLIPPING) */}
         <section style={{ marginBottom: '60px' }}>
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
             <h2 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>
@@ -110,36 +103,38 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
 
-            {/* Fixed Audit Tier - Muted Slate Border */}
+            {/* Fixed Audit Tier - Clean Inline Badge Flow */}
             <div style={{
               background: 'var(--panel)',
               border: '1px solid var(--line-strong)',
               borderRadius: '16px',
               padding: '36px',
               boxShadow: 'var(--card-shadow)',
-              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
             }}>
-              <div style={{
-                position: 'absolute',
-                top: '-12px',
-                right: '24px',
-                background: 'rgba(56, 189, 248, 0.15)',
-                border: '1px solid rgba(56, 189, 248, 0.35)',
-                color: '#38BDF8',
-                fontSize: '11px',
-                fontWeight: 800,
-                padding: '4px 12px',
-                borderRadius: '6px',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-              }}>
-                FIXED SCOPE ENGAGEMENT
-              </div>
-              <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>1-Week AI Threat Model Audit</h3>
-              <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>Deep-dive adversarial evaluation of tool calling, prompt injection resilience, and spend boundaries.</p>
-              
-              <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--muted)', marginBottom: '24px' }}>
-                $7,500 – $12,500 <span style={{ fontSize: '13px', fontWeight: 500 }}>(Fixed 1-Week Engagement)</span>
+              <div>
+                <span style={{
+                  display: 'inline-block',
+                  background: 'var(--bg-soft)',
+                  border: '1px solid var(--line-strong)',
+                  color: 'var(--txt)',
+                  fontSize: '11px',
+                  fontWeight: 800,
+                  padding: '4px 12px',
+                  borderRadius: '6px',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  marginBottom: '14px',
+                }}>
+                  FIXED SCOPE ENGAGEMENT
+                </span>
+                <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>1-Week AI Threat Model Audit</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>Deep-dive adversarial evaluation of tool calling, prompt injection resilience, and spend boundaries.</p>
+                
+                <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--muted)', marginBottom: '24px' }}>
+                  $7,500 – $12,500 <span style={{ fontSize: '13px', fontWeight: 500 }}>(Fixed 1-Week Engagement)</span>
+                </div>
               </div>
 
               <hr style={{ borderColor: 'var(--line)', marginBottom: '24px' }} />
@@ -171,6 +166,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                   fontWeight: 700,
                   fontSize: '14px',
                   textDecoration: 'none',
+                  marginTop: 'auto',
                 }}
               >
                 Schedule Security Audit →
@@ -184,12 +180,31 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
               borderRadius: '16px',
               padding: '36px',
               boxShadow: 'var(--card-shadow)',
+              display: 'flex',
+              flexDirection: 'column',
             }}>
-              <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>Guardrail & Red-Team Retainer</h3>
-              <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>Continuous attack simulation, custom AST policy tuning, and active incident support.</p>
+              <div>
+                <span style={{
+                  display: 'inline-block',
+                  background: 'var(--bg-soft)',
+                  border: '1px solid var(--line-strong)',
+                  color: 'var(--txt)',
+                  fontSize: '11px',
+                  fontWeight: 800,
+                  padding: '4px 12px',
+                  borderRadius: '6px',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  marginBottom: '14px',
+                }}>
+                  CONTINUOUS ADVISORY
+                </span>
+                <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>Guardrail & Red-Team Retainer</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>Continuous attack simulation, custom AST policy tuning, and active incident support.</p>
 
-              <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--muted)', marginBottom: '24px' }}>
-                $4,500 <span style={{ fontSize: '14px', fontWeight: 500 }}>/ month</span> <span style={{ fontSize: '13px', fontWeight: 500 }}>(Continuous Advisory)</span>
+                <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--muted)', marginBottom: '24px' }}>
+                  $4,500 <span style={{ fontSize: '14px', fontWeight: 500 }}>/ month</span> <span style={{ fontSize: '13px', fontWeight: 500 }}>(Continuous Advisory)</span>
+                </div>
               </div>
 
               <hr style={{ borderColor: 'var(--line)', marginBottom: '24px' }} />
@@ -222,6 +237,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                   fontWeight: 700,
                   fontSize: '14px',
                   textDecoration: 'none',
+                  marginTop: 'auto',
                 }}
               >
                 Inquire About Retainer →
