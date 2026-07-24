@@ -290,12 +290,12 @@ export default function SupportClient({ lang }: { lang: string }) {
             {/* Direct Contacts */}
             <div className="contacts-panel" style={{ marginTop: '24px' }}>
               <h4>Direct Incident & Escalation Channels</h4>
-              <a href="mailto:security@swishos.dev" className="contact-item">
+              <a href="mailto:security@swishos.io" className="contact-item">
                 <div className="contact-item-left">
                   <span className="contact-item-icon">📧</span>
                   <div>
                     <div className="contact-item-name">Security Escalation Email</div>
-                    <div className="contact-item-sub">security@swishos.dev</div>
+                    <div className="contact-item-sub">security@swishos.io</div>
                   </div>
                 </div>
                 <span className="contact-arrow">→</span>

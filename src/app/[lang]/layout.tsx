@@ -122,24 +122,23 @@ export default async function RootLayout(props: {
                 {/* Navigation */}
                 <div>
                   <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-2)', marginBottom: '16px' }}>
-                    {dict.footer?.navTitle || 'Navigation'}
+                    {dict.footer?.navTitle || 'Platform & Solutions'}
                   </div>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <Link href={`/${lang}`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.home}</Link>
-                    <Link href={`/${lang}/features`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.features}</Link>
-                    <Link href={`/${lang}/pricing`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.pricing}</Link>
-                    <Link href={`/${lang}/vision`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.vision}</Link>
+                    <Link href={`/${lang}/advisory`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.advisory}</Link>
+                    <Link href={`/${lang}/developers`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.developers}</Link>
+                    <Link href={`/${lang}/support`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.support}</Link>
                   </nav>
                 </div>
-                {/* Support */}
+                {/* Support & Contact */}
                 <div>
                   <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-2)', marginBottom: '16px' }}>
-                    {dict.footer?.supportTitle || 'Support'}
+                    {dict.footer?.supportTitle || 'Engagement & Audit'}
                   </div>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <Link href={`/${lang}/support`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.support}</Link>
+                    <Link href={`/${lang}/contact?plan=audit`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>Schedule Security Audit</Link>
                     <Link href={`/${lang}/contact`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.contact}</Link>
-                    <a href="mailto:hello@swishos.io" style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>hello@swishos.io</a>
+                    <a href="mailto:security@swishos.io" style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>security@swishos.io</a>
                   </nav>
                 </div>
               </div>
