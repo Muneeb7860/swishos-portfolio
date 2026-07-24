@@ -7,11 +7,11 @@ import { ChatwootWidget } from './ChatwootWidget';
 export function ConditionalChatwoot({ lang = 'en' }: { lang?: string }) {
   const pathname = usePathname();
 
-  // Route Check: Suppress B2C chat widget on all commercial, developer, advisory, pricing, and high-ticket audit routes.
-  // Enterprise CISOs and VPs of Engineering do not buy $12.5k audits or red-team retainers through a chat bubble widget.
+  // Suppress chat widget on all commercial, advisory, developer, support, and pricing routes.
   const isExcludedRoute =
     pathname?.includes('/advisory') ||
     pathname?.includes('/developers') ||
+    pathname?.includes('/support') ||
     pathname?.includes('/pricing') ||
     pathname?.includes('/contact') ||
     pathname?.includes('/roi') ||

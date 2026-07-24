@@ -22,6 +22,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
   const isExcludedRoute =
     pathname?.includes('/advisory') ||
     pathname?.includes('/developers') ||
+    pathname?.includes('/support') ||
     pathname?.includes('/pricing') ||
     pathname?.includes('/contact') ||
     pathname?.includes('/roi') ||
