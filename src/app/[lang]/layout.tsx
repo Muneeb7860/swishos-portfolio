@@ -90,6 +90,7 @@ export default async function RootLayout(props: {
               </nav>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <LanguageSwitcher currentLang={lang} />
+                <ThemeToggle />
                 <HeaderNavCta lang={lang} defaultLabel={dict.nav.contact} />
                 <MobileMenu
                   links={[
