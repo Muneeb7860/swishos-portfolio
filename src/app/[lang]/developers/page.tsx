@@ -83,8 +83,8 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
                 <div style={{ fontSize: '11px', fontWeight: 800, color: 'var(--badge-txt)', letterSpacing: '0.05em', marginBottom: '6px' }}>1. INSTALLATION (PyPI)</div>
                 <CodeBlockTerminal
                   language="bash"
-                  filename="PyPI Release v1.0.0"
-                  code="$ pip install agentic-redteam==1.0.0"
+                  filename="PyPI Release (publishing soon)"
+                  code="$ pip install agentic-redteam  # publishing soon"
                 />
               </div>
 

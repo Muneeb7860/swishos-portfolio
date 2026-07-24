@@ -90,7 +90,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               <TargetIcon size={16} /> {isAr ? 'جدولة تدقيق أمان للمؤسسات' : 'Schedule Security Audit'}
             </Link>
             <Link
-              href={`/${lang}/advisory`}
+              href={`/${lang}/developers`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -105,7 +105,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                 textDecoration: 'none',
               }}
             >
-              {isAr ? 'استكشاف خدمات الاستشارات' : 'Explore Enterprise Advisory →'}
+              {isAr ? 'استكشاف حزمة المطورين' : 'Explore Developer SDK →'}
             </Link>
           </div>
 
@@ -120,9 +120,9 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               marginBottom: '20px',
             }}>
               {[
-                '🛡️ SOC 2 TYPE II CC6/CC7/CC8 MAPPED',
-                '⚖️ EU AI ACT ARTICLE 15 COMPLIANT',
-                '📄 OASIS SARIF V2.1.0 READY',
+                '🛡️ OWASP LLM & AGENTIC TOP 10 MAPPED',
+                '🔒 FAIL-CLOSED RUNTIME GUARDRAILS',
+                '⚡ OPEN-SOURCE RED-TEAM CORE',
               ].map(seal => (
                 <div key={seal} style={{
                   background: '#0F172A',
@@ -188,7 +188,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {/* Dark IDE Code Container */}
               <div style={{ background: '#0B0F17', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <code>$ pip install agentic-redteam</code>
-                <span style={{ fontSize: '11px', color: '#38BDF8', fontWeight: 700 }}>v1.0.0</span>
+                <span style={{ fontSize: '11px', color: '#38BDF8', fontWeight: 700 }}>coming soon</span>
               </div>
 
               {/* Key Bullets */}

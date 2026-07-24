@@ -84,8 +84,11 @@ export default async function RootLayout(props: {
                 <BrandLogo />
               </Link>
               <nav className="nav-links" aria-label={lang === 'ar' ? 'التنقل الرئيسي' : 'Main Navigation'}>
-                <Link href={`/${lang}/advisory`}>{dict.nav.advisory}</Link>
                 <Link href={`/${lang}/developers`}>{dict.nav.developers}</Link>
+                <Link href={`/${lang}/playground`}>{dict.nav.playground}</Link>
+                <Link href={`/${lang}/trust-graph`}>{dict.nav.trustGraph}</Link>
+                <Link href={`/${lang}/leaderboard`}>{dict.nav.leaderboard}</Link>
+                <Link href={`/${lang}/advisory`}>{dict.nav.advisory}</Link>
                 <Link href={`/${lang}/support`}>{dict.nav.support}</Link>
               </nav>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -94,8 +97,11 @@ export default async function RootLayout(props: {
                 <HeaderNavCta lang={lang} defaultLabel={dict.nav.contact} />
                 <MobileMenu
                   links={[
-                    { href: `/${lang}/advisory`, label: dict.nav.advisory },
                     { href: `/${lang}/developers`, label: dict.nav.developers },
+                    { href: `/${lang}/playground`, label: dict.nav.playground },
+                    { href: `/${lang}/trust-graph`, label: dict.nav.trustGraph },
+                    { href: `/${lang}/leaderboard`, label: dict.nav.leaderboard },
+                    { href: `/${lang}/advisory`, label: dict.nav.advisory },
                     { href: `/${lang}/support`, label: dict.nav.support },
                   ]}
                   cta={{ primaryHref: `/${lang}/contact?plan=audit`, primaryLabel: dict.nav.contact }}
@@ -119,32 +125,34 @@ export default async function RootLayout(props: {
                     {dict.footer?.tagline || 'AI Agent Security & Governance. Red-teaming, guardrails, and continuous evals.'}
                   </p>
                 </div>
-                {/* Navigation */}
+                {/* Platform & Developer Tools */}
                 <div>
                   <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-2)', marginBottom: '16px' }}>
-                    {dict.footer?.navTitle || 'Platform & Solutions'}
+                    {dict.footer?.platformTitle || 'Platform & Developer Tools'}
+                  </div>
+                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <Link href={`/${lang}/developers`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.developers}</Link>
+                    <Link href={`/${lang}/playground`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.playground}</Link>
+                    <Link href={`/${lang}/trust-graph`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.trustGraph}</Link>
+                    <Link href={`/${lang}/leaderboard`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.leaderboard}</Link>
+                  </nav>
+                </div>
+                {/* Enterprise & Advisory */}
+                <div>
+                  <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-2)', marginBottom: '16px' }}>
+                    {dict.footer?.enterpriseTitle || 'Enterprise & Advisory'}
                   </div>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <Link href={`/${lang}/advisory`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.advisory}</Link>
-                    <Link href={`/${lang}/developers`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.developers}</Link>
                     <Link href={`/${lang}/support`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.support}</Link>
-                  </nav>
-                </div>
-                {/* Support & Contact */}
-                <div>
-                  <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-2)', marginBottom: '16px' }}>
-                    {dict.footer?.supportTitle || 'Engagement & Audit'}
-                  </div>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <Link href={`/${lang}/contact?plan=audit`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>Schedule Security Audit</Link>
-                    <Link href={`/${lang}/contact`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.contact}</Link>
+                    <Link href={`/${lang}/contact?plan=audit`} style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>{dict.nav.contact}</Link>
                     <a href="mailto:security@swishos.io" style={{ fontSize: '14px', color: 'var(--muted)', transition: 'color 0.2s' }}>security@swishos.io</a>
                   </nav>
                 </div>
               </div>
               <div style={{ borderTop: '1px solid var(--line)', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
                 <p style={{ fontSize: '13px', color: 'var(--muted-2)' }}>{dict.footer?.rights || '© 2026 SwishOS. All rights reserved.'}</p>
-                <p style={{ fontSize: '13px', color: 'var(--muted-2)' }}>{dict.footer?.builtBy || 'Built by an architect who shipped LLM guardrails at national scale.'}</p>
+                <p style={{ fontSize: '13px', color: 'var(--muted-2)' }}>{dict.footer?.builtBy || 'Built by SwishOS — systems-security discipline for AI agents that take real-world actions.'}</p>
               </div>
             </div>
           </footer>

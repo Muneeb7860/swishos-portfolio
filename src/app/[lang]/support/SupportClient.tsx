@@ -122,7 +122,7 @@ export default function SupportClient({ lang }: { lang: string }) {
             <span style={{ fontSize: '24px' }}>🛡️</span>
             <div>
               <div style={{ fontSize: '13px', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Enterprise Incident & Support Operations</div>
-              <div style={{ fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>Shipped zero-trust guardrails & threat monitoring for 5.6M+ active AI agent user sessions</div>
+              <div style={{ fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>Zero-trust guardrails and threat monitoring for AI agents that take real-world actions</div>
             </div>
           </div>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -149,8 +149,8 @@ export default function SupportClient({ lang }: { lang: string }) {
                   onClick={() => setCategory(cat)}
                   className={`sel-btn ${category === cat ? (cat === 'security_incident' ? 'active-red' : 'active-blue') : ''}`}
                 >
-                  <span>{categoryIcons[cat]}</span>
-                  <span>{t.categories[cat]}</span>
+                  <span style={{ fontSize: '18px', flexShrink: 0 }}>{categoryIcons[cat]}</span>
+                  <span style={{ flex: 1 }}>{t.categories[cat]}</span>
                 </button>
               ))}
             </div>

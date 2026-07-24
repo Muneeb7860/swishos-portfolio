@@ -5,7 +5,7 @@
     "developers": "Developer SDK",
     "features": "Approach",
     "pricing": "Engagements",
-    "playground": "Playground",
+    "playground": "Live Playground",
     "trustGraph": "Trust Graph",
     "leaderboard": "Leaderboard",
     "roi": "ROI Calculator",
@@ -19,18 +19,20 @@
     "tagline": "AI Agent Security & Governance. Red-teaming, guardrails, and continuous evals.",
     "navTitle": "Navigation",
     "supportTitle": "Support",
+    "platformTitle": "Platform & Developer Tools",
+    "enterpriseTitle": "Enterprise & Advisory",
     "rights": "© 2026 SwishOS. All rights reserved.",
-    "builtBy": "Developed by SwishOS Security Research Team — senior architects with proven experience deploying LLM guardrails for 5.6M-user national healthcare & financial platforms."
+    "builtBy": "Built by SwishOS — applying proven systems-security discipline (least privilege, authorization boundaries, and audit trails) to AI agents that take real-world actions."
   },
   "meta": {
     "title": "SwishOS | AI Agent Security & Governance",
     "description": "SwishOS secures AI agents that take real-world actions — spending money, calling tools, and touching data. Red-teaming, guardrails, and continuous evals."
   },
   "hero": {
-    "badge": "ENTERPRISE AI AGENT SECURITY PLATFORM",
+    "badge": "RUNTIME GUARDRAILS & RED-TEAMING FOR AI AGENTS",
     "title1": "Ship AI agents that act —",
     "title2": "without the blast radius.",
-    "subtitle": "SwishOS red-teams and guardrails autonomous AI agents — blocking prompt injections, unauthorized tool calls, and spend cap overflows. Engineered by senior AI security architects behind 5.6M-user national infrastructure platforms.",
+    "subtitle": "Stop your AI agents from executing unauthorized SQL, leaking sensitive customer PII, or draining your LLM API credits. Proactive red-teaming and runtime guardrails for autonomous AI agents.",
     "ctaPrimary": "Book an Agent Security Audit",
     "ctaSecondary": "Try Live Playground"
   },
@@ -59,7 +61,7 @@
     "infrastructure": {
       "eyebrow": "Enterprise Provenance",
       "title": "Security Architecture & Evals",
-      "subtitle": "Grounded in 10+ years of enterprise architecture and national government program experience",
+      "subtitle": "Grounded in established systems-security practice — least privilege, authorization boundaries, and audit trails",
       "arch": {
         "title": "Evals & Governance",
         "cloud": "Continuous Regression Evals",
@@ -85,7 +87,7 @@
       },
       "staffing": {
         "title": "Practitioner-Led Advisory",
-        "desc": "Direct architectural engagement led by senior enterprise architects with 5.6M-user national scale experience."
+        "desc": "Direct architectural engagement — you work with the engineer doing the red-teaming, not a sales layer."
       }
     }
   },
