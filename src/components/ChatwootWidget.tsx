@@ -1,5 +1,6 @@
 'use client';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 declare global {
   interface Window {
@@ -20,11 +21,17 @@ declare global {
 }
 
 export function ChatwootWidget({ lang = 'en' }: { lang?: string }) {
+  const pathname = usePathname();
+
+  // Suppress floating B2C chat widget on executive advisory and developer SDK routes
+  const isExcludedRoute = pathname?.includes('/advisory') || pathname?.includes('/developers');
+
   useEffect(() => {
+    if (isExcludedRoute) return;
+
     const websiteToken = process.env.NEXT_PUBLIC_CHATWOOT_WEBSITE_TOKEN;
     const baseUrl = process.env.NEXT_PUBLIC_CHATWOOT_BASE_URL || 'https://app.chatwoot.com';
 
-    // If website token is not set, Chatwoot widget gracefully remains inactive
     if (!websiteToken) return;
 
     window.chatwootSettings = {
@@ -57,7 +64,9 @@ export function ChatwootWidget({ lang = 'en' }: { lang?: string }) {
     };
 
     document.body.appendChild(script);
-  }, [lang]);
+  }, [lang, isExcludedRoute]);
+
+  if (isExcludedRoute) return null;
 
   return null;
 }

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Terminal, Calendar } from 'lucide-react';
+import { Terminal, Mail } from 'lucide-react';
 
 interface HeaderNavCtaProps {
   lang: string;
@@ -13,6 +13,7 @@ interface HeaderNavCtaProps {
 export function HeaderNavCta({ lang, defaultLabel }: HeaderNavCtaProps) {
   const pathname = usePathname();
   const isDevRoute = pathname?.includes('/developers');
+  const isAdvisoryRoute = pathname?.includes('/advisory');
 
   if (isDevRoute) {
     return (
@@ -33,6 +34,25 @@ export function HeaderNavCta({ lang, defaultLabel }: HeaderNavCtaProps) {
         <Terminal size={14} />
         View PyPI Package →
       </a>
+    );
+  }
+
+  if (isAdvisoryRoute) {
+    return (
+      <Link
+        href={`/${lang}/contact?plan=advisory`}
+        className="nav-cta nav-cta-desktop"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          background: '#2563EB',
+          color: '#FFFFFF',
+        }}
+      >
+        <Mail size={14} />
+        Contact Sales →
+      </Link>
     );
   }
 
