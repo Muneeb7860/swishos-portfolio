@@ -19,7 +19,13 @@ function generateMsgId(prefix: string): string {
 
 export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
   const pathname = usePathname();
-  const isExcludedRoute = pathname?.includes('/advisory') || pathname?.includes('/developers');
+  const isExcludedRoute =
+    pathname?.includes('/advisory') ||
+    pathname?.includes('/developers') ||
+    pathname?.includes('/pricing') ||
+    pathname?.includes('/contact') ||
+    pathname?.includes('/roi') ||
+    pathname?.includes('/engagements');
 
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');

@@ -44,7 +44,6 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
             {dict.hero.badge}
           </div>
 
-          {/* Elite High-Contrast Tagline */}
           <h1 style={{
             fontSize: '52px',
             fontWeight: 900,
@@ -54,12 +53,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
             color: 'var(--txt)',
           }}>
             {dict.hero.title1} <br />
-            <span style={{
-              background: 'linear-gradient(135deg, #38BDF8 0%, #2563EB 60%, #4F46E5 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: 900,
-            }}>
+            <span style={{ color: '#F8FAFC', fontWeight: 900 }}>
               {dict.hero.title2}
             </span>
           </h1>
