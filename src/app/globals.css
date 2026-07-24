@@ -1113,12 +1113,12 @@ section { padding: 64px 0; }
 
 /* Right-column panels */
 .tracker-panel {
-  background: #0F172A !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
   border-radius: var(--radius);
   padding: 28px;
   margin-bottom: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: var(--card-shadow) !important;
 }
 .tracker-panel h3 {
   font-size: 18px;
@@ -1127,11 +1127,11 @@ section { padding: 64px 0; }
   align-items: center;
   gap: 8px;
   margin-bottom: 6px;
-  color: #F8FAFC !important;
+  color: var(--txt);
 }
 .tracker-sub {
   font-size: 13px;
-  color: #94A3B8 !important;
+  color: var(--muted);
   margin-bottom: 20px;
 }
 .lookup-row {
@@ -1143,18 +1143,18 @@ section { padding: 64px 0; }
   flex: 1;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
-  background: #1E293B !important;
-  color: #F8FAFC !important;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  color: var(--txt);
   font-size: 13px;
   font-family: inherit;
   outline: none;
   transition: border-color 0.2s;
 }
 .lookup-row input::placeholder {
-  color: #64748B !important;
+  color: var(--muted-2);
 }
-.lookup-row input:focus { border-color: #10B981 !important; }
+.lookup-row input:focus { border-color: var(--brand); }
 .lookup-btn {
   padding: 11px 20px;
   border-radius: 10px;
