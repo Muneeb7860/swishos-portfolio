@@ -21,19 +21,20 @@ export function HeaderNavCta({ lang, defaultLabel }: HeaderNavCtaProps) {
         href="https://github.com/Muneeb7860/agentic-redteam"
         target="_blank"
         rel="noopener noreferrer"
-        className="nav-cta-desktop"
+        className="!bg-blue-600 !text-white !border-blue-600 nav-cta-desktop"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
           gap: '8px',
           padding: '10px 18px',
           borderRadius: '8px',
-          background: '#2563EB',
+          backgroundColor: '#2563EB',
           color: '#FFFFFF',
           fontSize: '13px',
           fontWeight: 700,
           textDecoration: 'none',
-          boxShadow: '0 4px 12px rgba(37, 99, 235, 0.35)',
+          boxShadow: '0 4px 14px rgba(37, 99, 235, 0.45)',
+          border: '1px solid #2563EB',
         }}
       >
         <Terminal size={14} color="#FFFFFF" />
@@ -46,19 +47,20 @@ export function HeaderNavCta({ lang, defaultLabel }: HeaderNavCtaProps) {
     return (
       <Link
         href={`/${lang}/contact?plan=advisory`}
-        className="nav-cta-desktop"
+        className="!bg-blue-600 !text-white !border-blue-600 nav-cta-desktop"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
           gap: '8px',
           padding: '10px 18px',
           borderRadius: '8px',
-          background: '#2563EB',
+          backgroundColor: '#2563EB',
           color: '#FFFFFF',
           fontSize: '13px',
           fontWeight: 700,
           textDecoration: 'none',
-          boxShadow: '0 4px 12px rgba(37, 99, 235, 0.35)',
+          boxShadow: '0 4px 14px rgba(37, 99, 235, 0.45)',
+          border: '1px solid #2563EB',
         }}
       >
         <Mail size={14} color="#FFFFFF" />
@@ -70,19 +72,20 @@ export function HeaderNavCta({ lang, defaultLabel }: HeaderNavCtaProps) {
   return (
     <Link
       href={`/${lang}/contact?plan=audit`}
-      className="nav-cta-desktop"
+      className="!bg-blue-600 !text-white !border-blue-600 nav-cta-desktop"
       style={{
         display: 'inline-flex',
         alignItems: 'center',
         gap: '8px',
         padding: '10px 18px',
         borderRadius: '8px',
-        background: '#2563EB',
+        backgroundColor: '#2563EB',
         color: '#FFFFFF',
         fontSize: '13px',
         fontWeight: 700,
         textDecoration: 'none',
-        boxShadow: '0 4px 12px rgba(37, 99, 235, 0.35)',
+        boxShadow: '0 4px 14px rgba(37, 99, 235, 0.45)',
+        border: '1px solid #2563EB',
       }}
     >
       <Target size={14} color="#FFFFFF" />

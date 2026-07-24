@@ -2,6 +2,33 @@
 @import "tailwindcss";
 
 :root {
+  --bg: #0B0F17;
+  --bg-soft: #161E2E;
+  --panel: #0F172A;
+  --panel-2: #1E293B;
+  --line: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.24);
+  --txt: #F8FAFC;
+  --muted: #CBD5E1;
+  --muted-2: #94A3B8;
+  --brand: #3B82F6;
+  --brand-2: #06B6D4;
+  --accent: #3B82F6;
+  --glow: rgba(59, 130, 246, 0.35);
+  --radius: 16px;
+  --maxw: 1140px;
+
+  /* High-Contrast Card & Badge Tokens (Dark Enclave Default) */
+  --card-bg: #0F172A;
+  --card-border: rgba(56, 189, 248, 0.35);
+  --badge-bg: rgba(56, 189, 248, 0.15);
+  --badge-border: rgba(56, 189, 248, 0.4);
+  --badge-txt: #38BDF8;
+  --card-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* EXPLICIT LIGHT THEME OVERRIDE */
+[data-theme='light'] {
   --bg: #F8FAFC;
   --bg-soft: #F1F5F9;
   --panel: #FFFFFF;
@@ -15,10 +42,8 @@
   --brand-2: #0891B2;
   --accent: #2563EB;
   --glow: rgba(37, 99, 235, 0.20);
-  --radius: 16px;
-  --maxw: 1140px;
 
-  /* High-Contrast Card & Badge Tokens */
+  /* High-Contrast Card & Badge Tokens (Light Enclave) */
   --card-bg: #FFFFFF;
   --card-border: rgba(15, 23, 42, 0.18);
   --badge-bg: #E0F2FE;
@@ -30,8 +55,8 @@
 [data-theme='dark'] {
   --bg: #0B0F17;
   --bg-soft: #161E2E;
-  --panel: #161E2E;
-  --panel-2: #222F43;
+  --panel: #0F172A;
+  --panel-2: #1E293B;
   --line: rgba(255, 255, 255, 0.14);
   --line-strong: rgba(255, 255, 255, 0.24);
   --txt: #F8FAFC;
@@ -42,7 +67,6 @@
   --accent: #3B82F6;
   --glow: rgba(59, 130, 246, 0.35);
 
-  /* High-Contrast Card & Badge Tokens (Dark) */
   --card-bg: #0F172A;
   --card-border: rgba(56, 189, 248, 0.35);
   --badge-bg: rgba(56, 189, 248, 0.15);
