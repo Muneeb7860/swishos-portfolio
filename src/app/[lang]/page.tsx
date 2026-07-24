@@ -31,7 +31,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
             {/* Executive CTAs - Clean Single Row */}
             <div className="hero-cta reveal" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap', margin: '28px 0 52px' }}>
               <Link href={`/${lang}/contact?plan=audit`} className="btn-pri" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', fontSize: '15px' }}>
-                <TargetIcon size={16} /> {isAr ? 'جدولة إحاطة تنفيدية للمؤسسات' : 'Schedule Executive Briefing'}
+                <TargetIcon size={16} /> {isAr ? 'جدولة تدقيق أمان للمؤسسات' : 'Schedule Security Audit'}
               </Link>
               <Link href={`/${lang}/advisory`} className="btn-sec" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', fontSize: '15px' }}>
                 {isAr ? 'استكشاف خدمات الاستشارات' : 'Explore Enterprise Advisory →'}
@@ -43,17 +43,17 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {/* Hardened Compliance Lead-In Header Bar */}
               <div style={{
                 display: 'flex',
-                gap: '12px',
+                gap: '10px',
                 justifyContent: 'center',
                 flexWrap: 'wrap',
                 marginBottom: '16px',
               }}>
                 <div style={{
-                  background: 'var(--panel)',
-                  border: '1px solid var(--line-strong)',
+                  background: 'rgba(56, 189, 248, 0.12)',
+                  border: '1px solid rgba(56, 189, 248, 0.35)',
                   padding: '6px 14px',
-                  borderRadius: '8px',
-                  color: 'var(--txt)',
+                  borderRadius: '6px',
+                  color: '#38BDF8',
                   fontSize: '11px',
                   fontWeight: 800,
                   letterSpacing: '0.05em',
@@ -64,11 +64,11 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   🛡️ SOC 2 TYPE II CC6/CC7/CC8 MAPPED
                 </div>
                 <div style={{
-                  background: 'var(--panel)',
-                  border: '1px solid var(--line-strong)',
+                  background: 'rgba(56, 189, 248, 0.12)',
+                  border: '1px solid rgba(56, 189, 248, 0.35)',
                   padding: '6px 14px',
-                  borderRadius: '8px',
-                  color: 'var(--txt)',
+                  borderRadius: '6px',
+                  color: '#38BDF8',
                   fontSize: '11px',
                   fontWeight: 800,
                   letterSpacing: '0.05em',
@@ -79,11 +79,11 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   ⚖️ EU AI ACT ARTICLE 15 COMPLIANT
                 </div>
                 <div style={{
-                  background: 'var(--panel)',
-                  border: '1px solid var(--line-strong)',
+                  background: 'rgba(56, 189, 248, 0.12)',
+                  border: '1px solid rgba(56, 189, 248, 0.35)',
                   padding: '6px 14px',
-                  borderRadius: '8px',
-                  color: 'var(--txt)',
+                  borderRadius: '6px',
+                  color: '#38BDF8',
                   fontSize: '11px',
                   fontWeight: 800,
                   letterSpacing: '0.05em',

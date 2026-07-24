@@ -47,33 +47,6 @@ export function EnterpriseThreatScorecard() {
             </div>
           </div>
         </div>
-
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <span style={{
-            background: 'rgba(56, 189, 248, 0.12)',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
-            color: '#38BDF8',
-            fontSize: '11px',
-            fontWeight: 800,
-            padding: '5px 12px',
-            borderRadius: '6px',
-            letterSpacing: '0.05em',
-          }}>
-            SOC 2 CC6 / CC7 / CC8 MAPPED
-          </span>
-          <span style={{
-            background: 'rgba(34, 197, 94, 0.12)',
-            border: '1px solid rgba(34, 197, 94, 0.35)',
-            color: '#4ADE80',
-            fontSize: '11px',
-            fontWeight: 800,
-            padding: '5px 12px',
-            borderRadius: '6px',
-            letterSpacing: '0.05em',
-          }}>
-            EU AI ACT ART. 15 VERIFIED
-          </span>
-        </div>
       </div>
 
       {/* Threat Category Grid */}
