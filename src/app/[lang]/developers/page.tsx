@@ -17,8 +17,8 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'rgba(34, 197, 94, 0.12)',
-            border: '1px solid rgba(34, 197, 94, 0.35)',
+            background: 'rgba(34, 197, 94, 0.15)',
+            border: '1px solid rgba(34, 197, 94, 0.4)',
             color: '#4ADE80',
             fontSize: '12px',
             fontWeight: 800,
@@ -27,7 +27,7 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
             letterSpacing: '0.06em',
             marginBottom: '20px',
           }}>
-            <Terminal size={14} />
+            <Terminal size={14} color="#4ADE80" />
             OPEN-SOURCE RED-TEAM HARNESS & SDK
           </div>
           <h1 style={{ fontSize: '40px', fontWeight: 800, lineHeight: 1.15, marginBottom: '16px', letterSpacing: '-0.03em', color: 'var(--txt)' }}>
@@ -57,10 +57,10 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  background: 'var(--panel)',
+                  background: '#0F172A',
                   padding: '8px 16px',
                   borderRadius: '8px',
-                  border: '1px solid var(--line-strong)',
+                  border: '1px solid rgba(56, 189, 248, 0.35)',
                 }}
               >
                 <GitFork size={14} /> View GitHub Repository →
@@ -78,10 +78,10 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
 
             {/* Architecture Card 1 */}
-            <div style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', borderRadius: '16px', padding: '28px', boxShadow: 'var(--card-shadow)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#0F172A', border: '1px solid rgba(56, 189, 248, 0.35)', borderRadius: '16px', padding: '28px', boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '11px', fontWeight: 800, color: '#34D399', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>WASM MEMORY ISOLATION</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>Deterministic Runtime Sandbox</h3>
-              <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#F8FAFC', marginBottom: '10px' }}>Deterministic Runtime Sandbox</h3>
+              <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, marginBottom: '20px' }}>
                 Executes untrusted agent code in a 0-memory-bleed Wasmtime sandbox with strict fuel limits (max 50,000 instructions) and zero filesystem access.
               </p>
               <div style={{ marginTop: 'auto' }}>
@@ -94,10 +94,10 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
             </div>
 
             {/* Architecture Card 2 */}
-            <div style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', borderRadius: '16px', padding: '28px', boxShadow: 'var(--card-shadow)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#0F172A', border: '1px solid rgba(56, 189, 248, 0.35)', borderRadius: '16px', padding: '28px', boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '11px', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>AST TAINT ANALYSIS</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>Static Action Token Tracking</h3>
-              <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#F8FAFC', marginBottom: '10px' }}>Static Action Token Tracking</h3>
+              <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, marginBottom: '20px' }}>
                 Parses incoming JSON tool call payloads against Abstract Syntax Tree rules, catching indirect prompt injections before LLM invocation.
               </p>
               <div style={{ marginTop: 'auto' }}>
@@ -110,10 +110,10 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
             </div>
 
             {/* Architecture Card 3 */}
-            <div style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', borderRadius: '16px', padding: '28px', boxShadow: 'var(--card-shadow)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#0F172A', border: '1px solid rgba(56, 189, 248, 0.35)', borderRadius: '16px', padding: '28px', boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '11px', fontWeight: 800, color: '#FB923C', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>STREAM GUARDRAIL</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>256-Char Sliding Window</h3>
-              <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#F8FAFC', marginBottom: '10px' }}>256-Char Sliding Window</h3>
+              <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, marginBottom: '20px' }}>
                 Inspects Server-Sent Events (SSE) and WebSocket streams in real-time, redacting credential tokens split across adjacent chunks.
               </p>
               <div style={{ marginTop: 'auto' }}>

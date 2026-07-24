@@ -9,10 +9,6 @@ import { Check, ArrowRight } from 'lucide-react';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
-// The agentic-redteam harness currently lives inside the Swish_App repo and has not
-// been published as a standalone public repo yet. Until it is, the OSS card must not
-// link out — a 404 on the free tier is the worst first impression for a
-// credibility-led offer. When the repo is public: flip this to true and confirm the URL.
 const OSS_REPO_PUBLISHED = true;
 const OSS_REPO_URL = 'https://github.com/Muneeb7860/agentic-redteam';
 
@@ -71,40 +67,51 @@ export default function PricingClient({ lang }: { lang: string }) {
   ];
 
   return (
-    <main>
-      {/* HERO */}
-      <section className="hero" style={{ paddingBottom: '30px' }}>
-        <div className="wrap">
-          <span className="pill reveal">
-            <span className="dot"></span>
+    <main style={{ background: 'var(--bg)', color: 'var(--txt)', minHeight: '100vh', padding: '40px 24px' }}>
+      <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+
+        {/* HERO */}
+        <section style={{ textAlign: 'center', padding: '40px 0 50px' }}>
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(56, 189, 248, 0.15)',
+            border: '1px solid rgba(56, 189, 248, 0.4)',
+            color: '#38BDF8',
+            fontSize: '12px',
+            fontWeight: 800,
+            padding: '6px 16px',
+            borderRadius: '6px',
+            letterSpacing: '0.06em',
+            marginBottom: '20px',
+          }}>
             {p.badge}
           </span>
-          <h1 className="reveal">
-            {p.title1} <br />
-            <span className="grad">{p.title2}</span>
+          <h1 style={{ fontSize: '42px', fontWeight: 800, lineHeight: 1.15, marginBottom: '16px', letterSpacing: '-0.03em', color: 'var(--txt)' }}>
+            {p.title1} {p.title2}
           </h1>
-          <p className="sub reveal" style={{ maxWidth: '760px' }}>
+          <p style={{ fontSize: '18px', color: 'var(--muted)', maxWidth: '780px', margin: '0 auto 32px', lineHeight: 1.6 }}>
             {p.subtitle}
           </p>
-        </div>
-      </section>
+        </section>
 
-      {/* OFFER LADDER */}
-      <section style={{ paddingTop: '20px' }}>
-        <div className="wrap">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
+        {/* OFFER LADDER */}
+        <section style={{ paddingTop: '20px', marginBottom: '60px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
             {tiers.map((tier) => (
               <div
                 key={tier.name}
-                className="feature reveal"
                 style={{
+                  background: '#0F172A',
+                  border: tier.featured ? '2px solid #2563EB' : '1px solid rgba(56, 189, 248, 0.35)',
+                  borderRadius: '16px',
+                  padding: '36px',
+                  boxShadow: '0 16px 48px rgba(0, 0, 0, 0.35)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   position: 'relative',
-                  ...(tier.featured
-                    ? { borderColor: 'var(--brand)', boxShadow: '0 0 30px var(--glow)' }
-                    : {}),
                 }}
               >
                 {tier.featured && (
@@ -112,15 +119,16 @@ export default function PricingClient({ lang }: { lang: string }) {
                     style={{
                       position: 'absolute',
                       top: '-14px',
-                      insetInlineEnd: '24px',
-                      background: 'var(--brand)',
-                      color: '#fff',
-                      fontSize: '12px',
-                      fontWeight: 700,
+                      right: '24px',
+                      background: '#2563EB',
+                      color: '#FFFFFF',
+                      fontSize: '11px',
+                      fontWeight: 800,
                       padding: '4px 14px',
                       borderRadius: '999px',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
+                      letterSpacing: '0.06em',
+                      boxShadow: '0 4px 12px rgba(37, 99, 235, 0.4)',
                     }}
                   >
                     {p.popularBadge}
@@ -128,27 +136,27 @@ export default function PricingClient({ lang }: { lang: string }) {
                 )}
 
                 <div>
-                  <h3 style={{ fontSize: '22px', marginBottom: '8px' }}>{tier.name}</h3>
-                  <p style={{ minHeight: '60px', fontSize: '14px' }}>{tier.desc}</p>
+                  <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#F8FAFC', marginBottom: '8px' }}>{tier.name}</h3>
+                  <p style={{ minHeight: '52px', fontSize: '14px', color: '#94A3B8', lineHeight: 1.5 }}>{tier.desc}</p>
 
                   <div style={{ margin: '24px 0 10px', display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '34px', fontWeight: 800, color: 'var(--txt)', fontFamily: 'Sora', lineHeight: 1.1 }}>
+                    <span style={{ fontSize: '36px', fontWeight: 800, color: '#F8FAFC', fontFamily: 'Sora', lineHeight: 1.1 }}>
                       {tier.price}
                     </span>
-                    <span style={{ color: 'var(--muted)', fontSize: '14px' }}>{tier.unit}</span>
+                    <span style={{ color: '#94A3B8', fontSize: '14px', fontWeight: 500 }}>{tier.unit}</span>
                   </div>
 
-                  <div style={{ fontSize: '13px', color: 'var(--brand)', fontWeight: 600, marginBottom: '24px' }}>
+                  <p style={{ fontSize: '12px', color: '#38BDF8', fontWeight: 700, marginBottom: '24px', minHeight: '32px' }}>
                     {tier.note}
-                  </div>
+                  </p>
 
-                  <hr style={{ borderColor: 'var(--line)', margin: '16px 0' }} />
+                  <hr style={{ borderColor: 'rgba(255, 255, 255, 0.12)', marginBottom: '24px' }} />
 
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '12px', fontSize: '14px' }}>
-                    {tier.features.map((f) => (
-                      <li key={f} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                        <Check size={16} color="var(--brand)" style={{ flexShrink: 0, marginTop: '3px' }} />
-                        <span>{f}</span>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: '#CBD5E1' }}>
+                    {tier.features.map((feature, i) => (
+                      <li key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                        <Check size={16} color="#10B981" style={{ flexShrink: 0, marginTop: '3px' }} />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -159,80 +167,52 @@ export default function PricingClient({ lang }: { lang: string }) {
                     href={tier.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-secondary"
-                    style={{ marginTop: '32px', width: '100%', justifyContent: 'center' }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      padding: '14px 20px',
+                      borderRadius: '10px',
+                      border: '1px solid rgba(56, 189, 248, 0.35)',
+                      background: 'rgba(56, 189, 248, 0.15)',
+                      color: '#38BDF8',
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      textDecoration: 'none',
+                      marginTop: 'auto',
+                    }}
                   >
-                    {tier.cta}
+                    {tier.cta} <ArrowRight size={14} />
                   </a>
                 ) : (
                   <Link
                     href={tier.href}
-                    className={tier.featured ? 'btn btn-primary' : 'btn btn-secondary'}
-                    style={{ marginTop: '32px', width: '100%', justifyContent: 'center', gap: '8px' }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      padding: '14px 20px',
+                      borderRadius: '10px',
+                      background: tier.featured ? '#2563EB' : '#1E293B',
+                      border: tier.featured ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
+                      color: '#FFFFFF',
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      textDecoration: 'none',
+                      marginTop: 'auto',
+                    }}
                   >
-                    {tier.cta}
-                    {tier.featured && <ArrowRight size={16} />}
+                    {tier.cta} <ArrowRight size={14} />
                   </Link>
                 )}
               </div>
             ))}
           </div>
-
-          {/* Intake Triage & Scope Boundary Box */}
-          <div className="reveal" style={{ background: 'var(--panel)', border: '1px solid var(--line-strong)', borderRadius: '16px', padding: '24px 32px', margin: '40px auto 0 auto', maxWidth: '840px', textAlign: 'center' }}>
-            <strong style={{ color: 'var(--brand)', display: 'block', marginBottom: '8px', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              🛡️ {lang === 'ar' ? 'شفافية النطاق والفرز الأولي' : 'TRANSPARENT INTAKE TRIAGE & SCOPE BOUNDARIES'}
-            </strong>
-            <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, margin: 0 }}>
-              {p.auditTriageNote || 'Every engagement begins with an intake triage. If your architecture exceeds standard scope, we provide a custom proposal before any payment or contract is finalized.'}
-            </p>
-          </div>
-
-          <p
-            className="reveal"
-            style={{ maxWidth: '760px', margin: '24px auto 0', textAlign: 'center', fontSize: '14px', color: 'var(--muted)' }}
-          >
-            {p.footnote}
-          </p>
-        </div>
-      </section>
-
-      {/* FAQ SECTION */}
-      {p.faqItems && (
-        <section style={{ padding: '80px 0 40px' }}>
-          <div className="wrap">
-            <div style={{ textAlign: 'center', marginBottom: '48px' }} className="reveal">
-              <span className="pill" style={{ marginBottom: '12px', display: 'inline-flex' }}>
-                <span className="dot"></span> FAQ
-              </span>
-              <h2 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '12px' }}>{p.faqTitle}</h2>
-              <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '640px', margin: '0 auto' }}>{p.faqSubtitle}</p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', maxWidth: '1000px', margin: '0 auto' }}>
-              {p.faqItems.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="feature reveal"
-                  style={{
-                    padding: '24px',
-                    borderRadius: '16px',
-                    border: '1px solid var(--line)',
-                    background: 'var(--card-bg, rgba(255,255,255,0.02))'
-                  }}
-                >
-                  <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '10px', color: 'var(--txt)' }}>
-                    {item.q}
-                  </h4>
-                  <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: '1.6', margin: 0 }}>
-                    {item.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
         </section>
-      )}
+
+      </div>
     </main>
   );
 }
