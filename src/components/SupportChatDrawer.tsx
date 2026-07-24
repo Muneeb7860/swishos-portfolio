@@ -51,6 +51,10 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isOpen, isExcludedRoute]);
 
+  if (isExcludedRoute) {
+    return null;
+  }
+
   const handleSend = async (textToSend?: string) => {
     const query = textToSend || input;
     if (!query.trim() || loading) return;

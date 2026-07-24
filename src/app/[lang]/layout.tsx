@@ -72,7 +72,7 @@ export default async function RootLayout(props: {
   return (
     <html lang={lang} suppressHydrationWarning dir={isRtl ? 'rtl' : 'ltr'}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <a href="#main-content" className="skip-link">
             {lang === 'ar' ? 'الانتقال إلى المحتوى الرئيسي' : 'Skip to main content'}
           </a>
