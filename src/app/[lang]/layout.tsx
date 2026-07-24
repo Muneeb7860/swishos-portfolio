@@ -10,6 +10,7 @@ import { MobileMenu } from "../../components/MobileMenu";
 import { ChatwootWidget } from "../../components/ChatwootWidget";
 import { SupportChatDrawer } from "../../components/SupportChatDrawer";
 import { BrandLogo } from "../../components/BrandLogo";
+import { HeaderNavCta } from "../../components/HeaderNavCta";
 
 import en from "../../dictionaries/en.json";
 import ar from "../../dictionaries/ar.json";
@@ -89,8 +90,7 @@ export default async function RootLayout(props: {
               </nav>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <LanguageSwitcher currentLang={lang} />
-                <ThemeToggle />
-                <Link href={`/${lang}/contact?plan=audit`} className="nav-cta nav-cta-desktop">{dict.nav.contact}</Link>
+                <HeaderNavCta lang={lang} defaultLabel={dict.nav.contact} />
                 <MobileMenu
                   links={[
                     { href: `/${lang}/advisory`, label: dict.nav.advisory },
