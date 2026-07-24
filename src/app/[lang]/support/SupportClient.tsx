@@ -121,12 +121,12 @@ export default function SupportClient({ lang }: { lang: string }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <span style={{ fontSize: '24px' }}>🛡️</span>
             <div>
-              <div style={{ fontSize: '13px', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Enterprise Incident & Support Operations</div>
-              <div style={{ fontSize: '13px', color: '#94A3B8', fontWeight: 500 }}>Shipped zero-trust guardrails & threat monitoring for 5.6M+ active AI agent user sessions</div>
+              <div style={{ fontSize: '13px', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Enterprise Incident & Support Operations</div>
+              <div style={{ fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>Shipped zero-trust guardrails & threat monitoring for 5.6M+ active AI agent user sessions</div>
             </div>
           </div>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <span style={{ fontSize: '12px', fontFamily: 'monospace', background: '#1E293B', padding: '8px 14px', borderRadius: '10px', border: '1px solid rgba(16, 185, 129, 0.4)', color: '#34D399', fontWeight: 800 }}>
+            <span style={{ fontSize: '12px', fontFamily: 'monospace', background: 'var(--bg-soft)', padding: '8px 14px', borderRadius: '10px', border: '1px solid #10B981', color: '#10B981', fontWeight: 800 }}>
               🟢 P1 Emergency Response: &lt;15 Min SLA
             </span>
           </div>
@@ -238,20 +238,20 @@ export default function SupportClient({ lang }: { lang: string }) {
               </h3>
 
               <div style={{ display: 'grid', gap: '12px', marginBottom: '20px' }}>
-                <div style={{ background: '#1E293B', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
+                <div style={{ background: 'var(--bg-soft)', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#F87171' }}>🚨 P1 Critical Security Breach</span>
-                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'rgba(239, 68, 68, 0.25)', color: '#F87171', padding: '3px 10px', borderRadius: '6px' }}>&lt; 15 Min SLA</span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#EF4444' }}>🚨 P1 Critical Security Breach</span>
+                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'rgba(239, 68, 68, 0.15)', color: '#EF4444', padding: '3px 10px', borderRadius: '6px' }}>&lt; 15 Min SLA</span>
                   </div>
-                  <p style={{ fontSize: '12px', color: '#94A3B8', margin: 0 }}>Immediate paging to SwishOS Security Incident Response Team.</p>
+                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Immediate paging to SwishOS Security Incident Response Team.</p>
                 </div>
 
-                <div style={{ background: '#1E293B', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                <div style={{ background: 'var(--bg-soft)', padding: '14px 16px', borderRadius: '10px', border: '1px solid var(--line-strong)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#F8FAFC' }}>⚡ P2 Technical / Guardrail Support</span>
-                    <span style={{ fontSize: '12px', fontWeight: 800, background: '#334155', color: '#60A5FA', padding: '3px 10px', borderRadius: '6px' }}>&lt; 4 Hours SLA</span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt)' }}>⚡ P2 Technical / Guardrail Support</span>
+                    <span style={{ fontSize: '12px', fontWeight: 800, background: 'var(--panel-2)', color: 'var(--brand)', padding: '3px 10px', borderRadius: '6px' }}>&lt; 4 Hours SLA</span>
                   </div>
-                  <p style={{ fontSize: '12px', color: '#94A3B8', margin: 0 }}>Guardrail policy tuning, AST rule assistance, and SDK integration.</p>
+                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Guardrail policy tuning, AST rule assistance, and SDK integration.</p>
                 </div>
               </div>
             </div>
