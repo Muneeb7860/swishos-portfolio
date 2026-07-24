@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquareIcon } from './Icons';
+import { usePathname } from 'next/navigation';
 
 interface Message {
   id: string;
@@ -17,6 +18,9 @@ function generateMsgId(prefix: string): string {
 }
 
 export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
+  const pathname = usePathname();
+  const isExcludedRoute = pathname?.includes('/advisory') || pathname?.includes('/developers');
+
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -36,8 +40,9 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (isExcludedRoute) return;
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isOpen]);
+  }, [messages, isOpen, isExcludedRoute]);
 
   const handleSend = async (textToSend?: string) => {
     const query = textToSend || input;
@@ -58,340 +63,216 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
       const res = await fetch('/api/support', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: 'Live Chat Visitor',
-          email: 'live-chat@swishos.io',
-          channel: 'web',
-          category: /audit|book|pricing/i.test(query) ? 'general' : /vulnerability|jailbreak|threat|exploit/i.test(query) ? 'security_incident' : 'bug',
-          subject: 'Live Chat Support Query',
-          message: query,
-          lang,
-        }),
+        body: JSON.stringify({ message: query, lang }),
       });
 
       const data = await res.json();
-      
-      const botMsg: Message = {
-        id: generateMsgId('bot'),
+
+      const assistantMsg: Message = {
+        id: generateMsgId('assistant'),
         sender: 'assistant',
-        text: data.automatedReply || (lang === 'ar' ? 'تم استلام طلبك وتصنيفه بنجاح.' : 'Your request has been triaged and dispatched.'),
+        text: data.reply || (lang === 'ar' ? 'تم استلام استفسارك. سنقوم بالرد عليك قريباً.' : 'Thank you. Our security team has received your query.'),
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        actionTag: data.ticketId ? `Ticket: ${data.ticketId} (${data.sla})` : undefined,
+        actionTag: data.actionTag,
         actionUrl: data.actionUrl,
         actionLabel: data.actionLabel,
       };
 
-      setMessages(prev => [...prev, botMsg]);
-    } catch (err) {
-      console.error('Support chat error:', err);
+      setMessages(prev => [...prev, assistantMsg]);
+    } catch {
+      const errorMsg: Message = {
+        id: generateMsgId('assistant'),
+        sender: 'assistant',
+        text: lang === 'ar'
+          ? 'عذراً، حدث خطأ أثناء الاتصال. يرجى المحاولة مرة أخرى أو مراسلتنا عبر البريد الإلكتروني hello@swishos.io'
+          : 'Communication fallback error. Please try again or email hello@swishos.io directly.',
+        timestamp: 'Now',
+      };
+      setMessages(prev => [...prev, errorMsg]);
     } finally {
       setLoading(false);
     }
   };
 
-  const quickPills = lang === 'ar'
-    ? [
-        { label: '🛡️ احجز تدقيقاً أمنياً', query: 'أود حجز تدقيق أمني لوكلاء الذكاء الاصطناعي.' },
-        { label: '⚡ الإبلاغ عن ثغرة حماية', query: 'أود الإبلاغ عن ثغرة أمنية أو تجاوز لحاجز الحماية.' },
-        { label: '🔍 الاستعلام عن اتفاقية SLA', query: 'ما هي اتفاقيات مستوى الخدمة (SLA) للاستجابة؟' },
-      ]
-    : [
-        { label: '🛡️ Book Security Audit', query: 'I want to book an AI Agent Security Audit.' },
-        { label: '⚡ Report Guardrail Bypass', query: 'I want to report a guardrail vulnerability or threat.' },
-        { label: '🔍 Check Response SLA', query: 'What are the response SLA parameters for security tickets?' },
-      ];
-
-  const posStyle: React.CSSProperties = isRtl
-    ? { left: '24px', right: 'auto' }
-    : { right: '24px', left: 'auto' };
+  // Pure React return null on excluded routes after all hooks have been invoked
+  if (isExcludedRoute) {
+    return null;
+  }
 
   return (
-    <>
-      {/* Floating Toggle Button - Minimal Icon-Only */}
-      <button
-        onClick={() => setIsOpen(prev => !prev)}
-        aria-label="Toggle Live Support Chat"
-        style={{
-          position: 'fixed',
-          bottom: '24px',
-          ...posStyle,
-          zIndex: 9999,
-          width: '44px',
-          height: '44px',
-          borderRadius: '50%',
-          background: 'var(--brand, #2563EB)',
-          color: '#ffffff',
-          display: 'grid',
-          placeItems: 'center',
-          border: 'none',
-          boxShadow: '0 4px 16px rgba(37, 99, 235, 0.35)',
-          cursor: 'pointer',
-          opacity: 0.85,
-          transition: 'all 0.2s ease',
-        }}
-      >
-        <MessageSquareIcon size={20} color="#FFFFFF" />
-      </button>
+    <div style={{ position: 'fixed', bottom: '24px', right: isRtl ? 'auto' : '24px', left: isRtl ? '24px' : 'auto', zIndex: 9999 }}>
+      {/* Floating Chat Bubble Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          aria-label={isRtl ? 'فتح المحادثة المباشرة' : 'Toggle Live Support Chat'}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '52px',
+            height: '52px',
+            borderRadius: '50%',
+            background: '#2563EB',
+            color: '#FFFFFF',
+            border: 'none',
+            boxShadow: '0 8px 24px rgba(37, 99, 235, 0.4)',
+            cursor: 'pointer',
+            transition: 'transform 0.2s ease, boxShadow 0.2s ease',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+        >
+          <MessageSquareIcon size={24} color="#FFFFFF" />
+        </button>
+      )}
 
-      {/* Slide-Out Chat Drawer */}
+      {/* Drawer Overlay */}
       {isOpen && (
         <div
           style={{
-            position: 'fixed',
-            bottom: '84px',
-            ...posStyle,
-            zIndex: 9999,
-            width: 'min(380px, calc(100vw - 32px))',
-            height: '520px',
-            maxHeight: 'calc(85vh - 84px)',
-            background: 'var(--panel, #1a1a1a)',
-            border: '1px solid var(--line-strong, rgba(255,255,255,0.18))',
-            borderRadius: '20px',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.6), 0 0 30px var(--glow, rgba(225,6,0,0.25))',
-            backdropFilter: 'blur(20px)',
+            width: '380px',
+            maxHeight: '560px',
+            height: '80vh',
+            background: 'var(--panel)',
+            border: '1px solid var(--line-strong)',
+            borderRadius: '16px',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.3)',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
-            direction: isRtl ? 'rtl' : 'ltr',
           }}
         >
           {/* Drawer Header */}
-          <div style={{
-            padding: '14px 16px',
-            background: 'var(--bg-soft, #141414)',
-            borderBottom: '1px solid var(--line, rgba(255,255,255,0.1))',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: 'rgba(225, 6, 0, 0.15)',
-                border: '1px solid var(--brand)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '14px',
-              }}>
-                🛡️
+          <div
+            style={{
+              padding: '16px 20px',
+              background: 'var(--bg-soft)',
+              borderBottom: '1px solid var(--line)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <div>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--txt)' }}>
+                {isRtl ? 'الدعم المباشر - SwishOS' : 'SwishOS Security AI'}
               </div>
-              <div>
-                <h4 style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt, #fff)', margin: 0, lineHeight: 1.2 }}>
-                  {lang === 'ar' ? 'مساعد SwishOS الأمني' : 'SwishOS Security AI'}
-                </h4>
-                <div style={{ fontSize: '11px', color: '#4ade80', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} />
-                  {lang === 'ar' ? 'متصل الآن · استجابة فوريّة' : 'Online · Instant Triage'}
-                </div>
+              <div style={{ fontSize: '12px', color: '#10B981', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981', display: 'inline-block' }} />
+                {isRtl ? 'متصل الآن' : 'Active Security Agent'}
               </div>
             </div>
-
             <button
               onClick={() => setIsOpen(false)}
-              aria-label="Close Chat"
+              aria-label={isRtl ? 'إغلاق المحادثة' : 'Close Support Chat'}
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: 'var(--muted, #a3a3a3)',
-                fontSize: '18px',
+                color: 'var(--muted)',
                 cursor: 'pointer',
+                fontSize: '18px',
                 padding: '4px 8px',
-                borderRadius: '6px',
-                lineHeight: 1,
               }}
             >
               ✕
             </button>
           </div>
 
-          {/* Messages Container */}
-          <div style={{
-            flex: 1,
-            padding: '16px',
-            overflowY: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '12px',
-          }}>
+          {/* Messages Body */}
+          <div style={{ flex: 1, padding: '16px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {messages.map(msg => (
               <div
                 key={msg.id}
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+                  alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+                  maxWidth: '85%',
                 }}
               >
                 <div
                   style={{
-                    maxWidth: '85%',
                     padding: '10px 14px',
-                    borderRadius: msg.sender === 'user'
-                      ? (isRtl ? '16px 16px 16px 2px' : '16px 16px 2px 16px')
-                      : (isRtl ? '16px 16px 2px 16px' : '16px 16px 16px 2px'),
+                    borderRadius: '12px',
                     fontSize: '13px',
-                    lineHeight: '1.5',
-                    background: msg.sender === 'user'
-                      ? 'var(--brand, #E10600)'
-                      : 'var(--bg-soft, #242424)',
-                    color: msg.sender === 'user' ? '#ffffff' : 'var(--txt, #ffffff)',
+                    lineHeight: 1.5,
+                    background: msg.sender === 'user' ? '#2563EB' : 'var(--bg-soft)',
+                    color: msg.sender === 'user' ? '#FFFFFF' : 'var(--txt)',
                     border: msg.sender === 'user' ? 'none' : '1px solid var(--line)',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                   }}
                 >
                   {msg.text}
-                  
                   {msg.actionUrl && (
-                    <div style={{ marginTop: '10px' }}>
+                    <div style={{ marginTop: '8px' }}>
                       <a
                         href={msg.actionUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          padding: '8px 14px',
-                          borderRadius: '8px',
-                          background: 'var(--brand, #E10600)',
-                          color: '#ffffff',
+                          display: 'inline-block',
+                          padding: '6px 12px',
+                          background: 'rgba(56, 189, 248, 0.15)',
+                          color: '#38BDF8',
+                          borderRadius: '6px',
                           fontSize: '12px',
                           fontWeight: 700,
                           textDecoration: 'none',
-                          boxShadow: '0 4px 12px var(--glow, rgba(225,6,0,0.4))',
                         }}
                       >
-                        {msg.actionLabel || (lang === 'ar' ? 'الانتقال للحجز المباشر' : 'Book Audit Now')}
+                        {msg.actionLabel || 'View Resource'} →
                       </a>
                     </div>
                   )}
-
-                  {msg.actionTag && (
-                    <div style={{
-                      marginTop: '8px',
-                      paddingTop: '6px',
-                      borderTop: '1px solid rgba(255,255,255,0.15)',
-                      fontSize: '11px',
-                      fontFamily: 'monospace',
-                      color: '#4ade80',
-                      fontWeight: 700,
-                    }}>
-                      {msg.actionTag}
-                    </div>
-                  )}
                 </div>
-                <span style={{ fontSize: '10px', color: 'var(--muted-2, #888888)', marginTop: '4px', padding: '0 4px' }}>
+                <div style={{ fontSize: '10px', color: 'var(--muted)', marginTop: '4px', textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
                   {msg.timestamp}
-                </span>
+                </div>
               </div>
             ))}
-
-            {loading && (
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontSize: '12px',
-                color: 'var(--brand)',
-                background: 'var(--bg-soft)',
-                padding: '10px 14px',
-                borderRadius: '12px',
-                border: '1px solid var(--line)',
-                width: 'fit-content',
-              }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)' }} />
-                <span>{lang === 'ar' ? 'جاري التحليل والتصنيف...' : 'Triaging security request...'}</span>
-              </div>
-            )}
-
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Action Pills */}
-          <div style={{
-            padding: '10px 12px',
-            background: 'var(--bg-soft, #141414)',
-            borderTop: '1px solid var(--line, rgba(255,255,255,0.1))',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            overflowX: 'auto',
-            whiteSpace: 'nowrap',
-          }}>
-            {quickPills.map((pill, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleSend(pill.query)}
+          {/* Input Footer */}
+          <div style={{ padding: '12px 16px', borderTop: '1px solid var(--line)', background: 'var(--panel)' }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <input
+                type="text"
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleSend()}
+                placeholder={isRtl ? 'اكتب رسالتك هنا...' : 'Ask about agent security or audit scopes...'}
+                disabled={loading}
                 style={{
-                  padding: '6px 12px',
-                  borderRadius: '999px',
-                  background: 'var(--panel, #1A1A1A)',
-                  border: '1px solid var(--line)',
-                  fontSize: '11px',
-                  color: 'var(--txt, #ffffff)',
-                  cursor: 'pointer',
-                  flexShrink: 0,
-                  transition: 'all 0.25s ease',
+                  flex: 1,
+                  padding: '10px 14px',
+                  borderRadius: '8px',
+                  border: '1px solid var(--line-strong)',
+                  background: 'var(--bg)',
+                  color: 'var(--txt)',
+                  fontSize: '13px',
+                  outline: 'none',
+                }}
+              />
+              <button
+                onClick={() => handleSend()}
+                disabled={loading}
+                style={{
+                  padding: '10px 16px',
+                  borderRadius: '8px',
+                  background: '#2563EB',
+                  color: '#FFFFFF',
+                  border: 'none',
+                  fontWeight: 700,
+                  fontSize: '13px',
+                  cursor: loading ? 'not-allowed' : 'pointer',
+                  opacity: loading ? 0.7 : 1,
                 }}
               >
-                {pill.label}
+                {loading ? '...' : (isRtl ? 'إرسال' : 'Send')}
               </button>
-            ))}
+            </div>
           </div>
-
-          {/* Input Area */}
-          <form
-            onSubmit={e => {
-              e.preventDefault();
-              handleSend();
-            }}
-            style={{
-              padding: '12px',
-              background: 'var(--bg-soft, #141414)',
-              borderTop: '1px solid var(--line)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-            }}
-          >
-            <input
-              type="text"
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              placeholder={lang === 'ar' ? 'اكتب رسالتك...' : 'Type your security query...'}
-              style={{
-                flex: 1,
-                background: 'var(--panel, #1a1a1a)',
-                border: '1px solid var(--line)',
-                borderRadius: '12px',
-                padding: '10px 14px',
-                fontSize: '13px',
-                color: 'var(--txt, #ffffff)',
-                outline: 'none',
-              }}
-            />
-            <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              style={{
-                background: 'var(--brand, #E10600)',
-                color: '#ffffff',
-                fontWeight: 700,
-                fontSize: '13px',
-                padding: '10px 16px',
-                borderRadius: '12px',
-                border: 'none',
-                cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
-                opacity: loading || !input.trim() ? 0.5 : 1,
-                transition: 'all 0.25s ease',
-              }}
-            >
-              {lang === 'ar' ? 'إرسال' : 'Send'}
-            </button>
-          </form>
         </div>
       )}
-    </>
+    </div>
   );
 }

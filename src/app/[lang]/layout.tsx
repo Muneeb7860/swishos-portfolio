@@ -7,7 +7,6 @@ import { ThemeProvider } from "../../components/ThemeProvider";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { LanguageSwitcher } from "../../components/LanguageSwitcher";
 import { MobileMenu } from "../../components/MobileMenu";
-import { ChatwootWidget } from "../../components/ChatwootWidget";
 import { ConditionalChatwoot } from "../../components/ConditionalChatwoot";
 import { SupportChatDrawer } from "../../components/SupportChatDrawer";
 import { BrandLogo } from "../../components/BrandLogo";
