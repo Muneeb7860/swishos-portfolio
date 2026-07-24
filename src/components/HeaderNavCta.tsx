@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Terminal, Mail } from 'lucide-react';
+import { Terminal, Mail, Target } from 'lucide-react';
 
 interface HeaderNavCtaProps {
   lang: string;
@@ -21,17 +21,22 @@ export function HeaderNavCta({ lang, defaultLabel }: HeaderNavCtaProps) {
         href="https://github.com/Muneeb7860/agentic-redteam"
         target="_blank"
         rel="noopener noreferrer"
-        className="nav-cta nav-cta-desktop"
+        className="nav-cta-desktop"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: '6px',
-          background: 'rgba(56, 189, 248, 0.12)',
-          border: '1px solid rgba(56, 189, 248, 0.35)',
-          color: '#38BDF8',
+          gap: '8px',
+          padding: '10px 18px',
+          borderRadius: '8px',
+          background: '#2563EB',
+          color: '#FFFFFF',
+          fontSize: '13px',
+          fontWeight: 700,
+          textDecoration: 'none',
+          boxShadow: '0 4px 12px rgba(37, 99, 235, 0.35)',
         }}
       >
-        <Terminal size={14} />
+        <Terminal size={14} color="#FFFFFF" />
         View PyPI Package →
       </a>
     );
@@ -41,24 +46,47 @@ export function HeaderNavCta({ lang, defaultLabel }: HeaderNavCtaProps) {
     return (
       <Link
         href={`/${lang}/contact?plan=advisory`}
-        className="nav-cta nav-cta-desktop"
+        className="nav-cta-desktop"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: '6px',
+          gap: '8px',
+          padding: '10px 18px',
+          borderRadius: '8px',
           background: '#2563EB',
           color: '#FFFFFF',
+          fontSize: '13px',
+          fontWeight: 700,
+          textDecoration: 'none',
+          boxShadow: '0 4px 12px rgba(37, 99, 235, 0.35)',
         }}
       >
-        <Mail size={14} />
+        <Mail size={14} color="#FFFFFF" />
         Contact Sales →
       </Link>
     );
   }
 
   return (
-    <Link href={`/${lang}/contact?plan=audit`} className="nav-cta nav-cta-desktop">
-      {defaultLabel}
+    <Link
+      href={`/${lang}/contact?plan=audit`}
+      className="nav-cta-desktop"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '8px',
+        padding: '10px 18px',
+        borderRadius: '8px',
+        background: '#2563EB',
+        color: '#FFFFFF',
+        fontSize: '13px',
+        fontWeight: 700,
+        textDecoration: 'none',
+        boxShadow: '0 4px 12px rgba(37, 99, 235, 0.35)',
+      }}
+    >
+      <Target size={14} color="#FFFFFF" />
+      Schedule Security Audit
     </Link>
   );
 }
