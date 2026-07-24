@@ -43,7 +43,7 @@
   --glow: rgba(59, 130, 246, 0.35);
 
   /* High-Contrast Card & Badge Tokens (Dark) */
-  --card-bg: #161E2E;
+  --card-bg: #0F172A;
   --card-border: rgba(56, 189, 248, 0.35);
   --badge-bg: rgba(56, 189, 248, 0.15);
   --badge-border: rgba(56, 189, 248, 0.4);
@@ -818,26 +818,26 @@ section { padding: 64px 0; }
 
 /* Form panel - Enterprise High Contrast Dark Slate Card */
 .support-panel {
-  background: #0F172A !important;
-  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
   border-radius: var(--radius);
   padding: 36px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: var(--card-shadow) !important;
 }
 @media (max-width: 600px) { .support-panel { padding: 24px; } }
 
 .tracker-panel {
-  background: #0F172A !important;
-  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
   border-radius: var(--radius);
   padding: 28px;
   margin-bottom: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: var(--card-shadow) !important;
 }
 
 .contacts-panel {
-  background: #0F172A !important;
-  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
   border-radius: var(--radius);
   padding: 28px;
 }

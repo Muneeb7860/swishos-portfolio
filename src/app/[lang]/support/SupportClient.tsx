@@ -109,9 +109,9 @@ export default function SupportClient({ lang }: { lang: string }) {
           marginBottom: '40px',
           padding: '18px 24px',
           borderRadius: '16px',
-          border: '1px solid rgba(56, 189, 248, 0.35)',
-          background: '#0F172A',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
+          border: '1px solid var(--card-border)',
+          background: 'var(--card-bg)',
+          boxShadow: 'var(--card-shadow)',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -226,14 +226,14 @@ export default function SupportClient({ lang }: { lang: string }) {
           <div>
             {/* Enterprise SLA Commitments Card */}
             <div style={{
-              background: '#0F172A',
-              border: '1px solid rgba(56, 189, 248, 0.35)',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--card-border)',
               borderRadius: 'var(--radius)',
               padding: '28px',
               marginBottom: '24px',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.35)',
+              boxShadow: 'var(--card-shadow)',
             }}>
-              <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#F8FAFC', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span>⚡</span> Enterprise SLA Commitments
               </h3>
 
