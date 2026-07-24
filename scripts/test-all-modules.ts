@@ -216,6 +216,21 @@ async function runMasterTestSuite() {
     'Leaderboard API SwishOS Native Enclave Scores 100% Across OWASP Categories'
   );
 
+  // 33. CISO Intake Dispatcher: generates dark-mode HTML containing SARIF v2.1.0 and ticket ID
+  const { generateCisoIntakeEmailHtml, dispatchCisoAuditIntake } = await import('../src/lib/ciso-intake-dispatcher');
+  const sampleEmailHtml = generateCisoIntakeEmailHtml({ name: 'Jane Doe', email: 'ciso@enterprise.com', company: 'Acme Security' }, 'SWISH-AUDIT-9999', 'https://cal.com/swishos');
+  assert(
+    sampleEmailHtml.includes('SWISH-AUDIT-9999') && sampleEmailHtml.includes('sarif-2.1.0.json') && sampleEmailHtml.includes('OWASP LLM01'),
+    'CISO Intake Dispatcher Formats Dark-Mode HTML Email With SARIF v2.1.0 Deliverable'
+  );
+
+  // 34. CISO Intake Dispatcher: dual-mode fallback returns ticket ID and Cal.com booking URL
+  const intakeResult = await dispatchCisoAuditIntake({ name: 'Jane Doe', email: 'ciso@enterprise.com' });
+  assert(
+    intakeResult.success && intakeResult.ticketId.startsWith('SWISH-AUDIT-') && intakeResult.bookingUrl.includes('cal.com/swishos-security'),
+    'CISO Intake Dispatcher Dual-Mode Fallback Returns Audit Ticket ID and Cal.com Booking URL'
+  );
+
   // Cleanup temporary test output directory
 
 

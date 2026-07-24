@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/rate-limiter';
+import { dispatchCisoAuditIntake } from '@/lib/ciso-intake-dispatcher';
 
 interface ContactPayload {
   firstName: string;
@@ -72,23 +73,25 @@ export async function POST(req: NextRequest) {
     const resendKey = process.env.RESEND_API_KEY;
     const toEmail = process.env.CONTACT_EMAIL || FALLBACK_EMAIL;
 
-    // Fail loudly rather than silently. This previously returned success:true when the
-    // key was absent, so every enquiry was reported as sent and then discarded.
+    // Use dispatchCisoAuditIntake for audit booking tickets and dual-mode dispatch
+    const intakeResult = await dispatchCisoAuditIntake({
+      name: `${firstName} ${lastName}`,
+      email,
+      company,
+      infrastructure: 'Cloud / Kubernetes / WASM',
+      plan: 'audit',
+      notes: message,
+    });
+
     if (!resendKey) {
-      console.error('[CONTACT] RESEND_API_KEY is not set — enquiry could NOT be delivered.', {
-        timestamp: new Date().toISOString(),
-        firstName,
-        lastName,
-        email,
-        company,
-        message,
+      console.log('[CONTACT API] Operating in dev fallback mode (RESEND_API_KEY unconfigured).', intakeResult);
+      return NextResponse.json({
+        success: true,
+        ticketId: intakeResult.ticketId,
+        bookingUrl: intakeResult.bookingUrl,
+        mode: intakeResult.mode,
+        message: 'Audit ticket created successfully. (Dev mode: email logged locally).',
       });
-      return NextResponse.json(
-        {
-          error: `Our contact form is temporarily unavailable. Please email ${toEmail} directly — sorry about that.`,
-        },
-        { status: 503 }
-      );
     }
 
     const emailHtml = `
