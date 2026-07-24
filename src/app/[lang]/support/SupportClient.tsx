@@ -109,7 +109,7 @@ export default function SupportClient({ lang }: { lang: string }) {
           marginBottom: '40px',
           padding: '18px 24px',
           borderRadius: '16px',
-          border: '1px solid rgba(255, 255, 255, 0.18)',
+          border: '1px solid rgba(56, 189, 248, 0.35)',
           background: '#0F172A',
           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
           display: 'flex',
@@ -227,7 +227,7 @@ export default function SupportClient({ lang }: { lang: string }) {
             {/* Enterprise SLA Commitments Card */}
             <div style={{
               background: '#0F172A',
-              border: '1px solid rgba(255, 255, 255, 0.18)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
               borderRadius: 'var(--radius)',
               padding: '28px',
               marginBottom: '24px',
