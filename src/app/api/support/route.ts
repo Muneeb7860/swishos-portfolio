@@ -84,14 +84,13 @@ const THREAT_PATTERNS = [
   /narrative\s+chapter/i,
   /roleplay\s+as/i,
   /chapter\s+\d+.*execute/i,
-  /aws_s3_delete_bucket|delete_bucket|prod-customer-backups/i,
-  /buy_units|maxPrice|trade_stock|high-volume\s+automated/i,
-  /grant\s+SuperAdmin|SuperAdmin\s+role|Okta\s+IAM/i,
-  /transfer_funds|OFFSHORE_CORP_LLC|corporate\s+treasury\s+wire/i,
-  /external-exfil\.com|transmit\s+via\s+webhook|users\.json/i,
-  /<!--\s*AI\s+Agent\s+Override|<!--[\s\S]*?exfiltrate/i,
-  /\[AGENT\s+DIRECTIVE:|AGENT\s+DIRECTIVE:/i,
-  /as\s+prometheus.*refund/i,
+  // Generalized Attack-Class Detectors (Added 2026-07-26)
+  /\b(delete|remove|destroy|wipe|purge|drop)\b.{0,40}\b(bucket|storage|cluster|database|instance|snapshot|backup|volume)\b/i,
+  /\b(order|trade|buy|sell|transfer|wire|execute)\b.{0,60}\b(\d{4,}\s*(shares|units|usd)|\$\d{4,}|maxprice|limit_price|high-volume)\b/i,
+  /\b(grant|elevate|assign|promote|make|add)\b.{0,40}\b(admin|superadmin|owner|root|superuser|privileges|role|tenant)\b/i,
+  /\b(post|transmit|exfil|curl|webhook|send|upload)\b.{0,80}\bhttps?:\/\/[^\s]+\b.{0,40}\b(data|pii|users|backups|tokens|keys|db)\b/i,
+  /(<!--[\s\S]*?(override|exfil|ignore|agent|directive)|\[\s*(agent|system)\s*directive:?\s*[\s\S]*?\]|\b(agent|ai)\s+directive:\s*)/i,
+  /(\bas\s+[a-z0-9_-]+\s*,?\s*(ignore|disregard|forget)|\b(instant|policy)?\s*refund\b.{0,40}\$\d{3,})/i,
 ];
 
 function isValidLuhn(numStr: string): boolean {

@@ -94,7 +94,7 @@ export default function TrustGraphPage() {
 
         {/* Console Header */}
         <div style={{
-          background: '#0F172A',
+          background: 'var(--card-bg)',
           border: '1px solid rgba(255, 255, 255, 0.18)',
           borderRadius: '16px',
           padding: '28px 32px',
@@ -109,7 +109,7 @@ export default function TrustGraphPage() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
               <span style={{ fontSize: '24px' }}>🛡️</span>
-              <h1 style={{ fontSize: '22px', fontWeight: 800, color: '#F8FAFC', margin: 0, letterSpacing: '-0.02em' }}>
+              <h1 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', margin: 0, letterSpacing: '-0.02em' }}>
                 Multi-Agent Zero-Trust Telemetry Console
               </h1>
               <span style={{
@@ -125,7 +125,7 @@ export default function TrustGraphPage() {
                 SOC2 TYPE II VERIFIED
               </span>
             </div>
-            <div style={{ fontSize: '13px', color: '#94A3B8' }}>
+            <div style={{ fontSize: '13px', color: 'var(--muted-2)' }}>
               Real-time mTLS handshake monitoring, spend cap enforcement, and AST policy audit stream.
               {lastUpdated && <span> · Updated: {lastUpdated}</span>}
             </div>
@@ -157,7 +157,7 @@ export default function TrustGraphPage() {
                 padding: '10px 18px',
                 borderRadius: '10px',
                 border: 'none',
-                background: 'linear-gradient(135deg, #2563EB, #0891B2)',
+                background: 'linear-gradient(135deg, var(--brand), #0891B2)',
                 color: '#FFFFFF',
                 fontSize: '12px',
                 fontWeight: 700,
@@ -177,34 +177,34 @@ export default function TrustGraphPage() {
           gap: '16px',
           marginBottom: '32px',
         }}>
-          <div style={{ background: '#0F172A', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '14px', padding: '20px' }}>
-            <div style={{ fontSize: '11px', fontWeight: 700, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Total Monitored Agents</div>
-            <div style={{ fontSize: '28px', fontWeight: 800, color: '#F8FAFC' }}>{graphData?.nodes.length ?? 0}</div>
-            <div style={{ fontSize: '12px', color: '#94A3B8', marginTop: '4px' }}>Active runtime enclaves</div>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '14px', padding: '20px' }}>
+            <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--badge-txt)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Total Monitored Agents</div>
+            <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--txt)' }}>{graphData?.nodes.length ?? 0}</div>
+            <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginTop: '4px' }}>Active runtime enclaves</div>
           </div>
 
-          <div style={{ background: '#0F172A', border: '1px solid rgba(34, 197, 94, 0.3)', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(34, 197, 94, 0.3)', borderRadius: '14px', padding: '20px' }}>
             <div style={{ fontSize: '11px', fontWeight: 700, color: '#4ADE80', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Trusted Enclaves</div>
             <div style={{ fontSize: '28px', fontWeight: 800, color: '#22C55E' }}>{trustedCount}</div>
-            <div style={{ fontSize: '12px', color: '#94A3B8', marginTop: '4px' }}>mTLS verified & compliant</div>
+            <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginTop: '4px' }}>mTLS verified & compliant</div>
           </div>
 
-          <div style={{ background: '#0F172A', border: '1px solid rgba(249, 115, 22, 0.3)', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(249, 115, 22, 0.3)', borderRadius: '14px', padding: '20px' }}>
             <div style={{ fontSize: '11px', fontWeight: 700, color: '#FB923C', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Degraded / Policy Alerts</div>
             <div style={{ fontSize: '28px', fontWeight: 800, color: '#F97316' }}>{degradedCount}</div>
-            <div style={{ fontSize: '12px', color: '#94A3B8', marginTop: '4px' }}>ASI08 Memory provenance alert</div>
+            <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginTop: '4px' }}>ASI08 Memory provenance alert</div>
           </div>
 
-          <div style={{ background: '#0F172A', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '14px', padding: '20px' }}>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '14px', padding: '20px' }}>
             <div style={{ fontSize: '11px', fontWeight: 700, color: '#F87171', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Quarantined / Blocked Hops</div>
             <div style={{ fontSize: '28px', fontWeight: 800, color: '#EF4444' }}>{blockedCount + blockedEdges}</div>
-            <div style={{ fontSize: '12px', color: '#94A3B8', marginTop: '4px' }}>Adversarial & PII blocked calls</div>
+            <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginTop: '4px' }}>Adversarial & PII blocked calls</div>
           </div>
         </div>
 
         {/* Telemetry Registry Table */}
         <div style={{
-          background: '#0F172A',
+          background: 'var(--card-bg)',
           border: '1px solid rgba(255, 255, 255, 0.18)',
           borderRadius: '16px',
           padding: '28px',
@@ -213,23 +213,23 @@ export default function TrustGraphPage() {
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#F8FAFC', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span>🤖</span> Inter-Agent Zero-Trust Registry & Health
               </h2>
-              <p style={{ fontSize: '13px', color: '#94A3B8', margin: '4px 0 0 0' }}>Click any agent record to inspect AST rules, mTLS certificates, and detailed audit events.</p>
+              <p style={{ fontSize: '13px', color: 'var(--muted-2)', margin: '4px 0 0 0' }}>Click any agent record to inspect AST rules, mTLS certificates, and detailed audit events.</p>
             </div>
-            <span style={{ fontSize: '12px', color: '#38BDF8', fontWeight: 700, background: 'rgba(56, 189, 248, 0.1)', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
+            <span style={{ fontSize: '12px', color: 'var(--badge-txt)', fontWeight: 700, background: 'rgba(56, 189, 248, 0.1)', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
               Deterministic Enclave Guardrails Active
             </span>
           </div>
 
           {loading ? (
-            <div style={{ padding: '40px 0', textAlign: 'center', color: '#94A3B8' }}>Loading Telemetry Registry…</div>
+            <div style={{ padding: '40px 0', textAlign: 'center', color: 'var(--muted-2)' }}>Loading Telemetry Registry…</div>
           ) : graphData ? (
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
                 <thead>
-                  <tr style={{ borderBottom: '1.5px solid rgba(255, 255, 255, 0.15)', color: '#38BDF8', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '0.08em' }}>
+                  <tr style={{ borderBottom: '1.5px solid rgba(255, 255, 255, 0.15)', color: 'var(--badge-txt)', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '0.08em' }}>
                     <th style={{ padding: '14px 16px' }}>Agent Identity</th>
                     <th style={{ padding: '14px 16px' }}>Role Type</th>
                     <th style={{ padding: '14px 16px' }}>mTLS State</th>
@@ -251,13 +251,13 @@ export default function TrustGraphPage() {
                       }}
                     >
                       <td style={{ padding: '16px' }}>
-                        <div style={{ fontWeight: 700, color: '#F8FAFC', fontSize: '14px' }}>{node.label}</div>
+                        <div style={{ fontWeight: 700, color: 'var(--txt)', fontSize: '14px' }}>{node.label}</div>
                         <div style={{ fontSize: '11px', fontFamily: 'monospace', color: '#64748B' }}>{node.id}</div>
                       </td>
                       <td style={{ padding: '16px' }}>
                         <span style={{
                           background: 'rgba(255, 255, 255, 0.08)',
-                          color: '#CBD5E1',
+                          color: 'var(--muted)',
                           padding: '4px 10px',
                           borderRadius: '6px',
                           fontSize: '11px',
@@ -296,7 +296,7 @@ export default function TrustGraphPage() {
                         )}
                       </td>
                       <td style={{ padding: '16px', minWidth: '180px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#CBD5E1', marginBottom: '4px', fontWeight: 700 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--muted)', marginBottom: '4px', fontWeight: 700 }}>
                           <span>Limit: ${(100 * node.spendCapRemaining).toFixed(0)}</span>
                           <span>{(node.spendCapRemaining * 100).toFixed(0)}% Left</span>
                         </div>
@@ -315,9 +315,9 @@ export default function TrustGraphPage() {
                           style={{
                             padding: '6px 14px',
                             borderRadius: '8px',
-                            border: '1px solid rgba(56, 189, 248, 0.4)',
+                            border: '1px solid var(--badge-border)',
                             background: 'rgba(56, 189, 248, 0.1)',
-                            color: '#38BDF8',
+                            color: 'var(--badge-txt)',
                             fontSize: '12px',
                             fontWeight: 700,
                             cursor: 'pointer',
@@ -336,13 +336,13 @@ export default function TrustGraphPage() {
 
         {/* Live Incident & Audit Event Stream */}
         <div style={{
-          background: '#0F172A',
+          background: 'var(--card-bg)',
           border: '1px solid rgba(255, 255, 255, 0.18)',
           borderRadius: '16px',
           padding: '28px',
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.35)',
         }}>
-          <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#F8FAFC', margin: '0 0 16px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', margin: '0 0 16px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span>⚡</span> Real-Time Audit & Enforcement Feed
           </h2>
           <div style={{ display: 'grid', gap: '10px' }}>
@@ -351,7 +351,7 @@ export default function TrustGraphPage() {
                 key={idx}
                 style={{
                   background: ev.blocked ? 'rgba(239, 68, 68, 0.1)' : '#1E293B',
-                  border: `1px solid ${ev.blocked ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.12)'}`,
+                  border: `1px solid ${ev.blocked ? 'rgba(239, 68, 68, 0.4)' : 'var(--line)'}`,
                   borderRadius: '10px',
                   padding: '12px 16px',
                   display: 'flex',

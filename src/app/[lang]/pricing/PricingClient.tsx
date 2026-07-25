@@ -76,9 +76,9 @@ export default function PricingClient({ lang }: { lang: string }) {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'rgba(56, 189, 248, 0.15)',
-            border: '1px solid rgba(56, 189, 248, 0.4)',
-            color: '#38BDF8',
+            background: 'var(--badge-bg)',
+            border: '1px solid var(--badge-border)',
+            color: 'var(--badge-txt)',
             fontSize: '12px',
             fontWeight: 800,
             padding: '6px 16px',
@@ -103,8 +103,8 @@ export default function PricingClient({ lang }: { lang: string }) {
               <div
                 key={tier.name}
                 style={{
-                  background: '#0F172A',
-                  border: tier.featured ? '2px solid #2563EB' : '1px solid rgba(56, 189, 248, 0.35)',
+                  background: 'var(--card-bg)',
+                  border: tier.featured ? '2px solid var(--brand)' : '1px solid var(--card-border)',
                   borderRadius: '16px',
                   padding: '36px',
                   boxShadow: '0 16px 48px rgba(0, 0, 0, 0.35)',
@@ -120,7 +120,7 @@ export default function PricingClient({ lang }: { lang: string }) {
                       position: 'absolute',
                       top: '-14px',
                       right: '24px',
-                      background: '#2563EB',
+                      background: 'var(--brand)',
                       color: '#FFFFFF',
                       fontSize: '11px',
                       fontWeight: 800,
@@ -136,23 +136,23 @@ export default function PricingClient({ lang }: { lang: string }) {
                 )}
 
                 <div>
-                  <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#F8FAFC', marginBottom: '8px' }}>{tier.name}</h3>
-                  <p style={{ minHeight: '52px', fontSize: '14px', color: '#94A3B8', lineHeight: 1.5 }}>{tier.desc}</p>
+                  <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>{tier.name}</h3>
+                  <p style={{ minHeight: '52px', fontSize: '14px', color: 'var(--muted-2)', lineHeight: 1.5 }}>{tier.desc}</p>
 
                   <div style={{ margin: '24px 0 10px', display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '36px', fontWeight: 800, color: '#F8FAFC', fontFamily: 'Sora', lineHeight: 1.1 }}>
+                    <span style={{ fontSize: '36px', fontWeight: 800, color: 'var(--txt)', fontFamily: 'Sora', lineHeight: 1.1 }}>
                       {tier.price}
                     </span>
-                    <span style={{ color: '#94A3B8', fontSize: '14px', fontWeight: 500 }}>{tier.unit}</span>
+                    <span style={{ color: 'var(--muted-2)', fontSize: '14px', fontWeight: 500 }}>{tier.unit}</span>
                   </div>
 
-                  <p style={{ fontSize: '12px', color: '#38BDF8', fontWeight: 700, marginBottom: '24px', minHeight: '32px' }}>
+                  <p style={{ fontSize: '12px', color: 'var(--badge-txt)', fontWeight: 700, marginBottom: '24px', minHeight: '32px' }}>
                     {tier.note}
                   </p>
 
-                  <hr style={{ borderColor: 'rgba(255, 255, 255, 0.12)', marginBottom: '24px' }} />
+                  <hr style={{ borderColor: 'var(--line)', marginBottom: '24px' }} />
 
-                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: '#CBD5E1' }}>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: 'var(--muted)' }}>
                     {tier.features.map((feature, i) => (
                       <li key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                         <Check size={16} color="#10B981" style={{ flexShrink: 0, marginTop: '3px' }} />
@@ -174,9 +174,9 @@ export default function PricingClient({ lang }: { lang: string }) {
                       gap: '8px',
                       padding: '14px 20px',
                       borderRadius: '10px',
-                      border: '1px solid rgba(56, 189, 248, 0.35)',
-                      background: 'rgba(56, 189, 248, 0.15)',
-                      color: '#38BDF8',
+                      border: '1px solid var(--card-border)',
+                      background: 'var(--badge-bg)',
+                      color: 'var(--badge-txt)',
                       fontWeight: 700,
                       fontSize: '14px',
                       textDecoration: 'none',
@@ -195,7 +195,7 @@ export default function PricingClient({ lang }: { lang: string }) {
                       gap: '8px',
                       padding: '14px 20px',
                       borderRadius: '10px',
-                      background: tier.featured ? '#2563EB' : '#1E293B',
+                      background: tier.featured ? 'var(--brand)' : '#1E293B',
                       border: tier.featured ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
                       color: '#FFFFFF',
                       fontWeight: 700,

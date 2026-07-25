@@ -21,9 +21,9 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'rgba(56, 189, 248, 0.15)',
-            border: '1px solid rgba(56, 189, 248, 0.4)',
-            color: '#38BDF8',
+            background: 'var(--badge-bg)',
+            border: '1px solid var(--badge-border)',
+            color: 'var(--badge-txt)',
             fontSize: '12px',
             fontWeight: 800,
             padding: '6px 16px',
@@ -49,7 +49,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
               style={{
                 padding: '14px 28px',
                 borderRadius: '10px',
-                background: '#2563EB',
+                background: 'var(--brand)',
                 color: '#FFFFFF',
                 fontSize: '15px',
                 fontWeight: 700,
@@ -81,15 +81,15 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
               { code: 'SOC 2 CC7.1', name: 'Vulnerability Management', desc: 'Automated SARIF v2.1.0 report generation with CVSS v3.1 impact vector scoring.' },
               { code: 'EU AI Act Art 15', name: 'Robustness & Accuracy', desc: 'Technical robustness, error logging, and fail-closed runtime enclave boundary verification.' },
             ].map(ctrl => (
-              <div key={ctrl.code} style={{ background: '#0F172A', padding: '22px', borderRadius: '12px', border: '1px solid rgba(56, 189, 248, 0.35)', boxShadow: '0 12px 32px rgba(0, 0, 0, 0.25)' }}>
+              <div key={ctrl.code} style={{ background: 'var(--card-bg)', padding: '22px', borderRadius: '12px', border: '1px solid var(--card-border)', boxShadow: '0 12px 32px rgba(0, 0, 0, 0.25)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.06em', background: 'rgba(56, 189, 248, 0.15)', padding: '4px 10px', borderRadius: '4px', border: '1px solid rgba(56, 189, 248, 0.4)' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: 'var(--badge-txt)', textTransform: 'uppercase', letterSpacing: '0.06em', background: 'var(--badge-bg)', padding: '4px 10px', borderRadius: '4px', border: '1px solid var(--badge-border)' }}>
                     {ctrl.code}
                   </span>
                   <CheckCircle2 size={16} color="#10B981" />
                 </div>
-                <div style={{ fontSize: '16px', fontWeight: 700, color: '#F8FAFC', marginBottom: '8px' }}>{ctrl.name}</div>
-                <div style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.5 }}>{ctrl.desc}</div>
+                <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--txt)', marginBottom: '8px' }}>{ctrl.name}</div>
+                <div style={{ fontSize: '13px', color: 'var(--muted-2)', lineHeight: 1.5 }}>{ctrl.desc}</div>
               </div>
             ))}
           </div>
@@ -110,8 +110,8 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
 
             {/* Fixed Audit Tier */}
             <div style={{
-              background: '#0F172A',
-              border: '1px solid rgba(56, 189, 248, 0.35)',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--card-border)',
               borderRadius: '16px',
               padding: '36px',
               boxShadow: '0 16px 48px rgba(0, 0, 0, 0.35)',
@@ -121,9 +121,9 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
               <div>
                 <span style={{
                   display: 'inline-block',
-                  background: 'rgba(56, 189, 248, 0.15)',
-                  border: '1px solid rgba(56, 189, 248, 0.4)',
-                  color: '#38BDF8',
+                  background: 'var(--badge-bg)',
+                  border: '1px solid var(--badge-border)',
+                  color: 'var(--badge-txt)',
                   fontSize: '11px',
                   fontWeight: 800,
                   padding: '4px 12px',
@@ -134,17 +134,17 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                 }}>
                   FIXED SCOPE ENGAGEMENT
                 </span>
-                <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#F8FAFC', marginBottom: '8px' }}>1-Week AI Threat Model Audit</h3>
-                <p style={{ color: '#94A3B8', fontSize: '14px', marginBottom: '20px' }}>Deep-dive adversarial evaluation of tool calling, prompt injection resilience, and spend boundaries.</p>
+                <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>1-Week AI Threat Model Audit</h3>
+                <p style={{ color: 'var(--muted-2)', fontSize: '14px', marginBottom: '20px' }}>Deep-dive adversarial evaluation of tool calling, prompt injection resilience, and spend boundaries.</p>
                 
-                <div style={{ fontSize: '20px', fontWeight: 700, color: '#F8FAFC', marginBottom: '24px' }}>
-                  $7,500 – $12,500 <span style={{ fontSize: '13px', fontWeight: 500, color: '#94A3B8' }}>(Fixed 1-Week Engagement)</span>
+                <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--txt)', marginBottom: '24px' }}>
+                  $7,500 – $12,500 <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--muted-2)' }}>(Fixed 1-Week Engagement)</span>
                 </div>
               </div>
 
-              <hr style={{ borderColor: 'rgba(255, 255, 255, 0.12)', marginBottom: '24px' }} />
+              <hr style={{ borderColor: 'var(--line)', marginBottom: '24px' }} />
 
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: '#CBD5E1' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: 'var(--muted)' }}>
                 {[
                   'Full AST Taint & Prompt Injection Penetration Audit',
                   'OASIS SARIF v2.1.0 Machine-Readable Findings Export',
@@ -166,7 +166,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                   textAlign: 'center',
                   padding: '14px 20px',
                   borderRadius: '10px',
-                  background: '#2563EB',
+                  background: 'var(--brand)',
                   color: '#FFF',
                   fontWeight: 700,
                   fontSize: '14px',
@@ -180,8 +180,8 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
 
             {/* Monthly Retainer Tier */}
             <div style={{
-              background: '#0F172A',
-              border: '1px solid rgba(56, 189, 248, 0.35)',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--card-border)',
               borderRadius: '16px',
               padding: '36px',
               boxShadow: '0 16px 48px rgba(0, 0, 0, 0.35)',
@@ -191,9 +191,9 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
               <div>
                 <span style={{
                   display: 'inline-block',
-                  background: 'rgba(56, 189, 248, 0.15)',
-                  border: '1px solid rgba(56, 189, 248, 0.4)',
-                  color: '#38BDF8',
+                  background: 'var(--badge-bg)',
+                  border: '1px solid var(--badge-border)',
+                  color: 'var(--badge-txt)',
                   fontSize: '11px',
                   fontWeight: 800,
                   padding: '4px 12px',
@@ -204,17 +204,17 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                 }}>
                   CONTINUOUS ADVISORY
                 </span>
-                <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#F8FAFC', marginBottom: '8px' }}>Guardrail & Red-Team Retainer</h3>
-                <p style={{ color: '#94A3B8', fontSize: '14px', marginBottom: '20px' }}>Continuous attack simulation, custom AST policy tuning, and active incident support.</p>
+                <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>Guardrail & Red-Team Retainer</h3>
+                <p style={{ color: 'var(--muted-2)', fontSize: '14px', marginBottom: '20px' }}>Continuous attack simulation, custom AST policy tuning, and active incident support.</p>
 
-                <div style={{ fontSize: '20px', fontWeight: 700, color: '#F8FAFC', marginBottom: '24px' }}>
-                  $4,500 <span style={{ fontSize: '14px', fontWeight: 500 }}>/ month</span> <span style={{ fontSize: '13px', fontWeight: 500, color: '#94A3B8' }}>(Continuous Advisory)</span>
+                <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--txt)', marginBottom: '24px' }}>
+                  $4,500 <span style={{ fontSize: '14px', fontWeight: 500 }}>/ month</span> <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--muted-2)' }}>(Continuous Advisory)</span>
                 </div>
               </div>
 
-              <hr style={{ borderColor: 'rgba(255, 255, 255, 0.12)', marginBottom: '24px' }} />
+              <hr style={{ borderColor: 'var(--line)', marginBottom: '24px' }} />
 
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: '#CBD5E1' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: 'var(--muted)' }}>
                 {[
                   'Continuous Automated Attack Payload Sweeps',
                   'Dedicated Slack Connect Channel with Security Team',

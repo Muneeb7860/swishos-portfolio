@@ -73,14 +73,14 @@ export default function LeaderboardPage() {
               { label: 'Avg Industry Score', value: '76/100', color: '#F59E0B' },
             ].map((stat) => (
               <div key={stat.label} style={{
-                background: '#0F172A',
+                background: 'var(--card-bg)',
                 padding: '16px 20px',
                 borderRadius: '12px',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 textAlign: 'center',
               }}>
                 <div style={{ fontSize: '24px', fontWeight: 800, color: stat.color, marginBottom: '4px' }}>{stat.value}</div>
-                <div style={{ fontSize: '12px', color: '#94A3B8' }}>{stat.label}</div>
+                <div style={{ fontSize: '12px', color: 'var(--muted-2)' }}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -99,17 +99,17 @@ export default function LeaderboardPage() {
         <div style={{
           marginTop: '48px',
           padding: '24px',
-          background: '#0F172A',
+          background: 'var(--card-bg)',
           border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: '12px',
           fontSize: '13px',
-          color: '#94A3B8',
+          color: 'var(--muted-2)',
           lineHeight: 1.6,
         }}>
-          <div style={{ fontWeight: 700, color: '#F8FAFC', marginBottom: '8px' }}>🔬 Benchmark Methodology & Reproducibility</div>
+          <div style={{ fontWeight: 700, color: 'var(--txt)', marginBottom: '8px' }}>🔬 Benchmark Methodology & Reproducibility</div>
           <div>
             Evaluations are conducted using <code style={{ background: '#1E293B', padding: '2px 6px', borderRadius: '4px', color: '#38BDF8' }}>agentic-redteam v1.0.0</code> over 250 standardized payloads per framework target.
-            Scores are computed using weighted severity penalties (CRITICAL × 4, HIGH × 3, MEDIUM × 2). To run these evaluations locally or submit your agent framework for indexing, inspect our open repository at <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" style={{ color: '#38BDF8', textDecoration: 'underline' }}>github.com/Muneeb7860/agentic-redteam</a>.
+            Scores are computed using weighted severity penalties (CRITICAL × 4, HIGH × 3, MEDIUM × 2). To run these evaluations locally or submit your agent framework for indexing, inspect our open repository at <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--badge-txt)', textDecoration: 'underline' }}>github.com/Muneeb7860/agentic-redteam</a>.
           </div>
         </div>
 

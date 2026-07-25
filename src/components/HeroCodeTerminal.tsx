@@ -16,7 +16,7 @@ tracker = ASTPayloadTracker(max_turns=12)
 
 # 2. Real-Time Stream Guardrail + Multi-Turn AST Payload Interception
 @guard_stream(mode="redact", window_size=256)
-async function agent_stream(query: str, session_id: str):
+async def agent_stream(query: str, session_id: str):
     ast_risk = tracker.analyze_chunk(query, session_id)
     if ast_risk.delayed_injection_detected:
         raise SecurityException(f"[SwishOS AST BLOCK] Split payload detected across Turn #{ast_risk.trigger_turn}")

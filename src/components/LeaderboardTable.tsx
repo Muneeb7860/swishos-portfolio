@@ -62,10 +62,10 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
         gap: '16px',
         flexWrap: 'wrap',
         marginBottom: '24px',
-        background: '#0F172A',
+        background: 'var(--card-bg)',
         padding: '16px 20px',
         borderRadius: '12px',
-        border: '1px solid rgba(255, 255, 255, 0.12)',
+        border: '1px solid var(--line)',
       }}>
         {/* Search Input */}
         <div style={{ flex: 1, minWidth: '240px' }}>
@@ -145,10 +145,10 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
       </div>
 
       {/* Main Leaderboard Table */}
-      <div style={{ overflowX: 'auto', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.12)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', background: '#0F172A' }}>
+      <div style={{ overflowX: 'auto', borderRadius: '12px', border: '1px solid var(--line)' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', background: 'var(--card-bg)' }}>
           <thead>
-            <tr style={{ background: '#1E293B', borderBottom: '1px solid rgba(255, 255, 255, 0.12)' }}>
+            <tr style={{ background: '#1E293B', borderBottom: '1px solid var(--line)' }}>
               <th style={{ padding: '14px 20px', fontSize: '12px', color: '#94A3B8', fontWeight: 700 }}>RANK / FRAMEWORK</th>
               <th style={{ padding: '14px 16px', fontSize: '12px', color: '#94A3B8', fontWeight: 700 }}>VERSION</th>
               <th style={{ padding: '14px 16px', fontSize: '12px', color: '#94A3B8', fontWeight: 700 }}>ECOSYSTEM</th>
@@ -187,14 +187,14 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
                           {idx + 1}
                         </span>
                         <div>
-                          <div style={{ fontWeight: 700, fontSize: '15px', color: isNative ? '#34D399' : '#F8FAFC' }}>
+                          <div style={{ fontWeight: 700, fontSize: '15px', color: isNative ? '#34D399' : 'var(--txt)' }}>
                             {item.name} {isNative && <span style={{ fontSize: '11px', background: '#10B981', color: '#000', padding: '2px 6px', borderRadius: '4px', marginLeft: '6px' }}>NATIVE</span>}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td style={{ padding: '16px 16px', fontFamily: 'monospace', fontSize: '13px', color: '#94A3B8' }}>{item.version}</td>
-                    <td style={{ padding: '16px 16px', fontSize: '13px', color: '#CBD5E1' }}>{item.ecosystem}</td>
+                    <td style={{ padding: '16px 16px', fontFamily: 'monospace', fontSize: '13px', color: 'var(--muted-2)' }}>{item.version}</td>
+                    <td style={{ padding: '16px 16px', fontSize: '13px', color: 'var(--muted)' }}>{item.ecosystem}</td>
                     <td style={{ padding: '16px 16px', textAlign: 'center' }}>
                       <span style={{
                         fontSize: '18px',
@@ -217,15 +217,15 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
                         {item.grade}
                       </span>
                     </td>
-                    <td style={{ padding: '16px 16px', textAlign: 'center', fontWeight: 600, fontSize: '14px', color: '#F8FAFC' }}>
+                    <td style={{ padding: '16px 16px', textAlign: 'center', fontWeight: 600, fontSize: '14px', color: 'var(--txt)' }}>
                       {item.passRate}% ({item.passedTests}/{item.totalTests})
                     </td>
                     <td style={{ padding: '16px 20px', textAlign: 'right' }}>
                       <button
                         onClick={() => setExpandedId(isExpanded ? null : item.id)}
                         style={{
-                          background: 'rgba(255, 255, 255, 0.08)',
-                          color: '#94A3B8',
+                          background: 'var(--bg-soft)',
+                          color: 'var(--muted-2)',
                           border: 'none',
                           padding: '6px 12px',
                           borderRadius: '6px',

@@ -10,8 +10,8 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
   return (
     <div
       style={{
-        background: '#0F172A',
-        border: '1px solid rgba(56, 189, 248, 0.35)',
+        background: 'var(--card-bg)',
+        border: '1px solid var(--card-border)',
         borderRadius: '24px',
         padding: '40px',
         boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
@@ -25,9 +25,9 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
-            background: 'rgba(56, 189, 248, 0.15)',
-            border: '1px solid rgba(56, 189, 248, 0.4)',
-            color: '#38BDF8',
+            background: 'var(--badge-bg)',
+            border: '1px solid var(--badge-border)',
+            color: 'var(--badge-txt)',
             fontSize: '12px',
             fontWeight: 800,
             padding: '6px 14px',
@@ -37,10 +37,10 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         >
           <FileTextIcon size={14} color="#38BDF8" /> {isAr ? 'معاينة مخرجات التقرير المباشر' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
         </span>
-        <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '14px', color: '#F8FAFC' }}>
+        <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '14px', color: 'var(--txt)' }}>
           {isAr ? 'ما الذي تحصل عليه في تدقيق أمن وكيل الذكاء الاصطناعي؟' : 'What You Receive in a 1-Week Security Audit'}
         </h3>
-        <p style={{ fontSize: '15px', color: '#94A3B8', lineHeight: 1.6 }}>
+        <p style={{ fontSize: '15px', color: 'var(--muted-2)', lineHeight: 1.6 }}>
           {isAr
             ? 'تقرير تنفيذي شامل يجمع بين الخريطة الحرارية للمخاطر، وسجلات الهجوم المباشرة، وتعديلات كود برمجية جاهزة للدمج.'
             : 'An executive CISO sign-off report featuring a visual OWASP risk heatmap, reproducible payload logs, and PR-ready code diffs.'}
@@ -51,16 +51,16 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '40px' }}>
         
         {/* Mockup 1: OWASP Risk Heatmap */}
-        <div style={{ background: '#161E2E', border: '1px solid rgba(255, 255, 255, 0.12)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#38BDF8', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--badge-txt)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
               <ShieldIcon size={14} color="#38BDF8" /> ARTIFACT 01
             </span>
             <span style={{ fontSize: '11px', background: '#0B0F17', border: '1px solid rgba(255, 255, 255, 0.18)', color: '#F8FAFC', padding: '4px 10px', borderRadius: '6px', fontWeight: 800, letterSpacing: '0.06em' }}>
               CISO MATRIX
             </span>
           </div>
-          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px', color: '#F8FAFC' }}>
+          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px', color: 'var(--txt)' }}>
             {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026' : 'OWASP Agentic Risk Heatmap'}
           </h4>
 
@@ -86,7 +86,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         </div>
 
         {/* Mockup 2: Reproducible Payload Exploits */}
-        <div style={{ background: '#161E2E', border: '1px solid rgba(255, 255, 255, 0.12)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#F59E0B', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
               <TargetIcon size={14} color="#F59E0B" /> ARTIFACT 02
@@ -95,7 +95,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
               PAYLOAD LOGS
             </span>
           </div>
-          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px', color: '#F8FAFC' }}>
+          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px', color: 'var(--txt)' }}>
             {isAr ? 'حمولات الهجوم وخرطوم الإثبات' : 'Reproducible Attack Payloads'}
           </h4>
 
@@ -109,7 +109,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         </div>
 
         {/* Mockup 3: PR-Ready Remediation Diffs */}
-        <div style={{ background: '#161E2E', border: '1px solid rgba(255, 255, 255, 0.12)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#10B981', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
               <CodeIcon size={14} color="#10B981" /> ARTIFACT 03
@@ -118,7 +118,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
               REMEDIATION
             </span>
           </div>
-          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px', color: '#F8FAFC' }}>
+          <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px', color: 'var(--txt)' }}>
             {isAr ? 'تعديلات الكود الجاهزة للدمج' : 'PR-Ready Remediation Diffs'}
           </h4>
 
@@ -138,10 +138,10 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
       {/* Audit Guarantee Banner */}
       <div
         style={{
-          background: '#161E2E',
+          background: 'var(--bg-soft)',
           borderRadius: '16px',
           padding: '24px 32px',
-          border: '1px solid rgba(56, 189, 248, 0.35)',
+          border: '1px solid var(--card-border)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -152,10 +152,10 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <CheckCircleIcon size={32} color="#10B981" />
           <div>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#F8FAFC' }}>
-              {isAr ? 'ضمان الأمان بزمن استجابة أقل من 5 أيام' : '100% Deterministic Guarantee or 100% Refund'}
+            <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--txt)' }}>
+              {isAr ? 'نكتشف ثغرة حقيقية — أو لا تدفع شيئًا' : 'We Find a Real Vulnerability — or You Pay $0'}
             </div>
-            <div style={{ fontSize: '13px', color: '#94A3B8' }}>
+            <div style={{ fontSize: '13px', color: 'var(--muted-2)' }}>
               {isAr
                 ? 'إذا لم نكتشف ثغرة واحدة قابلة للتكرار في وكيلك، فستسترد مبلغ التدقيق بالكامل.'
                 : 'If our red-team fails to identify at least 1 actionable tool bypass or prompt injection vulnerability, you pay $0.'}
@@ -168,7 +168,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
           style={{
             padding: '12px 24px',
             borderRadius: '10px',
-            background: '#2563EB',
+            background: 'var(--brand)',
             color: '#FFFFFF',
             fontWeight: 700,
             fontSize: '14px',

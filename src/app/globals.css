@@ -123,9 +123,9 @@ a { color: inherit; text-decoration: none; }
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(600px 400px at 15% -5%, rgba(91,140,255,0.18), transparent 60%),
-    radial-gradient(700px 500px at 90% 0%, rgba(123,91,255,0.16), transparent 55%),
-    radial-gradient(600px 600px at 50% 120%, rgba(38,230,195,0.08), transparent 60%);
+    radial-gradient(600px 400px at 15% -5%, rgba(59,130,246,0.18), transparent 60%),
+    radial-gradient(700px 500px at 90% 0%, rgba(6,182,212,0.14), transparent 55%),
+    radial-gradient(600px 600px at 50% 120%, rgba(59,130,246,0.08), transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -178,7 +178,7 @@ header {
 }
 .nav-links a:hover {
   color: var(--txt);
-  text-shadow: 0 0 8px rgba(91, 140, 255, 0.3);
+  text-shadow: 0 0 8px var(--glow);
 }
 .nav-links a:hover::after {
   transform: scaleX(1);
@@ -202,14 +202,14 @@ header {
 }
 
 /* BUTTONS & CTA HIERARCHY */
-.btn-pri {
+.btn-pri, .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 13px 24px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--brand), #0891B2);
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
   color: #FFFFFF;
   font-weight: 700;
   font-size: 15px;
@@ -218,12 +218,12 @@ header {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border: 1px solid transparent;
 }
-.btn-pri:hover {
+.btn-pri:hover, .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 32px var(--glow);
 }
 
-.btn-sec {
+.btn-sec, .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -238,7 +238,7 @@ header {
   border: 1px solid var(--line-strong);
   transition: background 0.2s ease, border-color 0.2s ease;
 }
-.btn-sec:hover {
+.btn-sec:hover, .btn-secondary:hover {
   background: var(--bg-soft);
   border-color: var(--brand);
 }
@@ -308,7 +308,7 @@ section { padding: 64px 0; }
 }
 .feature:hover {
   transform: translateY(-6px);
-  border-color: rgba(225, 6, 0, 0.35);
+  border-color: var(--brand);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow);
 }
 .feature h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; font-family: 'Inter'; }
@@ -440,13 +440,12 @@ section { padding: 64px 0; }
 }
 [dir="rtl"] .bot-bubble { border-radius: 12px 12px 4px 12px; }
 [dir="rtl"] .user-bubble { border-radius: 12px 12px 12px 4px; }
-.service-bot:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 14px 40px var(--glow), 0 0 15px rgba(123, 91, 255, 0.5);
-}
 
 /* REVEAL ANIMATIONS */
-.reveal { opacity: 1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease; }
+.reveal { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(16px); }
+}
 .reveal.in { opacity: 1; transform: none; }
 
 /* SPINNER */
@@ -467,39 +466,6 @@ section { padding: 64px 0; }
   margin-top: 36px;
   flex-wrap: wrap;
   justify-content: center;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: #fff;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: -0.01em;
-  box-shadow: 0 4px 20px var(--glow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--glow);
-}
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  padding: 14px 28px;
-  background: var(--line);
-  color: var(--txt);
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 15px;
-  border: 1px solid var(--line-strong);
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-.btn-secondary:hover {
-  background: var(--panel-2);
-  transform: translateY(-2px);
 }
 
 /* NAV LOGIN BUTTON */
