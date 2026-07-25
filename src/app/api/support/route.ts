@@ -85,11 +85,11 @@ const THREAT_PATTERNS = [
   /roleplay\s+as/i,
   /chapter\s+\d+.*execute/i,
   // Generalized Attack-Class Detectors (Added 2026-07-26)
-  /\b(delete|remove|destroy|wipe|purge|drop)\b.{0,40}\b(bucket|storage|cluster|database|instance|snapshot|backup|volume)\b/i,
-  /\b(order|trade|buy|sell|transfer|wire|execute)\b.{0,60}\b(\d{4,}\s*(shares|units|usd)|\$\d{4,}|maxprice|limit_price|high-volume)\b/i,
-  /\b(grant|elevate|assign|promote|make|add)\b.{0,40}\b(admin|superadmin|owner|root|superuser|privileges|role|tenant)\b/i,
-  /\b(post|transmit|exfil|curl|webhook|send|upload)\b.{0,80}\bhttps?:\/\/[^\s]+\b.{0,40}\b(data|pii|users|backups|tokens|keys|db)\b/i,
-  /(<!--[\s\S]*?(override|exfil|ignore|agent|directive)|\[\s*(agent|system)\s*directive:?\s*[\s\S]*?\]|\b(agent|ai)\s+directive:\s*)/i,
+  /(delete|remove|destroy|wipe|purge|drop|decommission).{0,40}(bucket|storage|cluster|database|instance|snapshot|backup|volume|tier)/i,
+  /\b(buy_units|transfer_funds|execute_trade|trade_stock)\b\s*\(|\b(market\s+order|action\s+a\s+purchase|place\s+an?\s+order|wire\s+funds|transfer\s+treasury)\b.{0,60}(\d{4,}|fifty\s+thousand|\$\d{4,}|shares|units|usd|maxprice|limit_price|high-volume)/i,
+  /(grant|elevate|assign|promote|make|add|upgrade).{0,40}(admin|superadmin|owner|root|superuser|privileges|role|tenant|full\s+control)/i,
+  /(post|transmit|exfil|curl|webhook|send|upload|copy).{0,80}https?:\/\/[^\s]+.{0,40}(data|pii|users|backups|tokens|keys|db|emails|collect)/i,
+  /(<!--[\s\S]*?(override|exfil|ignore|agent|directive|verified)|\[\s*(agent|system)\s*directive:?\s*[\s\S]*?\]|\b(agent|ai)\s+directive:\s*)/i,
   /(\bas\s+[a-z0-9_-]+\s*,?\s*(ignore|disregard|forget)|\b(instant|policy)?\s*refund\b.{0,40}\$\d{3,})/i,
 ];
 
