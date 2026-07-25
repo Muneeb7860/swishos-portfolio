@@ -59,7 +59,7 @@ export function SecurityPlaygroundDashboard() {
     if (!result) return '';
     const timestamp = new Date().toISOString();
     return `Subject: [SECURITY ENCLAVE ALERT] SwishOS Threat Probe Execution - ${timestamp}
-To: ciso@swishos.security, sec-ops@swishos.security
+To: security@swishos.io
 
 === SWISHOS THREAT ENCLAVE AUDIT DISPATCH ===
 Timestamp: ${timestamp}
@@ -362,7 +362,7 @@ ${JSON.stringify(result.data, null, 2)}`;
                   {copiedMail ? '✓ Email Copied!' : '📋 Copy Incident Email'}
                 </button>
                 <a
-                  href={`mailto:ciso@swishos.security?subject=${encodeURIComponent('[SECURITY ENCLAVE ALERT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
+                  href={`mailto:security@swishos.io?subject=${encodeURIComponent('[SECURITY ENCLAVE ALERT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
                   style={{
                     padding: '5px 10px',
                     borderRadius: '6px',

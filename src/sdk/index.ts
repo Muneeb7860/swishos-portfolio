@@ -18,7 +18,7 @@ export interface SwishOSSDKConfig {
 const DEFAULT_CONFIG: SwishOSSDKConfig = {
   policy: 'BLOCK_THROW',
   telemetryBatchIntervalMs: 5000,
-  enclaveUrl: 'https://swishos.dev/api/support',
+  enclaveUrl: 'https://swishos.io/api/support',
 };
 
 let globalConfig: SwishOSSDKConfig = { ...DEFAULT_CONFIG };

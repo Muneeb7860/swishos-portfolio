@@ -32,7 +32,7 @@ export function handleCORSPreflight(req: Request): NextResponse | null {
     headers.set('Access-Control-Allow-Origin', origin);
     headers.set('Access-Control-Allow-Credentials', 'true');
   } else {
-    headers.set('Access-Control-Allow-Origin', 'https://swishos.dev');
+    headers.set('Access-Control-Allow-Origin', 'https://swishos.io');
   }
 
   headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -54,7 +54,7 @@ export function applySecurityHeaders(req: Request, res: NextResponse): NextRespo
     res.headers.set('Access-Control-Allow-Origin', origin);
     res.headers.set('Access-Control-Allow-Credentials', 'true');
   } else {
-    res.headers.set('Access-Control-Allow-Origin', 'https://swishos.dev');
+    res.headers.set('Access-Control-Allow-Origin', 'https://swishos.io');
   }
 
   res.headers.set('Access-Control-Expose-Headers', 'X-SwishOS-Audit-Proof, X-SwishOS-Audit-Timestamp, X-SwishOS-Audit-Nonce, X-SwishOS-Edge-Proxy, X-RateLimit-Limit, X-RateLimit-Remaining');

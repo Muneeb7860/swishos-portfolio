@@ -125,7 +125,7 @@ export function generateCisoIntakeEmailHtml(payload: AuditRequestPayload, ticket
     <tr>
       <td style="background-color: #161E2E; padding: 20px 32px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 12px; color: #94A3B8; text-align: center;">
         SwishOS AI Security & Governance Enclave · Senior Security Research Team<br>
-        Direct Escalations: <a href="mailto:security@swishos.dev" style="color: #38BDF8; text-decoration: none;">security@swishos.dev</a>
+        Direct Escalations: <a href="mailto:security@swishos.io" style="color: #38BDF8; text-decoration: none;">security@swishos.io</a>
       </td>
     </tr>
 
@@ -156,7 +156,7 @@ export async function dispatchCisoAuditIntake(payload: AuditRequestPayload): Pro
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'SwishOS Defense <audits@swishos.dev>',
+          from: 'SwishOS Defense <security@swishos.io>',
           to: [payload.email],
           subject: `[SwishOS] AI Security Audit Request Received - Ticket #${ticketId}`,
           html: emailHtml,

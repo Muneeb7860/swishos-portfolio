@@ -88,7 +88,7 @@ export function PlaygroundClient({ lang }: PlaygroundClientProps) {
     const timestamp = new Date().toISOString();
     const rules = result.triggered_rules?.join(', ') || (result.block_reason as string) || (result.message as string) || 'SECURITY_GUARDRAIL_INTERCEPT';
     return `Subject: [SECURITY INCIDENT REPORT] SwishOS AI Guardrail Intercept - ${timestamp}
-To: ciso@swishos.security, sec-ops@swishos.security
+To: security@swishos.io
 
 === SWISHOS ADVERSARIAL THREAT DISPATCH ===
 Timestamp: ${timestamp}
@@ -291,7 +291,7 @@ ${JSON.stringify(result, null, 2)}`;
                           {copiedMail ? (isAr ? '✓ تم نسخ البريد' : '✓ Email Copied!') : (isAr ? '📋 نسخ البريد' : '📋 Copy Incident Email')}
                         </button>
                         <a
-                          href={`mailto:ciso@swishos.security?subject=${encodeURIComponent('[SECURITY INCIDENT REPORT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
+                          href={`mailto:security@swishos.io?subject=${encodeURIComponent('[SECURITY INCIDENT REPORT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
                           style={{
                             padding: '6px 12px',
                             borderRadius: '6px',

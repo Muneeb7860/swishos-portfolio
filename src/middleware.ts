@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
   const origin = request.headers.get('origin');
   const pathname = request.nextUrl.pathname;
   const allowed = isAllowedOrigin(origin);
-  const effectiveOrigin = allowed && origin ? origin : 'https://swishos.dev';
+  const effectiveOrigin = allowed && origin ? origin : 'https://swishos.io';
 
   // 1. CORS Preflight & Edge Header Injection
   if (request.method === 'OPTIONS') {

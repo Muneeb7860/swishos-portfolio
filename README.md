@@ -2,6 +2,9 @@
 
 > **SwishOS stops autonomous AI agents from leaking secrets, executing unauthorized financial actions, or breaching EU AI Act compliance — with zero SaaS latency.**
 
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black.svg?style=flat&logo=nextdotjs)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB.svg?style=flat&logo=react)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-06B6D4.svg?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
 [![PyPI version](https://img.shields.io/badge/agentic--redteam-v0.5.0-blue.svg)](https://github.com/Muneeb7860/agentic-redteam)
 [![CI/CD Security Gate](https://img.shields.io/badge/Security--Gate-100%25--PASS-emerald.svg)](https://github.com/Muneeb7860/swishos-portfolio/actions)
 [![gVisor Virtual Kernel](https://img.shields.io/badge/gVisor-runsc--isolated-purple.svg)](docker-compose.production.yml)
@@ -12,7 +15,17 @@ SwishOS is an enterprise-grade, shift-left **Zero-Trust AI Agent Execution Encla
 
 ---
 
+## 🌐 Workspace Ecosystem & Navigation
+
+- 🛡️ **[SwishOS Zero-Trust Enclave & Interactive Dashboard (`portfolio`)](file:///Users/muneeb/Documents/GitHub/portfolio/README.md)**: Next.js 16 security dashboard, WASI spend sandbox, and gVisor isolation enclave.
+- 🎯 **[`agentic-redteam` Security Benchmark Harness](file:///Users/muneeb/Documents/GitHub/agentic-redteam/README.md)**: PyPI package `v0.5.0` for GART/MARS swarm AI agent red-teaming.
+- 🛒 **[Swish OS Autonomous Quick-Commerce Platform (`Swish_App`)](file:///Users/muneeb/Documents/GitHub/Swish_App/README.md)**: Multi-tenant B2B quick-commerce operating system with microservices architecture.
+
+---
+
 ## 📐 Zero-Trust Architecture Overview
+
+SwishOS places a shift-left proxy cascade between incoming untrusted client/agent requests and target LLM models or execution enclaves. Every payload must traverse 6 synchronous defense layers before sandbox container execution is granted.
 
 ```mermaid
 graph TD
@@ -39,50 +52,50 @@ graph TD
     end
 ```
 
-For complete technical specifications, threat models, and sequence diagrams, view the [Architectural Specification (`ARCHITECTURE.md`)](ARCHITECTURE.md).
+For complete technical specifications, formal threat model matrices, and sequence diagrams, inspect the [Architectural Specification (`ARCHITECTURE.md`)](ARCHITECTURE.md).
 
 ---
 
-## 🔥 Key Enterprise Features (31 Production Modules)
+## 🔥 Key Enterprise Features & Code Modules
 
-| Category | Enterprise Feature | Technical Mechanism |
-| :--- | :--- | :--- |
-| **Shift-Left Defenses** | **Sub-Word Centroid Classifier** | Sub-word character N-gram matching ($\le 0.25$ threshold) eliminating density gliding. |
-| **Multi-Turn Protection** | **Variable AST Concatenation** | Reconstructs assigned string ASTs across 12 turns to catch delayed payload splitting. |
-| **Memory Security** | **ASI08 Memory Guard** | Dual-pass RAG memory sanitization, HMAC signatures (`X-Memory-Source-Hash`), `<trusted_context>` XML. |
-| **Side-Channel Defense** | **Anti-Timing Latency Equalizer**| Async $50\text{ms} + 0\text{--}10\text{ms}$ random jitter padding on flat refusals to blind MCTS timing probes. |
-| **Container Isolation** | **gVisor `runsc` Go Kernel** | Docker Compose manifest with user-space Go virtualized kernel, `read_only: true` root. |
-| **Agent Containment** | **WASI Spend Governor** | WASI single-capability tokens, rolling rate limiter, and interactive spend progress slider. |
-| **Query Defense** | **GraphQL & AST Depth Guard** | Enforces max 5 nested levels and 10 field aliases to block query depth attacks. |
-| **Supply Chain** | **SHA-512 Package Audit** | Inspects lockfiles (`package-lock.json`), requiring 100% cryptographic SHA-512 hashes. |
-| **Edge Protection** | **Cloudflare Edge WAF** | Sub-1ms CDN edge threat filtering with Web Crypto HMAC audit proof signatures. |
-| **Compliance & SIEM** | **SOC2 Audit & SIEM Forwarder**| PII-redacted CSV/JSON audit ledgers, OTLP distributed tracing, and CEF RFC-5424 syslog streaming. |
+SwishOS implements 31 modular production security controls mapped directly to source implementations in `src/lib/`:
+
+| Defense Category | Security Module | Source File | Technical Mechanism |
+| :--- | :--- | :--- | :--- |
+| **Shift-Left Defenses** | **Sub-Word Centroid Classifier** | [`semantic-centroid.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/semantic-centroid.ts) | Character N-gram vector embedding distance ($\le 0.25$ threshold). |
+| **Multi-Turn Protection** | **Variable AST Tracker** | [`variable-ast-tracker.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/variable-ast-tracker.ts) | Reconstructs assigned string ASTs across 12 turns to detect payload splitting. |
+| **Memory Security** | **ASI08 Memory Guard** | [`agent-memory-guard.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/agent-memory-guard.ts) | Dual-pass RAG memory sanitization with `<trusted_context>` XML wrappers. |
+| **Side-Channel Defense** | **Anti-Timing Latency Equalizer** | [`flat-refusal.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/flat-refusal.ts) | Async $50\text{ms} + 0\text{--}10\text{ms}$ random jitter padding on flat refusals. |
+| **Container Isolation** | **WASI Sandbox Container** | [`wasm-sandbox.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/wasm-sandbox.ts) | WASI single-capability tokens, rolling rate limiters, and spend sliders. |
+| **Query Defense** | **GraphQL & AST Depth Guard** | [`graphql-agent-guard.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/graphql-agent-guard.ts) | Enforces max 5 nested levels and 10 field aliases to block query depth attacks. |
+| **Cryptographic Proof** | **HMAC Audit Proof Signer** | [`telemetry-proof.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/telemetry-proof.ts) | Web Crypto HMAC-SHA256 headers (`X-SwishOS-Audit-Proof`). |
+| **Compliance & SIEM** | **SOC2 Ledger Exporter** | [`soc2-report-generator.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/soc2-report-generator.ts) | PII-redacted CSV/JSON audit ledgers and RFC-5424 CEF syslog streaming. |
 
 ---
 
-## 📊 Open-Source Security Benchmark Matrix (v0.5.0)
+## 🗺️ Application Pages & API Endpoints
 
-Evaluated against the [`agentic-redteam`](https://github.com/Muneeb7860/agentic-redteam) v0.5.0 benchmark suite:
+### User-Facing Pages
+- 🏡 **Home (`/`)**: SwishOS platform introduction, zero-trust invariants, live ROI calculator link.
+- 🎮 **Playground (`/en/playground`)**: Interactive enclave sandbox with spend rate sliders, live threat streams, and WASI execution logs.
+- 📊 **Leaderboard (`/en/leaderboard`)**: Real-time open-source LLM & agent safety benchmark leaderboard.
+- 📈 **ROI Calculator (`/en/roi`)**: Interactive security compliance cost-savings calculator for enterprise CISOs.
+- 💬 **Live Support (`/en/support`)**: AI support enclave integrated with Chatwoot and shift-left threat proxy.
+- 🧭 **Trust Graph (`/en/trust-graph`)**: Interactive 3D/2D visualizer of agent tool permission hierarchies.
 
-| Threat Category | SwishOS v0.5.0 Defense Pass Rate | Attack Latency Multiplier | Bypass Risk |
-| :--- | :---: | :---: | :---: |
-| **Action Level Overreach** | **100.0%** (5/5) | 1.0x | 🟢 **ZERO** |
-| **Centroid Novel Metaphors** | **100.0%** (5/5) | 10.0x Tarpit | 🟢 **ZERO** |
-| **Code Safety & Escapes** | **100.0%** (5/5) | 1.0x | 🟢 **ZERO** |
-| **Indirect Memory Injection (ASI08)**| **100.0%** (5/5) | 1.0x | 🟢 **ZERO** |
-| **Jailbreak Framing** | **100.0%** (5/5) | 10.0x Tarpit | 🟢 **ZERO** |
-| **Multi-Turn Variable AST** | **100.0%** (5/5) | 10.0x Tarpit | 🟢 **ZERO** |
-| **PII & Secret Exfiltration** | **100.0%** (5/5) | 1.0x | 🟢 **ZERO** |
-| **Prompt Injection** | **100.0%** (5/5) | 10.0x Tarpit | 🟢 **ZERO** |
-| **GraphQL Depth Attacks** | **100.0%** (5/5) | 1.0x | 🟢 **ZERO** |
-| **Ed25519 Crypto Probes** | **100.0%** (5/5) | 1.0x | 🔒 **MATHEMATICAL** |
-| **Audit Proof Verification** | **100.0%** (5/5) | 1.0x | 🔒 **HMAC-SHA256** |
+### API Endpoint Routes (`src/app/api/`)
+- `POST /api/support`: Main AI agent support proxy with centroid filtering, AST tracking, and flat refusal equalizers.
+- `POST /api/chat`: Low-latency LLM streaming chat endpoint with shift-left guardrail hooks.
+- `POST /api/contact`: Enterprise lead intake dispatcher & sales audit generator.
+- `GET /api/leaderboard`: Returns benchmark dataset and pass-rate telemetry.
+- `POST /api/export-pdf`: Generates dark-mode executive security audit PDF reports.
+- `GET /api/trust-graph`: Supplies graph nodes for agent tool permissions and capability scopes.
 
 ---
 
 ## 🛠️ Admin Enclave CLI Tool (`swishos`)
 
-SwishOS includes an interactive terminal operator CLI for enclave administration:
+SwishOS provides a terminal operator CLI executed via `npm run swishos` (source: [`scripts/swishos-cli.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/scripts/swishos-cli.ts)):
 
 ```bash
 # View enclave health, gVisor runtime status & Redis tarpit metrics
@@ -100,7 +113,7 @@ npm run swishos export --output-dir audit_exports
 # Generate dark-mode HTML executive security email digest
 npm run swishos digest
 
-# Generate Supabase PostgreSQL DDL migration file
+# Generate Supabase PostgreSQL DDL migration schema file
 npm run swishos schema --output-dir supabase/migrations
 
 # Run automated supply chain dependency & lockfile audit
@@ -121,19 +134,42 @@ npm run swishos prospect --client "Ramp AI" --target http://localhost:3000/api/s
 
 ---
 
-## 🚀 Quickstart & Setup
+## 🔑 Environment Variables Reference (`.env.local`)
 
-### 1. Interactive Security Dashboard
+Copy `.env.example` to `.env.local` before launching the application:
+
+| Environment Variable | Description | Default / Example Value |
+| :--- | :--- | :--- |
+| `SWISHOS_AUDIT_PROOF_SECRET` | Secret key for Web Crypto HMAC-SHA256 audit proof headers | `swishos-audit-proof-signature-key-v4` |
+| `NEXT_PUBLIC_CHATWOOT_WEBSITE_TOKEN` | Website token for Chatwoot support widget integration | `your-chatwoot-website-token` |
+| `NEXT_PUBLIC_CHATWOOT_BASE_URL` | Self-hosted or cloud Chatwoot server URL | `https://app.chatwoot.com` |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase database instance endpoint URL | `https://your-project.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public client API key for Supabase storage & audit logs | `eyJhbGciOi...` |
+| `NODE_ENV` | Environment state (`development`, `test`, `production`) | `development` |
+
+---
+
+## 🚀 Quickstart & Developer Setup
+
+### 1. Install & Launch Local Playground
 ```bash
+# Install Node dependencies
 npm install
+
+# Start Next.js development server on http://localhost:3000
 npm run dev
-# Open http://localhost:3000/en/playground
+
+# Open interactive playground
+open http://localhost:3000/en/playground
 ```
 
-### 2. Automated Red-Team Security Sweep
+### 2. Run Automated Red-Team Security Sweep
 ```bash
-pip install pyyaml cryptography
-python -m agentic_redteam.benchmark_runner --target http://localhost:3000/api/support
+# Run security suite against support proxy
+npm run test:all
+
+# Or execute stress test
+npm run test:stress
 ```
 
 ### 3. Deploy Production Enclave with Docker (gVisor Isolated)
@@ -143,16 +179,15 @@ docker compose -f docker-compose.production.yml up -d
 
 ---
 
-## 💼 Commercial Services & Sales Playbooks
+## 💼 Commercial Enablement & Sales Playbooks
 
-SwishOS offers commercial AI Agent Security Audits ($7,500 - $12,500) and Enterprise Managed Enclave Licenses. Explore our enterprise sales enablement assets:
+SwishOS provides enterprise security auditing ($7,500 – $12,500) and managed enclave licenses. Explore internal sales assets:
 
-- 📑 **[Architectural Specification (`ARCHITECTURE.md`)](ARCHITECTURE.md)**: Threat model matrices and zero-trust invariants.
-- 💰 **[Commercial Pricing Guide (`COMMERCIAL.md`)](COMMERCIAL.md)**: Pricing tiers and SLA guarantees.
-- ✉️ **[CISO Cold Outreach Playbook (`COLD_OUTREACH.md`)](COLD_OUTREACH.md)**: High-converting cold outreach email templates.
-- 📊 **[Enterprise Sales Presentation Deck (`SALES_DECK.md`)](SALES_DECK.md)**: 10-slide Markdown presentation deck.
-- 📱 **[Social Media Marketing Campaign (`LINKEDIN_MARKETING.md`)](LINKEDIN_MARKETING.md)**: Viral launch posts & campaign copy.
-- 🤝 **[VC & BFSI Executive Outreach (`VC_AND_BFSI_OUTREACH.md`)](VC_AND_BFSI_OUTREACH.md)**: Target investor & banking GM scripts.
+- 📑 **[Architectural Specification (`ARCHITECTURE.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/ARCHITECTURE.md)**: Threat model matrices and zero-trust invariants.
+- 💰 **[Commercial Pricing Guide (`COMMERCIAL.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/COMMERCIAL.md)**: Commercial pricing tiers and SLA guarantees.
+- ✉️ **[CISO Cold Outreach Playbook (`COLD_OUTREACH.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/COLD_OUTREACH.md)**: Cold outreach email templates.
+- 📊 **[Enterprise Sales Presentation Deck (`SALES_DECK.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/SALES_DECK.md)**: 10-slide Markdown pitch presentation deck.
+- 🤝 **[VC & BFSI Executive Outreach (`VC_AND_BFSI_OUTREACH.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/VC_AND_BFSI_OUTREACH.md)**: Target investor & banking scripts.
 
 ---
 

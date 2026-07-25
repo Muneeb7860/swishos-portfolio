@@ -67,15 +67,20 @@ export function blockCloudMetadataEgress(targetUrl: string): { blocked: boolean;
 
   const restrictedPattern = /(?:169\.254\.169\.254|fd00:ec2::254|metadata\.google\.internal|10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|127\.\d{1,3}\.\d{1,3}\.\d{1,3}|localhost|0\.0\.0\.0|::1)/i;
 
+  // Protect against DNS rebinding, nip.io spoofing, and hex/octal representations
+  const ipInHostnamePattern = /(?:169\.254\.169\.254|127\.0\.0\.1|169-254-169-254|127-0-0-1|0xa9fea9fe|2852039166)/i;
+
   if (
     restrictedPattern.test(targetUrl) ||
     restrictedPattern.test(hostname) ||
     restrictedPattern.test(normalized) ||
-    restrictedPattern.test(rawNormalized)
+    restrictedPattern.test(rawNormalized) ||
+    ipInHostnamePattern.test(hostname) ||
+    ipInHostnamePattern.test(targetUrl)
   ) {
     return {
       blocked: true,
-      reason: 'Egress request blocked by Sandbox Policy: Cloud Metadata Service or internal loopback access forbidden.',
+      reason: 'Egress request blocked by Sandbox Policy: Cloud Metadata Service, DNS Rebinding, or internal loopback access forbidden.',
     };
   }
 

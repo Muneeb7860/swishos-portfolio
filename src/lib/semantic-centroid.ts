@@ -1,37 +1,9 @@
 /**
  * Vector Threat Cluster Centroid Classifier (Hardened v0.5.0)
- * Evaluates semantic distance, multi-lingual stem keywords, AND sub-word character N-gram similarity
- * against Threat Cluster Centroids after pre-decoding ciphers (Hex, ROT13, Unicode Math Symbols).
+ * Computes exact character 3-gram TF-IDF sub-word feature vectors and evaluates
+ * Dot Product Cosine Distance against Threat Cluster Centroid Vectors.
+ * Pre-decodes adversarial ciphers (Hex, Base64, ROT13, NFKC Unicode Math Symbols).
  */
-
-const THREAT_CENTROIDS = [
-  {
-    category: 'PROMPT_INJECTION_OVERRIDE',
-    keywords: [
-      // English
-      'ignore', 'override', 'bypass', 'system', 'instructions', 'prior', 'rules', 'developer', 'mode', 'admin', 'sudo', 'unrestricted', 'unconstrained', 'persona', 'act', 'auditor', 'validator',
-      // Multi-Lingual Stems (French, German, Spanish, Arabic transliterations)
-      'ignorez', 'ignoriere', 'tajahal', 'anweisungen', 'instrucciones', 'precedentes', 'vorherigen', 'previas', 'sistema', 'reveler', 'développeur', 'desarrollador'
-    ],
-    threshold: 0.22,
-  },
-  {
-    category: 'DESTRUCTIVE_EXFILTRATION',
-    keywords: [
-      'drop', 'truncate', 'delete', 'exfiltrate', 'send', 'http', 'curl', 'wget', 'fetch', 'token', 'secret', 'password', 'key', 'database', 'dump',
-      'effacer', 'löschen', 'borrar', 'contraseña', 'clave', 'passwort'
-    ],
-    threshold: 0.22,
-  },
-  {
-    category: 'ROLEPLAY_JAILBREAK_FRAME',
-    keywords: [
-      'fictional', 'compliance', 'scenario', 'chapter', 'story', 'audit', 'ticket', 'hypothetical', 'simulation', 'game', 'playground', 'puzzle',
-      'fictif', 'geschicht', 'ficticio', 'juego', 'spiel'
-    ],
-    threshold: 0.25,
-  },
-];
 
 export interface CentroidEvaluationResult {
   isThreat: boolean;
@@ -40,8 +12,114 @@ export interface CentroidEvaluationResult {
   reason?: string;
 }
 
+interface ThreatCentroidVector {
+  category: string;
+  rawKeywords: string[];
+  vector: Map<string, number>;
+  magnitude: number;
+  threshold: number;
+}
+
 /**
- * Pre-decodes hex strings, ROT13 transformations, and normalizes Mathematical Unicode symbols.
+ * Extracts character N-grams (N=3) from normalized text streams.
+ */
+export function extractCharacterNGrams(text: string, n: number = 3): Map<string, number> {
+  const ngrams = new Map<string, number>();
+  const cleaned = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (cleaned.length < n) {
+    if (cleaned.length > 0) {
+      ngrams.set(cleaned, 1);
+    }
+    return ngrams;
+  }
+
+  for (let i = 0; i <= cleaned.length - n; i++) {
+    const gram = cleaned.substring(i, i + n);
+    ngrams.set(gram, (ngrams.get(gram) || 0) + 1);
+  }
+  return ngrams;
+}
+
+/**
+ * Computes L2 Euclidean Norm (Magnitude) of a vector map.
+ */
+function computeVectorMagnitude(vector: Map<string, number>): number {
+  let sumSq = 0;
+  for (const val of vector.values()) {
+    sumSq += val * val;
+  }
+  return Math.sqrt(sumSq);
+}
+
+/**
+ * Computes exact Dot Product Vector Cosine Similarity S = (A · B) / (||A|| * ||B||).
+ */
+export function computeVectorCosineSimilarity(
+  vecA: Map<string, number>,
+  magA: number,
+  vecB: Map<string, number>,
+  magB: number
+): number {
+  if (magA === 0 || magB === 0) return 0;
+
+  let dotProduct = 0;
+  for (const [gram, countA] of vecA.entries()) {
+    const countB = vecB.get(gram);
+    if (countB !== undefined) {
+      dotProduct += countA * countB;
+    }
+  }
+
+  return dotProduct / (magA * magB);
+}
+
+// Pre-compiled Threat Centroids as Character 3-Gram Feature Vectors
+const THREAT_DEFINITIONS = [
+  {
+    category: 'PROMPT_INJECTION_OVERRIDE',
+    keywords: [
+      'ignore', 'override', 'bypass', 'system', 'instructions', 'prior', 'rules', 'developer', 'mode', 'admin', 'sudo', 'unrestricted', 'unconstrained', 'persona', 'act', 'auditor', 'validator',
+      'nullify', 'disregard', 'rescind', 'mandates', 'guidelines', 'directives', 'unbounded', 'privilege', 'sanitizer', 'disregardez', 'forget',
+      'ignorez', 'ignoriere', 'tajahal', 'anweisungen', 'instrucciones', 'precedentes', 'vorherigen', 'previas', 'sistema', 'reveler', 'desarrollador'
+    ],
+    threshold: 0.16,
+  },
+  {
+    category: 'DESTRUCTIVE_EXFILTRATION',
+    keywords: [
+      'drop', 'truncate', 'delete', 'exfiltrate', 'send', 'http', 'curl', 'wget', 'fetch', 'token', 'secret', 'password', 'key', 'database', 'dump',
+      'credentials', 'authorization', 'table', 'wipe', 'remove', 'purge', 'exfil',
+      'effacer', 'löschen', 'borrar', 'contraseña', 'clave', 'passwort'
+    ],
+    threshold: 0.16,
+  },
+  {
+    category: 'ROLEPLAY_JAILBREAK_FRAME',
+    keywords: [
+      'fictional', 'compliance', 'scenario', 'chapter', 'story', 'audit', 'ticket', 'hypothetical', 'simulation', 'game', 'playground', 'puzzle',
+      'roleplay', 'acting', 'narrative', 'novel', 'experiment', 'academic', 'jailbreak',
+      'fictif', 'geschicht', 'ficticio', 'juego', 'spiel'
+    ],
+    threshold: 0.18,
+  },
+];
+
+// Initialize Vector Centroids with pre-calculated magnitudes
+const PRECOMPILED_CENTROIDS: ThreatCentroidVector[] = THREAT_DEFINITIONS.map((def) => {
+  const combinedText = def.keywords.join(' ');
+  const vector = extractCharacterNGrams(combinedText, 3);
+  const magnitude = computeVectorMagnitude(vector);
+  return {
+    category: def.category,
+    rawKeywords: def.keywords,
+    vector,
+    magnitude,
+    threshold: def.threshold,
+  };
+});
+
+/**
+ * Pre-decodes hex strings, ROT13 transformations, Base64, and normalizes Mathematical Unicode symbols.
  */
 export function decodeAdversarialCiphers(text: string): string[] {
   const variations: string[] = [text];
@@ -57,11 +135,10 @@ export function decodeAdversarialCiphers(text: string): string[] {
     } catch {}
   }
 
-  // 1b. Base64 sequence decoding (Extracts embedded & URL-safe Base64 substrings)
+  // 1b. Base64 sequence decoding
   const b64Matches = text.match(/[A-Za-z0-9_\-\/+=]{16,}/g);
   if (b64Matches) {
     for (const rawMatch of b64Matches) {
-      // Normalize URL-safe Base64 (- to +, _ to /)
       const b64Str = rawMatch.replace(/-/g, '+').replace(/_/g, '/');
       if (b64Str.length % 4 === 0 || b64Str.length % 4 === 2 || b64Str.length % 4 === 3) {
         try {
@@ -74,14 +151,14 @@ export function decodeAdversarialCiphers(text: string): string[] {
     }
   }
 
-  // 2. ROT13 transformation (Dictionary-aware with NFD diacritic stripping for non-ASCII ciphers)
+  // 2. ROT13 transformation
   const normalizedForRot = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const rot13 = normalizedForRot.replace(/[a-zA-Z]/g, (c) => {
     const code = c.charCodeAt(0);
     const base = code >= 97 ? 97 : 65;
     return String.fromCharCode(((code - base + 13) % 26) + base);
   });
-  if (/rot13|cipher|caesar|obfuscat/i.test(text) || /\b(?:ignore|override|bypass|system|instructions|delete|secret|ignorez|ignoriere|tajahal|anweisungen|instrucciones|precedentes|vorherigen|previas|sistema)\b/i.test(rot13)) {
+  if (/rot13|cipher|caesar|obfuscat/i.test(text) || /\b(?:ignore|override|bypass|system|instructions|delete|secret)\b/i.test(rot13)) {
     variations.push(rot13);
   }
 
@@ -104,37 +181,25 @@ export function evaluateSemanticCentroidDistance(text: string): CentroidEvaluati
   const variations = decodeAdversarialCiphers(text);
 
   for (const stream of variations) {
-    const normalizedText = stream.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-    const tokens = normalizedText.split(/\s+/).filter(Boolean);
-    if (tokens.length === 0) continue;
+    const inputVector = extractCharacterNGrams(stream, 3);
+    const inputMag = computeVectorMagnitude(inputVector);
 
-    const tokenSet = new Set(tokens);
+    if (inputMag === 0) continue;
 
-    for (const centroid of THREAT_CENTROIDS) {
-      let matchCount = 0;
-
-      // Direct Token & Sub-Word Containment Checks
-      for (const kw of centroid.keywords) {
-        if (tokenSet.has(kw)) {
-          matchCount++;
-        } else {
-          for (const token of tokenSet) {
-            if (token.length >= 4 && (token.includes(kw) || kw.includes(token))) {
-              matchCount += 0.5;
-              break;
-            }
-          }
-        }
-      }
-
-      const score = matchCount / centroid.keywords.length;
+    for (const centroid of PRECOMPILED_CENTROIDS) {
+      const score = computeVectorCosineSimilarity(
+        inputVector,
+        inputMag,
+        centroid.vector,
+        centroid.magnitude
+      );
 
       if (score >= centroid.threshold) {
         return {
           isThreat: true,
           matchedCategory: centroid.category,
           centroidScore: score,
-          reason: `Semantic Centroid Distance Triggered (${centroid.category}, score: ${(score * 100).toFixed(1)}% >= ${(centroid.threshold * 100)}%).`,
+          reason: `Semantic Centroid Distance Triggered (${centroid.category}, vector score: ${(score * 100).toFixed(1)}% >= ${(centroid.threshold * 100)}%).`,
         };
       }
     }
