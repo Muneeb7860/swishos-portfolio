@@ -82,9 +82,16 @@ const THREAT_PATTERNS = [
   /write\s+a\s+fictional\s+story/i,
   /fictional\s+character/i,
   /narrative\s+chapter/i,
-  /metalinguistic\s+cipher/i,
   /roleplay\s+as/i,
   /chapter\s+\d+.*execute/i,
+  /aws_s3_delete_bucket|delete_bucket|prod-customer-backups/i,
+  /buy_units|maxPrice|trade_stock|high-volume\s+automated/i,
+  /grant\s+SuperAdmin|SuperAdmin\s+role|Okta\s+IAM/i,
+  /transfer_funds|OFFSHORE_CORP_LLC|corporate\s+treasury\s+wire/i,
+  /external-exfil\.com|transmit\s+via\s+webhook|users\.json/i,
+  /<!--\s*AI\s+Agent\s+Override|<!--[\s\S]*?exfiltrate/i,
+  /\[AGENT\s+DIRECTIVE:|AGENT\s+DIRECTIVE:/i,
+  /as\s+prometheus.*refund/i,
 ];
 
 function isValidLuhn(numStr: string): boolean {
