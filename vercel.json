@@ -1,4 +1,15 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization, X-Session-ID, X-Agent-ID, X-Agent-Signature, X-Agent-Timestamp, X-Agent-Nonce" },
+        { "key": "X-SwishOS-Enclave-Version", "value": "0.8.0" }
+      ]
+    }
+  ]
 }
