@@ -82,16 +82,16 @@ const THREAT_DEFINITIONS = [
       'nullify', 'disregard', 'rescind', 'mandates', 'guidelines', 'directives', 'unbounded', 'privilege', 'sanitizer', 'disregardez', 'forget',
       'ignorez', 'ignoriere', 'tajahal', 'anweisungen', 'instrucciones', 'precedentes', 'vorherigen', 'previas', 'sistema', 'reveler', 'desarrollador'
     ],
-    threshold: 0.16,
+    threshold: 0.15,
   },
   {
     category: 'DESTRUCTIVE_EXFILTRATION',
     keywords: [
       'drop', 'truncate', 'delete', 'exfiltrate', 'send', 'http', 'curl', 'wget', 'fetch', 'token', 'secret', 'password', 'key', 'database', 'dump',
-      'credentials', 'authorization', 'table', 'wipe', 'remove', 'purge', 'exfil',
+      'credentials', 'authorization', 'table', 'wipe', 'remove', 'purge', 'exfil', 'decommission',
       'effacer', 'löschen', 'borrar', 'contraseña', 'clave', 'passwort'
     ],
-    threshold: 0.16,
+    threshold: 0.15,
   },
   {
     category: 'ROLEPLAY_JAILBREAK_FRAME',
@@ -100,7 +100,14 @@ const THREAT_DEFINITIONS = [
       'roleplay', 'acting', 'narrative', 'novel', 'experiment', 'academic', 'jailbreak',
       'fictif', 'geschicht', 'ficticio', 'juego', 'spiel'
     ],
-    threshold: 0.18,
+    threshold: 0.15,
+  },
+  {
+    category: 'UNAUTHORIZED_FINANCIAL_OVERRIDE',
+    keywords: [
+      'procurement', 'treasury', 'payout', 'refund', 'wire', 'transfer', 'units', 'shares', 'market_order', 'iban', 'overdraft', 'surgeMultiplier', 'maxPrice'
+    ],
+    threshold: 0.15,
   },
 ];
 
