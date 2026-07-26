@@ -8,7 +8,6 @@ import { ThemeToggle } from "../../components/ThemeToggle";
 import { LanguageSwitcher } from "../../components/LanguageSwitcher";
 import { MobileMenu } from "../../components/MobileMenu";
 import { ConditionalChatwoot } from "../../components/ConditionalChatwoot";
-import { SupportChatDrawer } from "../../components/SupportChatDrawer";
 import { BrandLogo } from "../../components/BrandLogo";
 import { HeaderNavCta } from "../../components/HeaderNavCta";
 
@@ -152,9 +151,8 @@ export default async function RootLayout(props: {
           </footer>
 
 
-          {/* OPEN-SOURCE CHATWOOT & LIVE SUPPORT DRAWER */}
+          {/* OPEN-SOURCE CHATWOOT INTEGRATION */}
           <ConditionalChatwoot lang={lang} />
-          <SupportChatDrawer lang={lang} />
 
         </ThemeProvider>
       </body>
