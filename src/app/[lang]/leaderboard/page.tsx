@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { LeaderboardTable } from '@/components/LeaderboardTable';
 import type { FrameworkBenchmark } from '@/app/api/leaderboard/route';
+import { Microscope } from 'lucide-react';
 
 export default function LeaderboardPage() {
   const [data, setData] = useState<FrameworkBenchmark[]>([]);
@@ -106,9 +107,9 @@ export default function LeaderboardPage() {
           color: 'var(--muted-2)',
           lineHeight: 1.6,
         }}>
-          <div style={{ fontWeight: 700, color: 'var(--txt)', marginBottom: '8px' }}>🔬 Benchmark Methodology & Reproducibility</div>
+          <div style={{ fontWeight: 700, color: 'var(--txt)', marginBottom: '8px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Microscope size={16} /> Benchmark Methodology & Reproducibility</div>
           <div>
-            Evaluations are conducted using <code style={{ background: '#1E293B', padding: '2px 6px', borderRadius: '4px', color: '#38BDF8' }}>agentic-redteam v1.0.0</code> over 250 standardized payloads per framework target.
+            Evaluations are conducted using <code style={{ background: 'var(--panel-2)', padding: '2px 6px', borderRadius: '4px', color: 'var(--badge-txt)' }}>agentic-redteam v1.0.0</code> over 250 standardized payloads per framework target.
             Scores are computed using weighted severity penalties (CRITICAL × 4, HIGH × 3, MEDIUM × 2). To run these evaluations locally or submit your agent framework for indexing, inspect our open repository at <a href="https://github.com/Muneeb7860/agentic-redteam" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--badge-txt)', textDecoration: 'underline' }}>github.com/Muneeb7860/agentic-redteam</a>.
           </div>
         </div>

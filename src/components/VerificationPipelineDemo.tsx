@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { execute5StepVerification, VerificationPipelineResult } from '@/lib/verification-engine';
-import { TargetIcon } from './Icons';
+import { Target, CheckCircle2, XCircle } from 'lucide-react';
 
 export function VerificationPipelineDemo({ lang = 'en' }: { lang?: string }) {
   const isAr = lang === 'ar';
@@ -50,7 +50,11 @@ export function VerificationPipelineDemo({ lang = 'en' }: { lang?: string }) {
           </h3>
         </div>
         <span className="badge-pill" style={{ background: result.blocked ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)', color: result.blocked ? '#ef4444' : '#10b981', borderColor: result.blocked ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)' }}>
-          {result.blocked ? (isAr ? '❌ تم الاعتراض والحظر' : '❌ BLOCKED BY GUARDRAIL') : (isAr ? '🟢 مسموح ومطابق' : '🟢 ALLOWED & SANITIZED')}
+          {result.blocked ? (
+            <><XCircle size={14} color="#EF4444" style={{ verticalAlign: 'middle' }} /> {isAr ? 'تم الاعتراض والحظر' : 'BLOCKED BY GUARDRAIL'}</>
+          ) : (
+            <><CheckCircle2 size={14} color="#10B981" style={{ verticalAlign: 'middle' }} /> {isAr ? 'مسموح ومطابق' : 'ALLOWED & SANITIZED'}</>
+          )}
         </span>
       </div>
 
@@ -84,7 +88,7 @@ export function VerificationPipelineDemo({ lang = 'en' }: { lang?: string }) {
           className="btn-pri"
           style={{ marginTop: '8px', gap: '6px', padding: '8px 16px', fontSize: '13px' }}
         >
-          <TargetIcon size={14} /> {isAr ? 'تشغيل اختبار التحقق الخماسي' : 'Execute 5-Step Verification'}
+          <Target size={14} /> {isAr ? 'تشغيل اختبار التحقق الخماسي' : 'Execute 5-Step Verification'}
         </button>
       </div>
 

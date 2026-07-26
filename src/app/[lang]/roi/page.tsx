@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Target } from 'lucide-react';
 import { SpendGovernorWidget } from '@/components/SpendGovernorWidget';
 
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -51,9 +52,9 @@ export default async function RoiPage(props: { params: Promise<{ lang: string }>
           <div className="pt-2">
             <Link
               href={`/${lang}/contact?plan=audit`}
-              className="inline-block px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-950/50"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-950/50"
             >
-              {isAr ? '🎯 احجز تدقيق الأمان الآن' : '🎯 Book Security Audit'}
+              <Target size={16} /> {isAr ? 'احجز تدقيق الأمان الآن' : 'Book Security Audit'}
             </Link>
           </div>
         </div>

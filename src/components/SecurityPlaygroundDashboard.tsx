@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Mail, Clipboard, Check } from 'lucide-react';
 
 interface Preset {
   name: string;
@@ -341,13 +342,16 @@ ${JSON.stringify(result.data, null, 2)}`;
           {/* Incident Email Dispatcher */}
           <div style={{ padding: '14px 16px', borderRadius: '8px', background: 'var(--bg-soft)', border: '1px solid var(--line-strong)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', gap: '8px', flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                📧 Auto-Generated Incident Email Alert
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <Mail size={14} /> Auto-Generated Incident Email Alert
               </span>
               <div style={{ display: 'flex', gap: '8px' }}>
                 <button
                   onClick={handleCopyMail}
                   style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
                     padding: '5px 10px',
                     borderRadius: '6px',
                     border: '1px solid var(--brand)',
@@ -359,7 +363,7 @@ ${JSON.stringify(result.data, null, 2)}`;
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  {copiedMail ? '✓ Email Copied!' : '📋 Copy Incident Email'}
+                  {copiedMail ? <><Check size={14} /> Email Copied!</> : <><Clipboard size={14} /> Copy Incident Email</>}
                 </button>
                 <a
                   href={`mailto:security@swishos.io?subject=${encodeURIComponent('[SECURITY ENCLAVE ALERT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
@@ -373,10 +377,11 @@ ${JSON.stringify(result.data, null, 2)}`;
                     fontWeight: 700,
                     textDecoration: 'none',
                     display: 'inline-flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    gap: '6px'
                   }}
                 >
-                  ✉️ Send via Mail
+                  <Mail size={14} /> Send via Mail
                 </a>
               </div>
             </div>

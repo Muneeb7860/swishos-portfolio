@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FileTextIcon, TargetIcon, ShieldIcon, CodeIcon, CheckCircleIcon } from './Icons';
+import { FileText, Target, Shield, Code2, CheckCircle2 } from 'lucide-react';
 
 export function AuditSampleDeliverable({ lang }: { lang?: string }) {
   const isAr = lang === 'ar';
@@ -35,7 +35,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
             letterSpacing: '0.06em',
           }}
         >
-          <FileTextIcon size={14} color="#38BDF8" /> {isAr ? 'معاينة مخرجات التقرير المباشر' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
+          <FileText size={14} color="#38BDF8" /> {isAr ? 'معاينة مخرجات التقرير المباشر' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
         </span>
         <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '14px', color: 'var(--txt)' }}>
           {isAr ? 'ما الذي تحصل عليه في تدقيق أمن وكيل الذكاء الاصطناعي؟' : 'What You Receive in a 1-Week Security Audit'}
@@ -54,7 +54,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--badge-txt)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <ShieldIcon size={14} color="#38BDF8" /> ARTIFACT 01
+              <Shield size={14} color="#38BDF8" /> ARTIFACT 01
             </span>
             <span style={{ fontSize: '11px', background: '#0B0F17', border: '1px solid rgba(255, 255, 255, 0.18)', color: '#F8FAFC', padding: '4px 10px', borderRadius: '6px', fontWeight: 800, letterSpacing: '0.06em' }}>
               CISO MATRIX
@@ -89,7 +89,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#F59E0B', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <TargetIcon size={14} color="#F59E0B" /> ARTIFACT 02
+              <Target size={14} color="#F59E0B" /> ARTIFACT 02
             </span>
             <span style={{ fontSize: '11px', background: '#0B0F17', border: '1px solid rgba(255, 255, 255, 0.18)', color: '#F8FAFC', padding: '4px 10px', borderRadius: '6px', fontWeight: 800, letterSpacing: '0.06em' }}>
               PAYLOAD LOGS
@@ -112,7 +112,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         <div style={{ background: 'var(--bg-soft)', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#10B981', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <CodeIcon size={14} color="#10B981" /> ARTIFACT 03
+              <Code2 size={14} color="#10B981" /> ARTIFACT 03
             </span>
             <span style={{ fontSize: '11px', background: '#0B0F17', border: '1px solid rgba(255, 255, 255, 0.18)', color: '#F8FAFC', padding: '4px 10px', borderRadius: '6px', fontWeight: 800, letterSpacing: '0.06em' }}>
               REMEDIATION
@@ -150,7 +150,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <CheckCircleIcon size={32} color="#10B981" />
+          <CheckCircle2 size={32} color="#10B981" />
           <div>
             <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--txt)' }}>
               {isAr ? 'نكتشف ثغرة حقيقية — أو لا تدفع شيئًا' : 'We Find a Real Vulnerability — or You Pay $0'}

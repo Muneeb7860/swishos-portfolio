@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
 import { useScrollReveal } from '../../../hooks/useScrollReveal';
+import { Globe, Zap, Shield, MessageSquare, Mail, Bug, Sparkles, Siren, CheckCircle2, Ban, Search } from 'lucide-react';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
@@ -90,8 +91,8 @@ export default function SupportClient({ lang }: { lang: string }) {
     "message": "${form.message.replace(/"/g, '\\"').replace(/\n/g, ' ') || 'Adversarial bypass trace detected on endpoint.'}"
   }'`;
 
-  const channelIcons: Record<string, string> = { web: '🌐', api: '⚡', audit_desk: '🛡️', slack: '💬', email: '📧' };
-  const categoryIcons: Record<string, string> = { bug: '🐛', feature_request: '✨', security_incident: '🚨', general: '💬' };
+  const channelIcons: Record<string, React.ElementType> = { web: Globe, api: Zap, audit_desk: Shield, slack: MessageSquare, email: Mail };
+  const categoryIcons: Record<string, React.ElementType> = { bug: Bug, feature_request: Sparkles, security_incident: Siren, general: MessageSquare };
 
   return (
     <main className="support-page">
@@ -119,15 +120,15 @@ export default function SupportClient({ lang }: { lang: string }) {
           gap: '16px',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <span style={{ fontSize: '24px' }}>🛡️</span>
+            <Shield size={24} color="var(--brand)" />
             <div>
               <div style={{ fontSize: '13px', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Enterprise Incident & Support Operations</div>
               <div style={{ fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>Zero-trust guardrails and threat monitoring for AI agents that take real-world actions</div>
             </div>
           </div>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <span style={{ fontSize: '12px', fontFamily: 'monospace', background: 'var(--bg-soft)', padding: '8px 14px', borderRadius: '10px', border: '1px solid #10B981', color: '#10B981', fontWeight: 800 }}>
-              🟢 P1 Emergency Response: &lt;15 Min SLA
+            <span style={{ fontSize: '12px', fontFamily: 'monospace', background: 'var(--bg-soft)', padding: '8px 14px', borderRadius: '10px', border: '1px solid #10B981', color: '#10B981', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircle2 size={14} color="#10B981" /> P1 Emergency Response: &lt;15 Min SLA
             </span>
           </div>
         </div>
@@ -142,17 +143,20 @@ export default function SupportClient({ lang }: { lang: string }) {
 
             <div className="sel-label">{t.form.categoryLabel}</div>
             <div className="category-grid" style={{ marginBottom: '24px' }}>
-              {(['security_incident', 'bug', 'feature_request', 'general'] as const).map(cat => (
+              {(['security_incident', 'bug', 'feature_request', 'general'] as const).map(cat => {
+                const CatIcon = categoryIcons[cat];
+                return (
                 <button
                   key={cat}
                   type="button"
                   onClick={() => setCategory(cat)}
                   className={`sel-btn ${category === cat ? (cat === 'security_incident' ? 'active-red' : 'active-blue') : ''}`}
                 >
-                  <span style={{ fontSize: '18px', flexShrink: 0 }}>{categoryIcons[cat]}</span>
+                  <CatIcon size={18} style={{ flexShrink: 0 }} />
                   <span style={{ flex: 1 }}>{t.categories[cat]}</span>
                 </button>
-              ))}
+                );
+              })}
             </div>
 
             <form onSubmit={handleSubmit}>
@@ -175,7 +179,7 @@ export default function SupportClient({ lang }: { lang: string }) {
                 <textarea required name="message" value={form.message} onChange={handleInputChange} placeholder={t.form.messagePlaceholder} />
               </div>
               <button type="submit" disabled={loading} className="submit-btn">
-                <span>🛡️</span>
+                <Shield size={16} />
                 <span>{loading ? t.form.submitting : t.form.submitButton}</span>
               </button>
             </form>
@@ -209,7 +213,7 @@ export default function SupportClient({ lang }: { lang: string }) {
             {blockedResult && (
               <div className="result-blocked">
                 <div className="result-header">
-                  <span className="result-label" style={{ color: '#ef4444' }}>🛑 Security Enforcement Block</span>
+                  <span className="result-label" style={{ color: '#ef4444', display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Ban size={16} color="#EF4444" /> Security Enforcement Block</span>
                   <span className="result-ticket-blocked">{blockedResult.status.toUpperCase()}</span>
                 </div>
                 <p style={{ fontSize: 13, fontWeight: 700, color: '#ef4444', marginBottom: 12 }}>{blockedResult.error}</p>
@@ -234,13 +238,13 @@ export default function SupportClient({ lang }: { lang: string }) {
               boxShadow: 'var(--card-shadow)',
             }}>
               <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span>⚡</span> Enterprise SLA Commitments
+                <Zap size={16} /> Enterprise SLA Commitments
               </h3>
 
               <div style={{ display: 'grid', gap: '12px', marginBottom: '20px' }}>
                 <div style={{ background: 'var(--bg-soft)', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#EF4444' }}>🚨 P1 Critical Security Breach</span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#EF4444', display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Siren size={14} color="#EF4444" /> P1 Critical Security Breach</span>
                     <span style={{ fontSize: '12px', fontWeight: 800, background: 'rgba(239, 68, 68, 0.15)', color: '#EF4444', padding: '3px 10px', borderRadius: '6px' }}>&lt; 15 Min SLA</span>
                   </div>
                   <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Immediate paging to SwishOS Security Incident Response Team.</p>
@@ -248,7 +252,7 @@ export default function SupportClient({ lang }: { lang: string }) {
 
                 <div style={{ background: 'var(--bg-soft)', padding: '14px 16px', borderRadius: '10px', border: '1px solid var(--line-strong)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt)' }}>⚡ P2 Technical / Guardrail Support</span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Zap size={14} /> P2 Technical / Guardrail Support</span>
                     <span style={{ fontSize: '12px', fontWeight: 800, background: 'var(--panel-2)', color: 'var(--brand)', padding: '3px 10px', borderRadius: '6px' }}>&lt; 4 Hours SLA</span>
                   </div>
                   <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Guardrail policy tuning, AST rule assistance, and SDK integration.</p>
@@ -258,7 +262,7 @@ export default function SupportClient({ lang }: { lang: string }) {
 
             {/* Instant Ticket Tracker */}
             <div className="tracker-panel">
-              <h3>🔎 {t.tracker.title}</h3>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Search size={16} /> {t.tracker.title}</h3>
               <p className="tracker-sub">{t.tracker.subtitle}</p>
               <form onSubmit={handleLookup}>
                 <div className="lookup-row">
@@ -266,8 +270,8 @@ export default function SupportClient({ lang }: { lang: string }) {
                   <button type="submit" disabled={lookupLoading} className="lookup-btn">{t.tracker.lookupBtn}</button>
                 </div>
               </form>
-              <button type="button" className="sample-btn" onClick={() => setLookupId('TK-2026-8812')}>
-                ⚡ {t.tracker.sampleBtn}
+              <button type="button" className="sample-btn" onClick={() => setLookupId('TK-2026-8812')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <Zap size={14} /> {t.tracker.sampleBtn}
               </button>
               {lookupResult && (
                 <div className="lookup-result">
@@ -292,7 +296,7 @@ export default function SupportClient({ lang }: { lang: string }) {
               <h4>Direct Incident & Escalation Channels</h4>
               <a href="mailto:security@swishos.io" className="contact-item">
                 <div className="contact-item-left">
-                  <span className="contact-item-icon">📧</span>
+                  <span className="contact-item-icon"><Mail size={16} /></span>
                   <div>
                     <div className="contact-item-name">Security Escalation Email</div>
                     <div className="contact-item-sub">security@swishos.io</div>
@@ -302,7 +306,7 @@ export default function SupportClient({ lang }: { lang: string }) {
               </a>
               <a href={`/${lang}/contact?plan=audit`} className="contact-item">
                 <div className="contact-item-left">
-                  <span className="contact-item-icon">🛡️</span>
+                  <span className="contact-item-icon"><Shield size={16} /></span>
                   <div>
                     <div className="contact-item-name">Executive Audit Desk</div>
                     <div className="contact-item-sub">Book 1-Week CISO Audit</div>

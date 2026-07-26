@@ -1,5 +1,6 @@
 'use client';
 
+import { Check, AlertTriangle, XCircle, Lock, type LucideIcon } from 'lucide-react';
 import type { TrustNode } from '@/app/api/trust-graph/route';
 
 interface AgentInspectPanelProps {
@@ -7,14 +8,15 @@ interface AgentInspectPanelProps {
   onClose: () => void;
 }
 
-const TRUST_BADGE: Record<string, { bg: string; text: string; label: string }> = {
-  trusted:  { bg: 'rgba(34,197,94,0.15)',  text: '#22c55e', label: '✓ TRUSTED'  },
-  degraded: { bg: 'rgba(249,115,22,0.15)', text: '#f97316', label: '⚠ DEGRADED' },
-  blocked:  { bg: 'rgba(239,68,68,0.15)',  text: '#ef4444', label: '✗ BLOCKED'  },
+const TRUST_BADGE: Record<string, { bg: string; text: string; label: string; Icon: LucideIcon }> = {
+  trusted:  { bg: 'rgba(34,197,94,0.15)',  text: '#22c55e', label: 'TRUSTED',  Icon: Check         },
+  degraded: { bg: 'rgba(249,115,22,0.15)', text: '#f97316', label: 'DEGRADED', Icon: AlertTriangle },
+  blocked:  { bg: 'rgba(239,68,68,0.15)',  text: '#ef4444', label: 'BLOCKED',  Icon: XCircle       },
 };
 
 export default function AgentInspectPanel({ node, onClose }: AgentInspectPanelProps) {
   const visible = !!node;
+  const TrustIcon = node ? TRUST_BADGE[node.trustLevel].Icon : null;
 
   return (
     <div
@@ -59,6 +61,9 @@ export default function AgentInspectPanel({ node, onClose }: AgentInspectPanelPr
           <div style={{ marginBottom: '16px' }}>
             <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>Trust Status</div>
             <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
               background: TRUST_BADGE[node.trustLevel].bg,
               color: TRUST_BADGE[node.trustLevel].text,
               border: `1px solid ${TRUST_BADGE[node.trustLevel].text}`,
@@ -67,6 +72,7 @@ export default function AgentInspectPanel({ node, onClose }: AgentInspectPanelPr
               fontSize: '12px',
               fontWeight: 700,
             }}>
+              {TrustIcon && <TrustIcon size={14} />}
               {TRUST_BADGE[node.trustLevel].label}
             </span>
           </div>
@@ -75,6 +81,9 @@ export default function AgentInspectPanel({ node, onClose }: AgentInspectPanelPr
           <div style={{ marginBottom: '16px' }}>
             <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>mTLS Certificate</div>
             <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
               background: node.mtlsValid ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
               color: node.mtlsValid ? '#22c55e' : '#ef4444',
               padding: '4px 10px',
@@ -82,7 +91,7 @@ export default function AgentInspectPanel({ node, onClose }: AgentInspectPanelPr
               fontSize: '12px',
               fontWeight: 600,
             }}>
-              {node.mtlsValid ? '🔒 Valid & Pinned' : '⚠ Not Present'}
+              {node.mtlsValid ? <><Lock size={14} /> Valid &amp; Pinned</> : <><AlertTriangle size={14} /> Not Present</>}
             </span>
           </div>
 
@@ -126,12 +135,15 @@ export default function AgentInspectPanel({ node, onClose }: AgentInspectPanelPr
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                     <span style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
                       fontSize: '10px',
                       fontWeight: 700,
                       color: ev.blocked ? '#ef4444' : '#22c55e',
                       textTransform: 'uppercase',
                     }}>
-                      {ev.blocked ? '✗ BLOCKED' : '✓ ALLOWED'}
+                      {ev.blocked ? <><XCircle size={12} /> BLOCKED</> : <><Check size={12} /> ALLOWED</>}
                     </span>
                     <span style={{ fontSize: '10px', color: '#475569' }}>
                       {new Date(ev.timestamp).toLocaleTimeString()}

@@ -3,6 +3,7 @@ import React from 'react';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
 import { useScrollReveal } from '../../../hooks/useScrollReveal';
+import { Zap, Shield, BarChart3 } from 'lucide-react';
 
 import { VerificationPipelineDemo } from '../../../components/VerificationPipelineDemo';
 
@@ -26,17 +27,17 @@ export default function FeaturesClient({ lang }: { lang: string }) {
         <div className="wrap">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
             <div className="feature reveal">
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>⚡️</div>
+              <div style={{ marginBottom: '16px' }}><Zap size={32} /></div>
               <h3>{dict.featuresPage.agenticTitle}</h3>
               <p>{dict.featuresPage.agenticDesc}</p>
             </div>
             <div className="feature reveal">
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>🛡️</div>
+              <div style={{ marginBottom: '16px' }}><Shield size={32} /></div>
               <h3>{dict.featuresPage.ledgerTitle}</h3>
               <p>{dict.featuresPage.ledgerDesc}</p>
             </div>
             <div className="feature reveal">
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>📊</div>
+              <div style={{ marginBottom: '16px' }}><BarChart3 size={32} /></div>
               <h3>{dict.featuresPage.evalsTitle}</h3>
               <p>{dict.featuresPage.evalsDesc}</p>
             </div>

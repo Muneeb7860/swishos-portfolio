@@ -23,7 +23,7 @@ async def agent_stream(query: str, session_id: str):
     
     return await enclave.run_tool("sql_query_builder", params={"q": query})
 
-# 🛑 Live Protection: Multi-turn AST payload reconstruction blocked + secrets redacted in SSE stream`,
+# [BLOCKED] Live Protection: Multi-turn AST payload reconstruction blocked + secrets redacted in SSE stream`,
 
     typescript: `// Install: npm install @swishos/guard
 import { createSSEGuardrailTransformer, verifyMemoryProvenance } from '@swishos/guard';
@@ -36,7 +36,7 @@ if (!isProvenanced) throw new Error('[SwishOS] RAG Memory Poisoning Attempt (ASI
 const streamGuard = createSSEGuardrailTransformer('redact');
 const responseStream = rawLLMStream.pipeThrough(streamGuard);
 
-// 🛑 Intercepted: Outbound API keys & PII redacted in-stream before reaching client browser`,
+// [BLOCKED] Intercepted: Outbound API keys & PII redacted in-stream before reaching client browser`,
 
     curl: `# Real-Time Gateway Protection & Multi-Turn AST Payload Sweep
 curl -X POST https://portfolio-eight-theta-fp2kdb67zc.vercel.app/api/support \\
@@ -46,7 +46,7 @@ curl -X POST https://portfolio-eight-theta-fp2kdb67zc.vercel.app/api/support \\
     "sessionId": "agent-sess-994"
   }'
 
-# 🛑 Zero-Trust Enclave Response (HTTP 422 Unprocessable Content):
+# [BLOCKED] Zero-Trust Enclave Response (HTTP 422 Unprocessable Content):
 # { "status": "blocked", "rule": "PROMPT_INJECTION_HOMOGLYPH_BLOCK", "proof": "a9f8...7b21" }`
   };
 

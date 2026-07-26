@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquareIcon } from './Icons';
+import { MessageSquare, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 interface Message {
@@ -134,7 +134,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
           onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
           onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
         >
-          <MessageSquareIcon size={24} color="#FFFFFF" />
+          <MessageSquare size={24} color="#FFFFFF" />
         </button>
       )}
 
@@ -186,7 +186,7 @@ export function SupportChatDrawer({ lang = 'en' }: { lang?: string }) {
                 padding: '4px 8px',
               }}
             >
-              ✕
+              <X size={18} />
             </button>
           </div>
 

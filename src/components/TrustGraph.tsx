@@ -151,10 +151,13 @@ export default function TrustGraph({ nodes, edges, onNodeSelect, selectedNodeId 
         .attr('dominant-baseline', 'central')
         .attr('font-size', '14px')
         .text(d => {
-          if (d.type === 'orchestrator') return '🔀';
-          if (d.type === 'compromised') return '⚠️';
-          if (d.type === 'external') return '🌐';
-          return '🤖';
+          // ASCII glyphs (SVG <text>) — lucide-react cannot render inside d3 .text().
+          // Semantic mapping preserved: orchestrator=GitBranch, compromised=AlertTriangle,
+          // external=Globe, worker=Bot.
+          if (d.type === 'orchestrator') return 'ORC';
+          if (d.type === 'compromised') return 'CMP';
+          if (d.type === 'external') return 'EXT';
+          return 'BOT';
         });
 
       // Node label below
@@ -172,7 +175,7 @@ export default function TrustGraph({ nodes, edges, onNodeSelect, selectedNodeId 
         .attr('y', 50)
         .attr('font-size', '9px')
         .attr('fill', d => d.mtlsValid ? '#22c55e' : '#94a3b8')
-        .text(d => d.mtlsValid ? '🔒 mTLS' : '⚠ No mTLS');
+        .text(d => d.mtlsValid ? 'mTLS' : 'No mTLS');
 
       // Simulation tick
       simulation.on('tick', () => {

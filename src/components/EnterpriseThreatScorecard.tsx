@@ -57,10 +57,10 @@ export function EnterpriseThreatScorecard() {
         marginBottom: '24px',
       }}>
         {[
-          { code: 'OWASP LLM01', title: 'Prompt Injection & Homoglyph Bypass', status: '100% BLOCKED', detail: 'Sliding-window stream redactor + AST taint parser' },
-          { code: 'OWASP LLM02', title: 'Sensitive Information & PII Exfiltration', status: '100% REDACTED', detail: 'Zero-leak regex pattern matching & key scrubbing' },
-          { code: 'OWASP LLM05', title: 'Improper Output & Tool Tampering', status: '100% SANITIZED', detail: 'WASM 0-memory-bleed instruction isolation' },
-          { code: 'OWASP LLM08', title: 'Excessive Agency & Monetary Overflows', status: '100% ENFORCED', detail: 'Deterministic spend caps & mTLS call authorization' },
+          { code: 'OWASP LLM01', title: 'Prompt Injection & Homoglyph Bypass', status: 'Blocked', detail: 'Sliding-window stream redactor + AST taint parser' },
+          { code: 'OWASP LLM02', title: 'Sensitive Information & PII Exfiltration', status: 'Redacted', detail: 'Zero-leak regex pattern matching & key scrubbing' },
+          { code: 'OWASP LLM05', title: 'Improper Output & Tool Tampering', status: 'Sanitized', detail: 'WASM 0-memory-bleed instruction isolation' },
+          { code: 'OWASP LLM08', title: 'Excessive Agency & Monetary Overflows', status: 'Enforced', detail: 'Deterministic spend caps & mTLS call authorization' },
         ].map(item => (
           <div key={item.code} style={{
             background: 'var(--bg-soft)',

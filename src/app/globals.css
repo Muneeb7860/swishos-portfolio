@@ -15,6 +15,7 @@
   --brand-2: #0891B2;
   --accent: #2563EB;
   --glow: rgba(37, 99, 235, 0.20);
+  --ok: #059669;
   --radius: 16px;
   --maxw: 1140px;
 
@@ -42,6 +43,7 @@
   --brand-2: #06B6D4;
   --accent: #3B82F6;
   --glow: rgba(59, 130, 246, 0.35);
+  --ok: #34D399;
 
   /* High-Contrast Card & Badge Tokens (Dark Enclave) */
   --card-bg: #0F172A;
@@ -66,6 +68,7 @@
   --brand-2: #0891B2;
   --accent: #2563EB;
   --glow: rgba(37, 99, 235, 0.20);
+  --ok: #059669;
 
   --card-bg: #FFFFFF;
   --card-border: rgba(15, 23, 42, 0.14);

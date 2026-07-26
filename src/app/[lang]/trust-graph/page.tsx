@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { Shield, Download, FileText, Bot, Lock, XCircle, CheckCircle2, AlertTriangle, Zap, ShieldAlert, Check } from 'lucide-react';
 import AgentInspectPanel from '@/components/AgentInspectPanel';
 import type { TrustNode, TrustEdge } from '@/app/api/trust-graph/route';
 
@@ -108,7 +109,7 @@ export default function TrustGraphPage() {
         }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-              <span style={{ fontSize: '24px' }}>🛡️</span>
+              <Shield size={24} color="#38BDF8" />
               <h1 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', margin: 0, letterSpacing: '-0.02em' }}>
                 Multi-Agent Zero-Trust Telemetry Console
               </h1>
@@ -140,15 +141,18 @@ export default function TrustGraphPage() {
                 padding: '10px 18px',
                 borderRadius: '10px',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
-                background: '#1E293B',
-                color: '#F8FAFC',
+                background: 'var(--panel-2)',
+                color: 'var(--txt)',
                 fontSize: '12px',
                 fontWeight: 700,
                 cursor: 'pointer',
                 transition: 'all 0.2s',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
               }}
             >
-              📥 Download CSV Audit Trail
+              <Download size={14} /> Download CSV Audit Trail
             </button>
             <button
               type="button"
@@ -163,9 +167,12 @@ export default function TrustGraphPage() {
                 fontWeight: 700,
                 cursor: 'pointer',
                 boxShadow: '0 4px 14px rgba(37, 99, 235, 0.35)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
               }}
             >
-              📄 Export JSON Evidence
+              <FileText size={14} /> Export JSON Evidence
             </button>
           </div>
         </div>
@@ -184,8 +191,8 @@ export default function TrustGraphPage() {
           </div>
 
           <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(34, 197, 94, 0.3)', borderRadius: '14px', padding: '20px' }}>
-            <div style={{ fontSize: '11px', fontWeight: 700, color: '#4ADE80', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Trusted Enclaves</div>
-            <div style={{ fontSize: '28px', fontWeight: 800, color: '#22C55E' }}>{trustedCount}</div>
+            <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--ok)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Trusted Enclaves</div>
+            <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--ok)' }}>{trustedCount}</div>
             <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginTop: '4px' }}>mTLS verified & compliant</div>
           </div>
 
@@ -214,7 +221,7 @@ export default function TrustGraphPage() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
             <div>
               <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span>🤖</span> Inter-Agent Zero-Trust Registry & Health
+                <Bot size={18} /> Inter-Agent Zero-Trust Registry & Health
               </h2>
               <p style={{ fontSize: '13px', color: 'var(--muted-2)', margin: '4px 0 0 0' }}>Click any agent record to inspect AST rules, mTLS certificates, and detailed audit events.</p>
             </div>
@@ -247,7 +254,7 @@ export default function TrustGraphPage() {
                         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                         cursor: 'pointer',
                         transition: 'background 0.2s',
-                        background: selectedNode?.id === node.id ? '#1E293B' : 'transparent',
+                        background: selectedNode?.id === node.id ? 'var(--panel-2)' : 'transparent',
                       }}
                     >
                       <td style={{ padding: '16px' }}>
@@ -269,29 +276,29 @@ export default function TrustGraphPage() {
                       </td>
                       <td style={{ padding: '16px' }}>
                         {node.mtlsValid ? (
-                          <span style={{ color: '#34D399', fontWeight: 700, fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                            🔒 mTLS Verified
+                          <span style={{ color: 'var(--ok)', fontWeight: 700, fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                            <Lock size={14} /> mTLS Verified
                           </span>
                         ) : (
                           <span style={{ color: '#F87171', fontWeight: 700, fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                            ❌ Failed / Untrusted
+                            <XCircle size={14} /> Failed / Untrusted
                           </span>
                         )}
                       </td>
                       <td style={{ padding: '16px' }}>
                         {node.trustLevel === 'trusted' && (
-                          <span style={{ background: 'rgba(34, 197, 94, 0.15)', border: '1px solid #22C55E', color: '#4ADE80', padding: '4px 12px', borderRadius: '999px', fontSize: '11px', fontWeight: 800 }}>
-                            🟢 TRUSTED
+                          <span style={{ background: 'rgba(34, 197, 94, 0.15)', border: '1px solid #22C55E', color: '#4ADE80', padding: '4px 12px', borderRadius: '999px', fontSize: '11px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                            <CheckCircle2 size={12} /> TRUSTED
                           </span>
                         )}
                         {node.trustLevel === 'degraded' && (
-                          <span style={{ background: 'rgba(249, 115, 22, 0.15)', border: '1px solid #F97316', color: '#FB923C', padding: '4px 12px', borderRadius: '999px', fontSize: '11px', fontWeight: 800 }}>
-                            🟠 DEGRADED (TAMPERING)
+                          <span style={{ background: 'rgba(249, 115, 22, 0.15)', border: '1px solid #F97316', color: '#FB923C', padding: '4px 12px', borderRadius: '999px', fontSize: '11px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                            <AlertTriangle size={12} /> DEGRADED (TAMPERING)
                           </span>
                         )}
                         {node.trustLevel === 'blocked' && (
-                          <span style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid #EF4444', color: '#F87171', padding: '4px 12px', borderRadius: '999px', fontSize: '11px', fontWeight: 800 }}>
-                            🔴 QUARANTINED
+                          <span style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid #EF4444', color: '#F87171', padding: '4px 12px', borderRadius: '999px', fontSize: '11px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                            <XCircle size={12} /> QUARANTINED
                           </span>
                         )}
                       </td>
@@ -300,7 +307,7 @@ export default function TrustGraphPage() {
                           <span>Limit: ${(100 * node.spendCapRemaining).toFixed(0)}</span>
                           <span>{(node.spendCapRemaining * 100).toFixed(0)}% Left</span>
                         </div>
-                        <div style={{ height: '8px', background: '#1E293B', borderRadius: '999px', overflow: 'hidden' }}>
+                        <div style={{ height: '8px', background: 'var(--panel-2)', borderRadius: '999px', overflow: 'hidden' }}>
                           <div style={{
                             height: '100%',
                             width: `${node.spendCapRemaining * 100}%`,
@@ -343,14 +350,14 @@ export default function TrustGraphPage() {
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.35)',
         }}>
           <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', margin: '0 0 16px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span>⚡</span> Real-Time Audit & Enforcement Feed
+            <Zap size={18} /> Real-Time Audit & Enforcement Feed
           </h2>
           <div style={{ display: 'grid', gap: '10px' }}>
             {graphData?.nodes.flatMap(n => n.auditEvents.map(e => ({ ...e, agent: n.label, agentId: n.id }))).slice(0, 5).map((ev, idx) => (
               <div
                 key={idx}
                 style={{
-                  background: ev.blocked ? 'rgba(239, 68, 68, 0.1)' : '#1E293B',
+                  background: ev.blocked ? 'rgba(239, 68, 68, 0.1)' : 'var(--panel-2)',
                   border: `1px solid ${ev.blocked ? 'rgba(239, 68, 68, 0.4)' : 'var(--line)'}`,
                   borderRadius: '10px',
                   padding: '12px 16px',
@@ -362,12 +369,12 @@ export default function TrustGraphPage() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ fontSize: '16px' }}>{ev.blocked ? '🛑' : '✓'}</span>
+                  {ev.blocked ? <ShieldAlert size={16} color="#F87171" /> : <Check size={16} color="var(--ok)" />}
                   <div>
-                    <div style={{ fontSize: '12px', fontWeight: 800, color: ev.blocked ? '#F87171' : '#34D399' }}>
+                    <div style={{ fontSize: '12px', fontWeight: 800, color: ev.blocked ? '#F87171' : 'var(--ok)' }}>
                       {ev.blocked ? `BLOCKED: ${ev.ruleTriggered}` : 'PASSED: Zero-Trust AST Assertion Verified'}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '2px' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--muted-2)', marginTop: '2px' }}>
                       Target: <strong>{ev.agent}</strong> ({ev.agentId}) · Payload: <code style={{ color: '#E2E8F0' }}>{ev.payload}</code>
                     </div>
                   </div>

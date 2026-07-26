@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
 import { useScrollReveal } from '../../../hooks/useScrollReveal';
+import { Target, CheckCircle2 } from 'lucide-react';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
@@ -83,7 +84,7 @@ export default function ContactClient({ lang }: { lang: string }) {
                 alignItems: 'center',
                 gap: '8px'
               }}>
-                <span style={{ fontSize: '18px' }}>🎯</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center' }}><Target size={16} /></span>
                 <span>
                   {lang === 'ar' ? 'الخدمة المطلوبة: ' : 'Interested In: '}
                   <strong>
@@ -96,7 +97,7 @@ export default function ContactClient({ lang }: { lang: string }) {
             )}
             {submitted ? (
               <div style={{ padding: '40px 0', textAlign: 'center' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
+                <div style={{ display: 'inline-flex', justifyContent: 'center', marginBottom: '16px' }}><CheckCircle2 size={48} color="#10B981" /></div>
                 <h3 style={{ fontSize: '24px', marginBottom: '12px', color: 'var(--txt)' }}>{dict.contactPage.successTitle}</h3>
                 <p style={{ color: 'var(--muted)' }}>{dict.contactPage.successMessage}</p>
               </div>

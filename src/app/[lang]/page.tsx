@@ -7,8 +7,7 @@ import ar from '../../dictionaries/ar.json';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { EnterpriseThreatScorecard } from '../../components/EnterpriseThreatScorecard';
 import { AuditSampleDeliverable } from '../../components/AuditSampleDeliverable';
-import { CodeIcon, GithubIcon, TargetIcon, CheckCircleIcon } from '../../components/Icons';
-import { Shield } from 'lucide-react';
+import { Shield, Target, CheckCircle2, GitBranch } from 'lucide-react';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
@@ -87,7 +86,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                 boxShadow: '0 8px 24px rgba(37, 99, 235, 0.4)',
               }}
             >
-              <TargetIcon size={16} /> {isAr ? 'جدولة تدقيق أمان للمؤسسات' : 'Schedule Security Audit'}
+              <Target size={16} /> {isAr ? 'جدولة تدقيق أمان للمؤسسات' : 'Schedule Security Audit'}
             </Link>
             <Link
               href={`/${lang}/developers`}
@@ -109,39 +108,8 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
             </Link>
           </div>
 
-          {/* Enterprise Threat Mitigation Scorecard & Anchored Compliance Seals */}
-          <div>
-            {/* Hardened Compliance Seals Bar */}
-            <div style={{
-              display: 'flex',
-              gap: '12px',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              marginBottom: '20px',
-            }}>
-              {[
-                '🛡️ OWASP LLM & AGENTIC TOP 10 MAPPED',
-                '🔒 FAIL-CLOSED RUNTIME GUARDRAILS',
-                '⚡ OPEN-SOURCE RED-TEAM CORE',
-              ].map(seal => (
-                <div key={seal} style={{
-                  background: 'var(--card-bg)',
-                  border: '1px solid var(--card-border)',
-                  padding: '6px 14px',
-                  borderRadius: '6px',
-                  color: 'var(--badge-txt)',
-                  fontSize: '11px',
-                  fontWeight: 800,
-                  letterSpacing: '0.05em',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                }}>
-                  {seal}
-                </div>
-              ))}
-            </div>
-
-            <EnterpriseThreatScorecard />
-          </div>
+          {/* Enterprise Threat Mitigation Scorecard */}
+          <EnterpriseThreatScorecard />
 
         </div>
       </section>
@@ -194,10 +162,10 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {/* Key Bullets */}
               <div style={{ display: 'grid', gap: '10px', marginBottom: '28px', fontSize: '13px', color: 'var(--muted)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'مخرجات SARIF v2.1 ومحرك تسجيل OWASP LLM من 0 إلى 100' : 'SARIF v2.1 Output + OWASP LLM 0–100 Scoring Engine'}
+                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'مخرجات SARIF v2.1 ومحرك تسجيل OWASP LLM من 0 إلى 100' : 'SARIF v2.1 Output + OWASP LLM 0–100 Scoring Engine'}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'حاوية WASM معزولة بثقة صفرية ومُنقّح تدفّق البيانات' : 'Zero-Trust WASM Sandbox Container & Stream Redactor'}
+                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'حاوية WASM معزولة بثقة صفرية ومُنقّح تدفّق البيانات' : 'Zero-Trust WASM Sandbox Container & Stream Redactor'}
                 </div>
               </div>
 
@@ -222,7 +190,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   marginTop: 'auto',
                 }}
               >
-                <GithubIcon size={16} /> {isAr ? 'عرض الحزمة على GitHub' : 'View GitHub & CLI Docs'}
+                <GitBranch size={16} /> {isAr ? 'عرض الحزمة على GitHub' : 'View GitHub & CLI Docs'}
               </a>
             </div>
 
@@ -259,10 +227,10 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {/* Key Bullets */}
               <div style={{ display: 'grid', gap: '10px', marginBottom: '28px', fontSize: '13px', color: 'var(--muted)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026 + سجلات هجوم curl' : 'OWASP Agentic Risk Heatmap + Exploit Logs'}
+                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026 + سجلات هجوم curl' : 'OWASP Agentic Risk Heatmap + Exploit Logs'}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircleIcon size={15} color="#10B981" /> {isAr ? 'تقرير تنفيذي ومراجعة شفهية مع رئيس قطاع الأمن (CISO)' : '1-Week Delivery + Executive CISO Debrief'}
+                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'تقرير تنفيذي ومراجعة شفهية مع رئيس قطاع الأمن (CISO)' : '1-Week Delivery + Executive CISO Debrief'}
                 </div>
               </div>
 
@@ -284,7 +252,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   marginTop: 'auto',
                 }}
               >
-                <TargetIcon size={16} /> {isAr ? 'احجز تدقيق الأمان المباشر' : 'Book a 1-Week Audit'}
+                <Target size={16} /> {isAr ? 'احجز تدقيق الأمان المباشر' : 'Book a 1-Week Audit'}
               </Link>
             </div>
           </div>

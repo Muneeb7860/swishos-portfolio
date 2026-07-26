@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import en from '../../../dictionaries/en.json';
 import ar from '../../../dictionaries/ar.json';
+import { Rocket } from 'lucide-react';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
 
@@ -47,7 +48,7 @@ export default function SignupClient({ lang }: { lang: string }) {
 
           {submitted ? (
             <div style={{ padding: '24px 0', textAlign: 'center' }}>
-              <div style={{ fontSize: '42px', marginBottom: '16px' }}>🚀</div>
+              <div style={{ display: 'inline-flex', justifyContent: 'center', marginBottom: '16px' }}><Rocket size={42} /></div>
               <h3 style={{ fontSize: '20px', marginBottom: '12px', color: 'var(--txt)' }}>
                 {lang === 'ar' ? 'تم تقديم طلب الحساب بنجاح' : 'Registration Request Received'}
               </h3>

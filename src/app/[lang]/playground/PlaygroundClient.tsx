@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { Target, XCircle, CheckCircle2, Check, Clipboard, Shield, Zap, Mail } from 'lucide-react';
 import { SecurityPlaygroundDashboard } from '@/components/SecurityPlaygroundDashboard';
 
 interface PlaygroundClientProps {
@@ -116,8 +117,8 @@ ${JSON.stringify(result, null, 2)}`;
       <div className="wrap" style={{ paddingTop: '60px' }}>
         {/* Header */}
         <div style={{ maxWidth: '800px', marginBottom: '40px' }}>
-          <div className="badge-pill" style={{ marginBottom: '16px' }}>
-            🛡️ {isAr ? 'مختبر الحماية والتفتيش المباشر' : 'LIVE GUARDRAIL & THREAT INSPECTOR'}
+          <div className="badge-pill" style={{ marginBottom: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <Shield size={14} /> {isAr ? 'مختبر الحماية والتفتيش المباشر' : 'LIVE GUARDRAIL & THREAT INSPECTOR'}
           </div>
           <h1 style={{ fontSize: '36px', fontWeight: 800, marginBottom: '16px', lineHeight: 1.2 }}>
             {isAr ? 'اختبر حواجز حماية الذكاء الاصطناعي مباشرة' : 'Interactive AI Guardrail Playground'}
@@ -183,7 +184,7 @@ ${JSON.stringify(result, null, 2)}`;
               className="btn-pri"
               style={{ width: '100%', justifyContent: 'center' }}
             >
-              {loading ? (isAr ? 'جاري التحليل...' : 'Evaluating Payload...') : (isAr ? '🎯 تشغيل الفحص الأمني' : '🎯 Test Payload Live')}
+              {loading ? (isAr ? 'جاري التحليل...' : 'Evaluating Payload...') : (<><Target size={16} /> {isAr ? 'تشغيل الفحص الأمني' : 'Test Payload Live'}</>)}
             </button>
           </div>
 
@@ -201,8 +202,8 @@ ${JSON.stringify(result, null, 2)}`;
               )}
 
               {loading && (
-                <div style={{ color: 'var(--muted)', fontSize: '14px', paddingTop: '40px', textAlign: 'center' }}>
-                  ⚡ {isAr ? 'جاري الفحص الهيكلي عبر الطبقات الأربع...' : 'Running shift-left normalization & threat filters...'}
+                <div style={{ color: 'var(--muted)', fontSize: '14px', paddingTop: '40px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                  <Zap size={14} /> {isAr ? 'جاري الفحص الهيكلي عبر الطبقات الأربع...' : 'Running shift-left normalization & threat filters...'}
                 </div>
               )}
 
@@ -211,6 +212,9 @@ ${JSON.stringify(result, null, 2)}`;
                   <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
                     <span
                       style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
                         padding: '6px 14px',
                         borderRadius: '12px',
                         fontWeight: 700,
@@ -220,7 +224,9 @@ ${JSON.stringify(result, null, 2)}`;
                         border: `1px solid ${result.blocked ? '#ef4444' : '#10b981'}`,
                       }}
                     >
-                      {result.blocked ? (isAr ? '❌ تم الإغلاق والاعتراض' : '❌ BLOCKED BY GUARDRAIL') : (isAr ? '🟢 مسموح ومطابق' : '🟢 ALLOWED')}
+                      {result.blocked
+                        ? (<><XCircle size={14} color="#EF4444" /> {isAr ? 'تم الإغلاق والاعتراض' : 'BLOCKED BY GUARDRAIL'}</>)
+                        : (<><CheckCircle2 size={14} color="#10B981" /> {isAr ? 'مسموح ومطابق' : 'ALLOWED'}</>)}
                     </span>
                     <span style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 600 }}>
                       HTTP Status: {result.statusHttp || 200}
@@ -270,13 +276,16 @@ ${JSON.stringify(result, null, 2)}`;
                   {/* Incident Email Dispatcher */}
                   <div style={{ padding: '16px', borderRadius: '12px', background: 'var(--bg-soft)', border: '1px solid var(--line-strong)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', gap: '8px', flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                        📧 {isAr ? 'تقرير حادثة أمنية تلقائي (Mail Dispatch)' : 'Auto-Generated Incident Email Alert'}
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        <Mail size={14} /> {isAr ? 'تقرير حادثة أمنية تلقائي (Mail Dispatch)' : 'Auto-Generated Incident Email Alert'}
                       </span>
                       <div style={{ display: 'flex', gap: '8px' }}>
                         <button
                           onClick={handleCopyMail}
                           style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
                             padding: '6px 12px',
                             borderRadius: '6px',
                             border: '1px solid var(--brand)',
@@ -288,7 +297,9 @@ ${JSON.stringify(result, null, 2)}`;
                             transition: 'all 0.2s ease',
                           }}
                         >
-                          {copiedMail ? (isAr ? '✓ تم نسخ البريد' : '✓ Email Copied!') : (isAr ? '📋 نسخ البريد' : '📋 Copy Incident Email')}
+                          {copiedMail
+                            ? (<><Check size={14} /> {isAr ? 'تم نسخ البريد' : 'Email Copied!'}</>)
+                            : (<><Clipboard size={14} /> {isAr ? 'نسخ البريد' : 'Copy Incident Email'}</>)}
                         </button>
                         <a
                           href={`mailto:security@swishos.io?subject=${encodeURIComponent('[SECURITY INCIDENT REPORT] SwishOS Intercept')}&body=${encodeURIComponent(getIncidentMailContent())}`}
@@ -303,9 +314,10 @@ ${JSON.stringify(result, null, 2)}`;
                             textDecoration: 'none',
                             display: 'inline-flex',
                             alignItems: 'center',
+                            gap: '6px',
                           }}
                         >
-                          ✉️ {isAr ? 'إرسال عبر البريد' : 'Send via Mail'}
+                          <Mail size={14} /> {isAr ? 'إرسال عبر البريد' : 'Send via Mail'}
                         </a>
                       </div>
                     </div>
@@ -359,7 +371,7 @@ ${JSON.stringify(result, null, 2)}`;
               : 'Book a fixed 1-week AI Agent Security Audit ($7,500 – $12,500) and get reproducible payload logs, AST guardrails, and a CISO debrief.'}
           </p>
           <Link href={`/${lang}/contact?plan=audit`} className="btn-pri">
-            🎯 {isAr ? 'احجز تدقيق أمن وكيل الذكاء الاصطناعي' : 'Book an AI Agent Security Audit'}
+            <Target size={16} /> {isAr ? 'احجز تدقيق أمن وكيل الذكاء الاصطناعي' : 'Book an AI Agent Security Audit'}
           </Link>
         </div>
       </div>

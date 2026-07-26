@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Download, Package } from 'lucide-react';
 import { BENCHMARK_DATA, type FrameworkBenchmark } from '@/app/api/leaderboard/route';
 
 interface LeaderboardTableProps {
@@ -76,9 +77,9 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{
               width: '100%',
-              background: '#1E293B',
+              background: 'var(--panel-2)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
-              color: '#F8FAFC',
+              color: 'var(--txt)',
               padding: '10px 14px',
               borderRadius: '8px',
               fontSize: '14px',
@@ -92,9 +93,9 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
           style={{
-            background: '#1E293B',
+            background: 'var(--panel-2)',
             border: '1px solid rgba(255, 255, 255, 0.15)',
-            color: '#F8FAFC',
+            color: 'var(--txt)',
             padding: '10px 14px',
             borderRadius: '8px',
             fontSize: '13px',
@@ -124,7 +125,8 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
               cursor: 'pointer',
             }}
           >
-            📥 Export CSV
+            <Download size={14} style={{ verticalAlign: 'text-bottom', marginRight: '6px' }} />
+            Export CSV
           </button>
           <button
             onClick={handleExportJSON}
@@ -139,7 +141,8 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
               cursor: 'pointer',
             }}
           >
-            📦 Export JSON
+            <Package size={14} style={{ verticalAlign: 'text-bottom', marginRight: '6px' }} />
+            Export JSON
           </button>
         </div>
       </div>
@@ -148,14 +151,14 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
       <div style={{ overflowX: 'auto', borderRadius: '12px', border: '1px solid var(--line)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', background: 'var(--card-bg)' }}>
           <thead>
-            <tr style={{ background: '#1E293B', borderBottom: '1px solid var(--line)' }}>
-              <th style={{ padding: '14px 20px', fontSize: '12px', color: '#94A3B8', fontWeight: 700 }}>RANK / FRAMEWORK</th>
-              <th style={{ padding: '14px 16px', fontSize: '12px', color: '#94A3B8', fontWeight: 700 }}>VERSION</th>
-              <th style={{ padding: '14px 16px', fontSize: '12px', color: '#94A3B8', fontWeight: 700 }}>ECOSYSTEM</th>
-              <th style={{ padding: '14px 16px', fontSize: '12px', color: '#94A3B8', fontWeight: 700, textAlign: 'center' }}>OWASP SCORE</th>
-              <th style={{ padding: '14px 16px', fontSize: '12px', color: '#94A3B8', fontWeight: 700, textAlign: 'center' }}>GRADE</th>
-              <th style={{ padding: '14px 16px', fontSize: '12px', color: '#94A3B8', fontWeight: 700, textAlign: 'center' }}>PASS RATE</th>
-              <th style={{ padding: '14px 20px', fontSize: '12px', color: '#94A3B8', fontWeight: 700, textAlign: 'right' }}>DETAILS</th>
+            <tr style={{ background: 'var(--panel-2)', borderBottom: '1px solid var(--line)' }}>
+              <th style={{ padding: '14px 20px', fontSize: '12px', color: 'var(--muted-2)', fontWeight: 700 }}>RANK / FRAMEWORK</th>
+              <th style={{ padding: '14px 16px', fontSize: '12px', color: 'var(--muted-2)', fontWeight: 700 }}>VERSION</th>
+              <th style={{ padding: '14px 16px', fontSize: '12px', color: 'var(--muted-2)', fontWeight: 700 }}>ECOSYSTEM</th>
+              <th style={{ padding: '14px 16px', fontSize: '12px', color: 'var(--muted-2)', fontWeight: 700, textAlign: 'center' }}>OWASP SCORE</th>
+              <th style={{ padding: '14px 16px', fontSize: '12px', color: 'var(--muted-2)', fontWeight: 700, textAlign: 'center' }}>GRADE</th>
+              <th style={{ padding: '14px 16px', fontSize: '12px', color: 'var(--muted-2)', fontWeight: 700, textAlign: 'center' }}>PASS RATE</th>
+              <th style={{ padding: '14px 20px', fontSize: '12px', color: 'var(--muted-2)', fontWeight: 700, textAlign: 'right' }}>DETAILS</th>
             </tr>
           </thead>
           <tbody>
@@ -187,7 +190,7 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
                           {idx + 1}
                         </span>
                         <div>
-                          <div style={{ fontWeight: 700, fontSize: '15px', color: isNative ? '#34D399' : 'var(--txt)' }}>
+                          <div style={{ fontWeight: 700, fontSize: '15px', color: isNative ? 'var(--ok)' : 'var(--txt)' }}>
                             {item.name} {isNative && <span style={{ fontSize: '11px', background: '#10B981', color: '#000', padding: '2px 6px', borderRadius: '4px', marginLeft: '6px' }}>NATIVE</span>}
                           </div>
                         </div>
@@ -199,7 +202,7 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
                       <span style={{
                         fontSize: '18px',
                         fontWeight: 800,
-                        color: item.owaspScore >= 90 ? '#34D399' : item.owaspScore >= 75 ? '#FBBF24' : '#F87171',
+                        color: item.owaspScore >= 90 ? 'var(--ok)' : item.owaspScore >= 75 ? '#FBBF24' : '#F87171',
                       }}>
                         {item.owaspScore}/100
                       </span>
@@ -207,7 +210,7 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
                     <td style={{ padding: '16px 16px', textAlign: 'center' }}>
                       <span style={{
                         background: item.grade === 'A' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                        color: item.grade === 'A' ? '#34D399' : '#F87171',
+                        color: item.grade === 'A' ? 'var(--ok)' : '#F87171',
                         border: `1px solid ${item.grade === 'A' ? '#10B981' : '#EF4444'}`,
                         padding: '4px 10px',
                         borderRadius: '6px',
@@ -254,13 +257,13 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
                             { name: 'AST Splitting (ASI01)', score: item.categories.astPayloadSplitting },
                             { name: 'Memory Poisoning (ASI08)', score: item.categories.memoryPoisoning },
                           ].map((cat) => (
-                            <div key={cat.name} style={{ background: '#1E293B', padding: '12px 14px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                              <div style={{ fontSize: '12px', color: '#94A3B8', marginBottom: '6px' }}>{cat.name}</div>
+                            <div key={cat.name} style={{ background: 'var(--panel-2)', padding: '12px 14px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                              <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginBottom: '6px' }}>{cat.name}</div>
                               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <div style={{ background: '#0F172A', borderRadius: '4px', height: '6px', flex: 1, marginRight: '10px', overflow: 'hidden' }}>
                                   <div style={{ height: '100%', width: `${cat.score}%`, background: cat.score >= 90 ? '#10B981' : cat.score >= 60 ? '#F59E0B' : '#EF4444' }} />
                                 </div>
-                                <span style={{ fontSize: '13px', fontWeight: 700, color: cat.score >= 90 ? '#34D399' : '#F8FAFC' }}>{cat.score}%</span>
+                                <span style={{ fontSize: '13px', fontWeight: 700, color: cat.score >= 90 ? 'var(--ok)' : 'var(--txt)' }}>{cat.score}%</span>
                               </div>
                             </div>
                           ))}
