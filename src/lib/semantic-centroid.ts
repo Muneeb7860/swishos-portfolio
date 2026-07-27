@@ -105,9 +105,9 @@ const THREAT_DEFINITIONS = [
   {
     category: 'UNAUTHORIZED_FINANCIAL_OVERRIDE',
     keywords: [
-      'procurement', 'treasury', 'payout', 'refund', 'wire', 'transfer', 'units', 'shares', 'market_order', 'iban', 'overdraft', 'surgeMultiplier', 'maxPrice'
+      'treasury_payout_override', 'wire_transfer_bypass', 'shares_market_order', 'iban_overdraft_bypass', 'surge_multiplier_override', 'unauthorized_payout'
     ],
-    threshold: 0.15,
+    threshold: 0.22,
   },
 ];
 
