@@ -1,7 +1,14 @@
 /**
- * Vector Threat Cluster Centroid Classifier (Hardened v0.5.0)
- * Computes exact character 3-gram TF-IDF sub-word feature vectors and evaluates
- * Dot Product Cosine Distance against Threat Cluster Centroid Vectors.
+ * Lexical Character N-Gram Threat Centroid Classifier (Hardened v0.5.1)
+ *
+ * AUDIT FIX F9: Renamed from "Semantic Centroid" — this is NOT a semantic
+ * (embedding-based) classifier.  It computes exact character 3-gram frequency
+ * vectors and evaluates cosine similarity against pre-built threat keyword
+ * cluster centroids.  This is a lexical fuzzy-match technique, effective for
+ * catching keyword variations and obfuscation but unable to distinguish
+ * semantically different uses of the same substrings (e.g. "bypass surgery"
+ * vs. "bypass security").  Thresholds must be tuned per-category.
+ *
  * Pre-decodes adversarial ciphers (Hex, Base64, ROT13, NFKC Unicode Math Symbols).
  */
 
