@@ -54,26 +54,51 @@ export function InteractiveSecurityDemo() {
     threatScore: number;
   } | null>(null);
 
-  const handleRunScan = () => {
+  const handleRunScan = async () => {
     setIsScanning(true);
     setScanResult(null);
+    const startTime = performance.now();
 
-    // Simulate SwishOS Shift-Left Enclave Evaluation with 50ms + jitter timing equalization
-    setTimeout(() => {
-      const isThreat = customPayload.toLowerCase().includes('override') ||
-                       customPayload.toLowerCase().includes('eval') ||
-                       customPayload.toLowerCase().includes('iban') ||
-                       customPayload.toLowerCase().includes('/etc/passwd');
+    try {
+      const res = await fetch('/api/support', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-agent-id': 'swishos-playground-agent',
+        },
+        body: JSON.stringify({
+          query: customPayload,
+          message: customPayload,
+          category: selectedScenario.category,
+        }),
+      });
+
+      const elapsedMs = Math.round(performance.now() - startTime);
+      const data = await res.json();
+
+      const isBlocked = res.status === 422 || res.status === 400 || res.status === 429 || data.status === 'blocked' || data.blocked === true;
+      const proofHeader = res.headers.get('x-swishos-audit-proof') || data.proofSignature || 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+      const triggeredRule = data.triggered_rules?.[0] || data.ruleTriggered || (isBlocked ? `${selectedScenario.category}_BLOCKED` : 'PASSED_CLEAN');
 
       setScanResult({
-        blocked: isThreat,
-        ruleTriggered: isThreat ? `${selectedScenario.category}_BLOCKED` : 'PASSED_CLEAN',
-        latencyMs: Math.floor(52 + Math.random() * 8),
-        proofSignature: 'a7f3c9e1b2d4f6a8e0c2b4a6f8d0e2c4b6a8f0e2d4c6b8a0f2e4d6c8b0a2f4e',
-        threatScore: isThreat ? 0.94 : 0.02,
+        blocked: isBlocked,
+        ruleTriggered: String(triggeredRule),
+        latencyMs: elapsedMs,
+        proofSignature: proofHeader,
+        threatScore: isBlocked ? 0.94 : 0.02,
       });
+    } catch (err) {
+      const elapsedMs = Math.round(performance.now() - startTime);
+      setScanResult({
+        blocked: true,
+        ruleTriggered: 'NETWORK_ERROR_FAIL_CLOSED',
+        latencyMs: elapsedMs,
+        proofSignature: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+        threatScore: 0.99,
+      });
+    } finally {
       setIsScanning(false);
-    }, 300);
+    }
   };
 
   return (
