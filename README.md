@@ -1,13 +1,14 @@
 # 🛡️ SwishOS Platform — Frontier-Grade Zero-Trust AI Agent Security Enclave
 
-> **The official SwishOS platform & AI agent security showcase — built with Next.js 16 (App Router) and deployed on Vercel Edge Infra.**
+> **The official SwishOS platform & AI agent security showcase — live at [swishos.io](https://swishos.io) — built with Next.js 16 (App Router) and deployed on Vercel Edge Infra.**
 > SwishOS stops autonomous AI agents from leaking secrets, executing unauthorized financial actions, or breaching EU AI Act compliance — with zero SaaS decision latency.
 
+[![Live Platform](https://img.shields.io/badge/Live_Site-swishos.io-0070F3.svg?style=flat&logo=vercel)](https://swishos.io)
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-black.svg?style=flat&logo=nextdotjs)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB.svg?style=flat&logo=react)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-06B6D4.svg?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
 [![PyPI version](https://img.shields.io/badge/agentic--redteam-v1.0.0-blue.svg)](https://github.com/muneeb7860/agentic-redteam)
-[![CI/CD Security Gate](https://img.shields.io/badge/Security--Gate-100%25--PASS-emerald.svg)](https://github.com/muneeb7860/portfolio/actions)
+[![CI/CD Security Gate](https://img.shields.io/badge/Security--Gate-100%25--PASS-emerald.svg)](https://github.com/Muneeb7860/swishos-portfolio/actions)
 [![gVisor Virtual Kernel](https://img.shields.io/badge/gVisor-runsc--isolated-purple.svg)](docker-compose.production.yml)
 [![Compliance](https://img.shields.io/badge/Compliance-SOC2%20%7C%20ISO27001%20%7C%20EU--AI--Act-green.svg)](COMMERCIAL.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -18,7 +19,8 @@ SwishOS is an enterprise-grade, shift-left **Zero-Trust AI Agent Execution Encla
 
 ## 🌐 Workspace Ecosystem & Navigation
 
-- 🛡️ **[SwishOS Zero-Trust Enclave & Interactive Dashboard (`portfolio`)](https://github.com/muneeb7860/portfolio)**: Next.js 16 security dashboard, WASI spend sandbox, and gVisor isolation enclave.
+- 🛡️ **[SwishOS Zero-Trust Enclave & Interactive Dashboard (`swishos-portfolio`)](https://github.com/Muneeb7860/swishos-portfolio)**: Next.js 16 security dashboard, WASI spend sandbox, and gVisor isolation enclave.
+- 🌐 **[SwishOS Live Platform (`swishos.io`)](https://swishos.io)**: Production deployment of the AI agent security playground and live telemetry dashboard.
 - 🎯 **[`agentic-redteam` Security Benchmark Harness](https://github.com/muneeb7860/agentic-redteam)**: PyPI package `v1.0.0` for GART/MARS swarm AI agent red-teaming.
 - 🛒 **[Swish OS Autonomous Quick-Commerce Platform (`Swish_App`)](https://github.com/muneeb7860/Swish_App)**: Multi-tenant B2B quick-commerce operating system with microservices architecture.
 
