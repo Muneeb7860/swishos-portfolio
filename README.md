@@ -1,4 +1,4 @@
-# Draviqo Portfolio — Next.js App
+# Swishos Portfolio — Next.js App
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-org%2Fportfolio)
 
@@ -116,4 +116,4 @@ The legacy static site lives in `../draviqo/`. When the new domain is ready:
 
 ## License
 
-© 2026 Draviqo. All rights reserved.
+© 2026 Swishos. All rights reserved.
