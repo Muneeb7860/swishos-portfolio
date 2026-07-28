@@ -1,6 +1,7 @@
-# 🛡️ SwishOS Platform: Frontier-Grade Zero-Trust AI Agent Enclave
+# 🛡️ SwishOS Platform — Frontier-Grade Zero-Trust AI Agent Security Enclave
 
-> **SwishOS stops autonomous AI agents from leaking secrets, executing unauthorized financial actions, or breaching EU AI Act compliance — with zero SaaS latency.**
+> **The official SwishOS platform & AI agent security showcase — built with Next.js 16 (App Router) and deployed on Vercel Edge Infra.**
+> SwishOS stops autonomous AI agents from leaking secrets, executing unauthorized financial actions, or breaching EU AI Act compliance — with zero SaaS decision latency.
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-black.svg?style=flat&logo=nextdotjs)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB.svg?style=flat&logo=react)](https://react.dev/)
