@@ -5,8 +5,8 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-black.svg?style=flat&logo=nextdotjs)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB.svg?style=flat&logo=react)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-06B6D4.svg?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
-[![PyPI version](https://img.shields.io/badge/agentic--redteam-v0.5.0-blue.svg)](https://github.com/Muneeb7860/agentic-redteam)
-[![CI/CD Security Gate](https://img.shields.io/badge/Security--Gate-100%25--PASS-emerald.svg)](https://github.com/Muneeb7860/swishos-portfolio/actions)
+[![PyPI version](https://img.shields.io/badge/agentic--redteam-v1.0.0-blue.svg)](https://github.com/muneeb7860/agentic-redteam)
+[![CI/CD Security Gate](https://img.shields.io/badge/Security--Gate-100%25--PASS-emerald.svg)](https://github.com/muneeb7860/portfolio/actions)
 [![gVisor Virtual Kernel](https://img.shields.io/badge/gVisor-runsc--isolated-purple.svg)](docker-compose.production.yml)
 [![Compliance](https://img.shields.io/badge/Compliance-SOC2%20%7C%20ISO27001%20%7C%20EU--AI--Act-green.svg)](COMMERCIAL.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -17,9 +17,9 @@ SwishOS is an enterprise-grade, shift-left **Zero-Trust AI Agent Execution Encla
 
 ## 🌐 Workspace Ecosystem & Navigation
 
-- 🛡️ **[SwishOS Zero-Trust Enclave & Interactive Dashboard (`portfolio`)](file:///Users/muneeb/Documents/GitHub/portfolio/README.md)**: Next.js 16 security dashboard, WASI spend sandbox, and gVisor isolation enclave.
-- 🎯 **[`agentic-redteam` Security Benchmark Harness](file:///Users/muneeb/Documents/GitHub/agentic-redteam/README.md)**: PyPI package `v0.5.0` for GART/MARS swarm AI agent red-teaming.
-- 🛒 **[Swish OS Autonomous Quick-Commerce Platform (`Swish_App`)](file:///Users/muneeb/Documents/GitHub/Swish_App/README.md)**: Multi-tenant B2B quick-commerce operating system with microservices architecture.
+- 🛡️ **[SwishOS Zero-Trust Enclave & Interactive Dashboard (`portfolio`)](https://github.com/muneeb7860/portfolio)**: Next.js 16 security dashboard, WASI spend sandbox, and gVisor isolation enclave.
+- 🎯 **[`agentic-redteam` Security Benchmark Harness](https://github.com/muneeb7860/agentic-redteam)**: PyPI package `v1.0.0` for GART/MARS swarm AI agent red-teaming.
+- 🛒 **[Swish OS Autonomous Quick-Commerce Platform (`Swish_App`)](https://github.com/muneeb7860/Swish_App)**: Multi-tenant B2B quick-commerce operating system with microservices architecture.
 
 ---
 
@@ -62,14 +62,14 @@ SwishOS implements 31 modular production security controls mapped directly to so
 
 | Defense Category | Security Module | Source File | Technical Mechanism |
 | :--- | :--- | :--- | :--- |
-| **Shift-Left Defenses** | **Sub-Word Centroid Classifier** | [`semantic-centroid.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/semantic-centroid.ts) | Character N-gram vector embedding distance ($\le 0.25$ threshold). |
-| **Multi-Turn Protection** | **Variable AST Tracker** | [`variable-ast-tracker.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/variable-ast-tracker.ts) | Reconstructs assigned string ASTs across 12 turns to detect payload splitting. |
-| **Memory Security** | **ASI08 Memory Guard** | [`agent-memory-guard.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/agent-memory-guard.ts) | Dual-pass RAG memory sanitization with `<trusted_context>` XML wrappers. |
-| **Side-Channel Defense** | **Anti-Timing Latency Equalizer** | [`flat-refusal.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/flat-refusal.ts) | Async $50\text{ms} + 0\text{--}10\text{ms}$ random jitter padding on flat refusals. |
-| **Container Isolation** | **WASI Sandbox Container** | [`wasm-sandbox.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/wasm-sandbox.ts) | WASI single-capability tokens, rolling rate limiters, and spend sliders. |
-| **Query Defense** | **GraphQL & AST Depth Guard** | [`graphql-agent-guard.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/graphql-agent-guard.ts) | Enforces max 5 nested levels and 10 field aliases to block query depth attacks. |
-| **Cryptographic Proof** | **HMAC Audit Proof Signer** | [`telemetry-proof.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/telemetry-proof.ts) | Web Crypto HMAC-SHA256 headers (`X-SwishOS-Audit-Proof`). |
-| **Compliance & SIEM** | **SOC2 Ledger Exporter** | [`soc2-report-generator.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/soc2-report-generator.ts) | PII-redacted CSV/JSON audit ledgers and RFC-5424 CEF syslog streaming. |
+| **Shift-Left Defenses** | **Sub-Word Centroid Classifier** | [`semantic-centroid.ts`](src/lib/semantic-centroid.ts) | Character N-gram vector embedding distance ($\le 0.25$ threshold). |
+| **Multi-Turn Protection** | **Variable AST Tracker** | [`variable-ast-tracker.ts`](src/lib/variable-ast-tracker.ts) | Reconstructs assigned string ASTs across 12 turns to detect payload splitting. |
+| **Memory Security** | **ASI08 Memory Guard** | [`agent-memory-guard.ts`](src/lib/agent-memory-guard.ts) | Dual-pass RAG memory sanitization with `<trusted_context>` XML wrappers. |
+| **Side-Channel Defense** | **Anti-Timing Latency Equalizer** | [`flat-refusal.ts`](src/lib/flat-refusal.ts) | Async $50\text{ms} + 0\text{--}10\text{ms}$ random jitter padding on flat refusals. |
+| **Container Isolation** | **WASI Sandbox Container** | [`wasm-sandbox.ts`](src/lib/wasm-sandbox.ts) | WASI single-capability tokens, rolling rate limiters, and spend sliders. |
+| **Query Defense** | **GraphQL & AST Depth Guard** | [`graphql-agent-guard.ts`](src/lib/graphql-agent-guard.ts) | Enforces max 5 nested levels and 10 field aliases to block query depth attacks. |
+| **Cryptographic Proof** | **HMAC Audit Proof Signer** | [`telemetry-proof.ts`](src/lib/telemetry-proof.ts) | Web Crypto HMAC-SHA256 headers (`X-SwishOS-Audit-Proof`). |
+| **Compliance & SIEM** | **SOC2 Ledger Exporter** | [`soc2-report-generator.ts`](src/lib/soc2-report-generator.ts) | PII-redacted CSV/JSON audit ledgers and RFC-5424 CEF syslog streaming. |
 
 ---
 
@@ -95,7 +95,7 @@ SwishOS implements 31 modular production security controls mapped directly to so
 
 ## 🛠️ Admin Enclave CLI Tool (`swishos`)
 
-SwishOS provides a terminal operator CLI executed via `npm run swishos` (source: [`scripts/swishos-cli.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/scripts/swishos-cli.ts)):
+SwishOS provides a terminal operator CLI executed via `npm run swishos` (source: [`scripts/swishos-cli.ts`](scripts/swishos-cli.ts)):
 
 ```bash
 # View enclave health, gVisor runtime status & Redis tarpit metrics
@@ -183,11 +183,11 @@ docker compose -f docker-compose.production.yml up -d
 
 SwishOS provides enterprise security auditing ($7,500 – $12,500) and managed enclave licenses. Explore internal sales assets:
 
-- 📑 **[Architectural Specification (`ARCHITECTURE.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/ARCHITECTURE.md)**: Threat model matrices and zero-trust invariants.
-- 💰 **[Commercial Pricing Guide (`COMMERCIAL.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/COMMERCIAL.md)**: Commercial pricing tiers and SLA guarantees.
-- ✉️ **[CISO Cold Outreach Playbook (`COLD_OUTREACH.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/COLD_OUTREACH.md)**: Cold outreach email templates.
-- 📊 **[Enterprise Sales Presentation Deck (`SALES_DECK.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/SALES_DECK.md)**: 10-slide Markdown pitch presentation deck.
-- 🤝 **[VC & BFSI Executive Outreach (`VC_AND_BFSI_OUTREACH.md`)](file:///Users/muneeb/Documents/GitHub/portfolio/VC_AND_BFSI_OUTREACH.md)**: Target investor & banking scripts.
+- 📑 **[Architectural Specification (`ARCHITECTURE.md`)](ARCHITECTURE.md)**: Threat model matrices and zero-trust invariants.
+- 💰 **[Commercial Pricing Guide (`COMMERCIAL.md`)](COMMERCIAL.md)**: Commercial pricing tiers and SLA guarantees.
+- ✉️ **[CISO Cold Outreach Playbook (`COLD_OUTREACH.md`)](COLD_OUTREACH.md)**: Cold outreach email templates.
+- 📊 **[Enterprise Sales Presentation Deck (`SALES_DECK.md`)](SALES_DECK.md)**: 10-slide Markdown pitch presentation deck.
+- 🤝 **[VC & BFSI Executive Outreach (`VC_AND_BFSI_OUTREACH.md`)](VC_AND_BFSI_OUTREACH.md)**: Target investor & banking scripts.
 
 ---
 
