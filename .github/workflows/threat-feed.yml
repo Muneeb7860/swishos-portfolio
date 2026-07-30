@@ -1,0 +1,40 @@
+name: Nightly Threat Feed Update
+
+on:
+  schedule:
+    # Run at 02:00 UTC daily (07:30 IST)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run threat feed agent
+        env:
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: python threat_feed/agent.py --output public/data/threat-feed.json
+
+      - name: Check for changes
+        id: diff
+        run: |
+          git diff --quiet public/data/threat-feed.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "SwishOS Threat Feed Bot"
+          git config user.email "bot@swishos.io"
+          git add public/data/threat-feed.json
+          git commit -m "data(threat-feed): nightly update $(date -u +%Y-%m-%d)"
+          git push
