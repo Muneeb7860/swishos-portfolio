@@ -29,7 +29,7 @@
     "description": "SwishOS secures AI agents that take real-world actions — spending money, calling tools, and touching data. Red-teaming, guardrails, and continuous evals."
   },
   "hero": {
-    "badge": "SAFETY & GOVERNANCE LAYER FOR THE AI SINGULARITY",
+    "badge": "RUNTIME DEFENSE FOR AUTONOMOUS AI AGENTS",
     "title1": "Ship AI agents that act —",
     "title2": "without the blast radius.",
     "subtitle": "OpenAI is building the brain. SwishOS is the airbag, brakes, and seatbelt. Stop autonomous AI agents from executing unauthorized transactions, leaking PII, or draining API credits.",

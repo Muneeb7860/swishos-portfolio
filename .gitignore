@@ -47,3 +47,4 @@ cold_pitch_email.txt
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+redteam_results.json >> .gitignore
