@@ -7,6 +7,7 @@ import ar from '../../dictionaries/ar.json';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { EnterpriseThreatScorecard } from '../../components/EnterpriseThreatScorecard';
 import { AuditSampleDeliverable } from '../../components/AuditSampleDeliverable';
+import { LiveThreatFeed } from '../../components/LiveThreatFeed';
 import { Shield, Target, CheckCircle2, GitBranch } from 'lucide-react';
 
 const dictionaries: Record<string, typeof en> = { en, ar };
@@ -263,6 +264,13 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
       <section style={{ padding: '40px 0 60px' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 24px' }}>
           <AuditSampleDeliverable lang={lang} />
+        </div>
+      </section>
+
+      {/* LIVE THREAT INTELLIGENCE FEED */}
+      <section style={{ padding: '0 0 60px' }}>
+        <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 24px' }}>
+          <LiveThreatFeed />
         </div>
       </section>
     </main>
