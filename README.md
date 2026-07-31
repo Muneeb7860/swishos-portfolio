@@ -10,7 +10,7 @@
 [![PyPI version](https://img.shields.io/badge/agentic--redteam-v1.0.0-blue.svg)](https://github.com/muneeb7860/agentic-redteam)
 [![CI/CD Security Gate](https://img.shields.io/badge/Security--Gate-100%25--PASS-emerald.svg)](https://github.com/Muneeb7860/swishos-portfolio/actions)
 [![gVisor Virtual Kernel](https://img.shields.io/badge/gVisor-runsc--isolated-purple.svg)](docker-compose.production.yml)
-[![Compliance](https://img.shields.io/badge/Compliance-SOC2%20%7C%20ISO27001%20%7C%20EU--AI--Act-green.svg)](COMMERCIAL.md)
+[![Compliance](https://img.shields.io/badge/Alignment-SOC2%20Ready%20%7C%20EU--AI--Act%20Aligned-blue.svg)](COMMERCIAL.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 SwishOS is an enterprise-grade, shift-left **Zero-Trust AI Agent Execution Enclave** and security proxy. Designed for high-assurance AI agent deployments, SwishOS neutralizes prompt injections, multi-turn payload splitting, indirect memory poisoning (ASI08), shadow tool execution escapes, and adversarial search tree algorithms (MCTS/TAP) trying to exploit autonomous AI pipelines.
