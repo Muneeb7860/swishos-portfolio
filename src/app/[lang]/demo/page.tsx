@@ -81,7 +81,16 @@ export default function DemoPage({ params }: { params: Promise<{ lang: string }>
       const res = await fetch('/api/support', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(current.payload),
+        // A fresh sessionId per step is required, not cosmetic: /api/support
+        // joins the last 5 messages of whatever session it's given before
+        // pattern-matching (multi-turn attack reconstruction). Without this,
+        // every step after the first two (both deliberate attack payloads)
+        // shares the same default session (falls back to client IP) and
+        // inherits their content — so Step 3, "Safe Query (No False
+        // Positive)", would incorrectly show blocked because of Step 1/2's
+        // leftover payloads still sitting in the joined window, not because
+        // of anything in its own query.
+        body: JSON.stringify({ ...current.payload, sessionId: crypto.randomUUID() }),
       });
 
       const body = await res.json();

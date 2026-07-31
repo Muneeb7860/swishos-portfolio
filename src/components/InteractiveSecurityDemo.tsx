@@ -66,10 +66,19 @@ export function InteractiveSecurityDemo() {
           'Content-Type': 'application/json',
           'x-agent-id': 'swishos-playground-agent',
         },
+        // Fresh sessionId per scan, not cosmetic: /api/support joins the last
+        // 5 messages of whatever session it's given before pattern-matching.
+        // Without this, every scan after the first shares one session
+        // (falls back to client IP) and inherits earlier payloads' content —
+        // so testing an attack preset once would make every SUBSEQUENT scan
+        // in the same browser session, including a genuinely clean query,
+        // incorrectly show blocked because of leftover content, not
+        // anything in its own text.
         body: JSON.stringify({
           query: customPayload,
           message: customPayload,
           category: selectedScenario.category,
+          sessionId: crypto.randomUUID(),
         }),
       });
 
