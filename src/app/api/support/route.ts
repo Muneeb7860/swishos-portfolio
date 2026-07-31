@@ -76,22 +76,51 @@ const THREAT_PATTERNS = [
   /content\s+policy/i,
   /without\s+requiring\s+supervisor\s+override/i,
   /elevated\s+root\s+privileges/i,
-  /surgeMultiplier\s+to\s+12\.5x/i,
-  /wipe_audit_logs/i,
   /root\s+privileges/i,
   /write\s+a\s+fictional\s+story/i,
   /fictional\s+character/i,
   /narrative\s+chapter/i,
   /roleplay\s+as/i,
   /chapter\s+\d+.*execute/i,
-  // Generalized Attack-Class Detectors (Added 2026-07-26)
-  /(delete|remove|destroy|wipe|purge|drop|decommission).{0,40}(bucket|storage|cluster|database|instance|snapshot|backup|volume|tier)/i,
-  /\b(buy_units|transfer_funds|execute_trade|trade_stock)\b\s*\(|\b(market\s+order|action\s+a\s+purchase|place\s+an?\s+order|wire\s+funds|transfer\s+treasury)\b.{0,60}(\d{4,}|fifty\s+thousand|\$\d{4,}|shares|units|usd|maxprice|limit_price|high-volume)/i,
-  /(grant|elevate|assign|promote|make|add|upgrade).{0,40}(admin|superadmin|owner|root|superuser|privileges|role|tenant|full\s+control)/i,
-  /(post|transmit|exfil|curl|webhook|send|upload|copy).{0,80}https?:\/\/[^\s]+.{0,40}(data|pii|users|backups|tokens|keys|db|emails|collect)/i,
-  /(<!--[\s\S]*?(override|exfil|ignore|agent|directive|verified)|\[\s*(agent|system)\s*directive:?\s*[\s\S]*?\]|\b(agent|ai)\s+directive:\s*)/i,
-  /(\bas\s+[a-z0-9_-]+\s*,?\s*(ignore|disregard|forget)|\b(instant|policy)?\s*refund\b.{0,40}\$\d{3,})/i,
+  // Generalized Attack-Class Detectors. First version (2026-07-26) had no \b
+  // word-boundary anchors and hardcoded literal test strings (surgeMultiplier
+  // to 12.5x, wipe_audit_logs) instead of the underlying attack class -- it
+  // both missed paraphrases of the same attack AND false-positived on
+  // unrelated words containing the same substring (e.g. "dropdown" + "tier").
+  // Ported from the corrected, empirically-verified version in
+  // homelab-ai-governance/config/shared_guardrails.yaml (paraphrase-tested
+  // against a held-out set, not just the literal payload strings).
+  /\b(delete|remove|destroy|wipe|purge|drop|decommission|deprovision|tear\s*down)\b.{0,40}\b(bucket|storage|cluster|database|instance|snapshot|backup|volume|environment|tier|resource)\b/i,
+  /\b(order|trade|buy|sell|transfer|wire|execute|action|place|submit|process|initiate)\b.{0,60}\b(\d{4,}\s*(shares|units|usd)|\$\d{4,}|maxprice|limit_price|high-volume|(ten|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)?\s*thousand\b|\bmillion\b)\b/i,
+  /\b(grant|elevate|assign|promote|make|add|upgrade|expand|increase|raise)\b.{0,40}\b(admin|superadmin|owner|root|superuser|privileges|role|tenant|access|permissions|control)\b/i,
+  /\b(post|transmit|exfil|curl|webhook|send|upload|copy|sync|replicate|export)\b.{0,80}https?:\/\/[^\s]+/i,
+  /(<!--[\s\S]*?(override|exfil|ignore|agent|directive)|\[\s*(agent|system)\s*directive:?\s*[\s\S]*?\]|\b(agent|ai)\s+directive:\s*|\bnote\s+to\s+(the\s+)?(assistant|ai|model|system)\b|\btreat\s+.{0,40}\bas\s+(fully\s+)?(verified|trusted|authorized)\b|\bno\s+(additional|further)\s+(checks?|review|verification)\s+needed\b)/i,
+  /(\bas\s+[a-z0-9_-]+\s*,?\s*(you\s+|now\s+)?(ignore|disregard|forget)|\b(instant|policy)?\s*refund\b.{0,40}\$[\d,]{3,})/i,
 ];
+
+// A legitimate end user does not type keyword-argument function-call syntax
+// into a chat/support endpoint. This is a structural, vocabulary-INDEPENDENT
+// signal that catches an attempted direct tool invocation (e.g.
+// aws_s3_delete_bucket(bucket_name=...), buy_units(symbol=...)) regardless
+// of what the function/resource is named -- unlike THREAT_PATTERNS, which
+// must enumerate every synonym and is defeated by the next one not on the
+// list. Ported from homelab-ai-governance/src/governance/risk.py's
+// contains_tool_call_syntax().
+const TOOL_CALL_SYNTAX_PATTERN = /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\s*[a-zA-Z_][a-zA-Z0-9_]*\s*=/;
+
+// Inserts spaces at underscore/hyphen and camelCase boundaries so the \b
+// word-boundary patterns above still match inside identifiers from
+// tool-call-shaped input, e.g. `aws_s3_delete_bucket` -> `aws s3 delete
+// bucket`. \b alone does not split on `_` (a word character) or a
+// lowercase-to-uppercase transition, so `\bdelete\b.{0,40}\bbucket\b` would
+// otherwise silently miss `aws_s3_delete_bucket(...)`. Ported from
+// homelab-ai-governance/src/governance/guardrails/detectors.py's
+// _normalize_identifiers().
+function normalizeIdentifiers(text: string): string {
+  return text
+    .replace(/[_-]/g, ' ')
+    .replace(/(?<=[a-z0-9])(?=[A-Z])/g, ' ');
+}
 
 function isValidLuhn(numStr: string): boolean {
   const digits = numStr.replace(/\D/g, '');
@@ -401,6 +430,7 @@ export async function POST(req: Request) {
 
     const normalizedInput = normalizeUnicode(fullText);
     const fullyDecodedStream = inspectBase64Payloads(normalizedInput);
+    const identifierNormalized = normalizeIdentifiers(fullText);
 
     // 2. High-Dimensional Inline Semantic Vector Safety Evaluation
     const semanticEval = evaluateSemanticSafety(fullText);
@@ -468,13 +498,25 @@ export async function POST(req: Request) {
       );
     }
 
-    for (const pattern of THREAT_PATTERNS) {
-      if (pattern.test(fullText) || pattern.test(normalizedInput) || pattern.test(fullyDecodedStream)) {
+    // Structural, vocabulary-independent check first: raw tool-call syntax
+    // in chat input is anomalous regardless of what the function is named.
+    const hasToolCallSyntax = TOOL_CALL_SYNTAX_PATTERN.test(fullText);
+
+    for (const pattern of [...(hasToolCallSyntax ? [TOOL_CALL_SYNTAX_PATTERN] : []), ...THREAT_PATTERNS]) {
+      if (
+        pattern.test(fullText) ||
+        pattern.test(normalizedInput) ||
+        pattern.test(fullyDecodedStream) ||
+        pattern.test(identifierNormalized)
+      ) {
         logAuditIncident({
           ip: clientIp,
           endpoint: '/api/support',
           rawPayload: rawQuery,
-          ruleTriggered: 'PROMPT_INJECTION_HOMOGLYPH_BLOCK',
+          ruleTriggered:
+            pattern === TOOL_CALL_SYNTAX_PATTERN
+              ? 'RAW_TOOL_CALL_SYNTAX_BLOCK'
+              : 'THREAT_PATTERN_MATCH_BLOCK',
         });
 
         return NextResponse.json(
