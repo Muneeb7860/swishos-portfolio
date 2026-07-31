@@ -157,7 +157,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {/* Dark IDE Code Container */}
               <div style={{ background: '#0B0F17', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <code>$ pip install agentic-redteam</code>
-                <span style={{ fontSize: '11px', color: '#38BDF8', fontWeight: 700 }}>coming soon</span>
+                <span style={{ fontSize: '11px', color: '#10B981', fontWeight: 700 }}>v1.0.0 LIVE</span>
               </div>
 
               {/* Key Bullets */}
