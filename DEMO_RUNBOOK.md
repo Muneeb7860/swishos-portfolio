@@ -101,7 +101,9 @@ curl -s -D - https://swishos.io/api/support \
 ### Close — The Ask (30 seconds)
 
 **Say:**
-> "That's SwishOS. Sub-10ms shift-left evaluation, anti-timing side-channel equalization, and cryptographic audit proofs on every decision. It works against any LLM endpoint — OpenAI, Anthropic, your own fine-tuned models, any agent framework."
+> "That's SwishOS. Sub-10ms shift-left evaluation†, anti-timing side-channel equalization, and cryptographic audit proofs on every decision. It works against any LLM endpoint — OpenAI, Anthropic, your own fine-tuned models, any agent framework."
+
+*(Presenter note — say this part only if asked, don't over-promise live: the sub-10ms figure is the guardrail's own decision overhead — pattern matching and hash ops before any model is called. It's model-independent by design, since a blocked request never reaches a model at all. It does NOT cover total response time for an allowed query, which is however long the underlying model takes to answer — seconds, not milliseconds, for a real local model, more for a heavier/deeper one. See † below.)*
 
 **Pause.**
 
@@ -127,7 +129,7 @@ curl -s -D - https://swishos.io/api/support \
 
 ### For VPs of Engineering / CTOs
 
-- "Software-only, sub-10ms overhead. No hardware, no GPU, no model hosting."
+- "Software-only, sub-10ms guardrail overhead†. No hardware, no GPU, no model hosting."
 - "Shift-left: threats are stopped before reaching your model provider — saves token cost."
 - "$5/day hard spend cap kills runaway agent loops before they drain your budget."
 - "Deployed to Vercel Edge — global, serverless, scales to zero."
@@ -140,7 +142,7 @@ curl -s -D - https://swishos.io/api/support \
 |---|---|
 | "We already use system prompts for safety." | "System prompts are the *first* thing injection attacks override. SwishOS sits in front of the model — the prompt never reaches it." |
 | "Can't we just use content filters?" | "Content filters catch keywords. They miss homoglyphs, encoded payloads, multi-turn variable splitting, and novel metaphor evasion. We decode and classify at the character n-gram level." |
-| "What's the latency overhead?" | "Sub-10ms median. All evaluation is in-memory regex, character math, and hash operations — no network calls, no model inference in the critical path." |
+| "What's the latency overhead?" | "Sub-10ms median for the guardrail decision itself† — in-memory regex, character math, and hash operations, no network calls, no model inference in the critical path. If the query isn't blocked, total response time is however long your model takes to answer; we add effectively nothing on top." |
 | "We need to test this ourselves." | "Absolutely. `pip install agentic-redteam` — run it against your own endpoints in 30 seconds. It's free and open-source." |
 | "How does this differ from Promptfoo/Garak?" | "Those are test-time evaluators. We do that too (`agentic-redteam`), but SwishOS is also the runtime defense — the actual proxy that blocks attacks in production. Test + protect, not just test." |
 | "Is this just regex?" | "Regex is one layer. There are 20+ modules: character n-gram cosine centroids, multi-turn AST reconstruction, HMAC-signed memory provenance, token entropy analysis, shadow sandbox probing, and anti-timing equalization. Regex alone misses encoded and obfuscated attacks." |
@@ -205,8 +207,13 @@ Use Shots 1–5 from `DEMO_VIDEO_SCRIPT.md`. Add a 15-second intro showing the p
 | Attack categories tested | 11 | `agentic-redteam` benchmark suite |
 | Total attack scenarios | 124 | Primary suite + crypto probes |
 | Current pass rate | 100% (Grade A) | Last CI run (v0.1.0-demo tag) |
-| Evaluation latency | < 10ms median | In-memory computation, no network |
+| Evaluation latency | < 10ms median† | In-memory computation, no network |
 | Rate limit | 10 req/min/IP | Configurable per deployment |
 | Spend cap | $5/day per agent | Hard kill switch (ASI10) |
 | Audit pricing | $7,500 – $12,500 | Fixed scope, 1–2 weeks |
 | Managed proxy pricing | $2,500/mo/node | Self-hosted enclave license |
+
+† **Conditions on the sub-10ms claim** — measured on the guardrail's own decision path (pattern matching, hash/crypto ops), not end-to-end response time:
+1. **Doesn't cover model inference.** If the query is allowed through, total response time is whatever the underlying model takes — measured 4–10s locally against a real 4B-class model. Heavier/deeper local models will take longer; this scales with the model, not with SwishOS.
+2. **Warm connection, not cold start.** First request on a fresh connection measured 14–24ms; steady-state repeat requests measured ~1ms. Quote the median, not the floor.
+3. **Applies to the blocked/pattern-matched path specifically** — a request that never reaches a model. It is not a claim about aggregate system throughput under load.
