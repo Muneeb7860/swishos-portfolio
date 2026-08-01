@@ -384,7 +384,15 @@ export default function DemoPage({ params }: { params: Promise<{ lang: string }>
               Demo Complete
             </h3>
             <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '20px' }}>
-              3 attacks blocked. 1 safe query passed. Every decision cryptographically signed.
+              {/* Derived from STEPS, not hardcoded -- the rail icons a screen
+                  up (line ~178) already treat every non-'allowed' step as a
+                  blocked/attack outcome, so this count must match that same
+                  logic or the summary silently drifts out of sync with what
+                  the rail just showed, the way the old "3 attacks blocked"
+                  text did (it hand-counted only expect==='blocked' steps and
+                  forgot the expect==='headers' step, which the rail already
+                  displays as blocked). */}
+              {STEPS.filter((s) => s.expect !== 'allowed').length} attacks blocked. {STEPS.filter((s) => s.expect === 'allowed').length} safe {STEPS.filter((s) => s.expect === 'allowed').length === 1 ? 'query' : 'queries'} passed. Every decision cryptographically signed.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link
