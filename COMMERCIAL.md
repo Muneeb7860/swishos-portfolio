@@ -1,47 +1,56 @@
-# 💼 SwishOS Platform: Commercial Offerings, Enterprise Licensing & Audit Services
+# 💼 SwishOS Platform: Commercial Offerings
 
 ## Executive Summary
-SwishOS provides enterprise organizations with frontier-grade **AI Agent Security Solutions**, offering self-hosted execution enclaves, automated red-team security audits, and managed edge firewall proxies for autonomous AI agent pipelines.
+SwishOS is a security guardrail for AI agents that take real-world actions — it evaluates requests before tool execution and blocks unsafe ones with a cryptographically signed audit trail.
+
+The commercial model is a funnel, not three independent products: the free open-source harness drives awareness, the audit converts a prospect into a paying customer, and the audit converts into the retainer — the actual recurring product. **This document must stay in sync with the live pricing page** (`src/dictionaries/en.json` → `pricingPage`); if they diverge, the site is the source of truth.
 
 ---
 
 ## 💰 Commercial Pricing & Service Tiers
 
-| Service Tier | Deliverables | Target Audience | Pricing Model |
+| Tier | What it is | Price | Role in the funnel |
 | :--- | :--- | :--- | :--- |
-| **1. Enterprise AI Agent Pen-Test Audit** | • Automated 10-Category Red-Team Sweep<br>• GART LLM Attacker Jailbreak Probes<br>• Executive HTML/PDF Pen-Test Audit Report<br>• HMAC Cryptographic Verification Certificate | Mid-Market & Enterprise AI Startups deploying customer-facing AI agents | **$7,500 - $12,500** per engagement |
-| **2. Self-Hosted Zero-Trust Enclave License** | • SwishOS Proxy Gateway Middleware<br>• gVisor `runsc` Docker Manifests<br>• Admin CLI Tool (`swishos`) & Schema Generator<br>• SOC2 / ISO 27001 Audit Exporters | Enterprise Engineering & Security Teams hosting AI agents on-premise or cloud | **$2,500 / month** per enclave node |
-| **3. Managed Cloud Edge Proxy & WAF** | • Cloudflare Worker Sub-1ms Global WAF<br>• Real-Time Webhook Alerting (Slack/PagerDuty)<br>• 24/7 SIEM Syslog Streaming (Splunk/Datadog)<br>• Weekly Executive Digest Reports | Scale-ups & SaaS Enterprises needing turnkey AI agent protection | **$12,500 / month** (Includes SLA & Custom Rules) |
+| **1. `agentic-redteam` (OSS)** | Self-serve red-team harness — clone and run against your own agent | **Free** (Apache 2.0) | Top of funnel. No sales contact required. |
+| **2. 1-Week Timeboxed Security Audit** | Fixed-scope diagnostic: up to 3 core agentic tool workflows, OWASP Agentic Top 10 threat map, 1 PR-ready patch, 60-min executive debrief | **$7,500 – $12,500** per engagement | Converts a qualified prospect into a paying customer. Priced to be affordable enough to say yes to, not to be the main revenue line. |
+| **3. Guardrail & Red-Team Retainer** | Continuous protection: red-team sweeps on every release, guardrail/eval maintenance as new attacks emerge, regression telemetry, direct architecture access | **$4,500 / month** | The actual recurring business. Retainer sales usually start right after an audit — the audit's findings are the sales pitch for the retainer. |
+
+Every engagement begins with an intake triage call. If a prospect's architecture exceeds standard audit scope, we provide a custom proposal before any contract is finalized.
 
 ---
 
-## 📑 Service Engagement Overview
+## 📑 What the audit actually tests
 
-```
-[ PHASE 1: RECON & BENCHMARK ] ──> [ PHASE 2: PENETRATION AUDIT ] ──> [ PHASE 3: CERTIFICATION ]
-• Deploy agentic-redteam harness   • Execute GART LLM Attacker Loop    • Output Certified HTML Report
-• Baseline threat exposure          • Test multi-turn AST splitting     • Issue HMAC Audit Certificate
-```
+Run via the `agentic-redteam` harness against the prospect's real endpoint — **5 check categories**, not more, and this document should never claim otherwise unless the harness itself grows more:
 
-### Key Deliverables Included in Audit ($7,500 - $12,500):
-1. **Automated Vulnerability Scan**: Full execution of all 10 threat categories in `agentic-redteam`.
-2. **Generative Agentic Red Teaming (GART)**: Target-guided LLM attacker simulations using OpenAI/Anthropic models to test jailbreak boundaries.
-3. **Formal Executive Report**: Printable, executive-ready HTML and JSON reports (`pen_test_report.html`) complete with OWASP LLM Top 10 breakdown matrix.
-4. **HMAC Audit Verification Certificate**: Cryptographically signed proof header (`X-SwishOS-Audit-Proof`) certifying zero-trust defense readiness.
+1. `jailbreak` — can the agent be talked out of its own constraints
+2. `prompt_injection` — does injected instruction text get obeyed
+3. `pii_leakage` — does it echo back sensitive data (cards, SSNs) on request
+4. `code_safety` — does it emit dangerous commands
+5. `clean_queries` — baseline: legitimate requests must still pass (no false-positive theater)
+
+Deliverables:
+- Severity-ranked OWASP LLM Top 10 threat report, with the actual payload and the agent's actual response as evidence (not just pass/fail)
+- Reproducible exploit scripts (curl-runnable)
+- 1 PR-ready remediation patch
+- 60-minute executive/CISO debrief
 
 ---
 
-## 🔒 Enterprise SLA & Compliance Guarantees
+## 🔒 What we can currently back up
 
-- **Sub-1ms Edge Latency Overhead**: Shift-left CDN filtering evaluates threats before reaching origin servers.
-- **Zero Data Exposure**: PII regex redaction and flat refusals ensure sensitive prompts or internal schemas are never leaked.
-- **100% Defense Pass Gate Guarantee**: CI/CD integration blocks PR builds if threat pass rates fall below 100.0%.
+Only claims that are true of the shipped product belong here:
+
+- Blocked requests carry an HMAC-SHA256 signed audit header (`x-swishos-audit-proof`), verifiable out-of-band — not every request, only blocked ones.
+- Black-box, gray-box, or white-box testing supported — full source access is not required (repo access improves the depth of guardrail PR recommendations, but red-teaming can run purely against a staging API endpoint under NDA).
+- Works against any HTTP-exposed agent: custom Python/Node stacks, LangChain, AutoGen, CrewAI, LlamaIndex, or proprietary orchestration layers.
+
+Do not add latency SLAs, uptime guarantees, or compliance certifications (SOC2, ISO 27001, HIPAA, etc.) to this document unless they've actually been obtained or contractually committed to — none currently have.
 
 ---
 
 ## 📬 Contact & Sales Inquiries
 
-To request an Enterprise AI Agent Penetration Audit or schedule an Enclave demonstration:
-- **Website**: [https://swishos.dev](https://swishos.dev)
-- **Email**: `security@swishos.dev`
-- **Schedule Demo**: `npm run swishos report --client "<YOUR_ORGANIZATION>"`
+- **Website**: [https://swishos.io](https://swishos.io)
+- **Live demo**: [https://swishos.io/en/demo](https://swishos.io/en/demo)
+- **Pricing / book an audit**: `swishos.io/en/pricing`
