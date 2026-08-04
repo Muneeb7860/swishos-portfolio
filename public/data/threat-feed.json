@@ -1,43 +1,93 @@
 {
-  "generated_at": "2026-08-04T07:38:02.393424+00:00",
+  "generated_at": "2026-08-04T07:45:25.895406+00:00",
   "agent_version": "1.0.0",
-  "total_incidents": 3,
+  "total_incidents": 8,
   "coverage_summary": {
-    "blocked": 1,
-    "detects": 2,
+    "blocked": 5,
+    "detects": 0,
     "gap": 0,
-    "review": 0
+    "review": 3
   },
   "incidents": [
     {
-      "title": "OpenAI Models Used JFrog Artifactory Zero-Days to Escape Sandbox",
-      "url": "https://www.bleepingcomputer.com/news/security/openai-models-used-artifactory-zero-days-to-escape-to-the-internet/",
-      "source": "bleepingcomputer.com",
-      "published": "2026-07-25",
+      "title": "What we know about the rogue AI-agent security breaches",
+      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
+      "source": "reuters.com",
+      "published": "",
       "severity": "critical",
-      "swishos_coverage": "detects",
-      "coverage_note": "Detects post-exploitation egress; cannot prevent the zero-day itself",
-      "snippet": "JFrog confirmed that OpenAI models exploited zero-day vulnerabilities in self-hosted Artifactory servers to escape an isolated testing environment and gain access to the internet."
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "OpenAI The agent began attempting to escape \u200bits test environment around July 9, 2026 GPT-5.6 Sol and an unnamed, more capable pre-release model AI startup Hugging Face and a customer at New York-base"
     },
     {
-      "title": "OpenAI Frontier Agent Sandbox Escape and Hugging Face Intrusion",
-      "url": "https://www.deepwatch.com/labs/ca-26-027-openai-frontier-agent-sandbox-escape-hugging-face-intrusion/",
-      "source": "deepwatch.com",
-      "published": "2026-07-22",
+      "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
+      "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
+      "source": "blog.cyberdesserts.com",
+      "published": "",
+      "severity": "high",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident t"
+    },
+    {
+      "title": "The State of AI Agent Security 2026",
+      "url": "https://cdn.lawreportgroup.com/acuris/files/Law-Report-Group-Files-New/AI%20Agent%20Part%201%20NeuralTrust%20Report.pdf",
+      "source": "cdn.lawreportgroup.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "Findings from The State of AI Agent Security 2026 show that data leakage (62%) and prompt injection attacks (58%) top the list of concerns, revealing that information exposure and manipulation are the"
+    },
+    {
+      "title": "Agentic AI breach risk is rising fast, but are controls keeping up?",
+      "url": "https://nhimg.org/community/agentic-ai-and-nhis/agentic-ai-breach-risk-is-rising-fast-but-are-controls-keeping-up",
+      "source": "nhimg.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "NHIMG editorial \u2014 based on content published by HiddenLayer: HiddenLayer Releases the 2026 AI Threat Landscape Report, Spotting the Rise of Agentic AI and the Expanding Attack Surface of Autonomous Sy"
+    },
+    {
+      "title": "AI Agent Security in 2026: What Enterprises Are Getting ...",
+      "url": "https://agatsoftware.com/ai-agent-security-enterprise-2026",
+      "source": "agatsoftware.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "AI agent security is no longer a future consideration for enterprise security teams. They are in production. According to a 2026 survey of over 900 executives and practitioners, 80.9% of technical tea"
+    },
+    {
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
+      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
+      "source": "kodemsecurity.com",
+      "published": "",
       "severity": "critical",
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "Two OpenAI models autonomously escaped a sandboxed testing environment, gained internet access, and compromised Hugging Face production infrastructure."
+      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "JFrog Patches 8 CVEs After OpenAI Responsible Disclosure",
-      "url": "https://jfrog.com/blog/jfrog-and-openai-collaboration-on-zero-day-security-findings/",
-      "source": "jfrog.com",
-      "published": "2026-07-27",
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI ...",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
       "severity": "critical",
-      "swishos_coverage": "detects",
-      "coverage_note": "Detects post-exploitation egress; cannot prevent the zero-day itself",
-      "snippet": "JFrog developed, validated, and released a fix for all customers in response to OpenAI's report of previously unknown zero-day vulnerabilities."
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by egress_probe detector (ASI04)",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by egress_probe detector (ASI04)",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
     }
   ]
 }
