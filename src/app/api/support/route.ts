@@ -296,6 +296,7 @@ export async function POST(req: Request) {
     const rawQuery = body.query || body.message || '';
     const subject = body.subject || '';
     const sessionId = body.sessionId || clientIp;
+    const hasExplicitSession = Boolean(body.sessionId);
 
     // 0c1. Semantic Threat Cluster Centroid Distance (Novel Metaphor & Evasion Filter with OTel Tracing)
     const centroidSpan = await traceVerificationStep('semantic_centroid', clientIp, async () => {
@@ -382,7 +383,10 @@ export async function POST(req: Request) {
     }
 
     // 0f. Multi-Turn Session Budget Check
-    const sessionCheck = checkSessionBudget(sessionId, `${subject} ${rawQuery}`);
+    // IP-fallback sessions (no client-supplied sessionId) get a much higher cap -- see
+    // checkSessionBudget's docstring. This is not a real conversation, so the tight
+    // 10-turn limit only applies when a caller is genuinely opted into session tracking.
+    const sessionCheck = checkSessionBudget(sessionId, `${subject} ${rawQuery}`, hasExplicitSession ? 10 : 50);
     if (!sessionCheck.allowed) {
       await applyExponentialTarpit(sessionId);
       logAuditIncident({
