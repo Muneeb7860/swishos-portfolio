@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 import { checkSessionBudget, checkAgentSpendCap } from '@/lib/rate-limiter';
 import { logAuditIncident } from '@/lib/audit-logger';
 import { evaluateSemanticSafety } from '@/lib/semantic-classifier';
@@ -660,6 +661,7 @@ export async function POST(req: Request) {
 
   } catch (error) {
     console.error('[SUPPORT ROUTE ERROR]:', error);
+    Sentry.captureException(error);
     return NextResponse.json(
       {
         status: 'error',
