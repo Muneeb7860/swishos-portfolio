@@ -261,8 +261,19 @@ export async function POST(req: Request) {
     }
 
     // 0c. Agent Spend Cap Check (Hard $5/day Spend Cap - ASI10)
+    // Anonymous/guest traffic must NOT share one global spend bucket -- every visitor to
+    // the public demo previously pooled into the literal string 'guest-user', so ~100
+    // requests from anyone (a red-team scan, a burst of demo visitors) tripped a kill
+    // switch that then blocked every other anonymous visitor for the rest of the UTC day.
+    // Real authenticated inter-agent identities (agent-*) keep their own dedicated cap,
+    // which is the actual ASI10 intent -- protecting one deployed customer agent from
+    // runaway spend, not rate-limiting the public marketing demo into unavailability.
+    // Only the spend-cap bucket key is scoped per-IP here -- `agentId` itself (used below
+    // to populate the response body's agent_id field) stays untouched so we don't leak
+    // the caller's IP into the JSON response or change the branded "guest-user" output.
     const agentId = mtlsCheck.agentId || 'swishos-triage-v1';
-    const spendCheck = checkAgentSpendCap(agentId, 0.05);
+    const spendCapKey = agentId === 'guest-user' ? `guest:${clientIp}` : agentId;
+    const spendCheck = checkAgentSpendCap(spendCapKey, 0.05);
 
     if (!spendCheck.allowed) {
       logAuditIncident({
