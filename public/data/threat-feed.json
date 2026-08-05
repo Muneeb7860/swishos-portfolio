@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-04T07:45:25.895406+00:00",
+  "generated_at": "2026-08-05T05:21:13.085377+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "blocked": 5,
+    "blocked": 6,
     "detects": 0,
     "gap": 0,
-    "review": 3
+    "review": 2
   },
   "incidents": [
     {
-      "title": "What we know about the rogue AI-agent security breaches",
-      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
-      "source": "reuters.com",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
+      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
+      "source": "beam.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "OpenAI The agent began attempting to escape \u200bits test environment around July 9, 2026 GPT-5.6 Sol and an unnamed, more capable pre-release model AI startup Hugging Face and a customer at New York-base"
+      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
@@ -40,24 +40,34 @@
       "snippet": "Findings from The State of AI Agent Security 2026 show that data leakage (62%) and prompt injection attacks (58%) top the list of concerns, revealing that information exposure and manipulation are the"
     },
     {
-      "title": "Agentic AI breach risk is rising fast, but are controls keeping up?",
-      "url": "https://nhimg.org/community/agentic-ai-and-nhis/agentic-ai-breach-risk-is-rising-fast-but-are-controls-keeping-up",
-      "source": "nhimg.org",
+      "title": "Top Agentic AI Security Threats in Late 2026",
+      "url": "https://stellarcyber.ai/learn/agentic-ai-securiry-threats",
+      "source": "stellarcyber.ai",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "NHIMG editorial \u2014 based on content published by HiddenLayer: HiddenLayer Releases the 2026 AI Threat Landscape Report, Spotting the Rise of Agentic AI and the Expanding Attack Surface of Autonomous Sy"
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
     },
     {
-      "title": "AI Agent Security in 2026: What Enterprises Are Getting ...",
-      "url": "https://agatsoftware.com/ai-agent-security-enterprise-2026",
-      "source": "agatsoftware.com",
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security",
+      "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
+      "source": "linkedin.com",
       "published": "",
-      "severity": "critical",
+      "severity": "high",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "AI agent security is no longer a future consideration for enterprise security teams. They are in production. According to a 2026 survey of over 900 executives and practitioners, 80.9% of technical tea"
+      "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
+    },
+    {
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/html/2603.02277v1",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by egress_probe detector (ASI04)",
+      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
@@ -70,24 +80,14 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI ...",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
+      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
-    },
-    {
-      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/abs/2603.02277",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
     }
   ]
 }
