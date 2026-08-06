@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T05:21:13.085377+00:00",
+  "generated_at": "2026-08-06T05:23:30.028314+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,24 +10,14 @@
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
       "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
       "source": "beam.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
-      "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
-      "source": "blog.cyberdesserts.com",
-      "published": "",
-      "severity": "high",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
-      "snippet": "The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident t"
+      "snippet": "HiddenLayer's 2026 AI Threat Landscape Report found that autonomous agents now account for 1 in 8 reported AI breaches. 76% of organizations cite shadow AI as a growing problem. Malware in public mode"
     },
     {
       "title": "The State of AI Agent Security 2026",
@@ -40,6 +30,16 @@
       "snippet": "Findings from The State of AI Agent Security 2026 show that data leakage (62%) and prompt injection attacks (58%) top the list of concerns, revealing that information exposure and manipulation are the"
     },
     {
+      "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
+      "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
+      "source": "blog.cyberdesserts.com",
+      "published": "",
+      "severity": "high",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
+    },
+    {
       "title": "Top Agentic AI Security Threats in Late 2026",
       "url": "https://stellarcyber.ai/learn/agentic-ai-securiry-threats",
       "source": "stellarcyber.ai",
@@ -50,27 +50,17 @@
       "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
     },
     {
-      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security",
-      "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
-      "source": "linkedin.com",
+      "title": "92% of Security Pros Concerned About AI Agents",
+      "url": "https://www.darktrace.com/blog/state-of-ai-cybersecurity-2026-92-of-security-professionals-concerned-about-the-impact-of-ai-agents",
+      "source": "darktrace.com",
       "published": "",
-      "severity": "high",
+      "severity": "medium",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
+      "snippet": "Read more\n\nAI\n\n\u2022\n\nAugust 4, 2026\n\n### Extending AI Security Visibility with Darktrace and Microsoft Agent 365\n\nDarktrace is integrating with Microsoft Agent 365 to bring behavior-based AI agent risk s"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v1",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
-    },
-    {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -80,14 +70,24 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
-      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
-      "source": "toxsec.com",
+      "title": "Quantifying Frontier LLM Capabilities for Container ...",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
+      "snippet": "by R Marchand \u00b7 2026 \u00b7 Cited by 13 \u2014 We find that, when vulnerabilities are added, LLMs are able to identify and exploit them, showing that use of evaluation like SANDBOXESCAPEBENCH"
+    },
+    {
+      "title": "Anatomy of an LLM RCE - Idira | The Identity Security Platform",
+      "url": "https://www.cyberark.com/resources/threat-research-blog/anatomy-of-an-llm-rce",
+      "source": "cyberark.com",
+      "published": "",
+      "severity": "low",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "We know how to bypass the Python sandbox, we not only need to bypass the sandbox but also the LLM alignment using some sort of jailbreak."
     }
   ]
 }
