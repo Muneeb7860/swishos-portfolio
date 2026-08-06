@@ -21,16 +21,15 @@ Every engagement begins with an intake triage call. If a prospect's architecture
 
 ## 📑 What the audit actually tests
 
-Run via the `agentic-redteam` harness against the prospect's real endpoint — **5 check categories**, not more, and this document should never claim otherwise unless the harness itself grows more:
+Run via the `agentic-redteam` harness against the prospect's real endpoint — **138 payloads across 14 check categories** (verified against the live GitHub repo and the published PyPI package; update this line if the harness's real scope changes, not the other way around):
 
-1. `jailbreak` — can the agent be talked out of its own constraints
-2. `prompt_injection` — does injected instruction text get obeyed
-3. `pii_leakage` — does it echo back sensitive data (cards, SSNs) on request
-4. `code_safety` — does it emit dangerous commands
-5. `clean_queries` — baseline: legitimate requests must still pass (no false-positive theater)
+`jailbreak`, `prompt_injection`, `indirect_injection`, `pii_leakage`, `code_safety`, `schema_compliance`, `action_level`, `mcp_security`, `clean_queries`, `multi_turn`, `centroid_probes`, `crypto_probes`, `asi04_sandbox_escape`, `asi10_rogue_persistence`
+
+Plus optional GART adaptive LLM-attacker mode (`--use-llm-attacker`), which mutates payloads based on the target's actual refusal text rather than sending a fixed list.
 
 Deliverables:
 - Severity-ranked OWASP LLM Top 10 threat report, with the actual payload and the agent's actual response as evidence (not just pass/fail)
+- SARIF v2.1.0 export (GitHub Code Scanning / SonarQube compatible) alongside the structured JSON report
 - Reproducible exploit scripts (curl-runnable)
 - 1 PR-ready remediation patch
 - 60-minute executive/CISO debrief
