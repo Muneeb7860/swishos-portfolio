@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-06T05:23:30.028314+00:00",
+  "generated_at": "2026-08-07T04:30:20.991937+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "blocked": 6,
+    "blocked": 5,
     "detects": 0,
     "gap": 0,
-    "review": 2
+    "review": 3
   },
   "incidents": [
     {
@@ -50,44 +50,44 @@
       "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
     },
     {
-      "title": "92% of Security Pros Concerned About AI Agents",
-      "url": "https://www.darktrace.com/blog/state-of-ai-cybersecurity-2026-92-of-security-professionals-concerned-about-the-impact-of-ai-agents",
-      "source": "darktrace.com",
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security",
+      "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
+      "source": "linkedin.com",
       "published": "",
-      "severity": "medium",
+      "severity": "high",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Read more\n\nAI\n\n\u2022\n\nAugust 4, 2026\n\n### Extending AI Security Visibility with Darktrace and Microsoft Agent 365\n\nDarktrace is integrating with Microsoft Agent 365 to bring behavior-based AI agent risk s"
+      "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
-      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
-      "source": "kodemsecurity.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
-    },
-    {
-      "title": "Quantifying Frontier LLM Capabilities for Container ...",
-      "url": "https://arxiv.org/abs/2603.02277",
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/html/2603.02277v1",
       "source": "arxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "by R Marchand \u00b7 2026 \u00b7 Cited by 13 \u2014 We find that, when vulnerabilities are added, LLMs are able to identify and exploit them, showing that use of evaluation like SANDBOXESCAPEBENCH"
+      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
     },
     {
-      "title": "Anatomy of an LLM RCE - Idira | The Identity Security Platform",
-      "url": "https://www.cyberark.com/resources/threat-research-blog/anatomy-of-an-llm-rce",
-      "source": "cyberark.com",
+      "title": "The Race to Ship AI Tools Left Security Behind. Part 1: Sandbox Escape",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by egress_probe detector (ASI04)",
+      "snippet": "This vulnerability enables a complete sandbox escape, allowing arbitrary code execution on the host system with the user\u2019s full privileges.\n\n### 2. Affected Product\n\nProductClaude Code\nVendorAnthropic"
+    },
+    {
+      "title": "OpenAI and Hugging Face partner to address security ...",
+      "url": "https://openai.com/index/hugging-face-model-evaluation-security-incident",
+      "source": "openai.com",
       "published": "",
       "severity": "low",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
-      "snippet": "We know how to bypass the Python sandbox, we not only need to bypass the sandbox but also the LLM alignment using some sort of jailbreak."
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "What happened during this incident\n   Actions we are taking now\n   Our approach to evaluating advanced cyber capabilities\n\n   What happened during this incident\n   Actions we are taking now\n   Our app"
     }
   ]
 }
