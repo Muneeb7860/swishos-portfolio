@@ -1,33 +1,23 @@
 {
-  "generated_at": "2026-08-07T04:30:20.991937+00:00",
+  "generated_at": "2026-08-08T03:39:40.784012+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "blocked": 5,
+    "blocked": 4,
     "detects": 0,
     "gap": 0,
-    "review": 3
+    "review": 4
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
       "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
       "source": "beam.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "HiddenLayer's 2026 AI Threat Landscape Report found that autonomous agents now account for 1 in 8 reported AI breaches. 76% of organizations cite shadow AI as a growing problem. Malware in public mode"
-    },
-    {
-      "title": "The State of AI Agent Security 2026",
-      "url": "https://cdn.lawreportgroup.com/acuris/files/Law-Report-Group-Files-New/AI%20Agent%20Part%201%20NeuralTrust%20Report.pdf",
-      "source": "cdn.lawreportgroup.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
-      "snippet": "Findings from The State of AI Agent Security 2026 show that data leakage (62%) and prompt injection attacks (58%) top the list of concerns, revealing that information exposure and manipulation are the"
+      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
@@ -50,7 +40,17 @@
       "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
     },
     {
-      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security",
+      "title": "Forrester Says an AI Agent Will Cause a Major Enterprise Breach in 2026. Most Security Teams Aren't Ready. | Aona AI Blog",
+      "url": "https://aona.ai/blog/forrester-agentic-ai-breach-prediction-2026",
+      "source": "aona.ai",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "IBM X-Force reported a 44% surge in AI-enabled exploits in 2026. GenAI usage in enterprises has tripled over the past two years while data policy violations have doubled. The infrastructure for an age"
+    },
+    {
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security - LinkedIn",
       "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
       "source": "linkedin.com",
       "published": "",
@@ -60,34 +60,34 @@
       "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v1",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
-    },
-    {
-      "title": "The Race to Ship AI Tools Left Security Behind. Part 1: Sandbox Escape",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "This vulnerability enables a complete sandbox escape, allowing arbitrary code execution on the host system with the user\u2019s full privileges.\n\n### 2. Affected Product\n\nProductClaude Code\nVendorAnthropic"
-    },
-    {
-      "title": "OpenAI and Hugging Face partner to address security ...",
-      "url": "https://openai.com/index/hugging-face-model-evaluation-security-incident",
-      "source": "openai.com",
+      "title": "large language model (LLM)",
+      "url": "https://www.cloudflare.com/learning/ai/what-is-large-language-model",
+      "source": "cloudflare.com",
       "published": "",
       "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "What happened during this incident\n   Actions we are taking now\n   Our approach to evaluating advanced cyber capabilities\n\n   What happened during this incident\n   Actions we are taking now\n   Our app"
+      "snippet": "and they are not designed to be secure vaults; they may expose confidential data in response to queries from other users. Learn more about the best ways to secure LLMs. [...] In terms of security, use"
+    },
+    {
+      "title": "Prompt injection: types, real-world CVEs, and enterprise defenses",
+      "url": "https://www.vectra.ai/topics/prompt-injection",
+      "source": "vectra.ai",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "Prompt injection has rapidly emerged as the most critical security vulnerability facing enterprise AI deployments. Ranked #1 on the OWASP Top 10 for LLM Applications 2025, this attack technique exploi"
+    },
+    {
+      "title": "Prompt Injection Attacks: The Most Common AI Exploit in 2025",
+      "url": "https://www.obsidiansecurity.com/blog/prompt-injection",
+      "source": "obsidiansecurity.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "According to OWASP's 2025 Top 10 for LLM Applications, prompt injection ranks as the number one critical vulnerability, appearing consistently across production AI deployments assessed during security"
     }
   ]
 }
