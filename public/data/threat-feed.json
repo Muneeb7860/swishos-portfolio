@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-10T04:02:21.833048+00:00",
+  "generated_at": "2026-08-11T03:50:04.688873+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "blocked": 3,
+    "blocked": 5,
     "detects": 0,
     "gap": 0,
-    "review": 5
+    "review": 3
   },
   "incidents": [
     {
@@ -20,16 +20,6 @@
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "What we know about the rogue AI-agent security breaches | Reuters",
-      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
-      "source": "reuters.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
-    },
-    {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
       "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
       "source": "blog.cyberdesserts.com",
@@ -40,27 +30,37 @@
       "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
     },
     {
-      "title": "The 2026 State of AI Traffic & Cyberthreat Benchmark Report | HUMAN Security",
-      "url": "https://www.humansecurity.com/learn/resources/2026-state-of-ai-traffic-cyberthreat-benchmarks",
-      "source": "humansecurity.com",
+      "title": "Top Agentic AI Security Threats in Late 2026",
+      "url": "https://stellarcyber.ai/learn/agentic-ai-securiry-threats",
+      "source": "stellarcyber.ai",
       "published": "",
-      "severity": "medium",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Early 2026 data confirms that the momentum has not slowed. AI agent and agentic browser traffic has continued its upward trajectory, and these systems are becoming more deeply embedded in commercial w"
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
+      "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
     },
     {
-      "title": "The OpenAI\u2013Hugging Face Incident - Black Hat USA 2026",
-      "url": "https://www.youtube.com/watch?v=87DyyMV0kCY",
-      "source": "youtube.com",
+      "title": "June 2026 AI Security Breach Report \u2014 40 Companies, 78M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-06-monthly-breach-report.html",
+      "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "breach were the same open eye agent evaluation runs. We responded to this uh and are responding to this with the utmost severity. Uh this is a pivotal moment both for our both for our uh company as we"
+      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
+      "title": "92% of Security Pros Concerned About AI Agents",
+      "url": "https://www.darktrace.com/blog/state-of-ai-cybersecurity-2026-92-of-security-professionals-concerned-about-the-impact-of-ai-agents",
+      "source": "darktrace.com",
+      "published": "",
+      "severity": "medium",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "Findings from the State of AI Cybersecurity 2026 reveal that security teams are struggling to adapt to enterprise AI adoption. The need is clear: as embedded AI features go mainstream, organizations n"
+    },
+    {
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -68,6 +68,16 @@
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by egress_probe detector (ASI04)",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     },
     {
       "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
@@ -78,16 +88,6 @@
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
       "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
-    },
-    {
-      "title": "An AI broke out of its sandbox yesterday. Then it hacked a ... - Reddit",
-      "url": "https://www.reddit.com/r/artificial/comments/1v3mxzb/an_ai_broke_out_of_its_sandbox_yesterday_then_it",
-      "source": "reddit.com",
-      "published": "",
-      "severity": "medium",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "To be clear, I am sure OpenAI hypes up it's products, but that can happen and this can still be a real security risk. Multiple things can be true\n\n2 more replies \n\n2 more replies \n\n2 more replies\n\n lo"
     }
   ]
 }
