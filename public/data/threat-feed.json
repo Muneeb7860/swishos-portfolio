@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-12T04:13:06.053643+00:00",
+  "generated_at": "2026-08-13T04:18:13.517155+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "blocked": 5,
+    "blocked": 4,
     "detects": 0,
     "gap": 0,
-    "review": 3
+    "review": 4
   },
   "incidents": [
     {
@@ -30,16 +30,6 @@
       "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
     },
     {
-      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
-      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
-      "source": "kiteworks.com",
-      "published": "",
-      "severity": "low",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
-    },
-    {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
       "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
       "source": "blog.cyberdesserts.com",
@@ -60,14 +50,14 @@
       "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v2",
-      "source": "arxiv.org",
+      "title": "Agentic AI breach risk is rising fast, but are controls keeping up?",
+      "url": "https://nhimg.org/community/agentic-ai-and-nhis/agentic-ai-breach-risk-is-rising-fast-but-are-controls-keeping-up",
+      "source": "nhimg.org",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "Taken together, our results show that frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as"
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "NHIMG editorial \u2014 based on content published by HiddenLayer: HiddenLayer Releases the 2026 AI Threat Landscape Report, Spotting the Rise of Agentic AI and the Expanding Attack Surface of Autonomous Sy"
     },
     {
       "title": "Simon Willison Breaks Down OpenAI's Sandbox Escape Incident",
@@ -88,6 +78,16 @@
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+    },
+    {
+      "title": "Container Escape Vulnerabilities: AI Agent Security for 2026",
+      "url": "https://blaxel.ai/blog/container-escape",
+      "source": "blaxel.ai",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "AI agents generate and execute code at runtime based on natural language inputs. A key risk emerges when AI-generated code is treated as trusted even though the LLM is following instructions from untr"
     }
   ]
 }
