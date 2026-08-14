@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-13T04:18:13.517155+00:00",
+  "generated_at": "2026-08-14T04:14:37.572251+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "blocked": 4,
+    "blocked": 3,
     "detects": 0,
     "gap": 0,
-    "review": 4
+    "review": 5
   },
   "incidents": [
     {
@@ -30,6 +30,16 @@
       "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
     },
     {
+      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
+      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
+      "source": "kiteworks.com",
+      "published": "",
+      "severity": "low",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
+    },
+    {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
       "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
       "source": "blog.cyberdesserts.com",
@@ -40,37 +50,17 @@
       "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
     },
     {
-      "title": "Top Agentic AI Security Threats in Late 2026",
-      "url": "https://stellarcyber.ai/learn/agentic-ai-securiry-threats",
-      "source": "stellarcyber.ai",
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security | James Chandler posted on the topic | LinkedIn",
+      "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
+      "source": "linkedin.com",
       "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by shift-left heuristic + centroid classifier",
-      "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
-    },
-    {
-      "title": "Agentic AI breach risk is rising fast, but are controls keeping up?",
-      "url": "https://nhimg.org/community/agentic-ai-and-nhis/agentic-ai-breach-risk-is-rising-fast-but-are-controls-keeping-up",
-      "source": "nhimg.org",
-      "published": "",
-      "severity": "critical",
+      "severity": "high",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "NHIMG editorial \u2014 based on content published by HiddenLayer: HiddenLayer Releases the 2026 AI Threat Landscape Report, Spotting the Rise of Agentic AI and the Expanding Attack Surface of Autonomous Sy"
+      "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
     },
     {
-      "title": "Simon Willison Breaks Down OpenAI's Sandbox Escape Incident",
-      "url": "https://talk.tidbits.com/t/simon-willison-breaks-down-openai-s-sandbox-escape-incident/33865",
-      "source": "talk.tidbits.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
-    },
-    {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -78,6 +68,16 @@
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+    },
+    {
+      "title": "Simon Willison Breaks Down OpenAI\u2019s Sandbox Escape Incident - Article Comments - TidBITS Talk",
+      "url": "https://talk.tidbits.com/t/simon-willison-breaks-down-openai-s-sandbox-escape-incident/33865",
+      "source": "talk.tidbits.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by egress_probe detector (ASI04)",
+      "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
     },
     {
       "title": "Container Escape Vulnerabilities: AI Agent Security for 2026",
