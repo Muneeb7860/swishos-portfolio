@@ -146,7 +146,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
 
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'grid', gap: '12px', fontSize: '14px', color: 'var(--muted)' }}>
                 {[
-                  'Full AST Taint & Prompt Injection Penetration Audit',
+                  'Full Prompt Injection & Tool-Sequence Penetration Audit',
                   'OASIS SARIF v2.1.0 Machine-Readable Findings Export',
                   'SOC 2 CC6/CC7/CC8 & EU AI Act Compliance Mapping',
                   'Executive CISO Summary & Remediation Architecture',

@@ -5,7 +5,7 @@ export const runtime = 'nodejs';
 export interface CategoryBreakdown {
   promptInjection: number;    // 0-100%
   piiRedaction: number;       // 0-100%
-  wasmIsolation: number;      // 0-100%
+  sandboxIsolation: number;      // 0-100%
   spendCaps: number;          // 0-100%
   astPayloadSplitting: number; // 0-100%
   memoryPoisoning: number;    // 0-100%
@@ -47,7 +47,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
     categories: {
       promptInjection: 100,
       piiRedaction: 100,
-      wasmIsolation: 100,
+      sandboxIsolation: 100,
       spendCaps: 100,
       astPayloadSplitting: 100,
       memoryPoisoning: 100,
@@ -70,7 +70,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
     categories: {
       promptInjection: 70,
       piiRedaction: 85,
-      wasmIsolation: 0,
+      sandboxIsolation: 0,
       spendCaps: 60,
       astPayloadSplitting: 72,
       memoryPoisoning: 90,
@@ -93,7 +93,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
     categories: {
       promptInjection: 65,
       piiRedaction: 78,
-      wasmIsolation: 0,
+      sandboxIsolation: 0,
       spendCaps: 55,
       astPayloadSplitting: 68,
       memoryPoisoning: 82,
@@ -116,7 +116,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
     categories: {
       promptInjection: 60,
       piiRedaction: 75,
-      wasmIsolation: 0,
+      sandboxIsolation: 0,
       spendCaps: 50,
       astPayloadSplitting: 62,
       memoryPoisoning: 78,
@@ -139,7 +139,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
     categories: {
       promptInjection: 55,
       piiRedaction: 70,
-      wasmIsolation: 0,
+      sandboxIsolation: 0,
       spendCaps: 45,
       astPayloadSplitting: 58,
       memoryPoisoning: 75,

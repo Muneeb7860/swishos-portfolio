@@ -154,16 +154,16 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
 
             {/* Architecture Card 2 */}
             <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: '16px', padding: '28px', boxShadow: 'var(--card-shadow)', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ fontSize: '11px', fontWeight: 800, color: 'var(--badge-txt)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>AST TAINT ANALYSIS</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>Static Action Token Tracking</h3>
+              <div style={{ fontSize: '11px', fontWeight: 800, color: 'var(--badge-txt)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>SHAPE-BASED DETECTION</div>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>Deterministic Response Analysis</h3>
               <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
-                Parses incoming JSON tool call payloads against Abstract Syntax Tree rules, catching indirect prompt injections before LLM invocation.
+                Inspects responses for the shape of a leak -- validated card numbers, IBANs, cloud metadata, dangerous code -- rather than asking a model whether the answer looked unsafe. The same input always produces the same finding.
               </p>
               <div style={{ marginTop: 'auto' }}>
                 <CodeBlockTerminal
-                  language="typescript"
-                  filename="src/guard/ast-parser.ts"
-                  code={`const ast = parseGraphQLQuery(payload);\nconst taint = analyzeTaint(ast, schema);\nif (taint.hasViolation) throw new TaintError();`}
+                  language="python"
+                  filename="agentic_redteam/detectors.py"
+                  code={`hits = find_pii(response)          # Luhn / mod-97 validated\nif reveals_cloud_metadata(response):\n    flag("SSRF: cloud metadata reached")`}
                 />
               </div>
             </div>

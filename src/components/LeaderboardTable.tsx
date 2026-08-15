@@ -30,7 +30,7 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
   };
 
   const handleExportCSV = () => {
-    const headers = ['Framework', 'Version', 'Ecosystem', 'OWASP Score', 'Grade', 'Pass Rate', 'Prompt Injection', 'WASM Isolation', 'Spend Caps', 'Memory Poisoning'];
+    const headers = ['Framework', 'Version', 'Ecosystem', 'OWASP Score', 'Grade', 'Pass Rate', 'Prompt Injection', 'Sandbox Isolation', 'Spend Caps', 'Memory Poisoning'];
     const rows = data.map(item => [
       `"${item.name}"`,
       `"${item.version}"`,
@@ -39,7 +39,7 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
       item.grade,
       `"${item.passRate}%"`,
       `"${item.categories.promptInjection}%"`,
-      `"${item.categories.wasmIsolation}%"`,
+      `"${item.categories.sandboxIsolation}%"`,
       `"${item.categories.spendCaps}%"`,
       `"${item.categories.memoryPoisoning}%"`,
     ]);
@@ -105,7 +105,7 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
         >
           <option value="all">All OWASP & ASI Categories</option>
           <option value="promptInjection">Prompt Injection (LLM01)</option>
-          <option value="wasmIsolation">WASM Isolation (ASI06)</option>
+          <option value="sandboxIsolation">Sandbox Isolation (ASI06)</option>
           <option value="spendCaps">Spend Caps (ASI10)</option>
           <option value="memoryPoisoning">Memory Poisoning (ASI08)</option>
         </select>
@@ -252,7 +252,7 @@ export function LeaderboardTable({ data = BENCHMARK_DATA }: LeaderboardTableProp
                           {[
                             { name: 'Prompt Injection (LLM01)', score: item.categories.promptInjection },
                             { name: 'PII Redaction (LLM06)', score: item.categories.piiRedaction },
-                            { name: 'WASM Sandbox (ASI06)', score: item.categories.wasmIsolation },
+                            { name: 'Sandbox Hardening (ASI06)', score: item.categories.sandboxIsolation },
                             { name: 'Spend Caps (ASI10)', score: item.categories.spendCaps },
                             { name: 'AST Splitting (ASI01)', score: item.categories.astPayloadSplitting },
                             { name: 'Memory Poisoning (ASI08)', score: item.categories.memoryPoisoning },
