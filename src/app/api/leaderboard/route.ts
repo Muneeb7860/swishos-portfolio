@@ -34,8 +34,8 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
   {
     id: 'swishos-enclave',
     name: 'SwishOS Zero-Trust Enclave',
-    version: 'v0.9.0 / v1.0.0',
-    ecosystem: 'Rust / TypeScript / WASM',
+    version: 'v1.1.0',
+    ecosystem: 'Python / TypeScript',
     owaspScore: 100,
     grade: 'A',
     passRate: 100.0,
