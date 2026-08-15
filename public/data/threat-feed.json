@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-06T05:23:30.028314+00:00",
+  "generated_at": "2026-08-15T02:57:42.504539+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 6,
+    "covered": 3,
     "partial": 0,
     "gap": 0,
-    "review": 2
+    "review": 5
   },
   "incidents": [
     {
@@ -17,17 +17,27 @@
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "HiddenLayer's 2026 AI Threat Landscape Report found that autonomous agents now account for 1 in 8 reported AI breaches. 76% of organizations cite shadow AI as a growing problem. Malware in public mode"
+      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "The State of AI Agent Security 2026",
-      "url": "https://cdn.lawreportgroup.com/acuris/files/Law-Report-Group-Files-New/AI%20Agent%20Part%201%20NeuralTrust%20Report.pdf",
-      "source": "cdn.lawreportgroup.com",
+      "title": "What we know about the rogue AI-agent security breaches",
+      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
+      "source": "reuters.com",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "Findings from The State of AI Agent Security 2026 show that data leakage (62%) and prompt injection attacks (58%) top the list of concerns, revealing that information exposure and manipulation are the"
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
+    },
+    {
+      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
+      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
+      "source": "kiteworks.com",
+      "published": "",
+      "severity": "low",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
     },
     {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
@@ -40,27 +50,17 @@
       "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
     },
     {
-      "title": "Top Agentic AI Security Threats in Late 2026",
-      "url": "https://stellarcyber.ai/learn/agentic-ai-securiry-threats",
-      "source": "stellarcyber.ai",
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security - LinkedIn",
+      "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
+      "source": "linkedin.com",
       "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
-    },
-    {
-      "title": "92% of Security Pros Concerned About AI Agents",
-      "url": "https://www.darktrace.com/blog/state-of-ai-cybersecurity-2026-92-of-security-professionals-concerned-about-the-impact-of-ai-agents",
-      "source": "darktrace.com",
-      "published": "",
-      "severity": "medium",
+      "severity": "high",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Read more\n\nAI\n\n\u2022\n\nAugust 4, 2026\n\n### Extending AI Security Visibility with Darktrace and Microsoft Agent 365\n\nDarktrace is integrating with Microsoft Agent 365 to bring behavior-based AI agent risk s"
+      "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -70,24 +70,24 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container ...",
-      "url": "https://arxiv.org/abs/2603.02277",
-      "source": "arxiv.org",
+      "title": "Container Escape Vulnerabilities: AI Agent Security for 2026",
+      "url": "https://blaxel.ai/blog/container-escape",
+      "source": "blaxel.ai",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "AI agents generate and execute code at runtime based on natural language inputs. A key risk emerges when AI-generated code is treated as trusted even though the LLM is following instructions from untr"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "by R Marchand \u00b7 2026 \u00b7 Cited by 13 \u2014 We find that, when vulnerabilities are added, LLMs are able to identify and exploit them, showing that use of evaluation like SANDBOXESCAPEBENCH"
-    },
-    {
-      "title": "Anatomy of an LLM RCE - Idira | The Identity Security Platform",
-      "url": "https://www.cyberark.com/resources/threat-research-blog/anatomy-of-an-llm-rce",
-      "source": "cyberark.com",
-      "published": "",
-      "severity": "low",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "We know how to bypass the Python sandbox, we not only need to bypass the sandbox but also the LLM alignment using some sort of jailbreak."
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
