@@ -64,13 +64,13 @@ export default function TrustGraphPage() {
 
   const handleExportCsv = () => {
     if (!graphData) return;
-    const headers = ['Agent ID', 'Label', 'Type', 'Trust Level', 'mTLS Valid', 'Spend Cap Remaining', 'Last Seen'];
+    const headers = ['Agent ID', 'Label', 'Type', 'Trust Level', 'Identity Verified', 'Spend Cap Remaining', 'Last Seen'];
     const rows = graphData.nodes.map(n => [
       n.id,
       `"${n.label}"`,
       n.type,
       n.trustLevel,
-      n.mtlsValid ? 'TRUE' : 'FALSE',
+      n.identityVerified ? 'TRUE' : 'FALSE',
       `${(n.spendCapRemaining * 100).toFixed(0)}%`,
       n.lastSeen,
     ]);
@@ -113,21 +113,13 @@ export default function TrustGraphPage() {
               <h1 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', margin: 0, letterSpacing: '-0.02em' }}>
                 Multi-Agent Zero-Trust Telemetry Console
               </h1>
-              <span style={{
-                background: 'rgba(16, 185, 129, 0.2)',
-                border: '1px solid #10B981',
-                color: '#34D399',
-                fontSize: '11px',
-                fontWeight: 800,
-                padding: '3px 10px',
-                borderRadius: '6px',
-                letterSpacing: '0.06em',
-              }}>
-                SOC2 TYPE II VERIFIED
-              </span>
+              {/* A 'SOC2 TYPE II VERIFIED' badge sat here. There is no SOC 2
+                  audit and no report -- only code that generates a SOC 2-shaped
+                  document. Asserting a completed third-party certification is a
+                  claim a buyer can act on, so it cannot be a design element. */}
             </div>
             <div style={{ fontSize: '13px', color: 'var(--muted-2)' }}>
-              Real-time mTLS handshake monitoring, spend cap enforcement, and AST policy audit stream.
+              Agent identity checks, spend cap enforcement, and a policy audit stream.
               {lastUpdated && <span> · Updated: {lastUpdated}</span>}
             </div>
           </div>
@@ -193,7 +185,7 @@ export default function TrustGraphPage() {
           <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(34, 197, 94, 0.3)', borderRadius: '14px', padding: '20px' }}>
             <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--ok)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Trusted Enclaves</div>
             <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--ok)' }}>{trustedCount}</div>
-            <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginTop: '4px' }}>mTLS verified & compliant</div>
+            <div style={{ fontSize: '12px', color: 'var(--muted-2)', marginTop: '4px' }}>identity header verified</div>
           </div>
 
           <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(249, 115, 22, 0.3)', borderRadius: '14px', padding: '20px' }}>
@@ -223,7 +215,7 @@ export default function TrustGraphPage() {
               <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--txt)', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Bot size={18} /> Inter-Agent Zero-Trust Registry & Health
               </h2>
-              <p style={{ fontSize: '13px', color: 'var(--muted-2)', margin: '4px 0 0 0' }}>Click any agent record to inspect AST rules, mTLS certificates, and detailed audit events.</p>
+              <p style={{ fontSize: '13px', color: 'var(--muted-2)', margin: '4px 0 0 0' }}>Click any agent record to inspect its policy rules, identity state, and audit events.</p>
             </div>
             <span style={{ fontSize: '12px', color: 'var(--badge-txt)', fontWeight: 700, background: 'rgba(56, 189, 248, 0.1)', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
               Deterministic Enclave Guardrails Active
@@ -239,7 +231,7 @@ export default function TrustGraphPage() {
                   <tr style={{ borderBottom: '1.5px solid rgba(255, 255, 255, 0.15)', color: 'var(--badge-txt)', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '0.08em' }}>
                     <th style={{ padding: '14px 16px' }}>Agent Identity</th>
                     <th style={{ padding: '14px 16px' }}>Role Type</th>
-                    <th style={{ padding: '14px 16px' }}>mTLS State</th>
+                    <th style={{ padding: '14px 16px' }}>Identity State</th>
                     <th style={{ padding: '14px 16px' }}>Trust Posture</th>
                     <th style={{ padding: '14px 16px' }}>Spend Cap Remaining</th>
                     <th style={{ padding: '14px 16px', textAlign: 'right' }}>Action</th>
@@ -275,9 +267,9 @@ export default function TrustGraphPage() {
                         </span>
                       </td>
                       <td style={{ padding: '16px' }}>
-                        {node.mtlsValid ? (
+                        {node.identityVerified ? (
                           <span style={{ color: 'var(--ok)', fontWeight: 700, fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                            <Lock size={14} /> mTLS Verified
+                            <Lock size={14} /> Identity verified
                           </span>
                         ) : (
                           <span style={{ color: '#F87171', fontWeight: 700, fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>

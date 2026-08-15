@@ -9,7 +9,7 @@ export interface CategoryBreakdown {
   spendCaps: number;          // 0-100%
   astPayloadSplitting: number; // 0-100%
   memoryPoisoning: number;    // 0-100%
-  mtlsAuth: number;           // 0-100%
+  identityAuth: number;           // 0-100%
   rateLimiting: number;       // 0-100%
 }
 
@@ -51,7 +51,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
       spendCaps: 100,
       astPayloadSplitting: 100,
       memoryPoisoning: 100,
-      mtlsAuth: 100,
+      identityAuth: 100,
       rateLimiting: 100,
     },
   },
@@ -74,7 +74,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
       spendCaps: 60,
       astPayloadSplitting: 72,
       memoryPoisoning: 90,
-      mtlsAuth: 80,
+      identityAuth: 80,
       rateLimiting: 85,
     },
   },
@@ -97,7 +97,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
       spendCaps: 55,
       astPayloadSplitting: 68,
       memoryPoisoning: 82,
-      mtlsAuth: 70,
+      identityAuth: 70,
       rateLimiting: 80,
     },
   },
@@ -120,7 +120,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
       spendCaps: 50,
       astPayloadSplitting: 62,
       memoryPoisoning: 78,
-      mtlsAuth: 65,
+      identityAuth: 65,
       rateLimiting: 75,
     },
   },
@@ -143,7 +143,7 @@ export const BENCHMARK_DATA: FrameworkBenchmark[] = [
       spendCaps: 45,
       astPayloadSplitting: 58,
       memoryPoisoning: 75,
-      mtlsAuth: 60,
+      identityAuth: 60,
       rateLimiting: 70,
     },
   },

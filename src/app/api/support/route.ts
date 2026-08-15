@@ -229,7 +229,7 @@ function sanitizeInput(text: string): string {
 export async function POST(req: Request) {
   const startTimeMs = performance.now();
   try {
-    // 0a. Inter-Agent mTLS & ANS PKI Cert Validation (ASI07)
+    // 0a. Inter-agent identity header check (ASI07) -- not mTLS; see mtls-validator.ts
     const mtlsCheck = validateAgentMTLS(req.headers);
     if (!mtlsCheck.valid) {
       logAuditIncident({

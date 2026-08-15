@@ -77,21 +77,21 @@ export default function AgentInspectPanel({ node, onClose }: AgentInspectPanelPr
             </span>
           </div>
 
-          {/* mTLS Status */}
+          {/* Agent identity status */}
           <div style={{ marginBottom: '16px' }}>
-            <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>mTLS Certificate</div>
+            <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>Agent Identity</div>
             <span style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              background: node.mtlsValid ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
-              color: node.mtlsValid ? '#22c55e' : '#ef4444',
+              background: node.identityVerified ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+              color: node.identityVerified ? '#22c55e' : '#ef4444',
               padding: '4px 10px',
               borderRadius: '6px',
               fontSize: '12px',
               fontWeight: 600,
             }}>
-              {node.mtlsValid ? <><Lock size={14} /> Valid &amp; Pinned</> : <><AlertTriangle size={14} /> Not Present</>}
+              {node.identityVerified ? <><Lock size={14} /> Valid &amp; Pinned</> : <><AlertTriangle size={14} /> Not Present</>}
             </span>
           </div>
 

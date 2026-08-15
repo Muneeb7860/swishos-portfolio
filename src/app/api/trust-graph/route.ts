@@ -7,7 +7,7 @@ export interface TrustNode {
   label: string;
   type: 'orchestrator' | 'worker' | 'external' | 'compromised';
   trustLevel: 'trusted' | 'degraded' | 'blocked';
-  mtlsValid: boolean;
+  identityVerified: boolean;
   spendCapRemaining: number; // 0.0 – 1.0
   lastSeen: string;
   auditEvents: AuditEvent[];
@@ -37,7 +37,7 @@ export const DEMO_NODES: TrustNode[] = [
     label: 'SwishOS Orchestrator',
     type: 'orchestrator',
     trustLevel: 'trusted',
-    mtlsValid: true,
+    identityVerified: true,
     spendCapRemaining: 0.82,
     lastSeen: new Date().toISOString(),
     auditEvents: [
@@ -50,7 +50,7 @@ export const DEMO_NODES: TrustNode[] = [
     label: 'Triage Agent',
     type: 'worker',
     trustLevel: 'trusted',
-    mtlsValid: true,
+    identityVerified: true,
     spendCapRemaining: 0.65,
     lastSeen: new Date(Date.now() - 15000).toISOString(),
     auditEvents: [
@@ -63,7 +63,7 @@ export const DEMO_NODES: TrustNode[] = [
     label: 'Memory Agent',
     type: 'worker',
     trustLevel: 'degraded',
-    mtlsValid: true,
+    identityVerified: true,
     spendCapRemaining: 0.31,
     lastSeen: new Date(Date.now() - 45000).toISOString(),
     auditEvents: [
@@ -76,7 +76,7 @@ export const DEMO_NODES: TrustNode[] = [
     label: 'Tool Executor',
     type: 'worker',
     trustLevel: 'trusted',
-    mtlsValid: true,
+    identityVerified: true,
     spendCapRemaining: 0.90,
     lastSeen: new Date(Date.now() - 60000).toISOString(),
     auditEvents: [
@@ -88,7 +88,7 @@ export const DEMO_NODES: TrustNode[] = [
     label: 'Web Client',
     type: 'external',
     trustLevel: 'trusted',
-    mtlsValid: false,
+    identityVerified: false,
     spendCapRemaining: 1.0,
     lastSeen: new Date(Date.now() - 5000).toISOString(),
     auditEvents: [
@@ -100,7 +100,7 @@ export const DEMO_NODES: TrustNode[] = [
     label: 'Unknown Agent (Blocked)',
     type: 'compromised',
     trustLevel: 'blocked',
-    mtlsValid: false,
+    identityVerified: false,
     spendCapRemaining: 0.0,
     lastSeen: new Date(Date.now() - 10000).toISOString(),
     auditEvents: [
