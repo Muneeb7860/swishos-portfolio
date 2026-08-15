@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T04:14:37.572251+00:00",
+  "generated_at": "2026-08-15T02:57:42.504539+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -50,7 +50,7 @@
       "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
     },
     {
-      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security | James Chandler posted on the topic | LinkedIn",
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security - LinkedIn",
       "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
       "source": "linkedin.com",
       "published": "",
@@ -60,7 +60,7 @@
       "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -68,16 +68,6 @@
       "swishos_coverage": "blocked",
       "coverage_note": "Blocked by egress_probe detector (ASI04)",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
-    },
-    {
-      "title": "Simon Willison Breaks Down OpenAI\u2019s Sandbox Escape Incident - Article Comments - TidBITS Talk",
-      "url": "https://talk.tidbits.com/t/simon-willison-breaks-down-openai-s-sandbox-escape-incident/33865",
-      "source": "talk.tidbits.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "blocked",
-      "coverage_note": "Blocked by egress_probe detector (ASI04)",
-      "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
     },
     {
       "title": "Container Escape Vulnerabilities: AI Agent Security for 2026",
@@ -88,6 +78,16 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "AI agents generate and execute code at runtime based on natural language inputs. A key risk emerges when AI-generated code is treated as trusted even though the LLM is following instructions from untr"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "blocked",
+      "coverage_note": "Blocked by egress_probe detector (ASI04)",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
