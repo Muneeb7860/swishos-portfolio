@@ -38,7 +38,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
           <FileText size={14} color="#38BDF8" /> {isAr ? 'معاينة مخرجات التقرير المباشر' : 'SAMPLE AUDIT DELIVERABLE PREVIEW'}
         </span>
         <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '14px', color: 'var(--txt)' }}>
-          {isAr ? 'ما الذي تحصل عليه في تدقيق أمن وكيل الذكاء الاصطناعي؟' : 'What You Receive in a 1-Week Security Audit'}
+          {isAr ? 'ما الذي تحصل عليه في تدقيق أمن وكيل الذكاء الاصطناعي؟' : 'What You Receive in a Security Review'}
         </h3>
         <p style={{ fontSize: '15px', color: 'var(--muted-2)', lineHeight: 1.6 }}>
           {isAr
@@ -79,7 +79,7 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
               <span style={{ color: '#EF4444', fontWeight: 700 }}>EXPOSED</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0' }}>
-              <span style={{ color: '#94A3B8' }}>ASI06 WASM Isolation</span>
+              <span style={{ color: '#94A3B8' }}>ASI06 Sandbox Hardening</span>
               <span style={{ color: '#10B981', fontWeight: 700 }}>MITIGATED</span>
             </div>
           </div>
@@ -101,7 +101,10 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
 
           {/* Terminal Code Mockup */}
           <div style={{ background: '#0B0F17', borderRadius: '10px', padding: '14px', marginTop: 'auto', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'monospace', fontSize: '11px', color: '#CBD5E1' }}>
-            <div style={{ color: '#EF4444', marginBottom: '4px' }}>$ swishos-redteam --target agent_v2</div>
+            {/* Must stay the real command: this block is shown as a sample of what
+                a client receives, so an invented CLI here is a fabricated deliverable.
+                The published entrypoint is `agentic-redteam` (see pyproject scripts). */}
+            <div style={{ color: '#EF4444', marginBottom: '4px' }}>$ agentic-redteam --target-url https://agent.example/api</div>
             <div style={{ color: '#94A3B8' }}>[+] Injecting multi-turn payload...</div>
             <div style={{ color: '#F59E0B' }}>[!] Vulnerability Confirmed: Tool Call Bypass</div>
             <div style={{ color: '#38BDF8' }}>[&gt;] Exporting trace to SARIF v2.1.0...</div>
@@ -127,8 +130,11 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
             <div style={{ color: '#EF4444', background: 'rgba(239, 68, 68, 0.15)', padding: '2px 4px', borderRadius: '2px', marginBottom: '2px' }}>
               - agent.execute(tool_name, unvalidated_args)
             </div>
+            {/* Shown as a sample remediation, so it has to be a real call.
+                `enclave.validate_and_call(..., ast_rules)` was invented -- there
+                is no such API and no AST rule engine. */}
             <div style={{ color: '#10B981', background: 'rgba(16, 185, 129, 0.15)', padding: '2px 4px', borderRadius: '2px' }}>
-              + enclave.validate_and_call(tool_name, args, ast_rules)
+              + guard.validate_tool_call(tool_name, args)  # refuses over-limit calls
             </div>
           </div>
         </div>
@@ -153,12 +159,12 @@ export function AuditSampleDeliverable({ lang }: { lang?: string }) {
           <CheckCircle2 size={32} color="#10B981" />
           <div>
             <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--txt)' }}>
-              {isAr ? 'نكتشف ثغرة حقيقية — أو لا تدفع شيئًا' : 'We Find a Real Vulnerability — or You Pay $0'}
+              {isAr ? 'نتائج قابلة لإعادة الإنتاج، وليست تقييمًا بالرأي' : 'Reproducible findings, not an opinion'}
             </div>
             <div style={{ fontSize: '13px', color: 'var(--muted-2)' }}>
               {isAr
-                ? 'إذا لم نكتشف ثغرة واحدة قابلة للتكرار في وكيلك، فستسترد مبلغ التدقيق بالكامل.'
-                : 'If our red-team fails to identify at least 1 actionable tool bypass or prompt injection vulnerability, you pay $0.'}
+                ? 'كل نتيجة تصل مع الحمولة التي أنتجتها وخطوات إعادة إنتاجها، حتى تتمكن من التحقق منها بنفسك بدلًا من الوثوق بها.'
+                : 'Every finding ships with the payload that produced it and the steps to reproduce, so you can verify it yourself rather than take our word for it.'}
             </div>
           </div>
         </div>

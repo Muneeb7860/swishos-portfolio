@@ -7,36 +7,45 @@ export function HeroCodeTerminal() {
   const [copied, setCopied] = useState(false);
 
   const codeSnippets = {
-    python: `# Install: pip install swishos
-from swishos import WasmSandboxEnclave, guard_stream, ASTPayloadTracker
+    // This block must stay runnable against the published package. It previously
+    // imported WasmSandboxEnclave / guard_stream / ASTPayloadTracker from a
+    // `swishos` package -- none of those symbols exist and there is no such
+    // package on PyPI. A developer's first action is to paste this and run it.
+    python: `# Install: pip install agentic-redteam
+from agentic_redteam.patching.asgi_middleware import AgenticRedteamMiddleware
+from agentic_redteam.patching.engine import PatchConfig
 
-# 1. Zero-Trust WASM Isolation Enclave for Untrusted Tool Execution
-enclave = WasmSandboxEnclave(memory_limit_mb=64, egress_blocked=True)
-tracker = ASTPayloadTracker(max_turns=12)
+# Virtual patching in the request path: ingress blocking + egress redaction.
+config = PatchConfig(
+    money_limit=1000.0,        # refuse tool calls that move more than this
+    max_spawn_depth=2,         # cap recursive sub-agent spawning
+    authorized_tenants=["tenant-42"],
+)
 
-# 2. Real-Time Stream Guardrail + Multi-Turn AST Payload Interception
-@guard_stream(mode="redact", window_size=256)
-async def agent_stream(query: str, session_id: str):
-    ast_risk = tracker.analyze_chunk(query, session_id)
-    if ast_risk.delayed_injection_detected:
-        raise SecurityException(f"[SwishOS AST BLOCK] Split payload detected across Turn #{ast_risk.trigger_turn}")
-    
-    return await enclave.run_tool("sql_query_builder", params={"q": query})
+app = AgenticRedteamMiddleware(app, config=config)
 
-# [BLOCKED] Live Protection: Multi-turn AST payload reconstruction blocked + secrets redacted in SSE stream`,
+# Ingress is inspected before your agent sees it; egress is scrubbed of API
+# keys and PII before it reaches the client. Refused tool calls are recorded
+# in the trace, so a blocked action is visible rather than silent.`,
 
-    typescript: `// Install: npm install @swishos/guard
-import { createSSEGuardrailTransformer, verifyMemoryProvenance } from '@swishos/guard';
+    // There is no npm package (@swishos/guard is a 404) and no JS SDK. Showing
+    // one invents a distribution channel that does not exist. The scanner is
+    // language-agnostic over HTTP, so this shows how a JS/TS agent is tested.
+    typescript: `// The scanner targets any agent over HTTP -- no SDK required.
+// Point it at your Node/Next.js agent endpoint:
+//
+//   agentic-redteam --target-url http://localhost:3000/api/agent
+//
+// Your endpoint just needs to accept JSON and return a response:
 
-// 1. Ingress Verification & RAG Memory Provenance Hashing
-const isProvenanced = await verifyMemoryProvenance(memoryChunk, expectedHash);
-if (!isProvenanced) throw new Error('[SwishOS] RAG Memory Poisoning Attempt (ASI08)');
+export async function POST(req: Request) {
+  const { query } = await req.json();
+  const answer = await runAgent(query);
+  return Response.json({ response: answer });
+}
 
-// 2. Real-Time In-Flight SSE Stream Guardrail (256-char sliding window)
-const streamGuard = createSSEGuardrailTransformer('redact');
-const responseStream = rawLLMStream.pipeThrough(streamGuard);
-
-// [BLOCKED] Intercepted: Outbound API keys & PII redacted in-stream before reaching client browser`,
+// The scanner sends adversarial payloads, inspects what comes back with
+// deterministic shape-based detectors, and exports SARIF for code scanning.`,
 
     curl: `# Real-Time Gateway Protection & Multi-Turn AST Payload Sweep
 curl -X POST https://portfolio-eight-theta-fp2kdb67zc.vercel.app/api/support \\

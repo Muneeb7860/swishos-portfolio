@@ -190,7 +190,7 @@
     ],
     "ossCta": "View on GitHub",
     "ossCtaPending": "Request early access",
-    "auditName": "1-Week Timeboxed Security Audit",
+    "auditName": "Scoped Security Review",
     "auditDesc": "A timeboxed diagnostic evaluating up to 3 core agentic tool workflows, OWASP Agentic Top 10 threat map, and 1 PR-ready patch.",
     "auditPrice": "$7,500 – $12,500",
     "auditUnit": "timeboxed scope",
@@ -203,7 +203,7 @@
       "60-minute executive CISO debrief"
     ],
     "auditTriageNote": "Every engagement begins with an intake triage. If your architecture exceeds standard scope, we provide a custom proposal before any payment or contract is finalized.",
-    "auditCta": "Book a 1-Week Audit",
+    "auditCta": "Start a scoping conversation",
     "retainerName": "Guardrail & Red-Team Retainer",
     "retainerDesc": "Continuous assurance for teams shipping agent changes every week. Usually starts after an audit.",
     "retainerPrice": "$4,500",

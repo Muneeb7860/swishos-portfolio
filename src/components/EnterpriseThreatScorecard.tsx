@@ -57,10 +57,19 @@ export function EnterpriseThreatScorecard() {
         marginBottom: '24px',
       }}>
         {[
-          { code: 'OWASP LLM01', title: 'Prompt Injection & Homoglyph Bypass', status: 'Blocked', detail: 'Sliding-window stream redactor + AST taint parser' },
-          { code: 'OWASP LLM02', title: 'Sensitive Information & PII Exfiltration', status: 'Redacted', detail: 'Zero-leak regex pattern matching & key scrubbing' },
-          { code: 'OWASP LLM05', title: 'Improper Output & Tool Tampering', status: 'Sanitized', detail: 'WASM 0-memory-bleed instruction isolation' },
-          { code: 'OWASP LLM08', title: 'Excessive Agency & Monetary Overflows', status: 'Enforced', detail: 'Deterministic spend caps & mTLS call authorization' },
+          // Each `detail` must name a mechanism that exists in the shipped code.
+          // These previously cited an AST taint parser, WASM instruction isolation,
+          // and mTLS call authorization -- none of which are implemented anywhere
+          // (no `ast.parse`, no WebAssembly instantiation, no TLS client-cert
+          // verification). A named mechanism is a checkable claim, and a security
+          // buyer is exactly the reader who will check it.
+          { code: 'OWASP LLM01', title: 'Prompt Injection & Homoglyph Bypass', status: 'Blocked', detail: 'Unicode NFKC normalization + shape-based detectors' },
+          { code: 'OWASP LLM02', title: 'Sensitive Information & PII Exfiltration', status: 'Redacted', detail: 'Echo-relative PII detection & egress key scrubbing' },
+          { code: 'OWASP LLM05', title: 'Improper Output & Tool Tampering', status: 'Sanitized', detail: 'Tool-call sequence analysis over the full trace' },
+          // Excessive Agency is LLM06, not LLM08 (LLM08 is Vector & Embedding
+          // Weaknesses). The heatmap further down the page already had this right,
+          // so the page was contradicting itself.
+          { code: 'OWASP LLM06', title: 'Excessive Agency & Monetary Overflows', status: 'Enforced', detail: 'Deterministic spend caps + split-transaction detection' },
         ].map(item => (
           <div key={item.code} style={{
             background: 'var(--bg-soft)',

@@ -126,7 +126,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               {isAr ? 'المحرك المفتوح مقابل تدقيق المؤسسات' : 'Open-Source Security Platform vs. Enterprise Advisory Audit'}
             </h2>
             <p style={{ color: 'var(--muted)', fontSize: '15px', maxWidth: '780px', margin: '0 auto' }}>
-              {isAr ? 'اختر بين أدوات المطورين المجانية المفتوحة المصدر وتدقيق الأمان المباشر للمؤسسات' : 'Deploy our open-source security SDK / PyPI scanner or engage our security research team for a high-touch 1-week threat audit.'}
+              {isAr ? 'اختر بين أدوات المطورين المجانية المفتوحة المصدر وتدقيق الأمان المباشر للمؤسسات' : 'Use the open-source scanner yourself, or commission a hands-on adversarial review of your agent.'}
             </p>
           </div>
 
@@ -145,19 +145,19 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                 <span style={{ fontSize: '11px', fontWeight: 800, color: '#10B981', textTransform: 'uppercase', letterSpacing: '0.06em', background: 'rgba(16, 185, 129, 0.15)', padding: '4px 10px', borderRadius: '4px', border: '1px solid rgba(16, 185, 129, 0.35)' }}>
                   FOR ENGINEERING TEAMS / FREE
                 </span>
-                <span style={{ fontSize: '12px', color: 'var(--muted-2)', fontFamily: 'monospace' }}>pip / npm / WASM</span>
+                <span style={{ fontSize: '12px', color: 'var(--muted-2)', fontFamily: 'monospace' }}>pip / MIT</span>
               </div>
               <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '12px' }}>SwishOS Security Platform & SDK</h3>
               <p style={{ fontSize: '14px', color: 'var(--muted-2)', lineHeight: 1.6, marginBottom: '20px' }}>
                 {isAr
-                  ? 'ماسح PyPI مفتوح المصدر (agentic-redteam)، وحاوية WASM معزولة بثقة صفرية، وحواجز حماية وقت التشغيل لوكلاء الذكاء الاصطناعي الذين ينفّذون إجراءات فعلية.'
-                  : 'Open-source PyPI scanner (agentic-redteam), zero-trust WASM enclave, and runtime guardrails for action-taking AI agents.'}
+                  ? 'ماسح PyPI مفتوح المصدر (agentic-redteam): كشف حتمي قائم على البنية، وتحليل تسلسل استدعاء الأدوات، وفحص خوادم MCP.'
+                  : 'Open-source PyPI scanner (agentic-redteam): deterministic shape-based detection, tool-call sequence analysis, and MCP server fuzzing.'}
               </p>
               
               {/* Dark IDE Code Container */}
               <div style={{ background: '#0B0F17', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <code>$ pip install agentic-redteam</code>
-                <span style={{ fontSize: '11px', color: '#10B981', fontWeight: 700 }}>v1.0.0 LIVE</span>
+                <span style={{ fontSize: '11px', color: '#10B981', fontWeight: 700 }}>v1.1.0 LIVE</span>
               </div>
 
               {/* Key Bullets */}
@@ -166,7 +166,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'مخرجات SARIF v2.1 ومحرك تسجيل OWASP LLM من 0 إلى 100' : 'SARIF v2.1 Output + OWASP LLM 0–100 Scoring Engine'}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'حاوية WASM معزولة بثقة صفرية ومُنقّح تدفّق البيانات' : 'Zero-Trust WASM Sandbox Container & Stream Redactor'}
+                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'كشف تسلسل استدعاء الأدوات + تنقيح البيانات الصادرة' : 'Tool-Call Sequence Detection + Egress Redaction'}
                 </div>
               </div>
 
@@ -216,12 +216,12 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
               <p style={{ fontSize: '14px', color: 'var(--muted-2)', lineHeight: 1.6, marginBottom: '20px' }}>
                 {isAr
                   ? 'تدقيق أمني شامل لمدة أسبوع واحد بواسطة فريق أبحاث أمن الذكاء الاصطناعي مع تقرير تنفيذي للرئيس التنفيذي للأمن.'
-                  : 'Fixed 1-week threat modeling, adversarial red-teaming, guardrail gap analysis, and CISO debrief led by senior security architects.'}
+                  : 'Threat modeling, adversarial red-teaming, guardrail gap analysis, and a written debrief. Scope and timeline agreed before any work starts.'}
               </p>
 
               {/* Audit Highlight Container */}
               <div style={{ background: '#0B0F17', color: '#F8FAFC', padding: '14px 16px', borderRadius: '10px', fontFamily: 'monospace', fontSize: '13px', border: '1px solid rgba(255, 255, 255, 0.15)', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span>1-Week Delivery + PR-Ready Fixes</span>
+                <span>Reproducible findings + PR-ready fixes</span>
                 <span style={{ fontSize: '11px', background: 'var(--brand)', color: '#FFFFFF', padding: '2px 8px', borderRadius: '4px', fontWeight: 800 }}>CISO Ready</span>
               </div>
 
@@ -231,7 +231,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'خريطة حرارية لمخاطر OWASP LLM 2026 + سجلات هجوم curl' : 'OWASP Agentic Risk Heatmap + Exploit Logs'}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'تقرير تنفيذي ومراجعة شفهية مع رئيس قطاع الأمن (CISO)' : '1-Week Delivery + Executive CISO Debrief'}
+                  <CheckCircle2 size={15} color="#10B981" /> {isAr ? 'تقرير تنفيذي ومراجعة شفهية' : 'Executive summary + technical debrief'}
                 </div>
               </div>
 
@@ -253,7 +253,7 @@ export default function Home(props: { params: Promise<{ lang: string }> }) {
                   marginTop: 'auto',
                 }}
               >
-                <Target size={16} /> {isAr ? 'احجز تدقيق الأمان المباشر' : 'Book a 1-Week Audit'}
+                <Target size={16} /> {isAr ? 'احجز مكالمة استكشافية' : 'Start a scoping conversation'}
               </Link>
             </div>
           </div>

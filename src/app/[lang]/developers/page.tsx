@@ -36,7 +36,7 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
                 SwishOS Developer Documentation
               </h1>
               <p style={{ fontSize: '16px', color: 'var(--muted)', maxWidth: '780px', lineHeight: 1.6, margin: 0 }}>
-                Target-agnostic HTTP red-teaming harness, WASM runtime memory sandboxing, and AST payload taint analysis for production AI agents.
+                Target-agnostic HTTP red-teaming harness, deterministic shape-based detection, and tool-call sequence analysis for production AI agents.
               </p>
             </div>
 
@@ -107,18 +107,18 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
             </div>
 
             <p style={{ fontSize: '13px', color: 'var(--muted)', marginBottom: '20px', lineHeight: 1.5 }}>
-              Embed zero-trust WASM sandboxing and stream redactors directly into LangChain, CrewAI, or AutoGen execution loops.
+              Embed ingress blocking and egress redaction directly into LangChain, CrewAI, or AutoGen execution loops.
             </p>
 
             <CodeBlockTerminal
               language="python"
               filename="agent_guardrail.py"
-              code={`from agentic_redteam import RedTeamEngine, StreamGuardrail\n\n# Instantiate 256-char sliding window redactor\nguardrail = StreamGuardrail(window_size=256, mode="block")\n\n# Evaluate payload AST against spend & isolation rules\nengine = RedTeamEngine()\nresult = engine.evaluate_payload(payload)\nif result.is_violation:\n    raise SystemError("AST Taint Security Breach Blocked")`}
+              code={`from agentic_redteam.patching.guardrails import check_ingress, sanitize_egress\n\n# Ingress: refuse the request before the agent ever sees it\nblocked, rule_id, reason = check_ingress(user_input)\nif blocked:\n    raise SecurityError(f"{rule_id}: {reason}")\n\n# Egress: scrub API keys and PII out of the response\nsafe_output, redactions = sanitize_egress(agent_response)`}
             />
 
             <div style={{ display: 'flex', gap: '16px', marginTop: '20px', fontSize: '12px', color: 'var(--muted)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={14} color="#10B981" /> 0-Memory-Bleed WASM
+                <CheckCircle2 size={14} color="#10B981" /> Deterministic & Offline
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <CheckCircle2 size={14} color="#10B981" /> SARIF v2.1 Output
@@ -138,16 +138,16 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
 
             {/* Architecture Card 1 */}
             <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: '16px', padding: '28px', boxShadow: 'var(--card-shadow)', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ fontSize: '11px', fontWeight: 800, color: '#10B981', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>WASM MEMORY ISOLATION</div>
+              <div style={{ fontSize: '11px', fontWeight: 800, color: '#10B981', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>SANDBOX HARDENING</div>
               <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>Deterministic Runtime Sandbox</h3>
               <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
-                Executes untrusted agent code in a 0-memory-bleed Wasmtime sandbox with strict fuel limits (max 50,000 instructions) and zero filesystem access.
+                Generates hardened container configuration for running agents under gVisor (runsc) user-space kernel isolation, with read-only root, cgroup memory caps, and iptables rules dropping cloud metadata egress.
               </p>
               <div style={{ marginTop: 'auto' }}>
                 <CodeBlockTerminal
-                  language="rust"
-                  filename="src/sandbox/wasm.rs"
-                  code={`let mut config = wasmtime::Config::new();\nconfig.wasm_memory(true);\nconfig.consume_fuel(true);\nlet engine = Engine::new(&config)?;`}
+                  language="python"
+                  filename="agentic_redteam/sandbox_config.py"
+                  code={`service = generate_gvisor_docker_compose_service(\n    image="your-agent:latest",\n    memory_limit="256m",\n)\n# runtime: runsc  |  read_only: true  |  cap_drop: ALL`}
                 />
               </div>
             </div>
@@ -170,16 +170,16 @@ export default async function DevelopersPage(props: { params: Promise<{ lang: st
 
             {/* Architecture Card 3 */}
             <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: '16px', padding: '28px', boxShadow: 'var(--card-shadow)', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ fontSize: '11px', fontWeight: 800, color: '#F97316', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>STREAM GUARDRAIL</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>256-Char Sliding Window</h3>
+              <div style={{ fontSize: '11px', fontWeight: 800, color: '#F97316', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>EGRESS REDACTION</div>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--txt)', marginBottom: '10px' }}>Response Body Scrubbing</h3>
               <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
-                Inspects Server-Sent Events (SSE) and WebSocket streams in real-time, redacting credential tokens split across adjacent chunks.
+                Strips provider API keys and PII from agent responses before they leave the process, covering current key formats such as Stripe, AWS, and GitHub tokens.
               </p>
               <div style={{ marginTop: 'auto' }}>
                 <CodeBlockTerminal
                   language="python"
-                  filename="agentic_redteam/stream.py"
-                  code={`guardrail = StreamGuardrail(window_size=256, mode="redact")\nfor chunk in stream:\n    redacted_chunk = guardrail.process_chunk(chunk)`}
+                  filename="agentic_redteam/patching/guardrails.py"
+                  code={`safe, redactions = sanitize_egress(response_body)\nif redactions:\n    log.warning("redacted %d secret(s) from egress", len(redactions))`}
                 />
               </div>
             </div>

@@ -56,7 +56,7 @@ export function generateCisoIntakeEmailHtml(payload: AuditRequestPayload, ticket
         </h1>
         <p style="font-size: 14px; color: #94A3B8; line-height: 1.6; margin: 0 0 24px 0;">
           Hello ${payload.name},<br><br>
-          Thank you for requesting a <strong>1-Week AI Agent Threat Model Audit</strong> ($7,500 – $12,500 scope) for <strong>${payload.company || 'your organization'}</strong>.
+          Thank you for requesting an <strong>AI Agent Threat Model Review</strong> ($7,500 – $12,500, scoped per engagement) for <strong>${payload.company || 'your organization'}</strong>.
         </p>
 
         <!-- BOOKING ACTION BOX -->
