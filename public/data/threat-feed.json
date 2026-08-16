@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-15T02:57:42.504539+00:00",
+  "generated_at": "2026-08-16T03:07:15.121341+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 5,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 3
   },
   "incidents": [
     {
@@ -30,16 +30,6 @@
       "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
     },
     {
-      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
-      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
-      "source": "kiteworks.com",
-      "published": "",
-      "severity": "low",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
-    },
-    {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
       "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
       "source": "blog.cyberdesserts.com",
@@ -50,7 +40,7 @@
       "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
     },
     {
-      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security - LinkedIn",
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security",
       "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
       "source": "linkedin.com",
       "published": "",
@@ -60,24 +50,14 @@
       "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
-      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
-      "source": "kodemsecurity.com",
+      "title": "Security incident disclosure \u2014 July 2026",
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "source": "huggingface.co",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
-    },
-    {
-      "title": "Container Escape Vulnerabilities: AI Agent Security for 2026",
-      "url": "https://blaxel.ai/blog/container-escape",
-      "source": "blaxel.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "AI agents generate and execute code at runtime based on natural language inputs. A key risk emerges when AI-generated code is treated as trusted even though the LLM is following instructions from untr"
+      "snippet": "In the Hugging Face incident, the evaluation environment supposedly had no direct Internet access. The permitted package-registry proxy was treated as a controlled egress path. The agent exploited a z"
     },
     {
       "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
@@ -88,6 +68,26 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
+    },
+    {
+      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
     }
   ]
 }
