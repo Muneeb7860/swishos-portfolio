@@ -48,3 +48,7 @@ cold_pitch_email.txt
 *.tsbuildinfo
 next-env.d.ts
 redteam_results.json >> .gitignore
+
+# Python bytecode (regenerated on every run; churns the diff)
+__pycache__/
+*.py[cod]
