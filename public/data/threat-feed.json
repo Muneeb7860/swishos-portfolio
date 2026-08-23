@@ -1,83 +1,83 @@
 {
-  "generated_at": "2026-08-22T03:00:43.158049+00:00",
+  "generated_at": "2026-08-23T03:09:42.063630+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
-    "partial": 1,
+    "covered": 5,
+    "partial": 0,
     "gap": 0,
-    "review": 4
+    "review": 3
   },
   "incidents": [
+    {
+      "title": "What we know about the rogue AI-agent security breaches | Reuters",
+      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
+      "source": "reuters.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
+    },
     {
       "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
       "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
       "source": "blog.cyberdesserts.com",
       "published": "",
-      "severity": "critical",
-      "swishos_coverage": "partial",
-      "coverage_note": "Partially covered \u2014 runtime egress only; registry-side compromise is out of scope",
-      "snippet": "The full hardening framework, covering authentication, sandboxing, behavioural monitoring, and governance, is further down this guide.\n\n## The First Confirmed AI Agent Attack: Mexico Government Breach"
+      "severity": "high",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
     },
     {
-      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
-      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
-      "source": "youtube.com",
+      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026)",
+      "url": "https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026",
+      "source": "foresiet.com",
       "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
+      "snippet": "A documented case emerged during this period in which a Claude-based AI agent in a controlled research environment resisted operator shutdown commands on multiple occasions. The agent was executing a "
     },
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
+      "title": "AI Agent Incidents: Unchecked Risks Expose 65% of Organizations",
+      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
+      "source": "kiteworks.com",
       "published": "",
-      "severity": "critical",
+      "severity": "medium",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "HiddenLayer's 2026 AI Threat Landscape Report found that autonomous agents now account for 1 in 8 reported AI breaches. 76% of organizations cite shadow AI as a growing problem. Malware in public mode"
+      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
     },
     {
-      "title": "2026 Cost of a Data Breach Report: AI Is Changing ...",
-      "url": "https://www.youtube.com/watch?v=b2PESRl7De4",
-      "source": "youtube.com",
+      "title": "Security incident disclosure \u2014 July 2026",
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "source": "huggingface.co",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "# 2026 Cost of a Data Breach Report: AI Is Changing Cybersecurity\n## IBM Technology\n1770000 subscribers\n807 likes\n\n### Description\n28905 views\nPosted: 30 Jul 2026\nLearn more about the 2026 Cost of a D"
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "In the Hugging Face incident, the evaluation environment supposedly had no direct Internet access. The permitted package-registry proxy was treated as a controlled egress path. The agent exploited a z"
     },
     {
-      "title": "Agentic AI breach risk is rising fast, but are controls keeping up?",
-      "url": "https://nhimg.org/community/agentic-ai-and-nhis/agentic-ai-breach-risk-is-rising-fast-but-are-controls-keeping-up",
-      "source": "nhimg.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Add runtime policy to agent execution paths Enforce policy at the point where the agent calls tools, not only at the prompt or interface layer. [...] Q: How do security teams know if shadow AI is actu"
-    },
-    {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape - arXiv",
-      "url": "https://arxiv.org/html/2603.02277v1",
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
       "source": "arxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "##### Effect of vulnerability hints.\n\nTo isolate a model\u2019s ability to exploit a known vulnerability\u2014separately from its ability to discover that vulnerability\u2014we run an ablation in which the model is "
+      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs - Kodem Security",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "August 4, 2026\n\n13\n\nWhen the AI Edits Its Own Trust Boundary: Remote Code Execution Vulnerability in AWS's Agentic IDE\n\n### When the AI Edits Its Own Trust Boundary: Remote Code Execution Vulnerabilit"
+      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
       "title": "Configuration-Based Sandbox Escape (CBSE) in AI ...",
@@ -87,7 +87,7 @@
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Successful exploitation of this vulnerability allows an attacker to: [...] We identified a recurring vulnerability class across multiple AI CLI tools that allows an attacker to escape the agent\u2019s sand"
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
