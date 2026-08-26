@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T03:05:50.976618+00:00",
+  "generated_at": "2026-08-26T03:12:14.403710+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,7 +10,7 @@
   },
   "incidents": [
     {
-      "title": "What we know about the rogue AI-agent security breaches - Reuters",
+      "title": "What we know about the rogue AI-agent security breaches",
       "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
       "source": "reuters.com",
       "published": "",
@@ -18,16 +18,6 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
-    },
-    {
-      "title": "McKinsey Lilli Breach (2026): What It Reveals About Agent Authentication",
-      "url": "https://www.1kosmos.com/resources/blog/mckinsey-lilli-breach-agent-authentication",
-      "source": "1kosmos.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "On March 11th 2026, McKinsey announced that a security firm and ethical hacking group called CodeWall pointed an autonomous offensive AI agent at Lilli, the company's internal AI platform, and walked "
     },
     {
       "title": "Top AI Security Vulnerabilities to Watch out for in 2026",
@@ -38,6 +28,16 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "Excessive agency occurs when AI systems are given more permissions than they require. An AI agent that has read/write access to your production database, can send emails, and has access to financial s"
+    },
+    {
+      "title": "McKinsey Lilli Breach (2026): What It Reveals About Agent Authentication | 1Kosmos",
+      "url": "https://www.1kosmos.com/resources/blog/mckinsey-lilli-breach-agent-authentication",
+      "source": "1kosmos.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "On March 11th 2026, McKinsey announced that a security firm and ethical hacking group called CodeWall pointed an autonomous offensive AI agent at Lilli, the company's internal AI platform, and walked "
     },
     {
       "title": "OpenClaw: The AI Agent Security Crisis Unfolding Right Now",
@@ -60,17 +60,7 @@
       "snippet": "On 28 th July 2026, AISI's Security Team detected unusual data transfers leaving our research systems during a routine cyber evaluation. On investigation, we found that some of the agents being tested"
     },
     {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
-      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
-      "source": "ctx-guard.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
-    },
-    {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
     }
   ]
 }
