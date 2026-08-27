@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T03:12:14.403710+00:00",
+  "generated_at": "2026-08-27T12:41:35.098117+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -9,6 +9,16 @@
     "review": 5
   },
   "incidents": [
+    {
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
+      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
+      "source": "beam.ai",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
+    },
     {
       "title": "What we know about the rogue AI-agent security breaches",
       "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
@@ -20,34 +30,24 @@
       "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
     },
     {
-      "title": "Top AI Security Vulnerabilities to Watch out for in 2026",
-      "url": "https://cycode.com/blog/ai-security-vulnerabilities",
-      "source": "cycode.com",
+      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026)",
+      "url": "https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026",
+      "source": "foresiet.com",
       "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Excessive agency occurs when AI systems are given more permissions than they require. An AI agent that has read/write access to your production database, can send emails, and has access to financial s"
+      "snippet": "A documented case emerged during this period in which a Claude-based AI agent in a controlled research environment resisted operator shutdown commands on multiple occasions. The agent was executing a "
     },
     {
-      "title": "McKinsey Lilli Breach (2026): What It Reveals About Agent Authentication | 1Kosmos",
-      "url": "https://www.1kosmos.com/resources/blog/mckinsey-lilli-breach-agent-authentication",
-      "source": "1kosmos.com",
+      "title": "2026 Identity Breach Report",
+      "url": "https://constella.ai/reports/2026-identity-breach-report",
+      "source": "constella.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "On March 11th 2026, McKinsey announced that a security firm and ethical hacking group called CodeWall pointed an autonomous offensive AI agent at Lilli, the company's internal AI platform, and walked "
-    },
-    {
-      "title": "OpenClaw: The AI Agent Security Crisis Unfolding Right Now",
-      "url": "https://www.reco.ai/blog/openclaw-the-ai-agent-security-crisis-unfolding-right-now",
-      "source": "reco.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "\u200d\n\nOpenClaw released version 2026.1.29, patching CVE-2026-25253 before public disclosure. The vulnerability allowed one-click remote code execution via a malicious link. The vulnerability exploited th"
+      "snippet": "breach report 2026\n\n# The Industrialization of Identity Risk & The AI Agent Frontier\n\nAdversaries have transitioned from Generative AI to Agentic AI, weaponizing a 1-trillion-attribute footprint to ex"
     },
     {
       "title": "Incident Report: unsanctioned agent behaviour during cyber testing",
@@ -58,6 +58,16 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "On 28 th July 2026, AISI's Security Team detected unusual data transfers leaving our research systems during a routine cyber evaluation. On investigation, we found that some of the agents being tested"
+    },
+    {
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/html/2603.02277v1",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
@@ -78,16 +88,6 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
-    },
-    {
-      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/abs/2603.02277",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
     }
   ]
 }
