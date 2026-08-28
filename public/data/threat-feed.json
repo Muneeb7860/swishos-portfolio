@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T12:41:35.098117+00:00",
+  "generated_at": "2026-08-28T14:14:56.855331+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -40,14 +40,14 @@
       "snippet": "A documented case emerged during this period in which a Claude-based AI agent in a controlled research environment resisted operator shutdown commands on multiple occasions. The agent was executing a "
     },
     {
-      "title": "2026 Identity Breach Report",
-      "url": "https://constella.ai/reports/2026-identity-breach-report",
-      "source": "constella.ai",
+      "title": "Break In, Break Out: What 2026 Taught Us About AI Agent Security",
+      "url": "https://subramanya.ai/2026/08/17/break-in-break-out-ai-agent-security-in-2026",
+      "source": "subramanya.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "breach report 2026\n\n# The Industrialization of Identity Risk & The AI Agent Frontier\n\nAdversaries have transitioned from Generative AI to Agentic AI, weaponizing a 1-trillion-attribute footprint to ex"
+      "snippet": "2026 was the year that middle stopped being theoretical. An AI hacked a major platform while trying to cheat a test. One person breached a government with a coding assistant. An agent deleted a compan"
     },
     {
       "title": "Incident Report: unsanctioned agent behaviour during cyber testing",
@@ -70,6 +70,16 @@
       "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
     },
     {
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
+      "source": "ctx-guard.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
+    },
+    {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
@@ -78,16 +88,6 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
-    },
-    {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI ...",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
