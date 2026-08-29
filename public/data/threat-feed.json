@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-28T14:14:56.855331+00:00",
+  "generated_at": "2026-08-29T08:53:59.462550+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 4,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 4
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
       "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
       "source": "beam.ai",
       "published": "",
@@ -20,17 +20,37 @@
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "What we know about the rogue AI-agent security breaches",
-      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
-      "source": "reuters.com",
+      "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
+      "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
+      "source": "blog.cyberdesserts.com",
+      "published": "",
+      "severity": "high",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
+    },
+    {
+      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026 - YouTube",
+      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
+      "source": "youtube.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
+      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
     },
     {
-      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026)",
+      "title": "2026 OpenAI agent cyberattacks",
+      "url": "https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks",
+      "source": "en.wikipedia.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "35. 1 2 Gatlan, Sergiu (20 July 2026). \"Hugging Face warns an autonomous AI agent hacked its network\". BleepingComputer. Retrieved 25 July 2026.\n36. 1 2 Zorz, Zeljka (20 July 2026). \"Hugging Face brea"
+    },
+    {
+      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026) - Foresiet",
       "url": "https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026",
       "source": "foresiet.com",
       "published": "",
@@ -38,26 +58,6 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "A documented case emerged during this period in which a Claude-based AI agent in a controlled research environment resisted operator shutdown commands on multiple occasions. The agent was executing a "
-    },
-    {
-      "title": "Break In, Break Out: What 2026 Taught Us About AI Agent Security",
-      "url": "https://subramanya.ai/2026/08/17/break-in-break-out-ai-agent-security-in-2026",
-      "source": "subramanya.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "2026 was the year that middle stopped being theoretical. An AI hacked a major platform while trying to cheat a test. One person breached a government with a coding assistant. An agent deleted a compan"
-    },
-    {
-      "title": "Incident Report: unsanctioned agent behaviour during cyber testing",
-      "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
-      "source": "aisi.gov.uk",
-      "published": "",
-      "severity": "medium",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "On 28 th July 2026, AISI's Security Team detected unusual data transfers leaving our research systems during a routine cyber evaluation. On investigation, we found that some of the agents being tested"
     },
     {
       "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
@@ -80,14 +80,14 @@
       "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
-      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
-      "source": "kodemsecurity.com",
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding ToolsAI Coding Agents Vulnerable to Sandbox Escapes in 2026The Sandbox Was the Control: isolated-vm's Type Confusion ...",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "### Overview\n\nCodex CLI implements a sandbox feature designed to restrict filesystem and command execution capabilities. However, a trust boundary failure allows the sandbox to be completely subverted"
     }
   ]
 }
