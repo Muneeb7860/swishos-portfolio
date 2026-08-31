@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-30T08:11:43.431791+00:00",
+  "generated_at": "2026-08-31T08:31:58.873681+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,7 +10,7 @@
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
       "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
       "source": "beam.ai",
       "published": "",
@@ -30,17 +30,7 @@
       "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
     },
     {
-      "title": "2026 OpenAI agent cyberattacks",
-      "url": "https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks",
-      "source": "en.wikipedia.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "35. 1 2 Gatlan, Sergiu (20 July 2026). \"Hugging Face warns an autonomous AI agent hacked its network\". BleepingComputer. Retrieved 25 July 2026.\n36. 1 2 Zorz, Zeljka (20 July 2026). \"Hugging Face brea"
-    },
-    {
-      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026) - Foresiet",
+      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026)",
       "url": "https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026",
       "source": "foresiet.com",
       "published": "",
@@ -50,24 +40,24 @@
       "snippet": "A documented case emerged during this period in which a Claude-based AI agent in a controlled research environment resisted operator shutdown commands on multiple occasions. The agent was executing a "
     },
     {
-      "title": "Break In, Break Out: What 2026 Taught Us About AI Agent ...",
-      "url": "https://subramanya.ai/2026/08/17/break-in-break-out-ai-agent-security-in-2026",
-      "source": "subramanya.ai",
+      "title": "8 AI Agent Security Incidents in 2026: Prioritizing AI Security - LinkedIn",
+      "url": "https://www.linkedin.com/posts/james-e-chandler_8-ai-agent-security-incidents-confirmed-in-activity-7486450628202991620-Mr7K",
+      "source": "linkedin.com",
+      "published": "",
+      "severity": "high",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "8 AI agent security incidents confirmed in 2026 alone. That's not theoretical, it's reality. Axis Intelligence's tracker highlights a CVSS 10.0 Gemini CLI vulnerability and a campaign exposing 400 mil"
+    },
+    {
+      "title": "2026 OpenAI agent cyberattacks",
+      "url": "https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks",
+      "source": "en.wikipedia.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Both, and the July 2026 Hugging Face breach showed both edges at once. The autonomous attack ran partly on open tooling, yet Hugging Face could only analyze the attack after commercial models refused "
-    },
-    {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v1",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
+      "snippet": "35. 1 2 Gatlan, Sergiu (20 July 2026). \"Hugging Face warns an autonomous AI agent hacked its network\". BleepingComputer. Retrieved 25 July 2026.\n36. 1 2 Zorz, Zeljka (20 July 2026). \"Hugging Face brea"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
