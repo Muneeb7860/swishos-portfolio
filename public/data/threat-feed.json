@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-09-04T07:09:10.661696+00:00",
+  "generated_at": "2026-09-05T06:52:19.029445+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 4,
+    "covered": 3,
     "partial": 0,
     "gap": 0,
-    "review": 4
+    "review": 5
   },
   "incidents": [
     {
-      "title": "Agentic AI Security: $4.7M Breaches, 92% Alarmed [2026]",
-      "url": "https://shattered.io/agentic-ai-security-2026",
-      "source": "shattered.io",
+      "title": "AI Agent Security Incidents in July 2026: What Broke - AY Automate",
+      "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
+      "source": "ayautomate.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Breach economics make the stakes concrete. The average AI agent-related data breach runs about $4.7 million in 2026. Separately, IBM\u2019s 2025 Cost of a Data Breach research, cited widely in 2026 analyse"
+      "snippet": "Two verified incidents stand out. Hugging Face disclosed a breach of part of its production infrastructure in mid-July 2026, and on July 21, 2026, OpenAI confirmed the breach traced back to one of its"
     },
     {
       "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
@@ -30,14 +30,14 @@
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "AI Agent Security Risks 2026: MCP, OpenClaw & Supply Chain",
-      "url": "https://blog.cyberdesserts.com/ai-agent-security-risks",
-      "source": "blog.cyberdesserts.com",
+      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026)",
+      "url": "https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026",
+      "source": "foresiet.com",
       "published": "",
-      "severity": "high",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "> The short version. AI agent security in 2026 is a supply chain problem first, a prompt injection problem second. The Model Context Protocol (MCP) is the connective tissue across every major incident"
+      "severity": "low",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "A documented case emerged during this period in which a Claude-based AI agent in a controlled research environment resisted operator shutdown commands on multiple occasions. The agent was executing a "
     },
     {
       "title": "2026 OpenAI agent cyberattacks - Wikipedia",
@@ -50,14 +50,14 @@
       "snippet": "35. 1 2 Gatlan, Sergiu (20 July 2026). \"Hugging Face warns an autonomous AI agent hacked its network\". BleepingComputer. Retrieved 25 July 2026.\n36. 1 2 Zorz, Zeljka (20 July 2026). \"Hugging Face brea"
     },
     {
-      "title": "Security incident disclosure \u2014 July 2026",
-      "url": "https://huggingface.co/blog/security-incident-july-2026",
-      "source": "huggingface.co",
+      "title": "Break In, Break Out: What 2026 Taught Us About AI Agent Security",
+      "url": "https://subramanya.ai/2026/08/17/break-in-break-out-ai-agent-security-in-2026",
+      "source": "subramanya.ai",
       "published": "",
-      "severity": "high",
+      "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
+      "snippet": "Both, and the July 2026 Hugging Face breach showed both edges at once. The autonomous attack ran partly on open tooling, yet Hugging Face could only analyze the attack after commercial models refused "
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
