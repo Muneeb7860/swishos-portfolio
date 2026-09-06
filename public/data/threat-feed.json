@@ -1,26 +1,16 @@
 {
-  "generated_at": "2026-09-05T06:52:19.029445+00:00",
+  "generated_at": "2026-09-06T07:02:53.911385+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 5,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 3
   },
   "incidents": [
     {
-      "title": "AI Agent Security Incidents in July 2026: What Broke - AY Automate",
-      "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
-      "source": "ayautomate.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Two verified incidents stand out. Hugging Face disclosed a breach of part of its production infrastructure in mid-July 2026, and on July 21, 2026, OpenAI confirmed the breach traced back to one of its"
-    },
-    {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
       "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
       "source": "beam.ai",
       "published": "",
@@ -30,34 +20,34 @@
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "6 AI Security Incidents: Full Attack Path Analysis (April 2026)",
-      "url": "https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026",
-      "source": "foresiet.com",
-      "published": "",
-      "severity": "low",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "A documented case emerged during this period in which a Claude-based AI agent in a controlled research environment resisted operator shutdown commands on multiple occasions. The agent was executing a "
-    },
-    {
-      "title": "2026 OpenAI agent cyberattacks - Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks",
-      "source": "en.wikipedia.org",
+      "title": "AI Agent Security Incidents in July 2026: What Broke",
+      "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
+      "source": "ayautomate.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "35. 1 2 Gatlan, Sergiu (20 July 2026). \"Hugging Face warns an autonomous AI agent hacked its network\". BleepingComputer. Retrieved 25 July 2026.\n36. 1 2 Zorz, Zeljka (20 July 2026). \"Hugging Face brea"
+      "snippet": "Hugging Face disclosed in its own incident writeup that part of its production infrastructure had been breached over a weekend in mid-July 2026. Axios reported the disclosure on July 20, and on July 2"
     },
     {
-      "title": "Break In, Break Out: What 2026 Taught Us About AI Agent Security",
-      "url": "https://subramanya.ai/2026/08/17/break-in-break-out-ai-agent-security-in-2026",
-      "source": "subramanya.ai",
+      "title": "Top Agentic AI Security Threats in Late 2026",
+      "url": "https://stellarcyber.ai/learn/agentic-ai-securiry-threats",
+      "source": "stellarcyber.ai",
       "published": "",
       "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "The Lakera AI research on memory injection attacks (November 2026) demonstrated this vulnerability in production systems. Researchers showed how indirect prompt injection via poisoned data sources cou"
+    },
+    {
+      "title": "Security incident disclosure \u2014 July 2026 - Hugging Face",
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "source": "huggingface.co",
+      "published": "",
+      "severity": "high",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Both, and the July 2026 Hugging Face breach showed both edges at once. The autonomous attack ran partly on open tooling, yet Hugging Face could only analyze the attack after commercial models refused "
+      "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
@@ -70,7 +60,7 @@
       "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs - Kodem Security",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "AI Sandbox Escape: Why Docker Can't Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
     }
   ]
 }
