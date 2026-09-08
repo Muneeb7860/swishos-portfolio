@@ -19,12 +19,12 @@ export function SpendGovernorWidget({ isAr = false }: SpendGovernorWidgetProps) 
         <div>
           <h3 className="text-xl font-bold text-white flex items-center gap-2">
             <span className="inline-block w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-            {isAr ? 'حاكم إمكانيات وإنفاق وكيل الذكاء الاصطناعي (WASI)' : 'AI Agent Spend & WASI Capability Governor'}
+            {isAr ? 'حاكم إمكانيات وإنفاق وكيل الذكاء الاصطناعي ' : 'AI Agent Spend & Capability Governor'}
           </h3>
           <p className="text-xs text-neutral-400 mt-1">
             {isAr
-              ? 'حماية الإنفاق التراكمي لمدة 30 يومًا وتقييد أذونات WASI لمنع استنزاف الميزانية'
-              : 'Rolling 30-Day Spend Limits ($25/Week Cap) & WASI Capability Token Enforcement'}
+              ? 'حماية الإنفاق التراكمي لمدة 30 يومًا وتقييد الأذونات الموقّعة لمنع استنزاف الميزانية'
+              : 'Rolling 30-Day Spend Limits ($25/Week Cap) & Signed Capability Token Enforcement'}
           </p>
         </div>
         <div
@@ -83,7 +83,7 @@ export function SpendGovernorWidget({ isAr = false }: SpendGovernorWidgetProps) 
         </div>
       </div>
 
-      {/* WASI Capability Matrix */}
+      {/* Capability Matrix */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div className="p-3.5 rounded-xl bg-neutral-950/60 border border-neutral-800">
           <div className="text-xs font-mono text-neutral-400 uppercase tracking-wider mb-1">

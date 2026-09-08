@@ -11,7 +11,7 @@ const ROLLING_SPEND_MAP = new Map<string, { timestamp: number; cost: number }[]>
 const MAX_WEEKLY_SPEND_USD = 25.0;
 
 /**
- * Validates WASI Capability Token signature, expiration, and capability inclusion.
+ * Validates capability token signature, expiration, and capability inclusion.
  * Defeats "Good Child" Sub-Agent Betrayal Attacks.
  */
 export function verifyCapabilityToken(

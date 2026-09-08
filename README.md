@@ -66,7 +66,7 @@ SwishOS implements 31 modular production security controls mapped directly to so
 | Defense Category | Security Module | Source File | Technical Mechanism |
 | :--- | :--- | :--- | :--- |
 | **Shift-Left Defenses** | **Sub-Word Centroid Classifier** | [`semantic-centroid.ts`](src/lib/semantic-centroid.ts) | Character N-gram vector embedding distance ($\le 0.25$ threshold). |
-| **Multi-Turn Protection** | **Variable AST Tracker** | [`variable-ast-tracker.ts`](src/lib/variable-ast-tracker.ts) | Reconstructs assigned string ASTs across 12 turns to detect payload splitting. |
+| **Multi-Turn Protection** | **Variable AST Tracker** | [`variable-concatenation-tracker.ts`](src/lib/variable-concatenation-tracker.ts) | Reconstructs assigned string ASTs across 12 turns to detect payload splitting. |
 | **Memory Security** | **ASI08 Memory Guard** | [`agent-memory-guard.ts`](src/lib/agent-memory-guard.ts) | Dual-pass RAG memory sanitization with `<trusted_context>` XML wrappers. |
 | **Side-Channel Defense** | **Anti-Timing Latency Equalizer** | [`flat-refusal.ts`](src/lib/flat-refusal.ts) | Async $50\text{ms} + 0\text{--}10\text{ms}$ random jitter padding on flat refusals. |
 | **Container Isolation** | **WASI Sandbox Container** | [`wasm-sandbox.ts`](src/lib/wasm-sandbox.ts) | WASI single-capability tokens, rolling rate limiters, and spend sliders. |

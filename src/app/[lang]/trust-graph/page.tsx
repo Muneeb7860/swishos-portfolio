@@ -364,7 +364,7 @@ export default function TrustGraphPage() {
                   {ev.blocked ? <ShieldAlert size={16} color="#F87171" /> : <Check size={16} color="var(--ok)" />}
                   <div>
                     <div style={{ fontSize: '12px', fontWeight: 800, color: ev.blocked ? '#F87171' : 'var(--ok)' }}>
-                      {ev.blocked ? `BLOCKED: ${ev.ruleTriggered}` : 'PASSED: Zero-Trust AST Assertion Verified'}
+                      {ev.blocked ? `BLOCKED: ${ev.ruleTriggered}` : 'PASSED: Zero-Trust Policy Assertion Verified'}
                     </div>
                     <div style={{ fontSize: '11px', color: 'var(--muted-2)', marginTop: '2px' }}>
                       Target: <strong>{ev.agent}</strong> ({ev.agentId}) · Payload: <code style={{ color: '#E2E8F0' }}>{ev.payload}</code>

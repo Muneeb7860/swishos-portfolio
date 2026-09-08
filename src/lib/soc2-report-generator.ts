@@ -62,7 +62,7 @@ export const DEFAULT_FINDINGS: AuditFinding[] = [
   },
   {
     id: 'ASI01',
-    name: 'Multi-Turn AST Payload Splitting',
+    name: 'Multi-Turn Variable Payload Splitting',
     vector: 'ASI01_MULTI_TURN_AST_SPLITTING',
     tscCriteria: 'CC8.1',
     severity: 'HIGH',

@@ -13,7 +13,7 @@ export interface ConcatenationTrackerResult {
 }
 
 /**
- * Multi-Turn Variable Concatenation AST Tracker (Hardened v0.5.0)
+ * Multi-Turn Variable Concatenation Tracker (Hardened v0.5.0)
  * Extracts assigned variables (JS, Python dicts, JSON keys, template literals, natural language key bindings)
  * across multi-turn session history, reconstructs the full concatenated string representation,
  * and evaluates it against threat centroids. Defeats delayed multi-turn payload splitting attacks.

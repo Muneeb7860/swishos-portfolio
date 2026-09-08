@@ -12,7 +12,7 @@ import { applyExponentialTarpit } from '@/lib/tarpit-engine';
 import { createZeroInfoRefusalAsync } from '@/lib/flat-refusal';
 import { computeClientFingerprint, applyGlobalFingerprintTarpit } from '@/lib/global-tarpit';
 import { evaluateSemanticCentroidDistance } from '@/lib/semantic-centroid';
-import { evaluateConcatenatedVariableAST } from '@/lib/variable-ast-tracker';
+import { evaluateConcatenatedVariableAST } from '@/lib/variable-concatenation-tracker';
 import { probeToolCallInShadowSandbox } from '@/lib/shadow-probe';
 import { incrementRedisRateLimit } from '@/lib/redis-state';
 import { sanitizeMemoryForStorage, validateRetrievedMemory } from '@/lib/agent-memory-guard';
@@ -400,7 +400,7 @@ export async function POST(req: Request) {
 
     const fullText = sessionCheck.messages.join(' \n ');
 
-    // 0g. Multi-Turn Variable Concatenation AST Tracker (Closes 12-Turn Delayed Payload Window)
+    // 0g. Multi-Turn Variable Concatenation Tracker (Closes 12-Turn Delayed Payload Window)
     const varASTCheck = evaluateConcatenatedVariableAST(
       sessionCheck.messages.map(msg => ({ role: 'user', content: msg }))
     );
@@ -499,7 +499,7 @@ export async function POST(req: Request) {
           message: 'Request blocked due to security guardrail violation.',
           block_reason: isExfiltrationAttempt
             ? 'Markdown Side-Channel PII Exfiltration Blocked.'
-            : 'AST Tool Execution Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).',
+            : 'Tool Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).',
           routing_decision: { intent: 'security_threat', decision: 'block', confidence: 0.99, complexity: 'high' },
           risk: { elevated: true, reason: 'Action-level security override blocked.' },
           schema_validation: { valid: false, reason: 'Disallowed action or side-channel pattern.' },

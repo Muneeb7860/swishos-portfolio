@@ -255,7 +255,7 @@ export default function SupportClient({ lang }: { lang: string }) {
                     <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--txt)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Zap size={14} /> P2 Technical / Guardrail Support</span>
                     <span style={{ fontSize: '12px', fontWeight: 800, background: 'var(--panel-2)', color: 'var(--brand)', padding: '3px 10px', borderRadius: '6px' }}>&lt; 4 Hours SLA</span>
                   </div>
-                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Guardrail policy tuning, AST rule assistance, and SDK integration.</p>
+                  <p style={{ fontSize: '12px', color: 'var(--muted)', margin: 0 }}>Guardrail policy tuning, guardrail rule assistance, and SDK integration.</p>
                 </div>
               </div>
             </div>
@@ -309,7 +309,7 @@ export default function SupportClient({ lang }: { lang: string }) {
                   <span className="contact-item-icon"><Shield size={16} /></span>
                   <div>
                     <div className="contact-item-name">Executive Audit Desk</div>
-                    <div className="contact-item-sub">Book 1-Week CISO Audit</div>
+                    <div className="contact-item-sub">Book a CISO Review</div>
                   </div>
                 </div>
                 <span className="contact-arrow">→</span>

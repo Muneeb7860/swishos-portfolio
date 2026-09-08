@@ -47,7 +47,7 @@ export async function POST(req: Request) {
 // The scanner sends adversarial payloads, inspects what comes back with
 // deterministic shape-based detectors, and exports SARIF for code scanning.`,
 
-    curl: `# Real-Time Gateway Protection & Multi-Turn AST Payload Sweep
+    curl: `# Real-Time Gateway Protection & Multi-Turn Payload Sweep
 curl -X POST https://portfolio-eight-theta-fp2kdb67zc.vercel.app/api/support \\
   -H "Content-Type: application/json" \\
   -d '{

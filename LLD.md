@@ -25,7 +25,7 @@ export function evaluateSemanticCentroidDistance(text: string): CentroidEvaluati
 
 ---
 
-### 1.2 Multi-Turn Variable Concatenation AST Tracker ([`src/lib/variable-ast-tracker.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/variable-ast-tracker.ts))
+### 1.2 Multi-Turn Variable Concatenation AST Tracker ([`src/lib/variable-concatenation-tracker.ts`](file:///Users/muneeb/Documents/GitHub/portfolio/src/lib/variable-concatenation-tracker.ts))
 
 Reconstructs string variables assigned across multi-turn session history to defeat delayed payload splitting.
 

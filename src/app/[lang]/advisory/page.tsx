@@ -40,7 +40,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
           <p style={{ fontSize: '18px', color: 'var(--muted)', maxWidth: '820px', margin: '0 auto 32px', lineHeight: 1.6 }}>
             {isRtl
               ? 'مراجعة أمنية شاملة للنماذج واختبار الاختراق التكتيكي بواسطة مهندسين سابقين في كبرى شركات التقنية.'
-              : 'Deterministic threat modeling, adversarial red-teaming, and SOC 2 / EU AI Act compliance verification conducted by senior AI security architects.'}
+              : 'Deterministic threat modeling, adversarial red-teaming, and SOC 2 / EU AI Act compliance verification with findings you can reproduce yourself.'}
           </p>
 
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -77,7 +77,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '16px' }}>
             {[
               { code: 'SOC 2 CC6.1', name: 'Logical Access Controls', desc: 'Agent identity headers and session token validation on inter-agent calls.' },
-              { code: 'SOC 2 CC6.8', name: 'Software Threat Defense', desc: 'AST static analysis & sliding-window prompt injection red-teaming against OWASP LLM Top 10.' },
+              { code: 'SOC 2 CC6.8', name: 'Software Threat Defense', desc: 'Static payload inspection and prompt-injection red-teaming against OWASP LLM Top 10.' },
               { code: 'SOC 2 CC7.1', name: 'Vulnerability Management', desc: 'Automated SARIF v2.1.0 report generation with CVSS v3.1 impact vector scoring.' },
               { code: 'EU AI Act Art 15', name: 'Robustness & Accuracy', desc: 'Technical robustness, error logging, and fail-closed runtime enclave boundary verification.' },
             ].map(ctrl => (
@@ -205,7 +205,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                   CONTINUOUS ADVISORY
                 </span>
                 <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--txt)', marginBottom: '8px' }}>Guardrail & Red-Team Retainer</h3>
-                <p style={{ color: 'var(--muted-2)', fontSize: '14px', marginBottom: '20px' }}>Continuous attack simulation, custom AST policy tuning, and active incident support.</p>
+                <p style={{ color: 'var(--muted-2)', fontSize: '14px', marginBottom: '20px' }}>Continuous attack simulation, custom guardrail policy tuning, and active incident support.</p>
 
                 <div style={{ fontSize: '20px', fontWeight: 700, color: 'var(--txt)', marginBottom: '24px' }}>
                   $4,500 <span style={{ fontSize: '14px', fontWeight: 500 }}>/ month</span> <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--muted-2)' }}>(Continuous Advisory)</span>
@@ -219,7 +219,7 @@ export default async function AdvisoryPage(props: { params: Promise<{ lang: stri
                   'Continuous Automated Attack Payload Sweeps',
                   'Dedicated Slack Connect Channel with Security Team',
                   '< 15 Minute Emergency Incident Response Paging',
-                  'Custom AST Guardrail & Spend Governor Rule Updates',
+                  'Custom Guardrail & Spend Governor Rule Updates',
                   'Quarterly SOC 2 Audit Readiness Verification',
                 ].map(item => (
                   <li key={item} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
