@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T07:09:45.892030+00:00",
+  "generated_at": "2026-09-09T07:16:50.995020+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,7 +10,7 @@
   },
   "incidents": [
     {
-      "title": "AI Agent Security Incidents in July 2026: What Broke",
+      "title": "AI Agent Security Incidents in July 2026: What Broke - AY Automate",
       "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
       "source": "ayautomate.com",
       "published": "",
