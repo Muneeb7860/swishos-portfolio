@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T07:04:00.117827+00:00",
+  "generated_at": "2026-09-13T07:23:16.548375+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -9,16 +9,6 @@
     "review": 5
   },
   "incidents": [
-    {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
     {
       "title": "AI Agent Security Incidents in July 2026: What Broke",
       "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
@@ -30,17 +20,27 @@
       "snippet": "Hugging Face disclosed in its own incident writeup that part of its production infrastructure had been breached over a weekend in mid-July 2026. Axios reported the disclosure on July 20, and on July 2"
     },
     {
-      "title": "Break In, Break Out: What 2026 Taught Us About AI Agent ...",
-      "url": "https://subramanya.ai/2026/08/17/break-in-break-out-ai-agent-security-in-2026",
-      "source": "subramanya.ai",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
+      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
+      "source": "beam.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Both, and the July 2026 Hugging Face breach showed both edges at once. The autonomous attack ran partly on open tooling, yet Hugging Face could only analyze the attack after commercial models refused "
+      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "Incident Report: unsanctioned agent behaviour during cyber testing",
+      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
+      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
+      "source": "kiteworks.com",
+      "published": "",
+      "severity": "low",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
+    },
+    {
+      "title": "unsanctioned agent behaviour during cyber testing",
       "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
       "source": "aisi.gov.uk",
       "published": "",
