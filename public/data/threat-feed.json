@@ -1,63 +1,33 @@
 {
-  "generated_at": "2026-09-15T07:34:02.435721+00:00",
+  "generated_at": "2026-09-16T07:33:02.611598+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 6,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 2
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "AI Agent Security Incidents in July 2026: What Broke",
-      "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
-      "source": "ayautomate.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Hugging Face disclosed in its own incident writeup that part of its production infrastructure had been breached over a weekend in mid-July 2026. Axios reported the disclosure on July 20, and on July 2"
-    },
-    {
-      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
-      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
-      "source": "youtube.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
-    },
-    {
-      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
-      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
-      "source": "kiteworks.com",
+      "title": "Artificial intelligence - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+      "source": "en.wikipedia.org",
       "published": "",
       "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
+      "snippet": "Samoilenko, Sergei A.; Suvorova, Inna (10 June 2023). \"Artificial Intelligence and Deepfakes in Strategic Deception Campaigns: The U.S. and Russian Experiences\". The Palgrave Handbook of Malicious Use"
     },
     {
-      "title": "Break In, Break Out: What 2026 Taught Us About AI Agent Security",
-      "url": "https://subramanya.ai/2026/08/17/break-in-break-out-ai-agent-security-in-2026",
-      "source": "subramanya.ai",
+      "title": "What Is Artificial Intelligence (AI)?",
+      "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "source": "ibm.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In July 2026, someone broke into Hugging Face, the site where most of the world\u2019s open AI models are hosted. The intruder found an unknown flaw, escaped into the open internet, stole credentials, move"
+      "snippet": "Cost of a Data Breach report 2026   Attackers are weaponing AI \n\nAI-driven attacks increased 56%, led by deepfake impersonations and AI-enabled malware. Discover what's driving the surge.\n\n Get the re"
     },
     {
       "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
@@ -80,7 +50,7 @@
       "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -88,6 +58,36 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
+    },
+    {
+      "title": "Prompt injection: types, real-world CVEs, and enterprise ...",
+      "url": "https://www.vectra.ai/topics/prompt-injection",
+      "source": "vectra.ai",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "Prompt injection has rapidly emerged as the most critical security vulnerability facing enterprise AI deployments. Ranked #1 on the OWASP Top 10 for LLM Applications 2025, this attack technique exploi"
     }
   ]
 }
