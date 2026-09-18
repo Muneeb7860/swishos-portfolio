@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T07:28:59.370200+00:00",
+  "generated_at": "2026-09-18T07:18:07.537549+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -40,27 +40,27 @@
       "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
     },
     {
-      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
-      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
-      "source": "kiteworks.com",
-      "published": "",
-      "severity": "low",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
-    },
-    {
-      "title": "2026 AI reckoning: Agent breaches, NHI sprawl, deepfakes | feature | SC Media",
-      "url": "https://www.scworld.com/feature/2026-ai-reckoning-agent-breaches-nhi-sprawl-deepfakes",
-      "source": "scworld.com",
+      "title": "The API and Agentic AI Security Gap Behind Recent Breaches | AppSentinels",
+      "url": "https://appsentinels.ai/blog/the-api-and-agentic-ai-security-gap-behind-recent-breaches",
+      "source": "appsentinels.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In 2026, a high-profile breach will trace back not to a human, but to an AI agent or machine identity with excessive, unsupervised access. As enterprises integrate AI copilots, pipelines, and autonomo"
+      "snippet": "The incident is tracked as CVE-2026-48027. CISA added it to its Known Exploited Vulnerabilities catalog on May 27, 2026, with a federal remediation deadline that has since passed. [...] shows the cred"
     },
     {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "title": "First Agentic AI Data Breach Reported to Spanish Regulator - SecurityWeek",
+      "url": "https://www.securityweek.com/first-agentic-ai-data-breach-reported-to-spanish-regulator",
+      "source": "securityweek.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "September 16, 2026\n\nJoin as speakers examine the various components of ASM strategy, the push to mandate continuous asset visibility and inventory tools, and the use of red-teaming, bug bounties and p"
+    },
+    {
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of ...",
       "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
       "source": "ctx-guard.com",
       "published": "",
@@ -80,7 +80,7 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI ...",
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
       "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
       "source": "cymulate.com",
       "published": "",
