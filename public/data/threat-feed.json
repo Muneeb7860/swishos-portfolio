@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-18T07:18:07.537549+00:00",
+  "generated_at": "2026-09-19T07:14:35.827812+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 4,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 4
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their ...",
       "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
       "source": "beam.ai",
       "published": "",
@@ -20,57 +20,37 @@
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "AI Agent Security Incidents in July 2026: What Broke",
-      "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
-      "source": "ayautomate.com",
+      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
+      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
+      "source": "kiteworks.com",
       "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Hugging Face disclosed in its own incident writeup that part of its production infrastructure had been breached over a weekend in mid-July 2026. Axios reported the disclosure on July 20, and on July 2"
+      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
     },
     {
-      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
-      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
+      "title": "Security incident disclosure \u2014 July 2026",
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "source": "huggingface.co",
+      "published": "",
+      "severity": "high",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
+    },
+    {
+      "title": "2026 Cost of a Data Breach Report: AI Is Changing ...",
+      "url": "https://www.youtube.com/watch?v=b2PESRl7De4",
       "source": "youtube.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
+      "snippet": "AI is accelerating both cyberattacks and cyber defense. Jeff Crume breaks down the key findings from the 2026 Cost of a Data Breach Report, including ransomware, AI-driven attacks, and security automa"
     },
     {
-      "title": "The API and Agentic AI Security Gap Behind Recent Breaches | AppSentinels",
-      "url": "https://appsentinels.ai/blog/the-api-and-agentic-ai-security-gap-behind-recent-breaches",
-      "source": "appsentinels.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "The incident is tracked as CVE-2026-48027. CISA added it to its Known Exploited Vulnerabilities catalog on May 27, 2026, with a federal remediation deadline that has since passed. [...] shows the cred"
-    },
-    {
-      "title": "First Agentic AI Data Breach Reported to Spanish Regulator - SecurityWeek",
-      "url": "https://www.securityweek.com/first-agentic-ai-data-breach-reported-to-spanish-regulator",
-      "source": "securityweek.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "September 16, 2026\n\nJoin as speakers examine the various components of ASM strategy, the push to mandate continuous asset visibility and inventory tools, and the use of red-teaming, bug bounties and p"
-    },
-    {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of ...",
-      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
-      "source": "ctx-guard.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
-    },
-    {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs",
       "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
       "source": "kodemsecurity.com",
       "published": "",
@@ -80,7 +60,7 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI ...",
       "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
       "source": "cymulate.com",
       "published": "",
@@ -88,6 +68,26 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
+    },
+    {
+      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
     }
   ]
 }
