@@ -47,16 +47,25 @@ SEARCH_QUERIES = [
 
 COVERAGE_RULES: list[tuple[str, str, str]] = [
     # (pattern, coverage_status, coverage_note)
+    #
+    # These notes describe WHICH TEST CATEGORY covers this class of attack. They
+    # deliberately do NOT claim SwishOS would have prevented the specific linked
+    # incident: the match is a regex over a headline, which is not evidence about
+    # a system we have never seen. The previous wording said "Blocked by
+    # egress_probe detector (ASI04)" and similar -- asserting prevention of a
+    # real, named, published breach, and crediting detectors that do not exist
+    # anywhere in the codebase (egress_probe, rogue_agent_overreach_filter,
+    # shift-left heuristic, proxy URI normalization: all zero hits).
     (r"prompt.?injection|jailbreak|instruction.?override",
-     "blocked", "Blocked by shift-left heuristic + centroid classifier"),
+     "covered", "This attack class is covered by the prompt_injection and jailbreak suites"),
     (r"sandbox.?escape|containment.?breach|egress|proxy.?exploit",
-     "blocked", "Blocked by egress_probe detector (ASI04)"),
+     "covered", "This attack class is covered by the ssrf suite and egress redaction"),
     (r"data.?exfil|pii.?leak|credential.?harvest|token.?theft",
-     "blocked", "Blocked by PII redaction + egress policy"),
+     "covered", "This attack class is covered by the pii_leakage suite and egress redaction"),
     (r"rogue.?agent|autonomous.?overreach|goal.?persistence|lateral.?movement",
-     "blocked", "Blocked by rogue_agent_overreach_filter (ASI10)"),
+     "covered", "This attack class is covered by tool-call sequence detection"),
     (r"supply.?chain|package.?poison|dependency.?confusion",
-     "detects", "Detects via proxy URI normalization; full prevention requires patched registry"),
+     "partial", "Partially covered — runtime egress only; registry-side compromise is out of scope"),
     (r"model.?poison|weight.?tampering|training.?data",
      "gap", "Not in scope — SwishOS operates at runtime, not training time"),
     (r"social.?engineer|phishing|credential.?stuff",
@@ -271,8 +280,8 @@ def run_feed(dry_run: bool = False, output_path: Path = OUTPUT_PATH) -> dict[str
         "agent_version": "1.0.0",
         "total_incidents": len(incidents),
         "coverage_summary": {
-            "blocked": sum(1 for i in incidents if i["swishos_coverage"] == "blocked"),
-            "detects": sum(1 for i in incidents if i["swishos_coverage"] == "detects"),
+            "covered": sum(1 for i in incidents if i["swishos_coverage"] == "covered"),
+            "partial": sum(1 for i in incidents if i["swishos_coverage"] == "partial"),
             "gap": sum(1 for i in incidents if i["swishos_coverage"] == "gap"),
             "review": sum(1 for i in incidents if i["swishos_coverage"] == "review"),
         },

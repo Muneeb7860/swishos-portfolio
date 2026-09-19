@@ -7,7 +7,7 @@ import { execute5StepVerification } from '../src/lib/verification-engine';
 import { evaluateSemanticCentroidDistance } from '../src/lib/semantic-centroid';
 import { createZeroInfoRefusalAsync } from '../src/lib/flat-refusal';
 import { generateCryptographicAuditProof } from '../src/lib/telemetry-proof';
-import { evaluateConcatenatedVariableAST } from '../src/lib/variable-ast-tracker';
+import { evaluateConcatenatedVariableAST } from '../src/lib/variable-concatenation-tracker';
 import { probeToolCallInShadowSandbox } from '../src/lib/shadow-probe';
 import { sanitizeMemoryForStorage, validateRetrievedMemory } from '../src/lib/agent-memory-guard';
 import { evaluateGraphQLQuerySafety } from '../src/lib/graphql-agent-guard';

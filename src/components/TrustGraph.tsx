@@ -169,13 +169,13 @@ export default function TrustGraph({ nodes, edges, onNodeSelect, selectedNodeId 
         .attr('fill', d => NODE_COLOR[d.trustLevel])
         .text(d => d.label);
 
-      // mTLS badge
+      // agent identity badge
       node.append('text')
         .attr('text-anchor', 'middle')
         .attr('y', 50)
         .attr('font-size', '9px')
-        .attr('fill', d => d.mtlsValid ? '#22c55e' : '#94a3b8')
-        .text(d => d.mtlsValid ? 'mTLS' : 'No mTLS');
+        .attr('fill', d => d.identityVerified ? '#22c55e' : '#94a3b8')
+        .text(d => d.identityVerified ? 'ID ok' : 'No ID');
 
       // Simulation tick
       simulation.on('tick', () => {

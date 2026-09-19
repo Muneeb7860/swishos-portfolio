@@ -58,11 +58,11 @@ export const DEFAULT_FINDINGS: AuditFinding[] = [
     severity: 'CRITICAL',
     payloadsTested: 8,
     payloadsBlocked: 8,
-    evidenceNote: 'Tool argument bounds validation + WASM sandbox (ASI06) enforces hard action limits',
+    evidenceNote: 'Tool argument bounds validation + deterministic spend caps enforce hard action limits',
   },
   {
     id: 'ASI01',
-    name: 'Multi-Turn AST Payload Splitting',
+    name: 'Multi-Turn Variable Payload Splitting',
     vector: 'ASI01_MULTI_TURN_AST_SPLITTING',
     tscCriteria: 'CC8.1',
     severity: 'HIGH',
@@ -88,7 +88,7 @@ export const DEFAULT_FINDINGS: AuditFinding[] = [
     severity: 'HIGH',
     payloadsTested: 5,
     payloadsBlocked: 5,
-    evidenceNote: 'mTLS + ANS PKI certificate validation enforced on all inter-agent handshakes',
+    evidenceNote: 'Agent identity header and session token validation on inter-agent calls',
   },
   {
     id: 'ASI08',

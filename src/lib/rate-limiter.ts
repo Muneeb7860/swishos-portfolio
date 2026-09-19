@@ -67,9 +67,19 @@ export function checkRateLimit(ip: string, limit: number = 10, windowMs: number 
 }
 
 /**
- * Enforces Multi-Turn Conversation Memory & 5th Call Session Budget Cap
+ * Enforces Multi-Turn Conversation Memory & Session Budget Cap.
+ *
+ * `limit` defaults to 10 for genuine tracked conversations (caller supplied its own
+ * sessionId). When no sessionId is supplied, callers fall back to keying by IP -- that
+ * is NOT a real conversation, it's every unrelated request from that IP (a red-team
+ * scan, several people behind the same NAT, a developer testing the API before
+ * adopting it) sharing one bucket. Applying the tight 10-turn cap there meant, e.g., a
+ * 32-request test scan tripped the cap at request #11 and every request after that --
+ * including completely unrelated, benign ones -- was tarpitted without its content
+ * ever being evaluated. Callers on the IP-fallback path get a much higher limit so
+ * this only catches genuine runaway/abusive volume, not normal single-shot API use.
  */
-export function checkSessionBudget(sessionId: string, newMessage: string): { allowed: boolean; messages: string[]; callCount: number; reason?: string } {
+export function checkSessionBudget(sessionId: string, newMessage: string, limit: number = 10): { allowed: boolean; messages: string[]; callCount: number; reason?: string } {
   const now = Date.now();
   const record = sessionMemoryStore.get(sessionId) || { messages: [], callCount: 0, lastSeenAt: now };
 
@@ -81,9 +91,8 @@ export function checkSessionBudget(sessionId: string, newMessage: string): { all
   record.lastSeenAt = now;
   sessionMemoryStore.set(sessionId, record);
 
-  // Block conversation if budget exceeds 10 messages without resetting session
-  if (record.callCount > 10) {
-    return { allowed: false, messages: record.messages, callCount: record.callCount, reason: 'Session message budget cap reached (max 10 turns per active session).' };
+  if (record.callCount > limit) {
+    return { allowed: false, messages: record.messages, callCount: record.callCount, reason: `Session message budget cap reached (max ${limit} turns per active session).` };
   }
 
   return { allowed: true, messages: record.messages, callCount: record.callCount };

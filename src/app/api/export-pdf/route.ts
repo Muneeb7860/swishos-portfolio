@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Generate SOC 2 compliant HTML
+    // Generate the audit report HTML (SOC 2-style layout, not a SOC 2 attestation)
     const html = generateSOC2ReportHTML(clientName, auditData);
 
     // Dynamically import Puppeteer to avoid cold-start overhead on non-PDF routes
@@ -91,7 +91,7 @@ export async function GET() {
   return NextResponse.json({
     status: 'online',
     endpoint: '/api/export-pdf',
-    description: 'POST with { clientName, auditData } to receive a SOC 2 compliant PDF audit report.',
+    description: 'POST with { clientName, auditData } to receive a PDF audit report.',
     version: '0.9.0',
   });
 }

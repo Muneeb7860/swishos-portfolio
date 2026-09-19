@@ -7,8 +7,8 @@ export async function generateMetadata(props: { params: Promise<{ lang: string }
   return {
     title: isAr ? 'مختبر أمن وكيل الذكاء الاصطناعي التفاعلي | SwishOS' : 'Interactive AI Agent Security Playground | SwishOS',
     description: isAr
-      ? 'اختبر حمولات الهجوم الضارة ونورماليزايشن يونيكود والتحقق من أذونات AST مباشرة عبر حواجز الحماية'
-      : 'Test adversarial attack payloads, NFKC normalization, Base64 inspection, and AST bounds live against SwishOS guardrails.',
+      ? 'اختبر حمولات الهجوم الضارة ونورماليزايشن يونيكود والتحقق من حدود الأدوات مباشرة عبر حواجز الحماية'
+      : 'Test adversarial attack payloads, NFKC normalization, Base64 inspection, and tool argument bounds live against SwishOS guardrails.',
   };
 }
 

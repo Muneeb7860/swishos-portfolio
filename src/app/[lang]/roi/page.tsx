@@ -9,8 +9,8 @@ export async function generateMetadata(props: { params: Promise<{ lang: string }
   return {
     title: isAr ? 'حساب العائد على الاستثمار وحاكم إنفاق الذكاء الاصطناعي | SwishOS' : 'AI Agent ROI & Spend Governor Calculator | SwishOS',
     description: isAr
-      ? 'احسب توفير التكاليف وحماية الميزانية من الهجمات باستخدام حاكم أذونات WASI والتسعير المخصص'
-      : 'Calculate cost savings and slow-burn financial protection using WASI capability tokens and AI spend governors.',
+      ? 'احسب توفير التكاليف وحماية الميزانية من الهجمات باستخدام حاكم الأذونات الموقّعة والتسعير المخصص'
+      : 'Calculate cost savings and slow-burn financial protection using signed capability tokens and AI spend governors.',
   };
 }
 
@@ -32,7 +32,7 @@ export default async function RoiPage(props: { params: Promise<{ lang: string }>
           <p className="text-base sm:text-lg text-neutral-400 max-w-2xl mx-auto">
             {isAr
               ? 'احمِ مؤسستك من الهجمات البطيئة التي تستنزف ميزانية API عبر حاكم الأذونات التراكمي'
-              : 'Prevent slow-burn prompt injection attacks from draining your API budget with WASI capability tokens and 30-day spend limits.'}
+              : 'Prevent slow-burn prompt injection attacks from draining your API budget with signed capability tokens and 30-day spend limits.'}
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default async function RoiPage(props: { params: Promise<{ lang: string }>
           <p className="text-sm text-neutral-400 max-w-xl mx-auto">
             {isAr
               ? 'احجز تدقيق أمن وكلاء الذكاء الاصطناعي وحصول على تقرير مفصل حول الأذونات والحدود المالية.'
-              : 'Book a 1-week AI Agent Security Audit ($7,500 – $12,500) and get WASI capability tokens, spend limits, and gVisor isolation.'}
+              : 'Book an AI Agent Security Review ($7,500 – $12,500) and get signed capability tokens, spend limits, and gVisor isolation.'}
           </p>
           <div className="pt-2">
             <Link

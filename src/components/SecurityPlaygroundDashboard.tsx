@@ -134,7 +134,7 @@ ${JSON.stringify(result.data, null, 2)}`;
       {/* Title Header */}
       <div style={{ marginBottom: '20px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '4px', letterSpacing: '-0.01em', color: 'var(--txt)' }}>
-          SwishOS v1.0.0 Threat Enclave Dashboard
+          SwishOS v1.1.0 Threat Enclave Dashboard
         </h2>
         <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>
           Real-Time 5-Step Pipeline Verification, Shadow Probes & Cryptographic Audit Proofs

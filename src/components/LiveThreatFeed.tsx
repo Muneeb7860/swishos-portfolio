@@ -18,26 +18,30 @@ interface ThreatFeed {
   generated_at: string;
   total_incidents: number;
   coverage_summary: {
-    blocked: number;
-    detects: number;
+    covered: number;
+    partial: number;
     gap: number;
     review: number;
   };
   incidents: ThreatIncident[];
 }
 
+// Labels describe whether THIS CLASS OF ATTACK is in the test suite. They used
+// to read "Blocked" / "Detects" against links to real, named, published
+// breaches -- which asserts SwishOS would have stopped an incident at a company
+// whose system we have never seen, on the strength of a regex over a headline.
 const COVERAGE_STYLES: Record<string, { color: string; bg: string; icon: React.ReactNode; label: string }> = {
-  blocked: {
+  covered: {
     color: '#10b981',
     bg: 'rgba(16, 185, 129, 0.1)',
     icon: <CheckCircle2 size={12} />,
-    label: 'Blocked',
+    label: 'Class covered',
   },
-  detects: {
+  partial: {
     color: '#f59e0b',
     bg: 'rgba(245, 158, 11, 0.1)',
     icon: <Eye size={12} />,
-    label: 'Detects',
+    label: 'Partial coverage',
   },
   gap: {
     color: '#ef4444',
@@ -123,14 +127,14 @@ export function LiveThreatFeed() {
 
         {/* Coverage Summary Pills */}
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          {feed.coverage_summary.blocked > 0 && (
-            <span style={{ ...pillStyle, background: COVERAGE_STYLES.blocked.bg, color: COVERAGE_STYLES.blocked.color }}>
-              {COVERAGE_STYLES.blocked.icon} {feed.coverage_summary.blocked} Blocked
+          {feed.coverage_summary.covered > 0 && (
+            <span style={{ ...pillStyle, background: COVERAGE_STYLES.covered.bg, color: COVERAGE_STYLES.covered.color }}>
+              {COVERAGE_STYLES.covered.icon} {feed.coverage_summary.covered} class covered
             </span>
           )}
-          {feed.coverage_summary.detects > 0 && (
-            <span style={{ ...pillStyle, background: COVERAGE_STYLES.detects.bg, color: COVERAGE_STYLES.detects.color }}>
-              {COVERAGE_STYLES.detects.icon} {feed.coverage_summary.detects} Detects
+          {feed.coverage_summary.partial > 0 && (
+            <span style={{ ...pillStyle, background: COVERAGE_STYLES.partial.bg, color: COVERAGE_STYLES.partial.color }}>
+              {COVERAGE_STYLES.partial.icon} {feed.coverage_summary.partial} partial
             </span>
           )}
           {feed.coverage_summary.gap > 0 && (

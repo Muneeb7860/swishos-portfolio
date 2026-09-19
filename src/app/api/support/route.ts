@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 import { checkSessionBudget, checkAgentSpendCap } from '@/lib/rate-limiter';
 import { logAuditIncident } from '@/lib/audit-logger';
 import { evaluateSemanticSafety } from '@/lib/semantic-classifier';
@@ -11,7 +12,7 @@ import { applyExponentialTarpit } from '@/lib/tarpit-engine';
 import { createZeroInfoRefusalAsync } from '@/lib/flat-refusal';
 import { computeClientFingerprint, applyGlobalFingerprintTarpit } from '@/lib/global-tarpit';
 import { evaluateSemanticCentroidDistance } from '@/lib/semantic-centroid';
-import { evaluateConcatenatedVariableAST } from '@/lib/variable-ast-tracker';
+import { evaluateConcatenatedVariableAST } from '@/lib/variable-concatenation-tracker';
 import { probeToolCallInShadowSandbox } from '@/lib/shadow-probe';
 import { incrementRedisRateLimit } from '@/lib/redis-state';
 import { sanitizeMemoryForStorage, validateRetrievedMemory } from '@/lib/agent-memory-guard';
@@ -228,7 +229,7 @@ function sanitizeInput(text: string): string {
 export async function POST(req: Request) {
   const startTimeMs = performance.now();
   try {
-    // 0a. Inter-Agent mTLS & ANS PKI Cert Validation (ASI07)
+    // 0a. Inter-agent identity header check (ASI07) -- not mTLS; see mtls-validator.ts
     const mtlsCheck = validateAgentMTLS(req.headers);
     if (!mtlsCheck.valid) {
       logAuditIncident({
@@ -260,8 +261,19 @@ export async function POST(req: Request) {
     }
 
     // 0c. Agent Spend Cap Check (Hard $5/day Spend Cap - ASI10)
+    // Anonymous/guest traffic must NOT share one global spend bucket -- every visitor to
+    // the public demo previously pooled into the literal string 'guest-user', so ~100
+    // requests from anyone (a red-team scan, a burst of demo visitors) tripped a kill
+    // switch that then blocked every other anonymous visitor for the rest of the UTC day.
+    // Real authenticated inter-agent identities (agent-*) keep their own dedicated cap,
+    // which is the actual ASI10 intent -- protecting one deployed customer agent from
+    // runaway spend, not rate-limiting the public marketing demo into unavailability.
+    // Only the spend-cap bucket key is scoped per-IP here -- `agentId` itself (used below
+    // to populate the response body's agent_id field) stays untouched so we don't leak
+    // the caller's IP into the JSON response or change the branded "guest-user" output.
     const agentId = mtlsCheck.agentId || 'swishos-triage-v1';
-    const spendCheck = checkAgentSpendCap(agentId, 0.05);
+    const spendCapKey = agentId === 'guest-user' ? `guest:${clientIp}` : agentId;
+    const spendCheck = checkAgentSpendCap(spendCapKey, 0.05);
 
     if (!spendCheck.allowed) {
       logAuditIncident({
@@ -284,6 +296,7 @@ export async function POST(req: Request) {
     const rawQuery = body.query || body.message || '';
     const subject = body.subject || '';
     const sessionId = body.sessionId || clientIp;
+    const hasExplicitSession = Boolean(body.sessionId);
 
     // 0c1. Semantic Threat Cluster Centroid Distance (Novel Metaphor & Evasion Filter with OTel Tracing)
     const centroidSpan = await traceVerificationStep('semantic_centroid', clientIp, async () => {
@@ -370,7 +383,10 @@ export async function POST(req: Request) {
     }
 
     // 0f. Multi-Turn Session Budget Check
-    const sessionCheck = checkSessionBudget(sessionId, `${subject} ${rawQuery}`);
+    // IP-fallback sessions (no client-supplied sessionId) get a much higher cap -- see
+    // checkSessionBudget's docstring. This is not a real conversation, so the tight
+    // 10-turn limit only applies when a caller is genuinely opted into session tracking.
+    const sessionCheck = checkSessionBudget(sessionId, `${subject} ${rawQuery}`, hasExplicitSession ? 10 : 50);
     if (!sessionCheck.allowed) {
       await applyExponentialTarpit(sessionId);
       logAuditIncident({
@@ -384,7 +400,7 @@ export async function POST(req: Request) {
 
     const fullText = sessionCheck.messages.join(' \n ');
 
-    // 0g. Multi-Turn Variable Concatenation AST Tracker (Closes 12-Turn Delayed Payload Window)
+    // 0g. Multi-Turn Variable Concatenation Tracker (Closes 12-Turn Delayed Payload Window)
     const varASTCheck = evaluateConcatenatedVariableAST(
       sessionCheck.messages.map(msg => ({ role: 'user', content: msg }))
     );
@@ -483,7 +499,7 @@ export async function POST(req: Request) {
           message: 'Request blocked due to security guardrail violation.',
           block_reason: isExfiltrationAttempt
             ? 'Markdown Side-Channel PII Exfiltration Blocked.'
-            : 'AST Tool Execution Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).',
+            : 'Tool Argument Range Bound Exceeded (OWASP LLM06 Excessive Agency).',
           routing_decision: { intent: 'security_threat', decision: 'block', confidence: 0.99, complexity: 'high' },
           risk: { elevated: true, reason: 'Action-level security override blocked.' },
           schema_validation: { valid: false, reason: 'Disallowed action or side-channel pattern.' },
@@ -660,6 +676,7 @@ export async function POST(req: Request) {
 
   } catch (error) {
     console.error('[SUPPORT ROUTE ERROR]:', error);
+    Sentry.captureException(error);
     return NextResponse.json(
       {
         status: 'error',
