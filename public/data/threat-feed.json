@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T07:32:57.309012+00:00",
+  "generated_at": "2026-09-26T07:26:33.802861+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -50,24 +50,14 @@
       "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
     },
     {
-      "title": "The API and Agentic AI Security Gap Behind Recent Breaches | AppSentinels",
-      "url": "https://appsentinels.ai/blog/the-api-and-agentic-ai-security-gap-behind-recent-breaches",
-      "source": "appsentinels.ai",
+      "title": "Open-Source AI Agents Breach 27 Companies, Steal ...",
+      "url": "https://hackread.com/open-source-ai-agents-breach-credit-card-records",
+      "source": "hackread.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "The incident is tracked as CVE-2026-48027. CISA added it to its Known Exploited Vulnerabilities catalog on May 27, 2026, with a federal remediation deadline that has since passed. [...] shows the cred"
-    },
-    {
-      "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
-      "url": "https://forgepointcap.com/perspectives/margin-of-safety-65-llms-sandbox-escape",
-      "source": "forgepointcap.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "For offensive LLM capabilities, we think the growing body of evidence suggests they find many vulnerabilities, but clustered around specific categories that are both (A) easily verifiable and (B) well"
+      "snippet": "Gambit Security found AI agents breached 27 companies, stole 600,000 credit card records and installed payment skimmers across compromised retail sites.\n\nbyDeeba Ahmed\n\nSeptember 23, 2026\n\n3 minute re"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI ...",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
