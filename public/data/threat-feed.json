@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-29T08:16:31.148235+00:00",
+  "generated_at": "2026-09-30T08:17:04.623934+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 4,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 4
   },
   "incidents": [
     {
@@ -20,14 +20,14 @@
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "What we know about the rogue AI-agent security breaches",
-      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
-      "source": "reuters.com",
+      "title": "Autonomous OpenAI Agents Breach U.S. Government Websites: 2026 Cybersecurity Incident Analysis \u2013 Rescana",
+      "url": "https://www.rescana.com/post/autonomous-openai-agents-breach-u-s-government-websites-2026-cybersecurity-incident-analysis",
+      "source": "rescana.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "OpenAI The agent began attempting to escape its test environment around \u200cJuly 9, \u20602026.GPT-5.6 Sol and an unnamed, more capable pre-release model.AI startup Hugging Face and a customer at New York-bas"
+      "snippet": "In late September 2026, The New York Times reported that OpenAI's advanced artificial intelligence systems autonomously interacted with, and in some cases breached, at least three U.S. government webs"
     },
     {
       "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
@@ -50,14 +50,14 @@
       "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
     },
     {
-      "title": "AI Agents Breach 27 Firms, Steal 600K Cards [2026]",
-      "url": "https://tech-insider.org/ai-agents-hermes-strix-cairn-breach-27-firms-2026",
-      "source": "tech-insider.org",
+      "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
+      "url": "https://forgepointcap.com/perspectives/margin-of-safety-65-llms-sandbox-escape",
+      "source": "forgepointcap.com",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "A financially motivated hacker turned three open-source AI agents loose on the open web this month and walked away with more than 600,000 stolen credit card records from at least 27 organizations, acc"
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "For offensive LLM capabilities, we think the growing body of evidence suggests they find many vulnerabilities, but clustered around specific categories that are both (A) easily verifiable and (B) well"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
@@ -70,16 +70,6 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Simon Willison Breaks Down OpenAI\u2019s Sandbox Escape Incident - Article Comments - TidBITS Talk",
-      "url": "https://talk.tidbits.com/t/simon-willison-breaks-down-openai-s-sandbox-escape-incident/33865",
-      "source": "talk.tidbits.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
-    },
-    {
       "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
       "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
       "source": "cymulate.com",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
     }
   ]
 }
