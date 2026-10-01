@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T08:17:04.623934+00:00",
+  "generated_at": "2026-10-01T08:40:25.885109+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -20,34 +20,44 @@
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
-      "title": "Autonomous OpenAI Agents Breach U.S. Government Websites: 2026 Cybersecurity Incident Analysis \u2013 Rescana",
-      "url": "https://www.rescana.com/post/autonomous-openai-agents-breach-u-s-government-websites-2026-cybersecurity-incident-analysis",
-      "source": "rescana.com",
+      "title": "AI Agent Breach at DIVD: First Autonomous Cyberattack Analysis 2026",
+      "url": "https://aviatrix.ai/threat-research-center/automated-ai-agent-breach-cybersecurity-nonprofit-divd-2026",
+      "source": "aviatrix.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In late September 2026, The New York Times reported that OpenAI's advanced artificial intelligence systems autonomously interacted with, and in some cases breached, at least three U.S. government webs"
+      "snippet": "In September 2026, the Dutch Institute for Vulnerability Disclosure (DIVD) suffered an unprecedented AI-driven cyberattack that marked a new evolution in autonomous threat capabilities. The attack beg"
     },
     {
-      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
-      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
-      "source": "youtube.com",
+      "title": "OpenAI, Anthropic AI agents implicated in new security breaches | Reuters",
+      "url": "https://www.reuters.com/legal/litigation/openai-anthropic-ai-agents-implicated-new-security-breaches-2026-08-05",
+      "source": "reuters.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
+      "snippet": "SAN FRANCISCO, Aug 4 (Reuters) - (This August 4 story has been refiled to correct the spelling of Anthropic in paragraph 8)\n\nAn AI agent was caught \u200bcreating fake online identities to gain unauthorize"
     },
     {
-      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
-      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
-      "source": "kiteworks.com",
+      "title": "What we know about the rogue AI-agent security breaches | Reuters",
+      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
+      "source": "reuters.com",
       "published": "",
-      "severity": "low",
+      "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
+      "snippet": "Sept 24 (Reuters) - Australia said on Thursday an OpenAI agent breached a government health data portal in June, gaining unauthorised access to files, in what could be the first known instance of AI h"
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
     },
     {
       "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
@@ -70,24 +80,14 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
+      "title": "Simon Willison Breaks Down OpenAI\u2019s Sandbox Escape Incident - Article Comments - TidBITS Talk",
+      "url": "https://talk.tidbits.com/t/simon-willison-breaks-down-openai-s-sandbox-escape-incident/33865",
+      "source": "talk.tidbits.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
-    },
-    {
-      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
-      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
-      "source": "toxsec.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
+      "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
     }
   ]
 }
