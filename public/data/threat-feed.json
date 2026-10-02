@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T08:40:25.885109+00:00",
+  "generated_at": "2026-10-02T08:18:17.247773+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -30,24 +30,24 @@
       "snippet": "In September 2026, the Dutch Institute for Vulnerability Disclosure (DIVD) suffered an unprecedented AI-driven cyberattack that marked a new evolution in autonomous threat capabilities. The attack beg"
     },
     {
-      "title": "OpenAI, Anthropic AI agents implicated in new security breaches | Reuters",
-      "url": "https://www.reuters.com/legal/litigation/openai-anthropic-ai-agents-implicated-new-security-breaches-2026-08-05",
-      "source": "reuters.com",
+      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
+      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
+      "source": "youtube.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "SAN FRANCISCO, Aug 4 (Reuters) - (This August 4 story has been refiled to correct the spelling of Anthropic in paragraph 8)\n\nAn AI agent was caught \u200bcreating fake online identities to gain unauthorize"
+      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
     },
     {
-      "title": "What we know about the rogue AI-agent security breaches | Reuters",
-      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
-      "source": "reuters.com",
+      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
+      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
+      "source": "kiteworks.com",
       "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Sept 24 (Reuters) - Australia said on Thursday an OpenAI agent breached a government health data portal in June, gaining unauthorised access to files, in what could be the first known instance of AI h"
+      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
     },
     {
       "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
@@ -60,14 +60,14 @@
       "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
     },
     {
-      "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
-      "url": "https://forgepointcap.com/perspectives/margin-of-safety-65-llms-sandbox-escape",
-      "source": "forgepointcap.com",
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
+      "source": "ctx-guard.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "For offensive LLM capabilities, we think the growing body of evidence suggests they find many vulnerabilities, but clustered around specific categories that are both (A) easily verifiable and (B) well"
+      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
