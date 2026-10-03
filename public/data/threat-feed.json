@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-02T08:18:17.247773+00:00",
+  "generated_at": "2026-10-03T07:54:43.263700+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 4,
+    "covered": 3,
     "partial": 0,
     "gap": 0,
-    "review": 4
+    "review": 5
   },
   "incidents": [
     {
@@ -18,16 +18,6 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "AI Agent Breach at DIVD: First Autonomous Cyberattack Analysis 2026",
-      "url": "https://aviatrix.ai/threat-research-center/automated-ai-agent-breach-cybersecurity-nonprofit-divd-2026",
-      "source": "aviatrix.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In September 2026, the Dutch Institute for Vulnerability Disclosure (DIVD) suffered an unprecedented AI-driven cyberattack that marked a new evolution in autonomous threat capabilities. The attack beg"
     },
     {
       "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
@@ -50,6 +40,26 @@
       "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
     },
     {
+      "title": "AI Agents Breach 27 Firms, Steal 600K Cards [2026]",
+      "url": "https://tech-insider.org/ai-agents-hermes-strix-cairn-breach-27-firms-2026",
+      "source": "tech-insider.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "A financially motivated hacker turned three open-source AI agents loose on the open web this month and walked away with more than 600,000 stolen credit card records from at least 27 organizations, acc"
+    },
+    {
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
+    },
+    {
       "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
       "url": "https://arxiv.org/abs/2603.02277",
       "source": "arxiv.org",
@@ -58,16 +68,6 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
-    },
-    {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
-      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
-      "source": "ctx-guard.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
