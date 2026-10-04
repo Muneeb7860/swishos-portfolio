@@ -1,43 +1,23 @@
 {
-  "generated_at": "2026-10-03T07:54:43.263700+00:00",
+  "generated_at": "2026-10-04T08:16:40.956242+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 4,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 4
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
-      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
-      "source": "youtube.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
-    },
-    {
-      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
-      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
-      "source": "kiteworks.com",
-      "published": "",
-      "severity": "low",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
+      "snippet": "# September 2026: AI Agents Became the #1 Attack Vector. One unrotated default credential exposed 220 million records. 38 companies breached, 318M+ records stolen total. \u2192 See exactly how RuntimeAI wo"
     },
     {
       "title": "AI Agents Breach 27 Firms, Steal 600K Cards [2026]",
@@ -50,24 +30,44 @@
       "snippet": "A financially motivated hacker turned three open-source AI agents loose on the open web this month and walked away with more than 600,000 stolen credit card records from at least 27 organizations, acc"
     },
     {
-      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
-      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
-      "source": "runtimeai.io",
+      "title": "AI agents hacked the hackers, stealing email addresses from security research org",
+      "url": "https://www.theregister.com/security/2026/10/01/ai-agents-hacked-the-hackers-stealing-email-addresses-from-security-research-org/5300652",
+      "source": "theregister.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
+      "snippet": "CVE-2026-102489 enables unauthenticated attackers to achieve remote code execution and leak user sessions, while CVE-2026-102490 allows a local user to elevate their privileges to root.\n\nZammad versio"
     },
     {
-      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/abs/2603.02277",
+      "title": "2026 Cost of a Data Breach Report: AI Is Changing Cybersecurity",
+      "url": "https://www.youtube.com/watch?v=b2PESRl7De4",
+      "source": "youtube.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "AI is accelerating both cyberattacks and cyber defense. Jeff Crume breaks down the key findings from the 2026 Cost of a Data Breach Report, including ransomware, AI-driven attacks, and security automa"
+    },
+    {
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/html/2603.02277v2",
       "source": "arxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
+      "snippet": "Taken together, our results show that frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as"
+    },
+    {
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
+      "source": "ctx-guard.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
