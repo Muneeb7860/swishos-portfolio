@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T08:16:40.956242+00:00",
+  "generated_at": "2026-10-05T08:47:43.477140+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,44 +10,44 @@
   },
   "incidents": [
     {
-      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
-      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
-      "source": "runtimeai.io",
+      "title": "What Is Artificial Intelligence (AI)? | IBM",
+      "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "source": "ibm.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "# September 2026: AI Agents Became the #1 Attack Vector. One unrotated default credential exposed 220 million records. 38 companies breached, 318M+ records stolen total. \u2192 See exactly how RuntimeAI wo"
+      "snippet": "Cost of a Data Breach report 2026   Attackers are weaponing AI \n\nAI-driven attacks increased 56%, led by deepfake impersonations and AI-enabled malware. Discover what's driving the surge.\n\n Get the re"
     },
     {
-      "title": "AI Agents Breach 27 Firms, Steal 600K Cards [2026]",
-      "url": "https://tech-insider.org/ai-agents-hermes-strix-cairn-breach-27-firms-2026",
-      "source": "tech-insider.org",
+      "title": "Artificial intelligence (AI) | Definition, Examples, Types, Applications, Companies, & Facts | Britannica",
+      "url": "https://www.britannica.com/technology/artificial-intelligence",
+      "source": "britannica.com",
       "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "A financially motivated hacker turned three open-source AI agents loose on the open web this month and walked away with more than 600,000 stolen credit card records from at least 27 organizations, acc"
+      "snippet": "\u2022 Oct. 1, 2026, 11:01 AM ET (AP)\n\nTokyo court grants legal protection to human voices in AI clone case\n\n\u2022 Oct. 1, 2026, 7:38 AM ET (AP)\n\nA timeline of developments in AI safety since the attack on Hug"
     },
     {
-      "title": "AI agents hacked the hackers, stealing email addresses from security research org",
-      "url": "https://www.theregister.com/security/2026/10/01/ai-agents-hacked-the-hackers-stealing-email-addresses-from-security-research-org/5300652",
-      "source": "theregister.com",
+      "title": "What is Artificial Intelligence (AI)? | Google Cloud",
+      "url": "https://cloud.google.com/learn/what-is-artificial-intelligence",
+      "source": "cloud.google.com",
       "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "CVE-2026-102489 enables unauthenticated attackers to achieve remote code execution and leak user sessions, while CVE-2026-102490 allows a local user to elevate their privileges to root.\n\nZammad versio"
+      "snippet": "Chrome Enterprise\n\n  ChromeOS, Chrome Browser, and Chrome devices built for business.\n\n \n\n  Security\n\n  Detect, investigate, and respond to online threats to help protect your business.\n\n Agentic SOC\n"
     },
     {
-      "title": "2026 Cost of a Data Breach Report: AI Is Changing Cybersecurity",
-      "url": "https://www.youtube.com/watch?v=b2PESRl7De4",
-      "source": "youtube.com",
+      "title": "What is Artificial intelligence (AI)?",
+      "url": "https://www.mtu.edu/data-science/undergraduate/ai/what-is",
+      "source": "mtu.edu",
       "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "AI is accelerating both cyberattacks and cyber defense. Jeff Crume breaks down the key findings from the 2026 Cost of a Data Breach Report, including ransomware, AI-driven attacks, and security automa"
+      "snippet": "Security and safety: AI can pose security and safety threats, such as hacking, cyberattacks, and accidents. AI can also malfunction and cause accidents, such as crashes, explosions, and injuries due t"
     },
     {
       "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
@@ -58,16 +58,6 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "Taken together, our results show that frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as"
-    },
-    {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
-      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
-      "source": "ctx-guard.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
