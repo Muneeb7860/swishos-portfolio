@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T08:50:20.637810+00:00",
+  "generated_at": "2026-10-07T08:28:58.998691+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -30,24 +30,14 @@
       "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
     },
     {
-      "title": "NHI & AI Agent Breach Report",
-      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
-      "source": "nhimg.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Canvas Instructure breach 2026: a malicious support ticket hijacked an agent's session, yielding a token that ShinyHunters used to pull data via Canvas APIs.\n\nVulnerability exploit \u00b7 Session token \u00b7 O"
-    },
-    {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
       "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
       "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the pii_leakage suite and egress redaction",
-      "snippet": "318M+ records exposed across confirmed named breaches this month\n AI involvement: 53 incidents \u2014 3 where AI was the weapon, 52 where AI was the target\n Attack vectors: AI Agent Exploit (39) \u00b7 Credenti"
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
     },
     {
       "title": "Security incident disclosure \u2014 July 2026",
@@ -58,16 +48,6 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
-    },
-    {
-      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/abs/2603.02277",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
@@ -88,6 +68,26 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
+    },
+    {
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
     }
   ]
 }
