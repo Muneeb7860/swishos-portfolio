@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T08:59:23.610419+00:00",
+  "generated_at": "2026-10-13T09:14:15.962363+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,24 +10,14 @@
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
+      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
+      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
+      "source": "youtube.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "Hugging Face\u2019s Autonomous AI Agent Breach \u2013 Lab Space",
-      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-huggingface-autonomous-agent-breach-202607",
-      "source": "labs.cloudsecurityalliance.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "## References\n\n The Hacker News. \u201cWorld\u2019s Largest AI Model Repository Hugging Face Breached by Autonomous AI Agent.\u201d The Hacker News, July 2026.\n\n Hugging Face. \u201cSecurity incident disclosure \u2014 July 20"
+      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
     },
     {
       "title": "I compiled every major AI agent security incident from 2024-2026 in one place",
@@ -38,6 +28,16 @@
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
       "snippet": "Sep 2026 AI Security Report: 126 incidents across 38 orgs, 318M+ records stolen \u2014 AI-agent exploits were the top attack vector (39 of 126). Live demo Oct 14.Image 46 r/computervision\u20227d ago    ### Sep"
+    },
+    {
+      "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
+      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-intrusion-openai-huggi",
+      "source": "labs.cloudsecurityalliance.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
     },
     {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
@@ -60,14 +60,14 @@
       "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v1",
-      "source": "arxiv.org",
+      "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
+      "url": "https://forgepointcap.com/perspectives/margin-of-safety-65-llms-sandbox-escape",
+      "source": "forgepointcap.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
+      "snippet": "For offensive LLM capabilities, we think the growing body of evidence suggests they find many vulnerabilities, but clustered around specific categories that are both (A) easily verifiable and (B) well"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
@@ -80,14 +80,14 @@
       "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Simon Willison Breaks Down OpenAI\u2019s Sandbox Escape Incident - Article Comments - TidBITS Talk",
-      "url": "https://talk.tidbits.com/t/simon-willison-breaks-down-openai-s-sandbox-escape-incident/33865",
-      "source": "talk.tidbits.com",
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "There have been multiple incidents where interaction with a large language model (LLM) chatbot has been cited as a direct or contributing factor in a person's suicide or other fatal outcome. In some c"
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
