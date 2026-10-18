@@ -1,33 +1,23 @@
 {
-  "generated_at": "2026-10-17T06:48:55.045342+00:00",
+  "generated_at": "2026-10-18T07:08:50.694258+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 5,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 3
   },
   "incidents": [
     {
-      "title": "AI Agent Security Incidents July 2026: 2 Breaches, 1 Pattern",
-      "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
-      "source": "ayautomate.com",
+      "title": "The State of NHI & AI Agent Breach Report 2026",
+      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
+      "source": "nhimg.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Hugging Face disclosed in its own incident writeup that part of its production infrastructure had been breached over a weekend in mid-July 2026. Axios reported the disclosure on July 20, and on July 2"
-    },
-    {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
+      "snippet": "Canvas Instructure breach 2026: a malicious support ticket hijacked an agent's session, yielding a token that ShinyHunters used to pull data via Canvas APIs.\n\nVulnerability exploit \u00b7 Session token \u00b7 O"
     },
     {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
@@ -35,9 +25,9 @@
       "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "# September 2026: AI Agents Became the #1 Attack Vector. One unrotated default credential exposed 220 million records. 38 companies breached, 318M+ records stolen total. \u2192 See exactly how RuntimeAI wo"
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the pii_leakage suite and egress redaction",
+      "snippet": "318M+ records exposed across confirmed named breaches this month\n AI involvement: 53 incidents \u2014 3 where AI was the weapon, 52 where AI was the target\n Attack vectors: AI Agent Exploit (39) \u00b7 Credenti"
     },
     {
       "title": "Most AI-Related Breaches Skip the Model, IBM 2026 Report",
@@ -60,14 +50,14 @@
       "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
     },
     {
-      "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
-      "url": "https://forgepointcap.com/perspectives/margin-of-safety-65-llms-sandbox-escape",
-      "source": "forgepointcap.com",
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
+      "source": "ctx-guard.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "For offensive LLM capabilities, we think the growing body of evidence suggests they find many vulnerabilities, but clustered around specific categories that are both (A) easily verifiable and (B) well"
+      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
       "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
     }
   ]
 }
