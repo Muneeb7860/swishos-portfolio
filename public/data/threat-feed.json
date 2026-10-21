@@ -1,33 +1,23 @@
 {
-  "generated_at": "2026-10-20T07:23:06.597914+00:00",
+  "generated_at": "2026-10-21T07:24:21.079513+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 5,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 3
   },
   "incidents": [
     {
-      "title": "AI Agent Security Incidents July 2026: 2 Breaches, 1 Pattern",
-      "url": "https://www.ayautomate.com/blog/ai-agent-security-incidents-july-2026",
-      "source": "ayautomate.com",
+      "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
+      "url": "https://aviatrix.ai/threat-research-center/spain-data-agency-ai-powered-breach-2026",
+      "source": "aviatrix.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Hugging Face disclosed in its own incident writeup that part of its production infrastructure had been breached over a weekend in mid-July 2026. Axios reported the disclosure on July 20, and on July 2"
-    },
-    {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
+      "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
     },
     {
       "title": "The State of NHI & AI Agent Breach Report 2026",
@@ -40,24 +30,34 @@
       "snippet": "Canvas Instructure breach 2026: a malicious support ticket hijacked an agent's session, yielding a token that ShinyHunters used to pull data via Canvas APIs.\n\nVulnerability exploit \u00b7 Session token \u00b7 O"
     },
     {
-      "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
-      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-intrusion-openai-huggi",
-      "source": "labs.cloudsecurityalliance.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
-    },
-    {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
       "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
       "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the pii_leakage suite and egress redaction",
+      "snippet": "318M+ records exposed across confirmed named breaches this month\n AI involvement: 53 incidents \u2014 3 where AI was the weapon, 52 where AI was the target\n Attack vectors: AI Agent Exploit (39) \u00b7 Credenti"
+    },
+    {
+      "title": "What Happens When AI Agents Get Hacked? | The Next Endeavor 2026",
+      "url": "https://www.youtube.com/watch?v=2JHP3OqJJtg",
+      "source": "youtube.com",
+      "published": "",
+      "severity": "high",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "From prompt injection attacks against guardrails themselves to the fatigue that turns human approval into a rubber stamp, this conversation examines where enterprise AI security can break down. The pa"
+    },
+    {
+      "title": "Most AI-Related Breaches Skip the Model, IBM 2026 Report",
+      "url": "https://www.cybersecurity-insiders.com/ai-related-breaches",
+      "source": "cybersecurity-insiders.com",
+      "published": "",
+      "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
+      "snippet": "AI and automation in security operations cut breach costs by nearly $2 million, yet one in four security teams still run without them. [...] Buy down the 247-day detection window with automation \u2013 IBM"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
