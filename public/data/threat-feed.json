@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T07:29:44.542421+00:00",
+  "generated_at": "2026-10-26T07:40:09.946359+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,24 +10,14 @@
   },
   "incidents": [
     {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
+      "title": "Why 90% of Enterprises Had an AI Security Breach in 2026",
+      "url": "https://www.youtube.com/watch?v=HVgiRVXs1gE",
+      "source": "youtube.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
-      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
-      "source": "runtimeai.io",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "# September 2026: AI Agents Became the #1 Attack Vector. One unrotated default credential exposed 220 million records. 38 companies breached, 318M+ records stolen total. \u2192 See exactly how RuntimeAI wo"
+      "snippet": "Nearly 90% of organizations experienced a generative AI-related security breach in the past year, and 88% experienced an agent-related breach, according to AvePoint's 2026 State of AI report. The root"
     },
     {
       "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
@@ -40,6 +30,26 @@
       "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
     },
     {
+      "title": "Hugging Face\u2019s Autonomous AI Agent Breach \u2013 Lab Space",
+      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-huggingface-autonomous-agent-breach-202607",
+      "source": "labs.cloudsecurityalliance.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "## References\n\n The Hacker News. \u201cWorld\u2019s Largest AI Model Repository Hugging Face Breached by Autonomous AI Agent.\u201d The Hacker News, July 2026.\n\n Hugging Face. \u201cSecurity incident disclosure \u2014 July 20"
+    },
+    {
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
+    },
+    {
       "title": "Security incident disclosure \u2014 July 2026",
       "url": "https://huggingface.co/blog/security-incident-july-2026",
       "source": "huggingface.co",
@@ -50,14 +60,14 @@
       "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
     },
     {
-      "title": "2026 Cost of a Data Breach Report: AI Is Changing Cybersecurity",
-      "url": "https://www.youtube.com/watch?v=b2PESRl7De4",
-      "source": "youtube.com",
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/html/2603.02277v2",
+      "source": "arxiv.org",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "AI is accelerating both cyberattacks and cyber defense. Jeff Crume breaks down the key findings from the 2026 Cost of a Data Breach Report, including ransomware, AI-driven attacks, and security automa"
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "Taken together, our results show that frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
@@ -78,16 +88,6 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
-    },
-    {
-      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/abs/2603.02277",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "archive\n\nPress Enter to search \u00b7 Advanced search\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects:"
     }
   ]
 }
