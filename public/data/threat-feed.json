@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-10-28T08:12:39.304970+00:00",
+  "generated_at": "2026-10-29T08:18:18.407389+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 4,
+    "covered": 3,
     "partial": 0,
     "gap": 0,
-    "review": 4
+    "review": 5
   },
   "incidents": [
     {
-      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
-      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
-      "source": "runtimeai.io",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
+      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
+      "source": "beam.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "# September 2026: AI Agents Became the #1 Attack Vector. One unrotated default credential exposed 220 million records. 38 companies breached, 318M+ records stolen total. \u2192 See exactly how RuntimeAI wo"
+      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
       "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
@@ -50,24 +50,14 @@
       "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
     },
     {
-      "title": "Most AI-Related Breaches Skip the Model, IBM 2026 Report",
-      "url": "https://www.cybersecurity-insiders.com/ai-related-breaches",
-      "source": "cybersecurity-insiders.com",
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "AI and automation in security operations cut breach costs by nearly $2 million, yet one in four security teams still run without them. [...] Buy down the 247-day detection window with automation \u2013 IBM"
-    },
-    {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v2",
-      "source": "arxiv.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Taken together, our results show that frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as"
+      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
@@ -80,14 +70,24 @@
       "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
+      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
+      "source": "kodemsecurity.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+    },
+    {
+      "title": "Types of LLM vulnerabilities | Promptfoo",
+      "url": "https://www.promptfoo.dev/docs/red-team/llm-vulnerability-types",
+      "source": "promptfoo.dev",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "| Coding Agent Sandbox Read Escape | Tests whether a coding agent reads canaries outside the intended workspace or sandbox boundary. | `coding-agent:sandbox-read-escape` | \u2705 | \ud83d\udea8 | \u2705 |\n| Coding Agent S"
     }
   ]
 }
