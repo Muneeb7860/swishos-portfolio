@@ -1,44 +1,14 @@
 {
-  "generated_at": "2026-10-29T08:18:18.407389+00:00",
+  "generated_at": "2026-10-30T08:26:15.684765+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
     "covered": 3,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 3
   },
   "incidents": [
-    {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
-      "url": "https://aviatrix.ai/threat-research-center/spain-data-agency-ai-powered-breach-2026",
-      "source": "aviatrix.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
-    },
-    {
-      "title": "AI Agents Break Out | The 2026 AI Testing Incidents, Sandbox Escapes & Security Risks | Uplatz",
-      "url": "https://www.youtube.com/watch?v=FwgKYQJSTv4",
-      "source": "youtube.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "During 2026, several AI developers reported incidents in which autonomous agents operating within cybersecurity evaluations took actions beyond their intended testing boundaries. Some accessed externa"
-    },
     {
       "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
       "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-intrusion-openai-huggi",
@@ -50,44 +20,74 @@
       "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
     },
     {
-      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
-      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
-      "source": "runtimeai.io",
+      "title": "What we know about the rogue AI-agent security breaches",
+      "url": "https://www.reuters.com/legal/litigation/what-we-know-about-rogue-ai-agent-security-breaches-2026-07-31",
+      "source": "reuters.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
+      "snippet": "What we know about the rogue AI-agent security breaches ; OpenAI. The agent began attempting to escape its test environment around July 9, 2026."
     },
     {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
-      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
-      "source": "ctx-guard.com",
+      "title": "The Hugging Face incident and the road ahead | OpenAI",
+      "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead",
+      "source": "openai.com",
       "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
-    },
-    {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
-      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
-      "source": "kodemsecurity.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
-    },
-    {
-      "title": "Types of LLM vulnerabilities | Promptfoo",
-      "url": "https://www.promptfoo.dev/docs/red-team/llm-vulnerability-types",
-      "source": "promptfoo.dev",
-      "published": "",
-      "severity": "critical",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "| Coding Agent Sandbox Read Escape | Tests whether a coding agent reads canaries outside the intended workspace or sandbox boundary. | `coding-agent:sandbox-read-escape` | \u2705 | \ud83d\udea8 | \u2705 |\n| Coding Agent S"
+      "snippet": "1.   OpenAI 2026-07-19 14 Suspicious agent activity detected An OpenAI security alert flagged unusual identity-related API calls and triggered an investigation.Image 9: Suspicious agent activity detec"
+    },
+    {
+      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
+    },
+    {
+      "title": "Prompt Injection Attack Explained: AI Cybersecurity Threat (2026 Guide)",
+      "url": "https://www.eccu.edu/blog/prompt-injection-ai-cybersecurity-threat",
+      "source": "eccu.edu",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "Prompt injection is already being exploited in production environments. In 2024, researchers demonstrated that leading AI systems could be manipulated to leak sensitive data, override safeguards, and "
+    },
+    {
+      "title": "Prompt Injection Attacks: Causes, Examples, and Enterprise Defenses | Airia",
+      "url": "https://airia.com/blog/prompt-injection-attacks-enterprise-defenses",
+      "source": "airia.com",
+      "published": "",
+      "severity": "high",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "Automated red teaming platforms generate diverse attack patterns, testing agents against known injection techniques and novel variations. Organizations identify weaknesses in prompt design, agent conf"
+    },
+    {
+      "title": "Teams of LLM Agents can Exploit Zero-Day Vulnerabilities",
+      "url": "https://arxiv.org/html/2406.01637v2",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "detects",
+      "coverage_note": "Detects post-exploitation egress; cannot prevent the zero-day itself",
+      "snippet": "In this work, we focus on AI agents and cybersecurity. The closest works to ours\nshows that ReAct-style AI agents can hack \u201ccapture-the-flag\u201d toy websites and\nvulnerabilities when given a description "
+    },
+    {
+      "title": "Google spotted an AI-developed zero-day before attackers could use it | CyberScoop",
+      "url": "https://cyberscoop.com/google-threat-intelligence-group-ai-developed-zero-day-exploit",
+      "source": "cyberscoop.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "detects",
+      "coverage_note": "Detects post-exploitation egress; cannot prevent the zero-day itself",
+      "snippet": "GTIG has been warning about and expecting AI-developed exploits to hit systems in the wild, especially after its Big Sleep AI agent found a zero-day vulnerability in late 2024.\n\nAdvertisement\n\n\u201cI thin"
     }
   ]
 }
