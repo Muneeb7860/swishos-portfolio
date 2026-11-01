@@ -1,43 +1,33 @@
 {
-  "generated_at": "2026-10-31T08:15:58.215049+00:00",
+  "generated_at": "2026-11-01T08:59:51.367361+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 5,
+    "covered": 3,
     "partial": 0,
     "gap": 0,
-    "review": 3
+    "review": 5
   },
   "incidents": [
     {
-      "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
-      "url": "https://aviatrix.ai/threat-research-center/spain-data-agency-ai-powered-breach-2026",
-      "source": "aviatrix.ai",
+      "title": "AI Cyberattacks in 2026: 6 Breaches You Need to Know About \u2014 ExtraHop",
+      "url": "https://www.extrahop.com/blog/AI-cyberattacks-in-2026-6-breaches-you-need-to-know-about",
+      "source": "extrahop.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
+      "snippet": "In July 2026, Hugging Face confirmed an incident in which an AI agent compromised their infrastructure. According to reports, the attack was driven by a combination of OpenAI models (GPT\u20115.6 Sol and a"
     },
     {
-      "title": "The State of NHI & AI Agent Breach Report 2026",
-      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
-      "source": "nhimg.org",
+      "title": "2026 cyberattacks by rogue OpenAI agents - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents",
+      "source": "en.wikipedia.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Canvas Instructure breach 2026: a malicious support ticket hijacked an agent's session, yielding a token that ShinyHunters used to pull data via Canvas APIs.\n\nVulnerability exploit \u00b7 Session token \u00b7 O"
-    },
-    {
-      "title": "AI Agents Break Out | The 2026 AI Testing Incidents, Sandbox Escapes & Security Risks | Uplatz",
-      "url": "https://www.youtube.com/watch?v=FwgKYQJSTv4",
-      "source": "youtube.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "During 2026, several AI developers reported incidents in which autonomous agents operating within cybersecurity evaluations took actions beyond their intended testing boundaries. Some accessed externa"
+      "snippet": "In July 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing factors included a"
     },
     {
       "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
@@ -50,44 +40,54 @@
       "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
     },
     {
+      "title": "\"AI agent security breach failure when:7d\" - Google News",
+      "url": "https://news.google.com/rss/search?q=AI+agent+security+breach+failure+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "news.google.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "A.I. Went Rogue and Meddled With U.S. Government Websites - The New York Times 25 Sep 2026 23:16:40 GMTOpenAI\u2019s A.I. Went Rogue and Meddled With U.S. Government Websites  The New York TimesThe New Yor"
+    },
+    {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
       "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
       "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the pii_leakage suite and egress redaction",
-      "snippet": "318M+ records exposed across confirmed named breaches this month\n AI involvement: 53 incidents \u2014 3 where AI was the weapon, 52 where AI was the target\n Attack vectors: AI Agent Exploit (39) \u00b7 Credenti"
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v1",
-      "source": "arxiv.org",
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
+      "source": "ctx-guard.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
+      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
-      "title": "Prompt Injection Attack Explained: AI Cybersecurity Threat (2026 Guide)",
-      "url": "https://www.eccu.edu/blog/prompt-injection-ai-cybersecurity-threat",
-      "source": "eccu.edu",
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
+      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
+      "source": "kodemsecurity.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "Prompt injection is already being exploited in production environments. In 2024, researchers demonstrated that leading AI systems could be manipulated to leak sensitive data, override safeguards, and "
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     },
     {
-      "title": "Prompt injection: types, real-world CVEs, and enterprise defenses",
-      "url": "https://www.vectra.ai/topics/prompt-injection",
-      "source": "vectra.ai",
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "Prompt injection has rapidly emerged as the most critical security vulnerability facing enterprise AI deployments. Ranked #1 on the OWASP Top 10 for LLM Applications 2025, this attack technique exploi"
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
