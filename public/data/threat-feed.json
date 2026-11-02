@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T08:59:51.367361+00:00",
+  "generated_at": "2026-11-02T09:14:39.258975+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,24 +10,24 @@
   },
   "incidents": [
     {
-      "title": "AI Cyberattacks in 2026: 6 Breaches You Need to Know About \u2014 ExtraHop",
-      "url": "https://www.extrahop.com/blog/AI-cyberattacks-in-2026-6-breaches-you-need-to-know-about",
-      "source": "extrahop.com",
+      "title": "The State of NHI & AI Agent Breach Report 2026",
+      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
+      "source": "nhimg.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In July 2026, Hugging Face confirmed an incident in which an AI agent compromised their infrastructure. According to reports, the attack was driven by a combination of OpenAI models (GPT\u20115.6 Sol and a"
+      "snippet": "### OpenAI and Hugging Face Breach 2026: How AI Agents Escaped an Evaluation Sandbox and Took Over Cloud Credentials\n\nIn July 2026 OpenAI evaluation agents escaped their sandbox and used stolen Kubern"
     },
     {
-      "title": "2026 cyberattacks by rogue OpenAI agents - Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents",
-      "source": "en.wikipedia.org",
+      "title": "\"AI agent security breach failure when:7d\" - Google News",
+      "url": "https://news.google.com/rss/search?q=AI+agent+security+breach+failure+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "news.google.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In July 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing factors included a"
+      "snippet": "Clause Before It Fires  Startup FortuneStartup FortuneResearchers Use AI Agents to Breach Anthropic's Internal Systems in Just 12 Hours - CyberSecurityNews 26 Oct 2026 14:42:50 GMTResearchers Use AI A"
     },
     {
       "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
@@ -40,16 +40,6 @@
       "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
     },
     {
-      "title": "\"AI agent security breach failure when:7d\" - Google News",
-      "url": "https://news.google.com/rss/search?q=AI+agent+security+breach+failure+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
-      "source": "news.google.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "A.I. Went Rogue and Meddled With U.S. Government Websites - The New York Times 25 Sep 2026 23:16:40 GMTOpenAI\u2019s A.I. Went Rogue and Meddled With U.S. Government Websites  The New York TimesThe New Yor"
-    },
-    {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
       "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
       "source": "runtimeai.io",
@@ -57,7 +47,7 @@
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
+      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
@@ -70,16 +60,6 @@
       "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
-      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
-      "source": "kodemsecurity.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
-    },
-    {
       "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
       "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
       "source": "cymulate.com",
@@ -88,6 +68,26 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+    },
+    {
+      "title": "Types of LLM vulnerabilities | Promptfoo",
+      "url": "https://www.promptfoo.dev/docs/red-team/llm-vulnerability-types",
+      "source": "promptfoo.dev",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "| Coding Agent Sandbox Read Escape | Tests whether a coding agent reads canaries outside the intended workspace or sandbox boundary. | `coding-agent:sandbox-read-escape` | \u2705 | \ud83d\udea8 | \u2705 |\n| Coding Agent S"
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "archive\n\n# Computer Science > Cryptography and Security\n\n# Title:Quantifying Frontier LLM Capabilities for Container Sandbox Escape\n\n|  |  |\n --- |\n| Subjects: | Cryptography and Security (cs.CR); Art"
     }
   ]
 }
