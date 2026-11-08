@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T08:37:21.481394+00:00",
+  "generated_at": "2026-11-08T08:50:06.771024+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -60,14 +60,24 @@
       "snippet": "## What happened\n\nThe intrusion started where AI platforms are uniquely exposed: the data-processing pipeline. A malicious dataset abused two code-execution paths in our dataset processing (a remote-c"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v2",
-      "source": "arxiv.org",
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape | alphaXiv",
+      "url": "https://www.alphaxiv.org/abs/2603.02277",
+      "source": "alphaxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Taken together, our results show that frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as"
+      "snippet": "Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivated adve"
+    },
+    {
+      "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
+      "url": "https://forgepointcap.com/perspectives/margin-of-safety-65-llms-sandbox-escape",
+      "source": "forgepointcap.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "For offensive LLM capabilities, we think the growing body of evidence suggests they find many vulnerabilities, but clustered around specific categories that are both (A) easily verifiable and (B) well"
     },
     {
       "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
@@ -78,16 +88,6 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
-    },
-    {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
     }
   ]
 }
