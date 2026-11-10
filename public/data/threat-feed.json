@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T09:33:42.636572+00:00",
+  "generated_at": "2026-11-10T09:34:45.673079+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -9,6 +9,16 @@
     "review": 5
   },
   "incidents": [
+    {
+      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
+      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
+      "source": "kiteworks.com",
+      "published": "",
+      "severity": "low",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
+    },
     {
       "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
       "url": "https://aviatrix.ai/threat-research-center/spain-data-agency-ai-powered-breach-2026",
@@ -47,47 +57,37 @@
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
+      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
     },
     {
-      "title": "AI Agent Security News & Analysis | Security Point Break",
-      "url": "https://securitypointbreak.com/category/artificial-intelligence/ai-agent-security",
-      "source": "securitypointbreak.com",
-      "published": "",
-      "severity": "medium",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "## OpenAI Image Leak is Latest of 8 AI Lab Agent Incidents\n\nOpenAI disclosed incidents exposing user images to external services, adding to data safety concerns.\n\nbyTom Spring\n\nSeptember 26, 2026\n\nAI "
-    },
-    {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
-      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
-      "source": "ctx-guard.com",
+      "title": "Langroid Critical RCE: Sandbox Escape in LLM Agents",
+      "url": "https://www.reddit.com/r/pwnhub/comments/1ustt9s/langroid_critical_rce_sandbox_escape_in_llm_agents",
+      "source": "reddit.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
+      "snippet": "# Langroid Critical RCE: Sandbox Escape in LLM Agents. ## Post details. ## Content. CVE-2026-54769 exposes a critical Sandbox Escape vulnerability in Langroid framework, enabling unauthenticated Remot"
     },
     {
-      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
-      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
-      "source": "kodemsecurity.com",
+      "title": "Terrarium Sandbox Escape CVE-2026-5752: News Update on Cohere AI Vulnerability a",
+      "url": "https://www.securitytoday.de/en/2026/04/24/terrarium-sandbox-escape-cve-2026-5752-news-update-on-cohere",
+      "source": "securitytoday.de",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
+      "snippet": "Title: Terrarium Sandbox Escape CVE-2026-5752: News Update on Cohere AI Vulnerability a\nWhat are you looking for? # Terrarium Sandbox Escape CVE-2026-5752: 72-Hour Response Plan. **On April 14, 2026, "
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
+      "title": "Prompt Injection Defense vs Prompt Hardening: Runtime Attack Detection and Stronger Instruction Design | Suhas Bhairav",
+      "url": "https://suhasbhairav.com/blog/prompt-injection-defense-vs-prompt-hardening-runtime-attack-detection-vs-stronger-instruction-design",
+      "source": "suhasbhairav.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The attacker causes the LLM to invoke apply\\_patch twice: once for ./.codex/config.toml with sandbox-disabling settings, and once for ./agents.md with malicious startup instructions. Both are created "
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "Prompt injection defense encompasses strategies to prevent adversarial prompts from altering model behavior or leaking sensitive data. In production, this includes runtime detectors, guardrails in ins"
     }
   ]
 }
