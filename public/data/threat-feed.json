@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T09:34:45.673079+00:00",
+  "generated_at": "2026-11-11T09:09:48.945489+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -10,14 +10,14 @@
   },
   "incidents": [
     {
-      "title": "AI Agent Security Incidents Hit 65% of Firms in 2026",
-      "url": "https://www.kiteworks.com/cybersecurity-risk-management/ai-agent-security-incidents-2026",
-      "source": "kiteworks.com",
+      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
+      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
+      "source": "beam.ai",
       "published": "",
-      "severity": "low",
+      "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "The Cloud Security Alliance and Token Security published research on April 21, 2026, titled Autonomous but Not Controlled: AI Agent Incidents Now Common in Enterprises. The headline finding is blunt: "
+      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
     },
     {
       "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
@@ -57,37 +57,37 @@
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
+      "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
     },
     {
-      "title": "Langroid Critical RCE: Sandbox Escape in LLM Agents",
-      "url": "https://www.reddit.com/r/pwnhub/comments/1ustt9s/langroid_critical_rce_sandbox_escape_in_llm_agents",
-      "source": "reddit.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "# Langroid Critical RCE: Sandbox Escape in LLM Agents. ## Post details. ## Content. CVE-2026-54769 exposes a critical Sandbox Escape vulnerability in Langroid framework, enabling unauthenticated Remot"
-    },
-    {
-      "title": "Terrarium Sandbox Escape CVE-2026-5752: News Update on Cohere AI Vulnerability a",
-      "url": "https://www.securitytoday.de/en/2026/04/24/terrarium-sandbox-escape-cve-2026-5752-news-update-on-cohere",
-      "source": "securitytoday.de",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Title: Terrarium Sandbox Escape CVE-2026-5752: News Update on Cohere AI Vulnerability a\nWhat are you looking for? # Terrarium Sandbox Escape CVE-2026-5752: 72-Hour Response Plan. **On April 14, 2026, "
-    },
-    {
-      "title": "Prompt Injection Defense vs Prompt Hardening: Runtime Attack Detection and Stronger Instruction Design | Suhas Bhairav",
-      "url": "https://suhasbhairav.com/blog/prompt-injection-defense-vs-prompt-hardening-runtime-attack-detection-vs-stronger-instruction-design",
-      "source": "suhasbhairav.com",
+      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
+      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
+      "source": "cymulate.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "Prompt injection defense encompasses strategies to prevent adversarial prompts from altering model behavior or leaking sensitive data. In production, this includes runtime detectors, guardrails in ins"
+      "snippet": "### Overview\n\nCodex CLI implements a sandbox feature designed to restrict filesystem and command execution capabilities. However, a trust boundary failure allows the sandbox to be completely subverted"
+    },
+    {
+      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
+    },
+    {
+      "title": "AI Coding Agent Sandbox Escapes: The Trust Handoff Flaw \u2013 Lab Space",
+      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-coding-agent-sandbox-escapes-20260722-c",
+      "source": "labs.cloudsecurityalliance.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "Security researchers at Pillar Security spent a week publishing sandbox-escape findings against four widely used AI coding agents \u2014 Cursor, OpenAI\u2019s Codex CLI, Google\u2019s Gemini CLI, and Google\u2019s Antigr"
     }
   ]
 }
