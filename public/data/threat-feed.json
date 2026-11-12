@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T09:09:48.945489+00:00",
+  "generated_at": "2026-11-12T09:37:11.961578+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -17,17 +17,7 @@
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In January 2026, attackers compromised executive devices at Step Finance, a Solana DeFi portfolio manager. What turned a device compromise into a catastrophe was the AI trading agents.\n\nThe agents had"
-    },
-    {
-      "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
-      "url": "https://aviatrix.ai/threat-research-center/spain-data-agency-ai-powered-breach-2026",
-      "source": "aviatrix.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
+      "snippet": "HiddenLayer's 2026 AI Threat Landscape Report found that autonomous agents now account for 1 in 8 reported AI breaches. 76% of organizations cite shadow AI as a growing problem. Malware in public mode"
     },
     {
       "title": "The State of NHI & AI Agent Breach Report 2026",
@@ -40,14 +30,14 @@
       "snippet": "### OpenAI and Hugging Face Breach 2026: How AI Agents Escaped an Evaluation Sandbox and Took Over Cloud Credentials\n\nIn July 2026 OpenAI evaluation agents escaped their sandbox and used stolen Kubern"
     },
     {
-      "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
-      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-intrusion-openai-huggi",
-      "source": "labs.cloudsecurityalliance.org",
+      "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
+      "url": "https://aviatrix.ai/threat-research-center/spain-data-agency-ai-powered-breach-2026",
+      "source": "aviatrix.ai",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
+      "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
     },
     {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
@@ -60,34 +50,44 @@
       "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "### Overview\n\nCodex CLI implements a sandbox feature designed to restrict filesystem and command execution capabilities. However, a trust boundary failure allows the sandbox to be completely subverted"
-    },
-    {
-      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
-      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
-      "source": "toxsec.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
-    },
-    {
-      "title": "AI Coding Agent Sandbox Escapes: The Trust Handoff Flaw \u2013 Lab Space",
-      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-coding-agent-sandbox-escapes-20260722-c",
+      "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
+      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-intrusion-openai-huggi",
       "source": "labs.cloudsecurityalliance.org",
       "published": "",
       "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
+      "published": "",
+      "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Security researchers at Pillar Security spent a week publishing sandbox-escape findings against four widely used AI coding agents \u2014 Cursor, OpenAI\u2019s Codex CLI, Google\u2019s Gemini CLI, and Google\u2019s Antigr"
+      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
+    },
+    {
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
+      "source": "ctx-guard.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
+    },
+    {
+      "title": "vm2 Sandbox Escape | AI Agent RCE Risk and IOCs | Kodem",
+      "url": "https://www.kodemsecurity.com/resources/vm2-sandbox-escape-vulnerabilities-the-2026-cve-wave-turning-ai-agents-into-host-rce-vectors",
+      "source": "kodemsecurity.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "A wave of 13 vm2 sandbox escape vulnerabilities disclosed across early May 2026, many carrying CVSS scores between 9.0 and 10.0, allow attackers to break out of vm2\u2019s isolated JavaScript execution env"
     }
   ]
 }
