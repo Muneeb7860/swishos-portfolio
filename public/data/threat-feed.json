@@ -1,34 +1,14 @@
 {
-  "generated_at": "2026-11-13T09:22:20.408280+00:00",
+  "generated_at": "2026-11-14T08:50:19.097284+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
     "covered": 3,
-    "partial": 1,
+    "partial": 0,
     "gap": 0,
-    "review": 4
+    "review": 5
   },
   "incidents": [
-    {
-      "title": "AI agents are now the main attacker behind most of 2026\u2019s breaches. Almost none of it needed a new trick: 79% still came down to a stolen key, token or credential.\n\nThe finding comes from The State of the NHI & AI Agent Breach Report 2026, released this week by our friends at NHI Mgmt Group. They analysed 200+ real breaches from 2017 to October 2026, across more than 1,000 public sources. A few of the numbers that stood out to us:\n\n\u2714\ufe0f 33 of the 53 breaches they tracked in 2026 involved AI agents, LLM platforms or AI attack routes.\n\u2714\ufe0f 44% of all breaches began with a leaked, stolen or weak credential.\n\u2714\ufe0f 56% involved more than one kind of non-human identity.\n\u2714\ufe0f Supply chain is now the number one known way in, where one stolen token can reach every downstream user.\n\nOne leaked key rarely stays one key. A single credential reaches the next secret, then cloud roles, then the data, often without a single alert. And we know these credentials will most likely leak. What decides the damage is what that credential, or a hijacked agent, can reach once it is inside.\n\nNHI Mgmt Group are very clear about the fact that the inventory, scope and short credential lifetimes matter more than any single control.\n\nControlling the scope and lifetime of access is the work PlainID does. We enforce runtime authorization and Zero Standing Privileges across human, non-human and AI agent identities, so a compromised key reaches only what policy allows at that moment, not everything it inherited.\n\nYou can access the full report here \ud83d\udc49 https://hubs.ly/Q04BT7NL0 | PlainID",
-      "url": "https://www.facebook.com/PlainID/posts/ai-agents-are-now-the-main-attacker-behind-most-of-2026s-breaches-almost-none-of/1721376423331351",
-      "source": "facebook.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "partial",
-      "coverage_note": "Partially covered \u2014 runtime egress only; registry-side compromise is out of scope",
-      "snippet": "[](\n\nOne agent hands a task off to a sub-agent. The sub-agent calls a tool, and the permission from that first handoff no longer matches what the agent is doing. The old access model decided permissio"
-    },
-    {
-      "title": "5 Real AI Agent Security Breaches in 2026 and Their Lessons",
-      "url": "https://beam.ai/agentic-insights/ai-agent-security-breaches-2026-lessons",
-      "source": "beam.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "HiddenLayer's 2026 AI Threat Landscape Report found that autonomous agents now account for 1 in 8 reported AI breaches. 76% of organizations cite shadow AI as a growing problem. Malware in public mode"
-    },
     {
       "title": "The State of NHI & AI Agent Breach Report 2026",
       "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
@@ -50,6 +30,16 @@
       "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
     },
     {
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "September's single largest incident \u2014 220M travel records exposed \u2014 traced back to a default service-account credential nobody rotated. The month's #1 attack-vector category overall was AI-agent explo"
+    },
+    {
       "title": "When AI Agents Attack: The OpenAI-Hugging Face Intrusion \u2013 Lab Space",
       "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-agent-intrusion-openai-huggi",
       "source": "labs.cloudsecurityalliance.org",
@@ -60,14 +50,14 @@
       "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
+      "title": "Security incident disclosure \u2014 July 2026",
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "source": "huggingface.co",
       "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "### Overview\n\nCodex CLI implements a sandbox feature designed to restrict filesystem and command execution capabilities. However, a trust boundary failure allows the sandbox to be completely subverted"
+      "severity": "low",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "The campaign was run by an autonomous agent framework (appearing to be built on an agentic security-research harness - used LLM still not known) executing many thousands of individual actions across a"
     },
     {
       "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
@@ -88,6 +78,16 @@
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
       "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
+    },
+    {
+      "title": "AI Coding Agent Sandbox Escapes: The Trust Handoff Flaw \u2013 Lab Space",
+      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-coding-agent-sandbox-escapes-20260722-c",
+      "source": "labs.cloudsecurityalliance.org",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "Security researchers at Pillar Security spent a week publishing sandbox-escape findings against four widely used AI coding agents \u2014 Cursor, OpenAI\u2019s Codex CLI, Google\u2019s Gemini CLI, and Google\u2019s Antigr"
     }
   ]
 }
