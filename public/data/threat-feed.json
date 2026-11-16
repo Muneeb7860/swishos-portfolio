@@ -1,24 +1,14 @@
 {
-  "generated_at": "2026-11-15T09:05:37.640491+00:00",
+  "generated_at": "2026-11-16T09:22:00.140904+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 4,
+    "covered": 5,
     "partial": 0,
     "gap": 0,
-    "review": 4
+    "review": 3
   },
   "incidents": [
-    {
-      "title": "AI Agent Security Breaches 2026: Risks and Fixes",
-      "url": "https://aitrendssetter.com/ai-agent-security-breaches-in-2026-what-every-business-needs-to-know",
-      "source": "aitrendssetter.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "AI agents went from research demos to real infrastructure faster than most security teams could keep up. In 2026, that gap is showing. Hugging Face got breached by an autonomous AI agent. OpenAI discl"
-    },
     {
       "title": "OpenAI rogue agent breach of Hugging Face",
       "url": "https://en.wikipedia.org/wiki/OpenAI_rogue_agent_breach_of_Hugging_Face",
@@ -80,14 +70,24 @@
       "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
     },
     {
-      "title": "What Is AI Model Sandbox Escape? Definition & Examples",
-      "url": "https://nhimg.org/glossary/ai-model-sandbox-escape",
-      "source": "nhimg.org",
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "An AI model sandbox escape is not just a model behaving badly, it is a containment failure. The key issue is that the restricted environment no longer reliably limits network reach, file access, tool "
+      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
+    },
+    {
+      "title": "Prompt Injection, Model Poisoning, and AI Supply Chain Attacks Explained\u00a0 | Morphisec Blog",
+      "url": "https://www.morphisec.com/blog/prompt-injection-model-poisoning-and-ai-supply-chain-attacks-explained",
+      "source": "morphisec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "In some cases, organizations may unknowingly deploy compromised models into production environments, creating long-term security and operational risks.\n\n## Potential Consequences of Model Poisoning\n\nM"
     }
   ]
 }
