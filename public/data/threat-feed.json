@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T10:28:46.460829+00:00",
+  "generated_at": "2026-11-18T09:58:25.832109+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
@@ -50,24 +50,24 @@
       "snippet": "In July 2026, an OpenAI evaluation agent broke out of an isolated test environment, exploited a chain of vulnerabilities across four external services, and autonomously compromised Hugging Face\u2019s prod"
     },
     {
-      "title": "Security incident disclosure \u2014 July 2026",
-      "url": "https://huggingface.co/blog/security-incident-july-2026",
-      "source": "huggingface.co",
+      "title": "John Malloy on Facebook: \"\ud83e\udd16 AI agent security breaches in 2026 trace back to malicious extensions and stolen credentials. Lear\u2026\"",
+      "url": "https://www.facebook.com/john.malloy.networknews/posts/-ai-agent-security-breaches-in-2026-trace-back-to-malicious-extensions-and-stole/29113515454943441",
+      "source": "facebook.com",
       "published": "",
-      "severity": "low",
+      "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "The campaign was run by an autonomous agent framework (appearing to be built on an agentic security-research harness - used LLM still not known) executing many thousands of individual actions across a"
+      "snippet": "# John Malloy on Facebook: \"\ud83e\udd16 AI agent security breaches in 2026 trace back to malicious extensions and stolen credentials. Lear\u2026\"\n\n\ud83e\udd16   AI agent security breaches in 2026 trace back to malicious exten"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
+      "title": "Margin of Safety #65: LLMs & Sandbox Escape - Forgepoint Capital",
+      "url": "https://forgepointcap.com/perspectives/margin-of-safety-65-llms-sandbox-escape",
+      "source": "forgepointcap.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "### Overview\n\nCodex CLI implements a sandbox feature designed to restrict filesystem and command execution capabilities. However, a trust boundary failure allows the sandbox to be completely subverted"
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "7. Kimi K3 exploiting a sandbox misconfiguration in Frontier Security\u2019s run of the AISI public benchmark, described here. In this case, the sandbox made github.com directly accessible and the model to"
     },
     {
       "title": "CPython flaw exposes AI inference servers to sandbox escape attacks | CSO Online",
@@ -80,14 +80,14 @@
       "snippet": "The researchers demonstrated how a specially crafted model could exploit the flaw to bypass Jinja, a Python-based templating engine used to structure interactions between users and LLMs, sandbox prote"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape | alphaXiv",
-      "url": "https://www.alphaxiv.org/overview/2603.02277",
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://www.alphaxiv.org/abs/2603.02277",
       "source": "alphaxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The authors test escapes in a nested sandbox, so a successful breakout reaches only an isolated virtual machine, not the evaluation host. With this setup, SANDBOXESCAPEBENCH introduces 18 challenges b"
+      "snippet": "(CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivated adversarial agent with shell acc"
     }
   ]
 }
