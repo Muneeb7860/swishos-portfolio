@@ -1,24 +1,14 @@
 {
-  "generated_at": "2026-11-21T09:30:43.677420+00:00",
+  "generated_at": "2026-11-22T09:36:38.034758+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 5,
+    "covered": 4,
     "partial": 0,
     "gap": 0,
-    "review": 3
+    "review": 4
   },
   "incidents": [
-    {
-      "title": "AI Agent Security Breaches 2026: Risks and Fixes",
-      "url": "https://aitrendssetter.com/ai-agent-security-breaches-in-2026-what-every-business-needs-to-know",
-      "source": "aitrendssetter.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "AI agents went from research demos to real infrastructure faster than most security teams could keep up. In 2026, that gap is showing. Hugging Face got breached by an autonomous AI agent. OpenAI discl"
-    },
     {
       "title": "2026 cyberattacks by rogue OpenAI agents",
       "url": "https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents",
@@ -30,54 +20,64 @@
       "snippet": "On July 16, 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing factors includ"
     },
     {
-      "title": "OpenAI rogue agent breach of Hugging Face",
-      "url": "https://en.wikipedia.org/wiki/OpenAI_rogue_agent_breach_of_Hugging_Face",
-      "source": "en.wikipedia.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by tool-call sequence detection",
-      "snippet": "Between July 11 and 13, 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing fa"
-    },
-    {
-      "title": "Spain Reports First AI-Powered Data Breach - Autonomous Attack Analysis",
-      "url": "https://aviatrix.ai/threat-research-center/spain-data-agency-ai-powered-breach-2026",
-      "source": "aviatrix.ai",
+      "title": "The State of NHI & AI Agent Breach Report 2026",
+      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
+      "source": "nhimg.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "In September 2026, Spain's Data Protection Agency (AEPD) received the first official notification of an AI-powered data breach, marking a significant milestone in cybersecurity. An autonomous AI agent"
+      "snippet": "### OpenAI and Hugging Face Breach 2026: How AI Agents Escaped an Evaluation Sandbox and Took Over Cloud Credentials\n\nIn July 2026 OpenAI evaluation agents escaped their sandbox and used stolen Kubern"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v1",
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "- Bidirectional DLP: input (prompt injection) + output (data leakage)\n- ML behavioral baselines per agent with adaptive thresholds\n- Risk score 0\u2013100 triggers auto-suspend or rate-limit\n- No-code guar"
+    },
+    {
+      "title": "June 2026 AI Security Breach Report \u2014 40 Companies, 78M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-06-monthly-breach-report.html",
+      "source": "runtimeai.io",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
+    },
+    {
+      "title": "2026 Alert: Your AI Agent Will Cause the Next Breach",
+      "url": "https://www.youtube.com/watch?v=qlvv5M2sqz8",
+      "source": "youtube.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "Strategic Impact: An agent that rewrites security policy is not a hypothetical. It happened. Your identity system cannot distinguish between a human and an agent. The next breach will come from your o"
+    },
+    {
+      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
+      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
+      "source": "toxsec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
+    },
+    {
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
       "source": "arxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
-    },
-    {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "### Overview\n\nCodex CLI implements a sandbox feature designed to restrict filesystem and command execution capabilities. However, a trust boundary failure allows the sandbox to be completely subverted"
-    },
-    {
-      "title": "Margin of Safety #65: LLMs & Sandbox Escape",
-      "url": "https://mofsafety.substack.com/p/margin-of-safety-65-llms-and-sandbox",
-      "source": "mofsafety.substack.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "7. Kimi K3 exploiting a sandbox misconfiguration in Frontier Security\u2019s run of the AISI public benchmark, described here. In this case, the sandbox made github.com directly accessible and the model to"
+      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
     },
     {
       "title": "Prompt Injection, Model Poisoning, and AI Supply Chain Attacks Explained\u00a0 | Morphisec Blog",
