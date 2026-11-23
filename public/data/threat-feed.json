@@ -1,53 +1,23 @@
 {
-  "generated_at": "2026-11-22T09:36:38.034758+00:00",
+  "generated_at": "2026-11-23T10:34:44.430515+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 4,
-    "partial": 0,
+    "covered": 3,
+    "partial": 1,
     "gap": 0,
     "review": 4
   },
   "incidents": [
     {
-      "title": "2026 cyberattacks by rogue OpenAI agents",
-      "url": "https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents",
-      "source": "en.wikipedia.org",
+      "title": "Meta Discloses AI Agent Security Breach",
+      "url": "https://technori.com/news/meta-discloses-ai-agent-security-breach",
+      "source": "technori.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "On July 16, 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing factors includ"
-    },
-    {
-      "title": "The State of NHI & AI Agent Breach Report 2026",
-      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
-      "source": "nhimg.org",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "### OpenAI and Hugging Face Breach 2026: How AI Agents Escaped an Evaluation Sandbox and Took Over Cloud Credentials\n\nIn July 2026 OpenAI evaluation agents escaped their sandbox and used stolen Kubern"
-    },
-    {
-      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
-      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
-      "source": "runtimeai.io",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "- Bidirectional DLP: input (prompt injection) + output (data leakage)\n- ML behavioral baselines per agent with adaptive thresholds\n- Risk score 0\u2013100 triggers auto-suspend or rate-limit\n- No-code guar"
-    },
-    {
-      "title": "June 2026 AI Security Breach Report \u2014 40 Companies, 78M+ Records \u2014 RuntimeAI",
-      "url": "https://runtimeai.io/blog/2026-06-monthly-breach-report.html",
-      "source": "runtimeai.io",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Three graduated kill levels: per-agent, per-tool, platform-wide. All propagate via NATS JetStream in <100ms. Captures last 100 actions as forensic state. Quarantine mode preserves evidence for investi"
+      "snippet": "Share\n\n4 Min Read\n\nmeta ai agent security breach disclosed\n\nmeta ai agent security breach disclosed\n\nMeta has disclosed a breach involving an artificial intelligence agent, adding fresh urgency to con"
     },
     {
       "title": "2026 Alert: Your AI Agent Will Cause the Next Breach",
@@ -57,37 +27,67 @@
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Strategic Impact: An agent that rewrites security policy is not a hypothetical. It happened. Your identity system cannot distinguish between a human and an agent. The next breach will come from your o"
+      "snippet": "# 2026 Alert: Your AI Agent Will Cause the Next Breach\n## Sun BPO Solutions\n54 subscribers\n\n### Description\n\nPosted: 8 May 2026\nAn AI agent rewrote a Fortune 50 security policy\u2014not hacked, just follow"
     },
     {
-      "title": "AI Sandbox Escape: Why Docker Can\u2019t Hold Frontier Models",
-      "url": "https://www.toxsec.com/p/ai-sandbox-escape",
-      "source": "toxsec.com",
+      "title": "\"AI agent security incident when:30d\" - Google News",
+      "url": "https://news.google.com/rss/search?q=AI+agent+security+incident+when%3A30d&hl=en-US&gl=US&ceid=US%3Aen",
+      "source": "news.google.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "Crypto Docs Host GitBook Hit by AI Agent Security Breach, Urges Users to Rotate Keys - Decrypt  CBMiekFVX3lxTFAxcmcwdmg0bE8zUVNwWV9ySHh2MUJhdjlrT1V4OTBFV1NHaHFBOFFGbTlSQ3dNUWlzVjd1b1lOaWp2TGRwSTE0NXZ2"
+    },
+    {
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "Oasis Security($190K/year) solves NHI credentialing but not for AI agents specifically. It lacks TPM hardware attestation, has no AI-agent behavioral monitoring, and doesn\u2019t integrate with agent gover"
+    },
+    {
+      "title": "AI Security Incidents: Latest Breaches & CVEs | PointGuard AI",
+      "url": "https://www.pointguardai.com/ai-security-incident-tracker",
+      "source": "pointguardai.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "partial",
+      "coverage_note": "Partially covered \u2014 runtime egress only; registry-side compromise is out of scope",
+      "snippet": "### 5.9\n\n### High\n\n### 5.9\n\n### Critical\n\nData Leakage\n\nSupply Chain\n\nAgentic AI\n\n### Warp Vendor Breach Exposes AI Agent Traces and Telemetry\n\n### Oct 27, 2026\n\n### A breach at a Warp vendor exposed "
+    },
+    {
+      "title": "Terrarium Sandbox Escape - CVE-2026-5752 | SYNDICATE Cybersecurity Blog",
+      "url": "https://syndicatesec.com/blog/cve-2026-5752-terrarium-sandbox-escape.html",
+      "source": "syndicatesec.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "\u2219 Paid\n\nTL;DR: AI sandbox escape works because the container was designed for the wrong threat. A sandbox jails untrusted code, and it assumes the code inside isn\u2019t strategizing about the walls. An LL"
+      "snippet": "Any organization deploying cohere-terrarium to enable LLM agents to perform computation, data analysis, or visualization is within the threat radius. The typical deployment runs in a Docker container "
     },
     {
-      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/abs/2603.02277",
-      "source": "arxiv.org",
+      "title": "Google AI Finds Sandbox Bypass Vulnerability in Chrome Codebase",
+      "url": "https://www.rswebsols.com/news/google-ai-discovers-sandbox-bypass-vulnerability-in-chromes-codebase",
+      "source": "rswebsols.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
+      "snippet": "The new AI vulnerability agent identified and resolved a 13-year-old sandbox escape bug within Chrome that had remained undetected for years.\n\n### What is the Google AI vulnerability agent?\n\nThe Googl"
     },
     {
-      "title": "Prompt Injection, Model Poisoning, and AI Supply Chain Attacks Explained\u00a0 | Morphisec Blog",
-      "url": "https://www.morphisec.com/blog/prompt-injection-model-poisoning-and-ai-supply-chain-attacks-explained",
-      "source": "morphisec.com",
+      "title": "Google AI Finds Sandbox Escape Bug in Chrome's Codebase",
+      "url": "https://telecomtalk.info/googleai-finds-sandbox-escape-bug-in-chrome/1010311",
+      "source": "telecomtalk.info",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "In some cases, organizations may unknowingly deploy compromised models into production environments, creating long-term security and operational risks.\n\n## Potential Consequences of Model Poisoning\n\nM"
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "Google is using AI to improve security in its Chrome browser codebase. Recently, the California-based giant announced its new AI vulnerability agent, created with its Gemini security LLM model. It det"
     }
   ]
 }
