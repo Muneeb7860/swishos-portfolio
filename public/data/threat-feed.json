@@ -1,43 +1,33 @@
 {
-  "generated_at": "2026-11-23T10:34:44.430515+00:00",
+  "generated_at": "2026-11-24T12:18:06.204706+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
-    "partial": 1,
+    "covered": 5,
+    "partial": 0,
     "gap": 0,
-    "review": 4
+    "review": 3
   },
   "incidents": [
     {
-      "title": "Meta Discloses AI Agent Security Breach",
-      "url": "https://technori.com/news/meta-discloses-ai-agent-security-breach",
-      "source": "technori.com",
+      "title": "2026 cyberattacks by rogue OpenAI agents",
+      "url": "https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents",
+      "source": "en.wikipedia.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Share\n\n4 Min Read\n\nmeta ai agent security breach disclosed\n\nmeta ai agent security breach disclosed\n\nMeta has disclosed a breach involving an artificial intelligence agent, adding fresh urgency to con"
+      "snippet": "On July 16, 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing factors includ"
     },
     {
-      "title": "2026 Alert: Your AI Agent Will Cause the Next Breach",
-      "url": "https://www.youtube.com/watch?v=qlvv5M2sqz8",
-      "source": "youtube.com",
+      "title": "The State of NHI & AI Agent Breach Report 2026",
+      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
+      "source": "nhimg.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "# 2026 Alert: Your AI Agent Will Cause the Next Breach\n## Sun BPO Solutions\n54 subscribers\n\n### Description\n\nPosted: 8 May 2026\nAn AI agent rewrote a Fortune 50 security policy\u2014not hacked, just follow"
-    },
-    {
-      "title": "\"AI agent security incident when:30d\" - Google News",
-      "url": "https://news.google.com/rss/search?q=AI+agent+security+incident+when%3A30d&hl=en-US&gl=US&ceid=US%3Aen",
-      "source": "news.google.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Crypto Docs Host GitBook Hit by AI Agent Security Breach, Urges Users to Rotate Keys - Decrypt  CBMiekFVX3lxTFAxcmcwdmg0bE8zUVNwWV9ySHh2MUJhdjlrT1V4OTBFV1NHaHFBOFFGbTlSQ3dNUWlzVjd1b1lOaWp2TGRwSTE0NXZ2"
+      "snippet": "In 2026 researchers found 4.96 million IPs exposing .git folders and 252,733 Git configs holding deployment credentials, a machine identity secrets risk.\n\nMisconfiguration \u00b7 Secret or password \u00b7 CI/CD"
     },
     {
       "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
@@ -45,49 +35,59 @@
       "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "- Bidirectional DLP: input (prompt injection) + output (data leakage)\n- ML behavioral baselines per agent with adaptive thresholds\n- Risk score 0\u2013100 triggers auto-suspend or rate-limit\n- No-code guar"
+    },
+    {
+      "title": "Security incident disclosure \u2014 July 2026",
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "source": "huggingface.co",
+      "published": "",
+      "severity": "low",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "Oasis Security($190K/year) solves NHI credentialing but not for AI agents specifically. It lacks TPM hardware attestation, has no AI-agent behavioral monitoring, and doesn\u2019t integrate with agent gover"
+      "snippet": "The campaign was run by an autonomous agent framework (appearing to be built on an agentic security-research harness - used LLM still not known) executing many thousands of individual actions across a"
     },
     {
-      "title": "AI Security Incidents: Latest Breaches & CVEs | PointGuard AI",
-      "url": "https://www.pointguardai.com/ai-security-incident-tracker",
-      "source": "pointguardai.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "partial",
-      "coverage_note": "Partially covered \u2014 runtime egress only; registry-side compromise is out of scope",
-      "snippet": "### 5.9\n\n### High\n\n### 5.9\n\n### Critical\n\nData Leakage\n\nSupply Chain\n\nAgentic AI\n\n### Warp Vendor Breach Exposes AI Agent Traces and Telemetry\n\n### Oct 27, 2026\n\n### A breach at a Warp vendor exposed "
-    },
-    {
-      "title": "Terrarium Sandbox Escape - CVE-2026-5752 | SYNDICATE Cybersecurity Blog",
-      "url": "https://syndicatesec.com/blog/cve-2026-5752-terrarium-sandbox-escape.html",
-      "source": "syndicatesec.com",
+      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
+      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
+      "source": "ctx-guard.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Any organization deploying cohere-terrarium to enable LLM agents to perform computation, data analysis, or visualization is within the threat radius. The typical deployment runs in a Docker container "
+      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
     },
     {
-      "title": "Google AI Finds Sandbox Bypass Vulnerability in Chrome Codebase",
-      "url": "https://www.rswebsols.com/news/google-ai-discovers-sandbox-bypass-vulnerability-in-chromes-codebase",
-      "source": "rswebsols.com",
+      "title": "CPython flaw exposes AI inference servers to sandbox escape attacks | CSO Online",
+      "url": "https://www.csoonline.com/article/4245592/cpython-flaw-exposes-ai-inference-servers-to-sandbox-escape-attacks.html",
+      "source": "csoonline.com",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The new AI vulnerability agent identified and resolved a 13-year-old sandbox escape bug within Chrome that had remained undetected for years.\n\n### What is the Google AI vulnerability agent?\n\nThe Googl"
+      "snippet": "The researchers demonstrated how a specially crafted model could exploit the flaw to bypass Jinja, a Python-based templating engine used to structure interactions between users and LLMs, sandbox prote"
     },
     {
-      "title": "Google AI Finds Sandbox Escape Bug in Chrome's Codebase",
-      "url": "https://telecomtalk.info/googleai-finds-sandbox-escape-bug-in-chrome/1010311",
-      "source": "telecomtalk.info",
+      "title": "[2603.02277] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "source": "arxiv.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Google is using AI to improve security in its Chrome browser codebase. Recently, the California-based giant announced its new AI vulnerability agent, created with its Gemini security LLM model. It det"
+      "snippet": "as an Inspect AI Capture the Flag (CTF) evaluation utilising a nested sandbox architecture with the outer layer containing the flag and no known vulnerabilities. Following a threat model of a motivate"
+    },
+    {
+      "title": "Prompt Injection, Model Poisoning, and AI Supply Chain Attacks Explained\u00a0 | Morphisec Blog",
+      "url": "https://www.morphisec.com/blog/prompt-injection-model-poisoning-and-ai-supply-chain-attacks-explained",
+      "source": "morphisec.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
+      "snippet": "In some cases, organizations may unknowingly deploy compromised models into production environments, creating long-term security and operational risks.\n\n## Potential Consequences of Model Poisoning\n\nM"
     }
   ]
 }
