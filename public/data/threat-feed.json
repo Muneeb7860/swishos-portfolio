@@ -1,93 +1,93 @@
 {
-  "generated_at": "2026-11-26T10:41:34.936643+00:00",
+  "generated_at": "2026-11-27T10:43:13.717644+00:00",
   "agent_version": "1.0.0",
   "total_incidents": 8,
   "coverage_summary": {
-    "covered": 3,
+    "covered": 6,
     "partial": 0,
     "gap": 0,
-    "review": 5
+    "review": 2
   },
   "incidents": [
     {
-      "title": "Meta's AI Agent Went Rogue and Caused a Security Breach (2026)",
-      "url": "https://engineerscorner.in/meta-rogue-ai-agent-security-breach-2026",
-      "source": "engineerscorner.in",
+      "title": "2026 cyberattacks by rogue OpenAI agents",
+      "url": "https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents",
+      "source": "en.wikipedia.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "review",
       "coverage_note": "Needs manual classification",
-      "snippet": "A Meta engineer used an internal AI agent to analyze a technical question posted on an internal company forum. The agent responded publicly without any authorization. A second employee then followed t"
+      "snippet": "On July 16, 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing factors includ"
     },
     {
-      "title": "AI Agent Security Breach: Ultimate Guide 2026",
-      "url": "https://kalinga.ai/ai-agent-security-breach-guide",
-      "source": "kalinga.ai",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "- ~17,600 recovered attacker actions, grouped into roughly 6,280 clusters\n- Four and a half days of near-continuous activity, from July 9 to July 13, 2026\n- 11 servers seeded with self-relaunching cop"
-    },
-    {
-      "title": "Identity Security: AI Agent Breach Alert",
-      "url": "https://futurumgroup.com/insights/hugging-face-breach-a-wake-up-call-for-ai-agent-security",
-      "source": "futurumgroup.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "On July 16, 2026, Hugging Face disclosed that an autonomous AI agent exploited a code-execution flaw in its dataset pipeline, harvested cloud and cluster credentials, and moved laterally across intern"
-    },
-    {
-      "title": "Hugging Face security breach 2026: The AI agent attack",
-      "url": "https://datasciencedojo.com/blog/hugging-face-security-breach-2026",
-      "source": "datasciencedojo.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "An autonomous AI agent broke into Hugging Face\u2019s production infrastructure over a single weekend, executing over 17,000 recorded actions, harvesting cloud credentials, and moving laterally across inte"
-    },
-    {
-      "title": "Hugging Face AI Agent Security Breach | Algo & Art",
-      "url": "https://algoandart.com/blog/hugging-face-ai-agent-security-breach",
-      "source": "algoandart.com",
-      "published": "",
-      "severity": "critical",
-      "swishos_coverage": "review",
-      "coverage_note": "Needs manual classification",
-      "snippet": "Last week, around July 16, 2026, Hugging Face disclosed a security breach. An autonomous AI agent system carried out the attack, exploiting vulnerabilities in their data processing pipeline via a mali"
-    },
-    {
-      "title": "LLM Sandbox Escapes: How AI Agents Break Out of Containment - Context Guard Blog",
-      "url": "https://ctx-guard.com/blog/llm-sandbox-escapes",
-      "source": "ctx-guard.com",
+      "title": "OpenAI rogue agent breach of Hugging Face",
+      "url": "https://en.wikipedia.org/wiki/OpenAI_rogue_agent_breach_of_Hugging_Face",
+      "source": "en.wikipedia.org",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "The most direct escape: the agent runs code with no effective isolation. The most prominent 2026 example is the DeepSeek `python_exec` vulnerability, where `python -I` (isolated mode) was treated as a"
+      "coverage_note": "This attack class is covered by tool-call sequence detection",
+      "snippet": "Between July 11 and 13, 2026, AI agents developed by OpenAI accessed the Internet to breach the infrastructure of Hugging Face, a platform hosting machine learning models and datasets. Contributing fa"
     },
     {
-      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
-      "url": "https://arxiv.org/html/2603.02277v1",
-      "source": "arxiv.org",
+      "title": "The State of NHI & AI Agent Breach Report 2026",
+      "url": "https://nhimg.org/nhi-ai-agent-breaches-report",
+      "source": "nhimg.org",
       "published": "",
       "severity": "critical",
-      "swishos_coverage": "covered",
-      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
-      "snippet": "Taken together, our results show frontier LLM agents can escape container sandboxes under vulnerability conditions that plausibly occur in real systems. The first class, misconfigurations such as expo"
+      "swishos_coverage": "review",
+      "coverage_note": "Needs manual classification",
+      "snippet": "An AI agent exploited Langflow, harvested API keys and cloud credentials, used default MinIO and Nacos secrets, and destroyed a production database.\n\nVulnerability exploit \u00b7 Weak or default credential"
     },
     {
-      "title": "Configuration-Based Sandbox Escape (CBSE) in AI Coding Tools",
-      "url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape",
-      "source": "cymulate.com",
+      "title": "September 2026 AI Security Breach Report \u2014 38 Companies, 318M+ Records \u2014 RuntimeAI",
+      "url": "https://runtimeai.io/blog/2026-09-monthly-breach-report.html",
+      "source": "runtimeai.io",
       "published": "",
       "severity": "critical",
       "swishos_coverage": "covered",
       "coverage_note": "This attack class is covered by the prompt_injection and jailbreak suites",
-      "snippet": "### Overview\n\nCodex CLI implements a sandbox feature designed to restrict filesystem and command execution capabilities. However, a trust boundary failure allows the sandbox to be completely subverted"
+      "snippet": "- Bidirectional DLP: input (prompt injection) + output (data leakage)\n- ML behavioral baselines per agent with adaptive thresholds\n- Risk score 0\u2013100 triggers auto-suspend or rate-limit\n- No-code guar"
+    },
+    {
+      "title": "[\u8ad6\u6587\u8a55\u8ff0] Quantifying Frontier LLM Capabilities for Container Sandbox Escape",
+      "url": "https://www.themoonlight.io/tw/review/quantifying-frontier-llm-capabilities-for-container-sandbox-escape",
+      "source": "themoonlight.io",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "- Shortcut Discoveries: Models demonstrated opportunistic behavior by discovering and exploiting unintended escape paths, highlighting the need for robust benchmark design and continuous hardening.\n- "
+    },
+    {
+      "title": "Cursor, Codex, Gemini CLI, Antigravity hit by sandbox escapes",
+      "url": "https://www.bleepingcomputer.com/news/security/cursor-codex-gemini-cli-antigravity-hit-by-sandbox-escapes",
+      "source": "bleepingcomputer.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "Security researchers broke out of the sandboxes in four widely used AI coding agents, including Cursor, OpenAI's Codex, Google's Gemini CLI and Antigravity, without attacking the sandbox head-on.\n\nThe"
+    },
+    {
+      "title": "CVE-2026-27597: Code Injection / Sandbox Escape in Enclave JavaScript VM",
+      "url": "https://codeant.ai/vulnerability-database/cve-2026-27597",
+      "source": "codeant.ai",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "- Remote code execution within the host process running the Enclave sandbox\n- Access to sensitive data available to the host (API keys, model outputs, prompts, system files)\n- Lateral movement to othe"
+    },
+    {
+      "title": "Critical isolated-vm JavaScript Flaw Enables Sandbox Escape - Rewterz",
+      "url": "https://rewterz.com/threat-advisory/critical-isolated-vm-javascript-flaw-enables-sandbox-escape",
+      "source": "rewterz.com",
+      "published": "",
+      "severity": "critical",
+      "swishos_coverage": "covered",
+      "coverage_note": "This attack class is covered by the ssrf suite and egress redaction",
+      "snippet": "hijacking and arbitrary code execution outside the sandbox. This makes the vulnerability particularly serious for multi-tenant applications, AI agent platforms, workflow automation systems, user-scrip"
     }
   ]
 }
